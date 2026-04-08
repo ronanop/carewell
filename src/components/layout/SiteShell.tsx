@@ -1,6 +1,5 @@
 import { ClarityScript } from "@/components/analytics/ClarityScript";
 import { GtmScript } from "@/components/analytics/GtmScript";
-import { GtmScript } from "@/components/analytics/GtmScript";
 import { Footer } from "@/components/layout/Footer";
 import { HeaderClient } from "@/components/layout/HeaderClient";
 import { HelloBar } from "@/components/layout/HelloBar";
@@ -31,9 +30,11 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
 
   const helloHeight = messages.length ? "2.25rem" : "0px";
 
+  const gtmId = settings.gtmId || process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <>
-      <GtmScript gtmId={settings.gtmId} />
+      <GtmScript gtmId={gtmId} />
       <ClarityScript projectId={settings.clarityProjectId} />
       <style>{`:root { --hello-bar-height: ${helloHeight}; }`}</style>
       <HelloBar messages={messages} />
