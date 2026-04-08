@@ -63,6 +63,7 @@ export function LeadForm({
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error("fail");
+      window.dataLayer?.push({ event: "generate_lead", form: "lead" });
       setStatus("ok");
       window.location.href = "/thank-you";
     } catch {

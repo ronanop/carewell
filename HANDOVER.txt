@@ -1,0 +1,23 @@
+Care Well Medical Centre — developer handover checklist (from project brief §9, §13)
+
+Pre-launch evidence
+- PageSpeed Mobile > 85 on homepage + two service URLs; Desktop > 95 on homepage (screenshots with URL visible).
+- Document LCP, CLS, INP against targets; confirm no render-blocking third parties in PSI.
+- Bundle analyzer: npm run analyze — confirm no gzip chunk > 100KB where feasible.
+- Google Rich Results Test on home, service (FAQ), blog article, about/dr-bhasin.
+- Google Search Console: Mobile Usability zero errors; submit sitemap within 24h of launch.
+
+CMS training (record ~2h)
+- Editing services, hubs, blog, gallery, testimonials, site settings.
+- SEO fields, OG images, noindex, hreflang pairs (alternate doc references).
+- Redirect documents + build-time redirects.migration.json for bulk legacy URLs.
+- Image uploads: alt text required; focal point.
+
+Sanity roles
+- Configure project members: Admin, Editor (content), SEO-focused access via Sanity permissions / field groups as needed.
+
+Post-launch
+- 3 months build-bug support (48h response) — scope separate from new features.
+
+Environment
+- Copy .env.example to .env.local; set NEXT_PUBLIC_SANITY_*; deploy Vercel region ap-south-1 (Mumbai); optional Cloudflare in front.

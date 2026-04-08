@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/leads/LeadForm";
 import { ServiceFaq } from "@/components/services/ServiceFaq";
 import { TreatmentFinderQuiz } from "@/components/leads/TreatmentFinderQuiz";
+import { BreadcrumbJsonLd } from "@/components/jsonld/BreadcrumbJsonLd";
 import type { ServiceDoc } from "@/lib/demo-service";
 import { whatsappHref } from "@/lib/whatsapp";
 import { getSiteUrl } from "@/lib/site";
@@ -61,6 +62,13 @@ export function ServicePageSections({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/treatments/hair" },
+          { name: doc.title, path: `/services/${slug}` },
+        ]}
+      />
       <section className="relative min-h-[65vh] bg-navy">
         <div
           className="absolute inset-0 opacity-40"
