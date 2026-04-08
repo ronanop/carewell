@@ -1,0 +1,27 @@
+@import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-warm text-navy antialiased min-text-base;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  @media (min-width: 768px) {
+    body {
+      font-size: 17px;
+    }
+  }
+}
+
+@layer utilities {
+  .min-text-base {
+    font-size: max(16px, 1rem);
+  }
+}
