@@ -34,9 +34,9 @@ const steps = [
   },
   {
     id: 4,
-    title: "4. Meet Your Therapist",
+    title: "4. Meet Your Doctor",
     description:
-      "Certified therapists deliver treatments that are safe, effective and results driven",
+      "Qualified doctors deliver treatments that are safe, effective and results driven",
     image:
       "https://images.unsplash.com/photo-1739300293388-ddbe4b4cb1f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMHRhbGtpbmclMjBjbGluaWMlMjBjb3VjaHxlbnwxfHx8fDE3NzcyMDEwNzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     hasButton: false,
@@ -67,7 +67,7 @@ export function HowItWorks() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8 text-2xl font-bold tracking-tight text-[#0A2E52] sm:mb-12 sm:text-3xl lg:text-[40px]"
         >
-          How Care Well Works
+          How Care Well Medical Centre Works
         </motion.h2>
 
         <div

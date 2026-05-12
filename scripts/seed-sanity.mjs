@@ -235,7 +235,7 @@ async function main() {
     helloBarMessages: ["Free consultation — Limited slots.", "Response within 2 hours."],
     patientCounterLabel: "Patients treated this month",
     patientCounterValue: 120,
-    hours: ["Mon-Sat: 10:00-19:00"],
+    hours: ["Mon-Sun: 10:00-19:00"],
   });
 
   await upsert({

@@ -61,8 +61,8 @@ export function Footer({
 }) {
   return (
     <footer className="bg-navy text-white">
-      <div className="container grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
-        <div>
+      <div className="container grid grid-cols-2 gap-10 py-16 lg:grid-cols-4">
+        <div className="col-span-2 lg:col-span-1">
           <p className="font-heading text-lg font-bold">Care Well Medical Centre</p>
           <p className="mt-3 text-sm text-white/80">Advanced Cosmetic Surgery & Skin Treatments</p>
           {address && <p className="mt-2 text-sm text-white/80 whitespace-pre-line">{address}</p>}
@@ -113,16 +113,16 @@ export function Footer({
             <li><Link href="/treatments/hair" className="hover:underline">All hair treatments</Link></li>
           </ul>
         </div>
-        <div>
+        <div className="col-span-2 text-center lg:col-span-1 lg:text-left">
           <p className="text-overline uppercase text-white/50">Visit us</p>
           {hours?.length ? (
-            <ul className="mt-4 space-y-1 text-sm text-white/85">
+            <ul className="mt-4 space-y-1 text-sm font-semibold text-white">
               {hours.map((h) => (
                 <li key={h}>{h}</li>
               ))}
             </ul>
           ) : (
-            <p className="mt-4 text-sm text-white/85">Mon–Sat: 10:00 – 19:00</p>
+            <p className="mt-4 text-sm font-semibold text-white">Monday to Sunday: 10:00 – 19:00</p>
           )}
           {phone && (
             <p className="mt-4 text-sm">

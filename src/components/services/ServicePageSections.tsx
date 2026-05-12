@@ -1685,7 +1685,7 @@ export async function ServicePageSections({
               )}
               <div className="rounded-xl border border-surface bg-white p-4 text-sm text-navy/80">
                 <p className="font-semibold text-navy">Clinic hours</p>
-                <p className="mt-2">Mon–Sat · 10:00 – 19:00</p>
+                <p className="mt-2">Mon–Sun · 10:00 – 19:00</p>
               </div>
             </ServiceSidebarReveal>
           </div>
