@@ -97,7 +97,7 @@ const desktopLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-const ctaMessages = ["Book Free Consultation", "With 10+ Years of Trust"];
+const ctaMessages = ["Book Free Consultation", "With 20+ Years of Trust"];
 const defaultServicePreview: ServicePreview = {
   title: "Hair Treatments",
   subtitle: "Personalized plans for healthier hair and confidence.",

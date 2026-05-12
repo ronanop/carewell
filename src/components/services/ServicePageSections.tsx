@@ -17,6 +17,8 @@ import { BreadcrumbJsonLd } from "@/components/jsonld/BreadcrumbJsonLd";
 import type { ServiceDoc } from "@/types/service";
 import { whatsappHref } from "@/lib/whatsapp";
 import { getSiteUrl } from "@/lib/site";
+import { sanityFetch } from "@/sanity/client";
+import { blogPostsListQuery } from "@/sanity/queries";
 
 const BeforeAfterSliders = dynamic(
   () => import("@/components/services/BeforeAfterSliders").then((m) => m.BeforeAfterSliders),
@@ -132,7 +134,17 @@ const HAIR_TRANSPLANT_FAQS: { question: string; answer?: string }[] = [
   },
 ];
 
-export function ServicePageSections({
+type LatestBlogPost = {
+  title: string;
+  slug: string;
+  excerpt?: string;
+  coverUrl?: string;
+  category?: string;
+  publishedAt?: string;
+  readTimeMinutes?: number;
+};
+
+export async function ServicePageSections({
   doc,
   whatsapp,
   phone,
@@ -143,6 +155,8 @@ export function ServicePageSections({
   phone?: string;
   mapEmbedUrl?: string;
 }) {
+  const latestBlogs =
+    (await sanityFetch<LatestBlogPost[]>(blogPostsListQuery))?.slice(0, 3) ?? [];
   const slug = doc.slug?.current ?? "service";
   const overviewYoutubeId =
     slug === "hair-transplant" || slug === "hair-transplant-hi"
@@ -176,11 +190,18 @@ export function ServicePageSections({
   return (
     <div>
       <BreadcrumbJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Services", path: "/treatments/hair" },
-          { name: doc.title, path: `/services/${slug}` },
-        ]}
+        items={
+          slug === "hair-transplant" || slug === "hair-transplant-hi"
+            ? [
+                { name: "Home", path: "/" },
+                { name: "Hair Transplant in Delhi", path: "/hair-transplant-in-delhi" },
+              ]
+            : [
+                { name: "Home", path: "/" },
+                { name: "Services", path: "/treatments/hair" },
+                { name: doc.title, path: `/services/${slug}` },
+              ]
+        }
       />
       <section className="relative min-h-[58svh] overflow-hidden bg-navy md:min-h-[65vh]">
         <div
@@ -201,11 +222,18 @@ export function ServicePageSections({
         <div className="relative mx-auto grid min-h-[58svh] max-w-7xl items-center gap-8 px-4 py-12 sm:py-14 md:min-h-[65vh] md:grid-cols-[1fr_312px] md:items-start md:gap-10 md:px-6 md:py-20 lg:py-24">
           <div className="min-w-0">
             <Breadcrumbs
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Services", href: "/treatments/hair" },
-                { label: doc.title },
-              ]}
+              items={
+                slug === "hair-transplant" || slug === "hair-transplant-hi"
+                  ? [
+                      { label: "Home", href: "/" },
+                      { label: "Hair Transplant in Delhi" },
+                    ]
+                  : [
+                      { label: "Home", href: "/" },
+                      { label: "Services", href: "/treatments/hair" },
+                      { label: doc.title },
+                    ]
+              }
             />
             <h1 className="font-heading mt-5 text-[34px] font-bold leading-[1.1] text-white sm:text-[42px] md:mt-6 md:text-5xl">
               {doc.title} in Delhi
@@ -324,34 +352,166 @@ export function ServicePageSections({
           </section>
 
           <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
-            <h2 className="font-heading text-2xl font-bold text-navy md:text-3xl">
-              {slug === "hair-transplant" || slug === "hair-transplant-hi"
-                ? "How Hair Transplant in Delhi Works"
-                : "How it works"}
-            </h2>
-            {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
-              <div className="mt-4 max-w-3xl space-y-3 text-base leading-relaxed text-navy/85">
-                <p>
-                  Understanding each step of the procedure helps patients feel more confident
-                  about what to expect during surgery.
+            {slug === "hair-transplant" || slug === "hair-transplant-hi" ? (
+              <>
+                <h2 className="font-heading text-2xl font-bold text-navy md:text-3xl">
+                  Hair Transplant Cost in Delhi
+                </h2>
+                <p className="mt-2 text-sm font-medium uppercase tracking-wide text-teal">
+                  Quick snapshot
                 </p>
-                <p>
-                  Doctors plan and perform hair transplant in defined stages to ensure a{" "}
-                  <span className="font-semibold text-navy">natural appearance</span> and{" "}
-                  <span className="font-semibold text-navy">long-term graft survival</span>.
+
+                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="rounded-2xl border border-teal/25 bg-gradient-to-br from-teal/10 via-white to-white p-4 shadow-sm sm:p-5">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-teal/80 sm:text-xs">
+                      Per graft cost
+                    </p>
+                    <p className="mt-2 text-xl font-extrabold text-navy sm:text-2xl md:text-3xl">
+                      ₹25 – ₹50
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/10 via-white to-white p-4 shadow-sm sm:p-5">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary/80 sm:text-xs">
+                      Typical total cost
+                    </p>
+                    <p className="mt-2 text-xl font-extrabold text-navy sm:text-2xl md:text-3xl">
+                      ₹40,000 – ₹2,00,000
+                    </p>
+                    <p className="mt-1 text-xs text-navy/60">approximate range</p>
+                  </div>
+                  <div className="rounded-2xl border border-alert/25 bg-gradient-to-br from-alert/10 via-white to-white p-4 shadow-sm sm:col-span-2 sm:p-5 lg:col-span-1">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-alert/80 sm:text-xs">
+                      5000 grafts cost
+                    </p>
+                    <p className="mt-2 text-xl font-extrabold text-navy sm:text-2xl md:text-3xl">
+                      ₹1,25,000 – ₹2,00,000
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 rounded-xl border border-surface bg-surface/60 p-5">
+                  <p className="text-sm leading-relaxed text-navy/85">
+                    <span className="font-semibold text-navy">Note:</span>{" "}
+                    We confirm the final cost after a detailed scalp analysis
+                    and graft estimation — we never quote fixed package prices online.
+                  </p>
+                </div>
+
+                {doc.pricingFactors && doc.pricingFactors.length > 0 && (
+                  <div className="mt-8 rounded-2xl border border-navy/10 bg-white p-5 shadow-sm md:p-6">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary"
+                        aria-hidden
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                          <path d="M3 12h4l3 8 4-16 3 8h4" />
+                        </svg>
+                      </span>
+                      <h3 className="font-heading text-base font-bold text-navy md:text-lg">
+                        What affects your price
+                      </h3>
+                    </div>
+                    <ul className="mt-4 grid gap-2.5 text-sm text-navy/85 sm:grid-cols-2">
+                      {doc.pricingFactors.map((f) => (
+                        <li key={f} className="flex items-start gap-2">
+                          <span
+                            className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+                            aria-hidden
+                          />
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {doc.pricingEmiNote && (
+                  <div className="mt-4 flex items-start gap-3 rounded-xl border border-teal/20 bg-teal/5 p-4">
+                    <span
+                      className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-teal/15 text-teal"
+                      aria-hidden
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <rect x="2" y="6" width="20" height="13" rx="2" />
+                        <path d="M2 11h20" />
+                      </svg>
+                    </span>
+                    <p className="text-sm leading-relaxed text-navy/85">{doc.pricingEmiNote}</p>
+                  </div>
+                )}
+
+                {doc.valueStack && doc.valueStack.length > 0 && (
+                  <div className="mt-6 rounded-2xl border border-teal/25 bg-gradient-to-br from-teal/5 via-white to-white p-5 shadow-sm md:p-6">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-teal/15 text-teal"
+                        aria-hidden
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                      </span>
+                      <h3 className="font-heading text-base font-bold text-navy md:text-lg">
+                        What&apos;s included
+                      </h3>
+                    </div>
+                    <ul className="mt-4 grid gap-2.5 text-sm text-navy/85 sm:grid-cols-2">
+                      {doc.valueStack.map((v) => (
+                        <li key={v} className="flex items-start gap-2">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.4"
+                            className="mt-0.5 shrink-0 text-teal"
+                            aria-hidden
+                          >
+                            <path d="M20 6L9 17l-5-5" />
+                          </svg>
+                          <span>{v}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                <h2 className="font-heading text-2xl font-bold text-navy">Pricing</h2>
+                <p className="mt-4 text-2xl font-bold text-primary">
+                  Starting from ₹{doc.pricingFromInr?.toLocaleString("en-IN") ?? "—"}
                 </p>
-              </div>
+                <p className="mt-2 text-sm text-navy/70">Final cost depends on assessment — we never quote fixed package prices online.</p>
+                <ul className="mt-6 list-disc space-y-2 pl-5 text-sm text-navy/85">
+                  {(doc.pricingFactors ?? []).map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+                {doc.pricingEmiNote && <p className="mt-4 text-sm text-navy/80">{doc.pricingEmiNote}</p>}
+                <div className="mt-6 rounded-xl border border-surface bg-white p-5">
+                  <p className="text-sm font-semibold text-navy">What&apos;s included</p>
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-navy/80">
+                    {(doc.valueStack ?? []).map((v) => (
+                      <li key={v}>{v}</li>
+                    ))}
+                  </ul>
+                </div>
+              </>
             )}
-            <HowItWorksStepsAnimated
-              steps={doc.howItWorksSteps ?? []}
-              belowStepsImageSrc={
-                slug === "hair-transplant" || slug === "hair-transplant-hi"
-                  ? "/images/hair-transplant-process-infographic.png"
-                  : undefined
-              }
-              belowStepsImageAlt="Infographic: The 4-step hair transplant process — graft extraction, hairline design, graft implantation, and healing timeline"
-              showStepsDetailAside={slug === "hair-transplant" || slug === "hair-transplant-hi"}
-            />
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button href="/book-consultation" variant="primary">
+                Get Personalized Quote
+              </Button>
+              <Button href="/cost-estimator" variant="outline">
+                Cost estimator
+              </Button>
+            </div>
+            <div className="mt-8">
+              <EMICalculator />
+            </div>
           </section>
 
           {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
@@ -744,20 +904,6 @@ export function ServicePageSections({
             </section>
           )}
 
-          {slug !== "hair-transplant" && slug !== "hair-transplant-hi" && (
-            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
-              <h2 className="font-heading text-2xl font-bold text-navy">Before &amp; after</h2>
-              <div className="mt-8">
-                <BeforeAfterSliders cases={doc.beforeAfterCases ?? []} />
-              </div>
-              <div className="mt-8">
-                <Button href="/gallery" variant="outline">
-                  Get Similar Results →
-                </Button>
-              </div>
-            </section>
-          )}
-
           <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
             {slug === "hair-transplant" || slug === "hair-transplant-hi" ? (
               <>
@@ -824,6 +970,31 @@ export function ServicePageSections({
                   </p>
                 </div>
 
+                <div className="mt-10 border-t border-surface pt-10 sm:mt-12 sm:pt-12">
+                  <h3 className="font-heading text-2xl font-bold text-navy md:text-3xl">
+                    How Hair Transplant in Delhi Works
+                  </h3>
+                  <div className="mt-4 max-w-3xl space-y-3 text-base leading-relaxed text-navy/85">
+                    <p>
+                      Understanding each step of the procedure helps patients feel more confident
+                      about what to expect during surgery.
+                    </p>
+                    <p>
+                      Doctors plan and perform hair transplant in defined stages to ensure a{" "}
+                      <span className="font-semibold text-navy">natural appearance</span> and{" "}
+                      <span className="font-semibold text-navy">long-term graft survival</span>.
+                    </p>
+                  </div>
+                  <div className="mt-6">
+                    <HowItWorksStepsAnimated
+                      steps={doc.howItWorksSteps ?? []}
+                      belowStepsImageSrc="/images/hair-transplant-process-infographic.png"
+                      belowStepsImageAlt="Infographic: The 4-step hair transplant process — graft extraction, hairline design, graft implantation, and healing timeline"
+                      showStepsDetailAside
+                    />
+                  </div>
+                </div>
+
                 <div className="mt-10 sm:mt-12">
                   <HairTransplantTechniques />
                 </div>
@@ -862,168 +1033,26 @@ export function ServicePageSections({
             )}
           </section>
 
-          <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
-            {slug === "hair-transplant" || slug === "hair-transplant-hi" ? (
-              <>
-                <h2 className="font-heading text-2xl font-bold text-navy md:text-3xl">
-                  Hair Transplant Cost in Delhi
-                </h2>
-                <p className="mt-2 text-sm font-medium uppercase tracking-wide text-teal">
-                  Quick snapshot
-                </p>
+          {slug !== "hair-transplant" && slug !== "hair-transplant-hi" && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <h2 className="font-heading text-2xl font-bold text-navy md:text-3xl">How it works</h2>
+              <HowItWorksStepsAnimated steps={doc.howItWorksSteps ?? []} />
+            </section>
+          )}
 
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  <div className="rounded-2xl border border-teal/25 bg-gradient-to-br from-teal/10 via-white to-white p-4 shadow-sm sm:p-5">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-teal/80 sm:text-xs">
-                      Per graft cost
-                    </p>
-                    <p className="mt-2 text-xl font-extrabold text-navy sm:text-2xl md:text-3xl">
-                      ₹25 – ₹50
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/10 via-white to-white p-4 shadow-sm sm:p-5">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary/80 sm:text-xs">
-                      Typical total cost
-                    </p>
-                    <p className="mt-2 text-xl font-extrabold text-navy sm:text-2xl md:text-3xl">
-                      ₹40,000 – ₹2,00,000
-                    </p>
-                    <p className="mt-1 text-xs text-navy/60">approximate range</p>
-                  </div>
-                  <div className="rounded-2xl border border-alert/25 bg-gradient-to-br from-alert/10 via-white to-white p-4 shadow-sm sm:col-span-2 sm:p-5 lg:col-span-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-alert/80 sm:text-xs">
-                      5000 grafts cost
-                    </p>
-                    <p className="mt-2 text-xl font-extrabold text-navy sm:text-2xl md:text-3xl">
-                      ₹1,25,000 – ₹2,00,000
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-6 rounded-xl border border-surface bg-surface/60 p-5">
-                  <p className="text-sm leading-relaxed text-navy/85">
-                    <span className="font-semibold text-navy">Note:</span>{" "}
-                    We confirm the final cost after a detailed scalp analysis
-                    and graft estimation — we never quote fixed package prices online.
-                  </p>
-                </div>
-
-                {doc.pricingFactors && doc.pricingFactors.length > 0 && (
-                  <div className="mt-8 rounded-2xl border border-navy/10 bg-white p-5 shadow-sm md:p-6">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary"
-                        aria-hidden
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                          <path d="M3 12h4l3 8 4-16 3 8h4" />
-                        </svg>
-                      </span>
-                      <h3 className="font-heading text-base font-bold text-navy md:text-lg">
-                        What affects your price
-                      </h3>
-                    </div>
-                    <ul className="mt-4 grid gap-2.5 text-sm text-navy/85 sm:grid-cols-2">
-                      {doc.pricingFactors.map((f) => (
-                        <li key={f} className="flex items-start gap-2">
-                          <span
-                            className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
-                            aria-hidden
-                          />
-                          <span>{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {doc.pricingEmiNote && (
-                  <div className="mt-4 flex items-start gap-3 rounded-xl border border-teal/20 bg-teal/5 p-4">
-                    <span
-                      className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-teal/15 text-teal"
-                      aria-hidden
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                        <rect x="2" y="6" width="20" height="13" rx="2" />
-                        <path d="M2 11h20" />
-                      </svg>
-                    </span>
-                    <p className="text-sm leading-relaxed text-navy/85">{doc.pricingEmiNote}</p>
-                  </div>
-                )}
-
-                {doc.valueStack && doc.valueStack.length > 0 && (
-                  <div className="mt-6 rounded-2xl border border-teal/25 bg-gradient-to-br from-teal/5 via-white to-white p-5 shadow-sm md:p-6">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-teal/15 text-teal"
-                        aria-hidden
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                          <path d="M20 6L9 17l-5-5" />
-                        </svg>
-                      </span>
-                      <h3 className="font-heading text-base font-bold text-navy md:text-lg">
-                        What&apos;s included
-                      </h3>
-                    </div>
-                    <ul className="mt-4 grid gap-2.5 text-sm text-navy/85 sm:grid-cols-2">
-                      {doc.valueStack.map((v) => (
-                        <li key={v} className="flex items-start gap-2">
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.4"
-                            className="mt-0.5 shrink-0 text-teal"
-                            aria-hidden
-                          >
-                            <path d="M20 6L9 17l-5-5" />
-                          </svg>
-                          <span>{v}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </>
-            ) : (
-              <>
-                <h2 className="font-heading text-2xl font-bold text-navy">Pricing</h2>
-                <p className="mt-4 text-2xl font-bold text-primary">
-                  Starting from ₹{doc.pricingFromInr?.toLocaleString("en-IN") ?? "—"}
-                </p>
-                <p className="mt-2 text-sm text-navy/70">Final cost depends on assessment — we never quote fixed package prices online.</p>
-                <ul className="mt-6 list-disc space-y-2 pl-5 text-sm text-navy/85">
-                  {(doc.pricingFactors ?? []).map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
-                </ul>
-                {doc.pricingEmiNote && <p className="mt-4 text-sm text-navy/80">{doc.pricingEmiNote}</p>}
-                <div className="mt-6 rounded-xl border border-surface bg-white p-5">
-                  <p className="text-sm font-semibold text-navy">What&apos;s included</p>
-                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-navy/80">
-                    {(doc.valueStack ?? []).map((v) => (
-                      <li key={v}>{v}</li>
-                    ))}
-                  </ul>
-                </div>
-              </>
-            )}
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/book-consultation" variant="primary">
-                Get Personalized Quote
-              </Button>
-              <Button href="/cost-estimator" variant="outline">
-                Cost estimator
-              </Button>
-            </div>
-            <div className="mt-8">
-              <EMICalculator />
-            </div>
-          </section>
+          {slug !== "hair-transplant" && slug !== "hair-transplant-hi" && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <h2 className="font-heading text-2xl font-bold text-navy">Before &amp; after</h2>
+              <div className="mt-8">
+                <BeforeAfterSliders cases={doc.beforeAfterCases ?? []} />
+              </div>
+              <div className="mt-8">
+                <Button href="/gallery" variant="outline">
+                  Get Similar Results →
+                </Button>
+              </div>
+            </section>
+          )}
 
           {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
             <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
@@ -1537,21 +1566,99 @@ export function ServicePageSections({
             )}
           </section>
 
-          <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
-            <h2 className="font-heading text-2xl font-bold text-navy">Related services</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {(doc.relatedServices ?? []).map((s) => (
+          {latestBlogs.length > 0 && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
+                    Latest from our blog
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-navy/70 sm:text-base">
+                    Patient education, recovery guides and clinical insights from Care Well
+                    Medical Centre.
+                  </p>
+                </div>
                 <Link
-                  key={s.slug?.current}
-                  href={`/services/${s.slug?.current}`}
-                  className="rounded-xl border border-surface bg-white p-5 shadow-sm transition hover:border-primary"
+                  href="/blog"
+                  className="hidden whitespace-nowrap text-sm font-semibold text-primary underline-offset-4 hover:underline sm:inline-flex sm:items-center sm:gap-1.5"
                 >
-                  <p className="font-heading font-semibold text-navy">{s.title}</p>
-                  <p className="mt-2 text-sm text-primary">View service →</p>
+                  View all articles
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
                 </Link>
-              ))}
-            </div>
-          </section>
+              </div>
+
+              <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {latestBlogs.map((post) => (
+                  <li key={post.slug}>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-surface bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md"
+                    >
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
+                        {post.coverUrl ? (
+                          <Image
+                            src={post.coverUrl}
+                            alt={post.title}
+                            fill
+                            sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 92vw"
+                            className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-white to-teal/10" />
+                        )}
+                        {post.category && (
+                          <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary shadow-sm backdrop-blur-sm sm:text-[11px]">
+                            {post.category}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
+                        <h3 className="font-heading text-base font-bold leading-snug text-navy line-clamp-2 sm:text-lg">
+                          {post.title}
+                        </h3>
+                        {post.excerpt && (
+                          <p className="text-sm leading-relaxed text-navy/70 line-clamp-3">
+                            {post.excerpt}
+                          </p>
+                        )}
+                        <div className="mt-auto flex items-center justify-between gap-3 pt-2 text-xs text-navy/60">
+                          {post.readTimeMinutes && (
+                            <span className="inline-flex items-center gap-1">
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7v5l3 2" />
+                              </svg>
+                              {post.readTimeMinutes} min read
+                            </span>
+                          )}
+                          <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-transform group-hover:translate-x-0.5">
+                            Read article
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                              <path d="M5 12h14M13 5l7 7-7 7" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 sm:hidden">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+                >
+                  View all articles
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </section>
+          )}
         </article>
 
         <aside className="hidden overflow-x-clip lg:block">
