@@ -64,19 +64,6 @@ const HAIR_TRANSPLANT_CANDIDACY = {
 /** Overview embed under the hero for English + Hindi hair transplant service pages. */
 const HAIR_TRANSPLANT_OVERVIEW_YOUTUBE_ID = "J2tW5o82WK0";
 
-/** Static before/after composite when no individual Sanity cases yet (consent on file for this asset). */
-const HAIR_TRANSPLANT_BEFORE_AFTER_FALLBACK = {
-  src: "/images/hair-transplant-before-after-promo.jpg",
-  alt: "Hair transplant before and after — side profile and front view, Care Well Medical Centre",
-  width: 1024,
-  height: 537,
-  belowCaptionParagraphs: [
-    "Struggling with hair baldness due to heredity, illness, or any other reasons? Seeking the best-in-class hair transplant experience to overcome this issue? Welcome to Care Well Medical Centre, where treatment meets precision. Under the supervision of Dr. Sandeep Bhasin, a surgeon with around two decades of excellent healthcare track record, the clinic has become the go-to option for hair transplant in Delhi.",
-    "You find a well-rounded medical team that is professional yet empathetic. Finding the root cause and implementing the custom and cost-effective solution with a 99% success rate make patients trust Care Well Medical Centre for this treatment.",
-    "Dr. Sandeep Bhasin personally plans and supervises every procedure to ensure safe, natural outcomes.",
-  ],
-} as const;
-
 const HAIR_TRANSPLANT_FAQS: { question: string; answer?: string }[] = [
   {
     question: "Is hair transplant a permanent solution for hair loss?",
@@ -757,24 +744,19 @@ export function ServicePageSections({
             </section>
           )}
 
-          <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
-            <h2 className="font-heading text-2xl font-bold text-navy">Before &amp; after</h2>
-            <div className="mt-8">
-              <BeforeAfterSliders
-                cases={doc.beforeAfterCases ?? []}
-                emptyFallback={
-                  slug === "hair-transplant" || slug === "hair-transplant-hi"
-                    ? HAIR_TRANSPLANT_BEFORE_AFTER_FALLBACK
-                    : undefined
-                }
-              />
-            </div>
-            <div className="mt-8">
-              <Button href="/gallery" variant="outline">
-                Get Similar Results →
-              </Button>
-            </div>
-          </section>
+          {slug !== "hair-transplant" && slug !== "hair-transplant-hi" && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <h2 className="font-heading text-2xl font-bold text-navy">Before &amp; after</h2>
+              <div className="mt-8">
+                <BeforeAfterSliders cases={doc.beforeAfterCases ?? []} />
+              </div>
+              <div className="mt-8">
+                <Button href="/gallery" variant="outline">
+                  Get Similar Results →
+                </Button>
+              </div>
+            </section>
+          )}
 
           <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
             {slug === "hair-transplant" || slug === "hair-transplant-hi" ? (
