@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown, ChevronRight, Menu, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { pageAwareWhatsappMessage, whatsappHref } from "@/lib/whatsapp";
 
 type ServiceLink = {
   label: string;
@@ -134,7 +135,7 @@ const toServiceSlug = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-export function Navbar({ phone }: { phone?: string }) {
+export function Navbar({ phone, whatsappNumber }: { phone?: string; whatsappNumber?: string }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [ctaMessageIndex, setCtaMessageIndex] = useState(0);
@@ -220,6 +221,10 @@ export function Navbar({ phone }: { phone?: string }) {
   };
 
   const callHref = phone ? `tel:${phone.replace(/\s+/g, "")}` : "tel:+";
+  const waNumber = whatsappNumber || phone || "";
+  const waHref = waNumber
+    ? whatsappHref(waNumber, pageAwareWhatsappMessage("/"))
+    : "https://wa.me/";
 
   return (
     <>
@@ -227,21 +232,21 @@ export function Navbar({ phone }: { phone?: string }) {
         style={{ top: "var(--announcement-offset, 0px)" }}
         className="fixed left-0 right-0 z-[55] h-[60px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)] transition-all duration-300 font-heading lg:h-[72px]"
       >
-        <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
-          <Link href="/" onClick={handleBrandClick} className="flex items-center gap-3">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between gap-3">
+          <Link href="/" onClick={handleBrandClick} className="flex min-w-0 items-center gap-2 sm:gap-3">
             <Image
               src="/carewell-logo-icon.png"
               alt="Carewell Medical Centre"
               width={40}
               height={40}
-              className="h-9 w-9 lg:h-10 lg:w-10"
+              className="h-8 w-8 shrink-0 sm:h-9 sm:w-9 lg:h-10 lg:w-10"
               priority
             />
-            <div className="hidden sm:block leading-tight">
-              <p className="text-[14px] lg:text-[15px] font-semibold text-green-600">
+            <div className="min-w-0 leading-tight">
+              <p className="truncate text-[13px] font-semibold text-green-600 sm:text-[14px] lg:text-[15px]">
                 Carewell Medical Centre
               </p>
-              <p className="text-[10px] lg:text-[11px] text-[#49506B]">
+              <p className="hidden truncate text-[10px] text-[#49506B] sm:block lg:text-[11px]">
                 Laproscopic & Cosmetic Surgery Centre
               </p>
             </div>
@@ -284,7 +289,7 @@ export function Navbar({ phone }: { phone?: string }) {
                     className="fixed left-0 right-0 z-50 border-b border-t border-[#E8EAF1] bg-white shadow-[0_24px_48px_-12px_rgba(16,24,40,0.18)]"
                   >
                     <div className="mx-auto max-w-[1200px] px-6 py-6">
-                      <div className="grid grid-cols-[repeat(4,minmax(0,1fr))_300px]">
+                      <div className="grid grid-cols-[repeat(4,minmax(0,1fr))] gap-4 xl:grid-cols-[repeat(4,minmax(0,1fr))_260px]">
                         {megaMenuData.map((section) => (
                           <div key={section.title} className="px-4 border-r border-[#ECEEF5] last:border-r-0">
                             <p
@@ -326,7 +331,7 @@ export function Navbar({ phone }: { phone?: string }) {
                             </div>
                           </div>
                         ))}
-                        <div className="pl-5">
+                        <div className="hidden xl:block xl:pl-5">
                           <div className="overflow-hidden rounded-2xl border border-[#DFE5EE] bg-[#F7F9FC] shadow-sm">
                             <div className="relative aspect-[4/3] w-full">
                               <Image
@@ -363,11 +368,11 @@ export function Navbar({ phone }: { phone?: string }) {
 
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://wa.me/"
+              href={waHref}
               target="_blank"
               rel="noreferrer"
               aria-label="WhatsApp"
-              className="relative h-10 w-10 overflow-hidden rounded-full border border-[#DFE3F0] bg-white inline-flex items-center justify-center transition-transform hover:scale-105"
+              className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-[#DFE3F0] bg-white inline-flex items-center justify-center transition-transform hover:scale-105"
             >
               <Image
                 src="/whatsapp-icon-custom.png"
@@ -379,7 +384,7 @@ export function Navbar({ phone }: { phone?: string }) {
             </a>
             <Link
               href="/book-consultation"
-              className="h-10 min-w-[220px] px-5 rounded-full bg-[#0E1B4D] text-white inline-flex items-center justify-center text-sm font-semibold hover:bg-[#162660] transition-colors"
+              className="h-10 min-w-[200px] px-4 rounded-full bg-[#0E1B4D] text-white inline-flex items-center justify-center text-sm font-semibold hover:bg-[#162660] transition-colors xl:min-w-[220px] xl:px-5"
             >
               <span className="whitespace-nowrap">{typedCtaText}</span>
               <span className="ml-0.5 inline-block h-4 w-px animate-pulse bg-white/90" aria-hidden />
@@ -480,12 +485,14 @@ export function Navbar({ phone }: { phone?: string }) {
                   Call
                 </a>
                 <a
-                  href="https://wa.me/"
+                  href={waHref}
                   target="_blank"
                   rel="noreferrer"
                   className="h-11 rounded-full bg-[#25D366] text-white inline-flex items-center justify-center gap-2 text-sm font-semibold"
                 >
-                  <Image src="/whatsapp-icon.svg" alt="WhatsApp" width={18} height={18} />
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+                  </svg>
                   WhatsApp
                 </a>
               </div>

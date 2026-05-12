@@ -15,9 +15,9 @@ export function WhatsAppBubble({ number }: { number?: string | null }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-4 z-40 inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full transition-transform duration-hover hover:scale-105 md:bottom-8 md:right-8"
+      className="fixed bottom-4 right-4 z-40 inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full shadow-lg transition-transform duration-hover hover:scale-105 md:bottom-8 md:right-8"
       aria-label="WhatsApp"
-      style={{ bottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
+      style={{ bottom: "max(1rem, env(safe-area-inset-bottom))" }}
       onClick={() => trackEvent("whatsapp_click", { source: "floating-bubble", pathname })}
     >
       <Image

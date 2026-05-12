@@ -45,14 +45,15 @@ export function HelloBar({ messages }: { messages: string[] }) {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[60] flex h-10 items-center justify-center gap-4 bg-navy px-4 text-center text-sm font-medium text-white"
+      className="fixed top-0 left-0 right-0 z-[60] flex h-10 items-center justify-center gap-2 bg-navy px-3 text-center text-xs font-medium text-white sm:gap-4 sm:px-4 sm:text-sm"
       role="region"
       aria-label="Announcement"
     >
-      <span className="truncate">{text}</span>
+      <span className="line-clamp-1 sm:truncate">{text}</span>
       <button
         type="button"
-        className="shrink-0 rounded px-2 py-0.5 text-white/90 underline-offset-2 hover:underline"
+        className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+        aria-label="Dismiss announcement"
         onClick={() => {
           try {
             localStorage.setItem(STORAGE_KEY, String(Date.now()));
@@ -62,7 +63,9 @@ export function HelloBar({ messages }: { messages: string[] }) {
           setHidden(true);
         }}
       >
-        Close
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
       </button>
     </div>
   );

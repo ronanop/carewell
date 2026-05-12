@@ -37,7 +37,7 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
       <GtmScript gtmId={gtmId} />
       <ClarityScript projectId={settings.clarityProjectId} />
       <HelloBar messages={messages} />
-      <Navbar phone={settings.phone} />
+      <Navbar phone={settings.phone} whatsappNumber={settings.whatsappNumber} />
       <div className="min-h-screen pt-[calc(var(--announcement-offset,0px)+3.75rem)] lg:pt-[calc(var(--announcement-offset,0px)+4.5rem)]">
         {children}
       </div>

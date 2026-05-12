@@ -130,10 +130,10 @@ export default async function HomePage() {
       <Hero />
       <TrustMarquee />
 
-      <section className="section-pad container mt-10 lg:mt-12">
-        <div className="flex items-center justify-between gap-4">
-          <h2 className="text-display-sm text-navy">What does carewell offer?</h2>
-          <Link href="/services" className="text-sm font-medium text-text-secondary hover:text-primary">
+      <section className="section-pad container mt-6 sm:mt-10 lg:mt-12">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-display-sm">What does carewell offer?</h2>
+          <Link href="/services" className="shrink-0 text-sm font-medium text-text-secondary hover:text-primary">
             View All →
           </Link>
         </div>
@@ -141,25 +141,25 @@ export default async function HomePage() {
       </section>
 
       <section className="container section-pad">
-        <div className="mx-auto w-4/5">
+        <div className="mx-auto w-full max-w-[1100px]">
           <div className="analyze-skin-ai-frame rounded-2xl p-[2px] shadow-[0_12px_48px_-12px_rgba(139,92,246,0.45)] motion-reduce:p-px motion-reduce:shadow-md">
             <div className="overflow-hidden rounded-[14px] bg-[#f2f4f8]">
-              <div className="grid items-center gap-8 px-8 py-10 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-12">
-            <div>
-              <h2 className="text-[36px] font-semibold leading-tight text-[#111827]">Analyze My Skin</h2>
-              <p className="mt-4 max-w-[440px] text-lg leading-relaxed text-[#6B7280]">
+              <div className="grid items-center gap-6 px-5 py-8 sm:gap-8 sm:px-8 sm:py-10 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-12">
+            <div className="text-center lg:text-left">
+              <h2 className="text-[26px] font-semibold leading-tight text-[#111827] sm:text-[32px] lg:text-[36px]">Analyze My Skin</h2>
+              <p className="mx-auto mt-3 max-w-[440px] text-base leading-relaxed text-[#6B7280] sm:mt-4 sm:text-lg lg:mx-0">
                 AI-powered analysis to identify your skin concerns and recommend the right treatment
               </p>
               <Link
                 href="/skin-scan"
-                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-black/90"
+                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-black/90 sm:mt-8 sm:px-6"
               >
                 Scan My Skin
                 <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <div className="relative h-[220px] w-[220px] overflow-hidden rounded-full border-[8px] border-white bg-white shadow-[0_10px_40px_rgba(15,23,42,0.12)] lg:h-[330px] lg:w-[330px]">
+              <div className="relative h-[180px] w-[180px] overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_10px_40px_rgba(15,23,42,0.12)] sm:h-[220px] sm:w-[220px] sm:border-[8px] lg:h-[330px] lg:w-[330px]">
                 <Image
                   src="/demo/ai-skin-scan-v3.jpg"
                   alt="AI skin scan preview"
@@ -190,11 +190,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad bg-surface [zoom:0.93] motion-reduce:[zoom:1]">
-        <div className="container grid items-stretch gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <section className="section-pad bg-surface">
+        <div className="container grid items-stretch gap-8 lg:gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div className="relative h-full">
             <div className="h-full overflow-hidden rounded-[22px] border border-[#E6EAEE] bg-white p-2 shadow-[0_10px_28px_rgba(2,14,32,0.08)]">
-              <div className="relative h-[420px] w-full overflow-hidden rounded-[18px] lg:h-full">
+              <div className="relative h-[320px] w-full overflow-hidden rounded-[18px] sm:h-[420px] lg:h-full">
                 <Image
                   src="/demo/doctor-profile-feature-vertical.png"
                   alt="Dr. Sandeep Bhasin profile"
@@ -207,13 +207,13 @@ export default async function HomePage() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#177E75]">Chief Surgeon & Founder</p>
-            <h2 className="mt-3 text-[44px] font-bold leading-[1.08] text-[#0A2E52] md:text-[56px]">Dr. Sandeep Bhasin</h2>
-            <p className="mt-5 max-w-[680px] text-lg leading-relaxed text-[#4B5563]">
+            <h2 className="mt-3 text-3xl font-bold leading-[1.08] text-[#0A2E52] sm:text-[40px] md:text-[48px] lg:text-[56px]">Dr. Sandeep Bhasin</h2>
+            <p className="mt-4 max-w-[680px] text-base leading-relaxed text-[#4B5563] sm:mt-5 sm:text-lg">
               A highly acclaimed Senior Cosmetic Surgeon dedicated to delivering natural, harmonious results. With a meticulous eye
               for detail, Dr. Bhasin combines advanced medical science with an artistic touch to restore your confidence.
             </p>
 
-            <div className="mt-7 grid gap-4 sm:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-7 sm:grid-cols-3 sm:gap-4">
               <div
                 className="group relative overflow-hidden rounded-2xl border border-[#DCE5E8] bg-white p-5 shadow-[0_4px_14px_rgba(2,14,32,0.06)] ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#177E75]/40 hover:shadow-[0_14px_36px_rgba(23,126,117,0.14)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                 role="group"
@@ -273,10 +273,10 @@ export default async function HomePage() {
       <HowItWorks />
 
       <section className="container pb-8 pt-4 lg:pt-6">
-        <div className="rounded-3xl border border-[var(--color-border-light)] bg-white p-5 shadow-sm lg:p-6">
+        <div className="rounded-3xl border border-[var(--color-border-light)] bg-white p-4 shadow-sm sm:p-5 lg:p-6">
           <p className="text-overline text-center uppercase text-teal">Video Testimonials</p>
-          <h2 className="mt-2 text-center text-display-sm">Real Patient Stories on YouTube</h2>
-          <p className="mt-3 text-center text-body-md text-text-secondary">
+          <h2 className="mt-2 text-center text-2xl font-bold tracking-tight text-navy sm:text-display-sm">Real Patient Stories on YouTube</h2>
+          <p className="mt-3 text-center text-sm text-text-secondary sm:text-body-md">
             ⭐ {reviewsSnap.rating} out of 5 - Based on {reviewsSnap.reviewCount}+ Google Reviews
           </p>
 
@@ -316,8 +316,8 @@ export default async function HomePage() {
 
       <section className="section-pad container">
         <p className="text-overline text-center uppercase text-teal">From The Blog</p>
-        <h2 className="mt-2 text-center text-display-sm">Expert Insights by Dr. Bhasin</h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="mt-2 text-center text-2xl font-bold tracking-tight text-navy sm:text-display-sm">Expert Insights by Dr. Bhasin</h2>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-10 lg:grid-cols-3">
           {homepageBlogs.slice(0, 3).map((post, index) => (
             <Link
               key={post.slug}
@@ -355,9 +355,9 @@ export default async function HomePage() {
         </div>
         <div className="container relative z-10 mx-auto max-w-content text-center">
           <p className="text-overline uppercase text-white/70">Not Sure Which Treatment?</p>
-          <h2 className="mt-2 text-display-sm text-white">Take Our 60-Second Treatment Finder Quiz</h2>
-          <p className="mt-4 text-white/80">Answer 5 quick questions and get a personalized recommendation.</p>
-          <div className="mt-8">
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-display-sm">Take Our 60-Second Treatment Finder Quiz</h2>
+          <p className="mt-3 text-sm text-white/80 sm:mt-4 sm:text-base">Answer 5 quick questions and get a personalized recommendation.</p>
+          <div className="mt-6 sm:mt-8">
             <Button href="/cost-estimator" size="lg" className="bg-white !text-navy hover:!bg-primary-light">
               Start Quiz →
             </Button>
@@ -366,17 +366,17 @@ export default async function HomePage() {
       </section>
 
       <section className="section-pad container">
-        <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
-          <div className="rounded-xl bg-surface p-6">
-            <h2 className="text-heading-lg">Conveniently Located in South Delhi</h2>
-            <p className="mt-3 text-body-md text-text-secondary">
+        <div className="grid gap-6 lg:grid-cols-[1fr_320px] lg:gap-8">
+          <div className="rounded-xl bg-surface p-5 sm:p-6">
+            <h2 className="text-xl font-semibold text-navy sm:text-heading-lg">Conveniently Located in South Delhi</h2>
+            <p className="mt-2 text-sm text-text-secondary sm:mt-3 sm:text-body-md">
               Chittaranjan Park, near market area. Mon-Sat 10:00 AM to 7:00 PM.
             </p>
             <div className="mt-4">
               <MapEmbed
                 embedSrc={settings.mapEmbedUrl}
                 title="Clinic location in Chittaranjan Park, New Delhi"
-                frameClassName="h-60 w-full sm:h-72"
+                frameClassName="h-52 w-full sm:h-72"
               />
             </div>
           </div>
@@ -386,9 +386,9 @@ export default async function HomePage() {
 
       <section className="section-pad bg-navy text-center text-white">
         <div className="container mx-auto max-w-content">
-          <h2 className="text-display-sm text-white">Ready to Begin Your Transformation?</h2>
-          <p className="mt-4 text-body-lg text-white/75">Book a free consultation with Dr. Bhasin. No obligations.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-display-sm">Ready to Begin Your Transformation?</h2>
+          <p className="mt-3 text-base text-white/75 sm:mt-4 sm:text-body-lg">Book a free consultation with Dr. Bhasin. No obligations.</p>
+          <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <Button href="/book-consultation" size="lg" className="bg-white !text-navy hover:!bg-primary-light">
               Book Free Consultation
             </Button>

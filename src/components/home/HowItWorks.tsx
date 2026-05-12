@@ -52,26 +52,26 @@ export function HowItWorks() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative overflow-hidden py-24 font-sans">
+    <section className="relative overflow-hidden py-16 font-sans sm:py-20 lg:py-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url(/how-it-works-bg.jpg)" }}
       />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#FAFBFE]/85" />
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-8 xl:px-0">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-0">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-12 text-3xl font-bold tracking-tight text-[#0A2E52] lg:text-[40px]"
+          className="mb-8 text-2xl font-bold tracking-tight text-[#0A2E52] sm:mb-12 sm:text-3xl lg:text-[40px]"
         >
           How Care Well Works
         </motion.h2>
 
         <div
-          className="flex flex-col lg:flex-row gap-4 h-[800px] lg:h-[540px] w-full"
+          className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:h-[540px] lg:flex-row"
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {steps.map((step, index) => {
@@ -88,7 +88,7 @@ export function HowItWorks() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 animate={{ flex: flexValue }}
                 transition={transition}
-                className="relative rounded-3xl overflow-hidden cursor-pointer flex-1 group shadow-lg hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] hover:-translate-y-2 transition-all duration-500"
+                className="group relative h-[260px] cursor-pointer overflow-hidden rounded-3xl shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] sm:h-[320px] lg:h-auto lg:flex-1"
               >
                 <ImageWithFallback
                   src={step.image}
