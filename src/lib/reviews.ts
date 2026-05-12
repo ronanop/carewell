@@ -10,7 +10,7 @@ export type ReviewSnapshot = {
 const snapshotPath = () => join(process.cwd(), "data", "reviews-snapshot.json");
 
 const fallback: ReviewSnapshot = {
-  rating: "4.9",
+  rating: "4.3",
   reviewCount: "120",
   reviews: [
     { id: "1", text: "Excellent care and clear explanations.", author: "Patient" },

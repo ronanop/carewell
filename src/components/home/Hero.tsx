@@ -103,7 +103,7 @@ export function Hero() {
             >
               <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 shadow-sm backdrop-blur-sm">
                 <div className="leading-none text-[15px] tracking-[1px] text-[#FACC15]">★★★★★</div>
-                <div className="text-[13px] font-semibold text-[#374151]">4.7</div>
+                <div className="text-[13px] font-semibold text-[#374151]">4.3</div>
                 <Image
                   src="/google-icon.png"
                   alt="Google"
