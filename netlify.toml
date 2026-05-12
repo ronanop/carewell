@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # NEXT_PUBLIC_* vars are intentionally inlined into the client bundle by Next.js.
+  # Sanity project id + dataset are public values (visible to any browser),
+  # so we explicitly tell Netlify's secrets scanner to ignore them.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_GTM_ID,NEXT_PUBLIC_CLINIC_MAP_EMBED_URL"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
