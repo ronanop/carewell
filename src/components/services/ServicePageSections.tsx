@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { PortableBody } from "@/components/content/PortableBody";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { MapEmbed } from "@/components/layout/MapEmbed";
 import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/leads/LeadForm";
 import { ServiceHeroBookingForm } from "@/components/leads/ServiceHeroBookingForm";
@@ -40,6 +41,14 @@ const HairTransplantTechniques = dynamic(
   { ssr: false, loading: () => <div className="h-40 animate-pulse rounded-2xl bg-surface" /> },
 );
 
+const HairTransplantReviews = dynamic(
+  () =>
+    import("@/components/services/HairTransplantReviews").then(
+      (m) => m.HairTransplantReviews,
+    ),
+  { ssr: false, loading: () => <div className="h-64 animate-pulse rounded-2xl bg-surface" /> },
+);
+
 const HAIR_TRANSPLANT_CANDIDACY = {
   title: "Is Hair Transplant Right for You?",
   intro:
@@ -68,14 +77,84 @@ const HAIR_TRANSPLANT_BEFORE_AFTER_FALLBACK = {
   ],
 } as const;
 
+const HAIR_TRANSPLANT_FAQS: { question: string; answer?: string }[] = [
+  {
+    question: "Is hair transplant a permanent solution for hair loss?",
+    answer:
+      "Yes. Hair transplant is considered a permanent solution because transplanted follicles are taken from areas genetically resistant to hair loss. Once healed, these follicles continue to grow naturally for years.",
+  },
+  {
+    question: "How many grafts do I need for a hair transplant?",
+    answer:
+      "The number of grafts depends on baldness grade, area to be covered, hair thickness, and desired density. Most patients require 2,000–4,000 grafts, but the exact count is confirmed after detailed scalp analysis.",
+  },
+  {
+    question: "What is the cost of the best hair transplant in Delhi?",
+    answer:
+      "There is no single fixed price. The cost depends on graft requirements and surgical planning. At Care Well Medical Centre, hair transplant cost usually ranges from ₹40,000 to ₹2,00,000 (approx.), discussed transparently before surgery.",
+  },
+  {
+    question: "What is the hair transplant cost per graft in Delhi?",
+    answer:
+      "Hair transplant cost per graft in Delhi generally ranges between ₹25 and ₹50, depending on graft quality, density planning, and surgical complexity.",
+  },
+  {
+    question: "Is hair transplant available near me in Delhi NCR?",
+    answer:
+      "Yes. Care Well Medical Centre is located in South Delhi and is easily accessible from major areas of Delhi NCR, including Gurgaon, Noida, and Faridabad. Online consultations and appointment scheduling are also available for patients travelling from Delhi NCR.",
+  },
+  {
+    question: "Who is considered the best hair transplant doctor in Delhi?",
+    answer:
+      "The best hair transplant doctor is one who prioritises medical safety, realistic outcomes, and long-term planning. Many patients choose Dr Sandeep Bhasin for his direct involvement in every surgery and honest case evaluation.",
+  },
+  {
+    question: "Does hair transplant look natural?",
+    answer:
+      "Yes, when hairline design and graft placement are planned correctly. Natural results depend on angle, spacing, and surgeon involvement, not graft numbers alone.",
+  },
+  {
+    question: "How long does hair transplant surgery take?",
+    answer:
+      "Hair transplant surgery usually takes 4–8 hours, depending on the number of grafts required. Most procedures are completed in a single day.",
+  },
+  {
+    question: "Is hair transplant painful?",
+    answer:
+      "The procedure is performed under local anaesthesia. Patients may experience mild discomfort during recovery, which is usually manageable with prescribed medication.",
+  },
+  {
+    question: "When will I see results after hair transplant?",
+    answer:
+      "Initial hair shedding is normal. New hair growth usually begins around 3–4 months, with visible improvement by 6 months and final density by 12 months.",
+  },
+  {
+    question: "Can hair transplant be combined with PRP therapy?",
+    answer:
+      "Yes. PRP (Platelet-Rich Plasma) therapy is often used after hair transplant to support graft survival and strengthen existing hair. This is discussed during treatment planning.",
+  },
+  {
+    question: "Is consultation necessary before deciding on hair transplant?",
+    answer:
+      "Yes. A consultation allows scalp analysis, graft estimation, and realistic outcome planning. It helps confirm whether surgery is medically appropriate and timed correctly.",
+  },
+  {
+    question: "Is hair transplant available in CR Park, Delhi?",
+    answer:
+      "Yes. Care Well Medical Centre is located in Chittaranjan Park (CR Park), South Delhi, making it convenient for patients across Delhi NCR.",
+  },
+];
+
 export function ServicePageSections({
   doc,
   whatsapp,
   phone,
+  mapEmbedUrl,
 }: {
   doc: ServiceDoc;
   whatsapp?: string;
   phone?: string;
+  mapEmbedUrl?: string;
 }) {
   const slug = doc.slug?.current ?? "service";
   const overviewYoutubeId =
@@ -207,8 +286,16 @@ export function ServicePageSections({
               )}
             >
               <div>
-                <h2 className="font-heading text-2xl font-bold text-navy">What is {doc.title.toLowerCase()}?</h2>
-                <div className="mt-6">
+                {slug !== "hair-transplant" && slug !== "hair-transplant-hi" && (
+                  <h2 className="font-heading text-2xl font-bold text-navy">
+                    What is {doc.title.toLowerCase()}?
+                  </h2>
+                )}
+                <div
+                  className={
+                    slug === "hair-transplant" || slug === "hair-transplant-hi" ? "" : "mt-6"
+                  }
+                >
                   <PortableBody value={doc.whatIsBody} />
                 </div>
                 {slug === "hair-transplant" || slug === "hair-transplant-hi" ? (
@@ -250,7 +337,24 @@ export function ServicePageSections({
           </section>
 
           <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
-            <h2 className="font-heading text-2xl font-bold text-navy">How it works</h2>
+            <h2 className="font-heading text-2xl font-bold text-navy md:text-3xl">
+              {slug === "hair-transplant" || slug === "hair-transplant-hi"
+                ? "How Hair Transplant in Delhi Works"
+                : "How it works"}
+            </h2>
+            {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
+              <div className="mt-4 max-w-3xl space-y-3 text-base leading-relaxed text-navy/85">
+                <p>
+                  Understanding each step of the procedure helps patients feel more confident
+                  about what to expect during surgery.
+                </p>
+                <p>
+                  Doctors plan and perform hair transplant in defined stages to ensure a{" "}
+                  <span className="font-semibold text-navy">natural appearance</span> and{" "}
+                  <span className="font-semibold text-navy">long-term graft survival</span>.
+                </p>
+              </div>
+            )}
             <HowItWorksStepsAnimated
               steps={doc.howItWorksSteps ?? []}
               belowStepsImageSrc={
@@ -262,6 +366,396 @@ export function ServicePageSections({
               showStepsDetailAside={slug === "hair-transplant" || slug === "hair-transplant-hi"}
             />
           </section>
+
+          {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
+                Why Choose Hair Transplant in Delhi?
+              </h2>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/85">
+                Delhi often experiences high levels of pollution, which leads to a rise in
+                hairfall cases across the capital city. According to a report published by the{" "}
+                <span className="font-semibold text-navy">
+                  Centre for Research on Energy and Clean Air
+                </span>
+                , Delhi was found to be among the top ten most polluted cities in India by PM2.5
+                concentration in 2024–25. Other factors contributing to the growing cases include
+                the city&apos;s fast-paced lifestyle and poor diet intake by many.
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-3 sm:gap-4">
+                {[
+                  {
+                    title: "High pollution",
+                    body: "Among India's top 10 PM2.5 cities (CREA, 2024–25).",
+                    accent: "alert" as const,
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M3 15h11a3 3 0 100-6 5 5 0 00-9.6-1A3 3 0 003 15z" />
+                        <path d="M16 19h2a2 2 0 100-4" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    title: "Fast-paced lifestyle",
+                    body: "Chronic stress and irregular sleep accelerate hair loss.",
+                    accent: "primary" as const,
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    title: "Poor diet intake",
+                    body: "Nutrient deficiencies weaken follicles over time.",
+                    accent: "teal" as const,
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2c2 4 2 7 0 10-2-3-2-6 0-10z" />
+                        <path d="M6 12c0 5 3 9 6 10 3-1 6-5 6-10H6z" />
+                      </svg>
+                    ),
+                  },
+                ].map((card) => {
+                  const styles =
+                    card.accent === "alert"
+                      ? { ring: "border-alert/25", iconWrap: "bg-alert/15 text-alert", label: "text-alert" }
+                      : card.accent === "primary"
+                        ? { ring: "border-primary/25", iconWrap: "bg-primary/15 text-primary", label: "text-primary" }
+                        : { ring: "border-teal/25", iconWrap: "bg-teal/15 text-teal", label: "text-teal" };
+                  return (
+                    <div
+                      key={card.title}
+                      className={`rounded-2xl border ${styles.ring} bg-white p-4 shadow-sm sm:p-5`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${styles.iconWrap}`}
+                          aria-hidden
+                        >
+                          {card.icon}
+                        </span>
+                        <p className={`font-heading text-sm font-bold uppercase tracking-wide sm:text-[13px] ${styles.label}`}>
+                          {card.title}
+                        </p>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-navy/80">{card.body}</p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <p className="mt-8 max-w-3xl text-base leading-relaxed text-navy/85">
+                That&apos;s why several individuals look for the{" "}
+                <span className="font-semibold text-navy">best hair transplant surgeon in Delhi</span>.
+                These individuals often come with stable hair loss patterns and are affected by
+                genetic issues. This is where the best hair transplant executed by a reputed
+                surgeon and a caring medical team makes a difference. It ensures a{" "}
+                <span className="font-semibold text-navy">permanent baldness treatment</span>{" "}
+                instead of temporary results expected from hairpieces or topical treatments. The
+                techniques usually employed to achieve such outcomes are{" "}
+                <span className="font-semibold text-navy">FUE, FUT and DHI</span>.
+              </p>
+
+              <div className="mt-8 overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-white to-teal/10 p-5 sm:p-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary"
+                      aria-hidden
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 11a3 3 0 116 0 3 3 0 01-6 0z" />
+                        <path d="M3 21a9 9 0 0118 0" />
+                        <path d="M19 4l2 2-2 2M21 6h-6" />
+                      </svg>
+                    </span>
+                    <div>
+                      <p className="font-heading text-base font-bold leading-tight text-navy sm:text-lg">
+                        Your first consultation
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-navy/80 sm:text-[15px]">
+                        Includes a scalp examination and personalised graft estimate, helping you
+                        make an informed and confident decision.
+                      </p>
+                    </div>
+                  </div>
+                  <Link
+                    href="/book-consultation"
+                    className="inline-flex shrink-0 items-center justify-center gap-1.5 self-start rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary/90 sm:self-auto"
+                  >
+                    <span aria-hidden>👉</span>
+                    Talk to a Hair Transplant Expert
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                      <path d="M5 12h14M13 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
+                Hair Transplant Results in Delhi{" "}
+                <span className="text-navy/70">— Real Patient Transformations at Care Well Medical Centre</span>
+              </h2>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/85">
+                Real patient results from Care Well Medical Centre, Delhi — designed and performed
+                by Dr Sandeep Bhasin, focusing on{" "}
+                <span className="font-semibold text-navy">natural hairline</span> and{" "}
+                <span className="font-semibold text-navy">consistent density</span>.
+              </p>
+              <p className="mt-2 text-xs text-navy/60 sm:text-sm">
+                Photos shown with patient consent · Identities masked for privacy · Individual
+                results may vary.
+              </p>
+
+              <ul className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+                {[
+                  { src: "/images/hair-transplant-results/result-3500-grafts-1.png", grafts: "3500 grafts", view: "Side view" },
+                  { src: "/images/hair-transplant-results/result-3500-grafts-2.png", grafts: "3500 grafts", view: "Side view" },
+                  { src: "/images/hair-transplant-results/result-3500-grafts-3.png", grafts: "3500 grafts", view: "Front view" },
+                  { src: "/images/hair-transplant-results/result-8000-grafts-1.png", grafts: "8000 grafts", view: "Crown view" },
+                  { src: "/images/hair-transplant-results/result-8000-grafts-2.png", grafts: "8000 grafts", view: "Side view" },
+                  { src: "/images/hair-transplant-results/result-8000-grafts-3.png", grafts: "8000 grafts", view: "Top view" },
+                ].map((r) => (
+                  <li
+                    key={r.src}
+                    className="group overflow-hidden rounded-2xl border border-surface bg-white shadow-sm transition-shadow duration-200 hover:shadow-md"
+                  >
+                    <div className="relative aspect-[1024/870] w-full bg-surface">
+                      <Image
+                        src={r.src}
+                        alt={`Hair transplant before and after — ${r.grafts}, ${r.view.toLowerCase()} — Care Well Medical Centre, Delhi`}
+                        fill
+                        sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 92vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                    <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-3.5">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary sm:text-xs">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        {r.grafts}
+                      </span>
+                      <span className="text-xs font-medium text-navy/60 sm:text-[13px]">
+                        {r.view}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-8">
+                <div className="space-y-4 text-sm leading-relaxed text-navy/85 sm:text-[15px]">
+                  <p>
+                    These before-and-after results show real patients treated at{" "}
+                    <span className="font-semibold text-navy">Care Well Medical Centre, Delhi</span>.
+                    Each case reflects personalised hairline design, precise graft placement, and
+                    natural density planned according to each patient&apos;s pattern of baldness.
+                  </p>
+                  <p>
+                    These stories reflect real journeys of men and women who regained confidence
+                    through carefully planned hair transplant treatment.
+                  </p>
+                  <p>
+                    We show results from{" "}
+                    <span className="font-semibold text-navy">verified patients</span> treated at
+                    Care Well Medical Centre. Every transformation shown here is from a verified
+                    case record, reviewed for accuracy by our clinical team.
+                  </p>
+                </div>
+
+                <aside className="rounded-2xl border border-teal/25 bg-gradient-to-br from-teal/10 via-white to-white p-5 shadow-sm sm:p-6">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal/15 text-teal"
+                      aria-hidden
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                      </svg>
+                    </span>
+                    <p className="font-heading text-sm font-bold uppercase tracking-wide text-teal">
+                      Growth timeline
+                    </p>
+                  </div>
+                  <ul className="mt-4 space-y-3 text-sm text-navy/85 sm:text-[15px]">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-7 w-12 shrink-0 items-center justify-center rounded-full bg-teal/15 text-[11px] font-bold uppercase tracking-wide text-teal">
+                        4–8 mo
+                      </span>
+                      <span>
+                        <span className="font-semibold text-navy">Most visible improvement</span>{" "}
+                        appears between four and eight months after surgery.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-7 w-12 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[11px] font-bold uppercase tracking-wide text-primary">
+                        12 mo
+                      </span>
+                      <span>
+                        <span className="font-semibold text-navy">Final density</span> is typically
+                        achieved by twelve months as hair growth stabilises.
+                      </span>
+                    </li>
+                  </ul>
+                </aside>
+              </div>
+
+              <div className="mt-6 flex items-start gap-3 rounded-xl border border-navy/10 bg-surface/60 p-4 sm:p-5">
+                <span
+                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-navy/10 text-navy/70"
+                  aria-hidden
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 8v4M12 16h.01" />
+                  </svg>
+                </span>
+                <p className="text-xs leading-relaxed text-navy/70 sm:text-sm">
+                  <span className="font-semibold text-navy/85">Disclaimer:</span> Individual
+                  outcomes may vary based on graft count, scalp condition, and healing response.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                <Link
+                  href="/gallery"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary/90"
+                >
+                  View more transformations
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/book-consultation"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-full border border-navy/15 bg-white px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:border-primary/40 hover:text-primary"
+                >
+                  Get a similar result
+                </Link>
+              </div>
+
+              <p className="mt-10 max-w-3xl text-base font-medium leading-relaxed text-navy/85 sm:mt-12">
+                Here is what these real transformations highlight about modern hair restoration.
+              </p>
+
+              <div className="mt-6 grid gap-4 sm:gap-5 lg:grid-cols-2">
+                <div className="rounded-2xl border border-teal/25 bg-gradient-to-br from-teal/5 via-white to-white p-5 shadow-sm sm:p-6">
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal/15 text-teal"
+                      aria-hidden
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <path d="M12 22c5-4 8-8 8-12a8 8 0 10-16 0c0 4 3 8 8 12z" />
+                        <path d="M12 12a3 3 0 100-6 3 3 0 000 6z" />
+                      </svg>
+                    </span>
+                    <h3 className="font-heading text-base font-bold leading-tight text-navy sm:text-lg">
+                      What These Results Represent
+                    </h3>
+                  </div>
+                  <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-navy/85 sm:text-[15px]">
+                    {[
+                      "Natural hairline reconstruction",
+                      "Gradual growth over several months",
+                      "Doctor-performed procedures, not technician-led",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.6"
+                          className="mt-0.5 shrink-0 text-teal"
+                          aria-hidden
+                        >
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 border-t border-teal/15 pt-4 text-sm leading-relaxed text-navy/75 sm:text-[15px]">
+                    Patients searching for{" "}
+                    <span className="font-semibold text-navy">hair transplant in Delhi reviews</span>{" "}
+                    usually want visual proof before technical explanations. This section answers
+                    that question with real, verified results.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/5 via-white to-white p-5 shadow-sm sm:p-6">
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary"
+                      aria-hidden
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <path d="M12 2l3 6 6 1-4.5 4.5L18 21l-6-3-6 3 1.5-7.5L3 9l6-1z" />
+                      </svg>
+                    </span>
+                    <h3 className="font-heading text-base font-bold leading-tight text-navy sm:text-lg">
+                      Why Patients Trust These Outcomes
+                    </h3>
+                  </div>
+                  <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-navy/85 sm:text-[15px]">
+                    {[
+                      "No stock images or exaggerated promises",
+                      "Results vary based on graft number, hair texture, and healing response",
+                      "Focus on natural appearance, not artificial density",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.6"
+                          className="mt-0.5 shrink-0 text-primary"
+                          aria-hidden
+                        >
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-6 flex items-start gap-3 rounded-xl border border-navy/10 bg-navy/5 p-5 sm:p-6">
+                <span
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-navy/10 text-navy"
+                  aria-hidden
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z" />
+                    <path d="M9 12l2 2 4-4" />
+                  </svg>
+                </span>
+                <p className="text-sm leading-relaxed text-navy/85 sm:text-[15px]">
+                  Consistent, natural outcomes make{" "}
+                  <span className="font-semibold text-navy">Care Well Medical Centre</span> one of
+                  Delhi&apos;s trusted destinations for hair transplant surgery. We perform all
+                  procedures at our{" "}
+                  <span className="font-semibold text-navy">certified surgical centre in Delhi</span>
+                  , equipped for advanced{" "}
+                  <span className="font-semibold text-navy">FUE and FUT</span> techniques.
+                </p>
+              </div>
+            </section>
+          )}
 
           <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
             <h2 className="font-heading text-2xl font-bold text-navy">Before &amp; after</h2>
@@ -689,11 +1183,376 @@ export function ServicePageSections({
             </section>
           )}
 
+          {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <HairTransplantReviews />
+            </section>
+          )}
+
+          {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
+                Book a Hair Transplant Consultation in Delhi{" "}
+                <span className="text-navy/70">— Care Well Medical Centre</span>
+              </h2>
+
+              <p className="mt-4 max-w-3xl border-l-4 border-primary/50 bg-primary/5 px-4 py-3 text-base font-medium italic leading-relaxed text-navy/85 sm:text-[17px]">
+                If you are considering hair transplant in Delhi, the right next step is a{" "}
+                <span className="font-bold not-italic text-navy">personal medical evaluation</span>
+                , not guesswork.
+              </p>
+
+              <div className="mt-6 space-y-4 text-base leading-relaxed text-navy/85">
+                <p>
+                  A successful hair transplant is not just about implanting grafts — it is about
+                  designing a{" "}
+                  <span className="font-semibold text-navy">natural hairline</span> that suits your
+                  face, age, and future hair loss pattern. At Care Well Medical Centre, every
+                  procedure is carefully planned with a personalised approach, ensuring{" "}
+                  <span className="font-semibold text-navy">balanced density</span>, proper{" "}
+                  angle placement, and{" "}
+                  <span className="font-semibold text-navy">long-term sustainability</span> of
+                  results.
+                </p>
+                <p>
+                  We focus on{" "}
+                  <span className="font-semibold text-navy">optimal donor area management</span> to
+                  prevent over-harvesting and maintain future transplant options if needed. Our
+                  advanced techniques ensure{" "}
+                  <span className="font-semibold text-navy">high graft survival rates</span>,
+                  leading to consistent and natural growth over time.
+                </p>
+                <p>
+                  Unlike temporary treatments, a well-planned hair transplant delivers{" "}
+                  <span className="font-semibold text-navy">permanent results</span>, with
+                  transplanted hair growing naturally for a lifetime. With expert supervision and
+                  detailed planning, we aim to provide results that not only look natural today
+                  but continue to look appropriate and dense in the years ahead.
+                </p>
+              </div>
+
+              <ul className="mt-8 grid gap-3 sm:grid-cols-3 sm:gap-4">
+                {[
+                  {
+                    title: "Personalised hairline design",
+                    body: "Planned around your face, age, and future hair pattern.",
+                    accent: "primary" as const,
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 3a4 4 0 014 4v3a8 8 0 11-8 0V7a4 4 0 014-4z" />
+                        <path d="M9 11h6M10 14h4" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    title: "Donor area protection",
+                    body: "No over-harvesting — future transplants stay possible.",
+                    accent: "teal" as const,
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z" />
+                        <path d="M9 12l2 2 4-4" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    title: "Permanent, natural results",
+                    body: "High graft survival and consistent density over years.",
+                    accent: "alert" as const,
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 21s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z" />
+                        <circle cx="12" cy="10" r="2.5" />
+                      </svg>
+                    ),
+                  },
+                ].map((card) => {
+                  const styles =
+                    card.accent === "alert"
+                      ? { ring: "border-alert/25", iconWrap: "bg-alert/15 text-alert", label: "text-alert" }
+                      : card.accent === "primary"
+                        ? { ring: "border-primary/25", iconWrap: "bg-primary/15 text-primary", label: "text-primary" }
+                        : { ring: "border-teal/25", iconWrap: "bg-teal/15 text-teal", label: "text-teal" };
+                  return (
+                    <li
+                      key={card.title}
+                      className={`rounded-2xl border ${styles.ring} bg-white p-4 shadow-sm sm:p-5`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${styles.iconWrap}`}
+                          aria-hidden
+                        >
+                          {card.icon}
+                        </span>
+                        <p className={`font-heading text-[13px] font-bold uppercase leading-tight tracking-wide sm:text-sm ${styles.label}`}>
+                          {card.title}
+                        </p>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-navy/80">{card.body}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <div className="mt-8 overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-navy via-navy to-primary p-6 text-white shadow-md sm:p-8">
+                <div className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 sm:text-xs">
+                      Doctor-led evaluation
+                    </p>
+                    <p className="mt-2 font-heading text-xl font-bold leading-tight sm:text-2xl">
+                      Every evaluation is conducted personally by{" "}
+                      <span className="text-teal-200" style={{ color: "#7DD3C0" }}>
+                        Dr Sandeep Bhasin
+                      </span>{" "}
+                      to ensure safe and realistic treatment planning.
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-white/80 sm:text-[15px]">
+                      Patients across{" "}
+                      <span className="font-semibold text-white">Delhi NCR and abroad</span> trust
+                      our centre for honest, doctor-led planning and clear medical guidance.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <Link
+                      href="/book-consultation"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-navy shadow-sm transition-transform hover:scale-[1.02] sm:text-base"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+                        <rect x="3" y="4" width="18" height="18" rx="2.5" />
+                        <path d="M8 2v4M16 2v4M3 10h18" />
+                      </svg>
+                      Book a consultation
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                        <path d="M5 12h14M13 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+
+                    {phone && (
+                      <a
+                        href={`tel:${phone.replace(/\s/g, "")}`}
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20 sm:text-[15px]"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+                          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.12.9.32 1.78.6 2.62a2 2 0 01-.45 2.11L8 9.6a16 16 0 006 6l1.15-1.27a2 2 0 012.11-.45c.84.28 1.72.48 2.62.6A2 2 0 0122 16.92z" />
+                        </svg>
+                        Call {phone}
+                      </a>
+                    )}
+
+                    {whatsapp && (
+                      <a
+                        href={whatsappHref(whatsapp, `Hi, I'd like to book a hair transplant consultation at Care Well Medical Centre, Delhi.`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#1ebe5b] sm:text-[15px]"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                          <path d="M20.52 3.48A12 12 0 003.49 20.5L2 22l1.55-.41A12 12 0 1020.52 3.48zM12 21.5a9.5 9.5 0 01-4.83-1.33l-.35-.2-3.18.83.85-3.1-.23-.36A9.5 9.5 0 1112 21.5zm5.32-7.13c-.29-.15-1.7-.84-1.97-.94-.26-.1-.46-.15-.65.15-.2.29-.74.94-.91 1.13-.17.2-.33.22-.62.07-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.43-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.33.43-.5.15-.17.2-.29.29-.48.1-.2.05-.36-.02-.5-.07-.15-.65-1.55-.89-2.13-.23-.56-.47-.48-.65-.49l-.55-.01a1.06 1.06 0 00-.77.36c-.26.29-1 1-1 2.43s1.03 2.83 1.18 3.03c.15.2 2.04 3.12 4.94 4.37.69.3 1.23.48 1.65.61.69.22 1.33.19 1.83.12.56-.08 1.7-.7 1.94-1.37.24-.66.24-1.23.17-1.36-.07-.13-.27-.2-.56-.34z" />
+                        </svg>
+                        WhatsApp
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
+            <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-teal/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-teal sm:text-xs">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                    <path d="M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z" />
+                    <path d="M9 12l2 2 4-4" />
+                  </svg>
+                  Trusted Locally
+                </span>
+              </div>
+
+              <h2 className="mt-3 font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
+                A trusted hair transplant centre in{" "}
+                <span className="text-navy/70">South Delhi</span>
+              </h2>
+
+              <ul className="mt-6 grid gap-3 sm:grid-cols-3 sm:gap-4">
+                {[
+                  {
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#FACC15" aria-hidden>
+                        <path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.8L5.7 21.2l1.7-7L2 9.5l7.1-.6L12 2z" />
+                      </svg>
+                    ),
+                    iconBg: "bg-[#FACC15]/15",
+                    title: "Strong Google patient ratings",
+                  },
+                  {
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7B6B" strokeWidth="2" aria-hidden>
+                        <path d="M12 11a4 4 0 100-8 4 4 0 000 8z" />
+                        <path d="M5 21a7 7 0 0114 0" />
+                        <path d="M14 4l2 2-2 2" />
+                      </svg>
+                    ),
+                    iconBg: "bg-teal/15",
+                    title: "Years of clinical experience in hair restoration",
+                  },
+                  {
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1557A0" strokeWidth="2" aria-hidden>
+                        <path d="M9 3h6v3l4 4v8a3 3 0 01-3 3H8a3 3 0 01-3-3v-8l4-4V3z" />
+                        <path d="M10 14h4" />
+                      </svg>
+                    ),
+                    iconBg: "bg-primary/15",
+                    title: "Procedures performed under direct doctor supervision",
+                  },
+                ].map((item) => (
+                  <li
+                    key={item.title}
+                    className="flex items-start gap-3 rounded-2xl border border-surface bg-white p-4 shadow-sm sm:p-5"
+                  >
+                    <span
+                      className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${item.iconBg}`}
+                      aria-hidden
+                    >
+                      {item.icon}
+                    </span>
+                    <p className="text-sm font-medium leading-snug text-navy/85 sm:text-[15px]">
+                      {item.title}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 overflow-hidden rounded-2xl border border-surface bg-white shadow-sm">
+                <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+                  <div className="flex flex-col gap-4 p-5 sm:p-6 md:p-7">
+                    <div className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary sm:text-xs">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                        <path d="M12 22s-7-5-7-12a7 7 0 0114 0c0 7-7 12-7 12z" />
+                        <circle cx="12" cy="10" r="2.5" />
+                      </svg>
+                      Visit our clinic
+                    </div>
+
+                    <h3 className="font-heading text-lg font-bold leading-tight text-navy sm:text-xl">
+                      Care Well Medical Centre, Chittaranjan Park, South Delhi
+                    </h3>
+
+                    <p className="text-sm leading-relaxed text-navy/80 sm:text-[15px]">
+                      Located in{" "}
+                      <span className="font-semibold text-navy">Chittaranjan Park (CR Park)</span>,
+                      South Delhi, near{" "}
+                      <span className="font-semibold text-navy">Saket</span> and{" "}
+                      <span className="font-semibold text-navy">Greater Kailash</span>, Care Well
+                      Medical Centre is easily accessible from Gurgaon, Noida, Faridabad, and
+                      across Delhi NCR.
+                    </p>
+
+                    <ul className="mt-1 space-y-2 text-sm text-navy/80 sm:text-[15px]">
+                      <li className="flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="mt-0.5 shrink-0 text-primary" aria-hidden>
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        <span>Mon – Sat · 10:00 AM – 7:00 PM</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="mt-0.5 shrink-0 text-teal" aria-hidden>
+                          <path d="M3 12l9-9 9 9" />
+                          <path d="M5 10v10h14V10" />
+                        </svg>
+                        <span>Walk-in directions available on request</span>
+                      </li>
+                    </ul>
+
+                    <div className="mt-2 flex flex-wrap gap-3">
+                      <a
+                        href="https://www.google.com/maps/dir/?api=1&destination=Care+Well+Medical+Centre+Chittaranjan+Park+Delhi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary/90"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden>
+                          <path d="M12 22s-7-5-7-12a7 7 0 0114 0c0 7-7 12-7 12z" />
+                          <circle cx="12" cy="10" r="2.5" />
+                        </svg>
+                        Get directions
+                      </a>
+                      {phone && (
+                        <a
+                          href={`tel:${phone.replace(/\s/g, "")}`}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-navy/15 bg-white px-4 py-2 text-sm font-semibold text-navy transition-colors hover:border-primary/40 hover:text-primary"
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.12.9.32 1.78.6 2.62a2 2 0 01-.45 2.11L8 9.6a16 16 0 006 6l1.15-1.27a2 2 0 012.11-.45c.84.28 1.72.48 2.62.6A2 2 0 0122 16.92z" />
+                          </svg>
+                          Call clinic
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="relative min-h-[300px] border-t border-surface lg:border-l lg:border-t-0">
+                    <MapEmbed
+                      embedSrc={mapEmbedUrl}
+                      title="Care Well Medical Centre — Chittaranjan Park, South Delhi"
+                      frameClassName="h-72 w-full sm:h-80 lg:h-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
           <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">
-            <h2 className="font-heading text-2xl font-bold text-navy">FAQ</h2>
+            <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
+              {slug === "hair-transplant" || slug === "hair-transplant-hi"
+                ? "FAQs About Hair Transplant in Delhi"
+                : "FAQ"}
+            </h2>
             <div className="mt-8">
-              <ServiceFaq items={doc.faq ?? []} />
+              <ServiceFaq
+                items={
+                  slug === "hair-transplant" || slug === "hair-transplant-hi"
+                    ? HAIR_TRANSPLANT_FAQS
+                    : doc.faq ?? []
+                }
+              />
             </div>
+            {(slug === "hair-transplant" || slug === "hair-transplant-hi") && (
+              <>
+                <p className="mt-6 text-sm italic leading-relaxed text-navy/70 sm:text-[15px]">
+                  If you have more questions, our team at{" "}
+                  <span className="font-semibold not-italic text-navy">Care Well Medical Centre</span>{" "}
+                  will be happy to guide you during a personal consultation.
+                </p>
+                <div className="mt-6 flex items-start gap-3 rounded-xl border border-navy/10 bg-surface/60 p-4 sm:p-5">
+                  <span
+                    className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-navy/10 text-navy/70"
+                    aria-hidden
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 8v4M12 16h.01" />
+                    </svg>
+                  </span>
+                  <p className="text-xs leading-relaxed text-navy/70 sm:text-sm">
+                    <span className="font-semibold text-navy/85">Disclaimer:</span> All medical
+                    information reviewed and verified by{" "}
+                    <span className="font-semibold text-navy/85">
+                      Dr Sandeep Bhasin, Senior Cosmetic Surgeon, Delhi
+                    </span>
+                    . Individual results vary. Educational purpose only; not a substitute for
+                    consultation.
+                  </p>
+                </div>
+              </>
+            )}
           </section>
 
           <section className="border-t border-surface pb-12 pt-10 md:pb-16 md:pt-12">

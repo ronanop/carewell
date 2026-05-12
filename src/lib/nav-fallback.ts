@@ -3,7 +3,7 @@ export const MEGA_COLUMNS = [
     key: "hair",
     title: "Hair",
     links: [
-      { label: "Hair transplant", href: "/services/hair-transplant" },
+      { label: "Hair transplant", href: "/hair-transplant-in-delhi" },
       { label: "PRP therapy", href: "/services/prp-hair" },
       { label: "View all", href: "/treatments/hair" },
     ],

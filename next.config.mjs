@@ -33,7 +33,14 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    return loadMigrationRedirects();
+    return [
+      {
+        source: "/services/hair-transplant",
+        destination: "/hair-transplant-in-delhi",
+        permanent: true,
+      },
+      ...loadMigrationRedirects(),
+    ];
   },
 };
 

@@ -46,7 +46,7 @@ export function Footer({
         <div>
           <p className="text-overline uppercase text-white/50">Popular treatments</p>
           <ul className="mt-4 space-y-2 text-sm text-white/85">
-            <li><Link href="/services/hair-transplant" className="hover:underline">Hair transplant</Link></li>
+            <li><Link href="/hair-transplant-in-delhi" className="hover:underline">Hair transplant</Link></li>
             <li><Link href="/services/vitiligo-treatment" className="hover:underline">Vitiligo</Link></li>
             <li><Link href="/services/rhinoplasty" className="hover:underline">Rhinoplasty</Link></li>
             <li><Link href="/treatments/hair" className="hover:underline">All hair treatments</Link></li>

@@ -4,7 +4,7 @@ const paths = [
   "/",
   "/blog",
   "/about/dr-bhasin",
-  "/services/hair-transplant",
+  "/hair-transplant-in-delhi",
   "/hi/services/hair-transplant-hi",
   "/treatments/hair",
   "/locations/hair-transplant-faridabad",
@@ -12,6 +12,10 @@ const paths = [
 
 function checkContains(html, text) {
   return html.toLowerCase().includes(text.toLowerCase());
+}
+
+function isServicePath(path) {
+  return path.startsWith("/services/") || path === "/hair-transplant-in-delhi";
 }
 
 async function audit(path) {
@@ -24,14 +28,14 @@ async function audit(path) {
     status: res.status,
     canonical: checkContains(html, 'rel="canonical"'),
     breadcrumbSchema: checkContains(html, '"@type":"BreadcrumbList"'),
-    faqSchema: path.startsWith("/services/") ? checkContains(html, '"@type":"FAQPage"') : true,
-    medicalProcedureSchema: path.startsWith("/services/")
+    faqSchema: isServicePath(path) ? checkContains(html, '"@type":"FAQPage"') : true,
+    medicalProcedureSchema: isServicePath(path)
       ? checkContains(html, '"@type":"MedicalProcedure"')
       : true,
     blogPostingSchema: path.startsWith("/blog/") && path !== "/blog"
       ? checkContains(html, '"@type":"BlogPosting"')
       : true,
-    hreflangHi: path.startsWith("/services/")
+    hreflangHi: isServicePath(path)
       ? checkContains(html, 'hreflang="hi-IN"')
       : true,
   };

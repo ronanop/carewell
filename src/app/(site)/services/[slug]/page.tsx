@@ -8,11 +8,13 @@ import { serviceBySlugQuery, servicesSlugsQuery, siteSettingsQuery } from "@/san
 
 export const revalidate = 60;
 
-type Settings = { phone?: string; whatsappNumber?: string };
+type Settings = { phone?: string; whatsappNumber?: string; mapEmbedUrl?: string };
 
 export async function generateStaticParams() {
   const rows = (await sanityFetch<{ slug: string; locale?: string }[]>(servicesSlugsQuery)) ?? [];
-  return rows.filter((r) => r.slug && r.locale !== "hi").map((r) => ({ slug: r.slug }));
+  return rows
+    .filter((r) => r.slug && r.locale !== "hi" && r.slug !== "hair-transplant")
+    .map((r) => ({ slug: r.slug }));
 }
 
 export async function generateMetadata({
@@ -70,5 +72,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const settings = (await sanityFetch<Settings>(siteSettingsQuery)) ?? {};
 
-  return <ServicePageSections doc={doc} phone={settings.phone} whatsapp={settings.whatsappNumber} />;
+  return (
+    <ServicePageSections
+      doc={doc}
+      phone={settings.phone}
+      whatsapp={settings.whatsappNumber}
+      mapEmbedUrl={settings.mapEmbedUrl}
+    />
+  );
 }

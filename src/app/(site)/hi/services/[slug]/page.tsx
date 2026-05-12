@@ -9,7 +9,7 @@ import { serviceBySlugQuery, servicesSlugsQuery, siteSettingsQuery } from "@/san
 
 export const revalidate = 60;
 
-type Settings = { phone?: string; whatsappNumber?: string };
+type Settings = { phone?: string; whatsappNumber?: string; mapEmbedUrl?: string };
 
 export async function generateStaticParams() {
   const rows = (await sanityFetch<{ slug: string; locale?: string }[]>(servicesSlugsQuery)) ?? [];
@@ -48,5 +48,12 @@ export default async function HindiServicePage({ params }: { params: Promise<{ s
   if (!doc) notFound();
 
   const settings = (await sanityFetch<Settings>(siteSettingsQuery)) ?? {};
-  return <ServicePageSections doc={doc} phone={settings.phone} whatsapp={settings.whatsappNumber} />;
+  return (
+    <ServicePageSections
+      doc={doc}
+      phone={settings.phone}
+      whatsapp={settings.whatsappNumber}
+      mapEmbedUrl={settings.mapEmbedUrl}
+    />
+  );
 }
