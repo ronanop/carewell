@@ -1,173 +1,403 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { FadeIn } from "@/components/motion/FadeIn";
-import { Button } from "@/components/ui/Button";
-import { TreatmentFinderQuiz } from "@/components/leads/TreatmentFinderQuiz";
+import { Hero } from "@/components/home/Hero";
+import { SkinScanBeam } from "@/components/home/SkinScanBeam";
+import { MapEmbed } from "@/components/layout/MapEmbed";
+import { HowItWorks } from "@/components/home/HowItWorks";
+import { TreatmentsScroller } from "@/components/home/TreatmentsScroller";
 import { ExitIntentLead } from "@/components/leads/ExitIntentLead";
-import { GoogleReviewsStatic } from "@/components/social/GoogleReviewsStatic";
-import { LatestVideos } from "@/components/media/LatestVideos";
+import { LeadForm } from "@/components/leads/LeadForm";
+import { TrustMarquee } from "@/components/layout/TrustMarquee";
+import { Button } from "@/components/ui/Button";
+import { readReviewsSnapshot } from "@/lib/reviews";
 import { sanityFetch } from "@/sanity/client";
-import { siteSettingsQuery, testimonialsQuery } from "@/sanity/queries";
+import { blogPostsListQuery, siteSettingsQuery } from "@/sanity/queries";
 
 export const revalidate = 60;
 
 type Settings = {
   patientCounterLabel?: string;
   patientCounterValue?: number;
+  mapEmbedUrl?: string;
 };
+
+const demoServices = [
+  {
+    title: "Hair Treatments",
+    slug: "hair-transplant",
+    heroImageUrl: "/demo/hair-treatments-card.png",
+    description: "FUE & FUT hair restoration, PRP, and medical hair therapies for natural density and a natural hairline.",
+  },
+  {
+    title: "Skin & Aesthetic",
+    slug: "botox-treatment",
+    heroImageUrl: "/demo/skin-aesthetic-card.png",
+    description: "Botox, fillers, lasers, and skin peels tailored to your goals with minimal downtime.",
+  },
+  {
+    title: "Surgical Procedures",
+    slug: "rhinoplasty",
+    heroImageUrl: "/demo/surgical-procedures-card.png",
+    description: "Rhinoplasty, body contouring, and facial surgery with clear planning and aftercare support.",
+  },
+  {
+    title: "Wellness",
+    slug: "iv-therapy",
+    heroImageUrl: "/demo/wellness-card.png",
+    description: "IV drips, recovery protocols, and wellness plans to support healing and long-term balance.",
+  },
+];
+
+const demoBlogs = [
+  {
+    title: "How to Choose the Right Cosmetic Procedure for Your Goals",
+    slug: "choose-right-cosmetic-procedure",
+    excerpt: "A practical checklist to align expectations, recovery time, and outcomes before your consultation.",
+    coverUrl: "/demo/blog-card.svg",
+    category: "Consultation Guide",
+  },
+  {
+    title: "Recovery Timeline: What to Expect in the First 30 Days",
+    slug: "recovery-timeline-first-30-days",
+    excerpt: "Understand healing milestones and the aftercare habits that help patients recover confidently.",
+    coverUrl: "/demo/blog-card.svg",
+    category: "Post-Care",
+  },
+  {
+    title: "5 Questions to Ask Before Booking Aesthetic Surgery",
+    slug: "questions-before-booking-aesthetic-surgery",
+    excerpt: "Use these patient-first questions to compare options and make a safe, informed decision.",
+    coverUrl: "/demo/blog-card.svg",
+    category: "Patient Education",
+  },
+];
+
+const blogCardFallbackImages = [
+  "/demo/hair-treatments-card.png",
+  "/demo/skin-aesthetic-card.png",
+  "/demo/surgical-procedures-card.png",
+];
+
+const videoTestimonials = [
+  {
+    title: "Hair Transplant Testimonial",
+    subtitle: "Patient Story",
+    embedUrl: "https://www.youtube.com/embed/ysz5S6PUM-U",
+  },
+  {
+    title: "Skin Treatment Results",
+    subtitle: "Before & After Experience",
+    embedUrl: "https://www.youtube.com/embed/jNQXAC9IVRw",
+  },
+  {
+    title: "Cosmetic Surgery Journey",
+    subtitle: "Recovery & Confidence",
+    embedUrl: "https://www.youtube.com/embed/M7lc1UVf-VE",
+  },
+  {
+    title: "Rhinoplasty Transformation Story",
+    subtitle: "Patient Feedback",
+    embedUrl: "https://www.youtube.com/embed/aqz-KE-bpKQ",
+  },
+  {
+    title: "Acne Scar Treatment Review",
+    subtitle: "Skin Rejuvenation",
+    embedUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+  },
+  {
+    title: "Post-Procedure Recovery Journey",
+    subtitle: "Healing Timeline",
+    embedUrl: "https://www.youtube.com/embed/e-ORhEE9VVg",
+  },
+];
 
 export default async function HomePage() {
   const settings = (await sanityFetch<Settings>(siteSettingsQuery)) ?? {};
-  const testimonials =
-    (await sanityFetch<{ quote: string; attribution?: string; rating?: number }[]>(testimonialsQuery)) ??
-    [];
-
-  const counterLabel = settings.patientCounterLabel ?? "Patients treated this month";
-  const counterValue = settings.patientCounterValue ?? 120;
+  const reviewsSnap = await readReviewsSnapshot();
+  const blogs =
+    (await sanityFetch<{ title: string; slug: string; excerpt?: string; coverUrl?: string; category?: string }[]>(
+      blogPostsListQuery,
+    )) ?? [];
+  const homepageServices = demoServices;
+  const homepageBlogs = blogs.length ? blogs : demoBlogs;
 
   return (
     <>
-      <ExitIntentLead />
-      <section className="relative min-h-[65vh] overflow-hidden bg-navy">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 50%, #1557A0 0%, transparent 50%), radial-gradient(circle at 80% 30%, #0B7B6B 0%, transparent 45%)",
-          }}
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/50" />
-        <div className="relative mx-auto flex max-w-7xl flex-col justify-center gap-8 px-4 py-24 md:px-6 md:py-32 lg:flex-row lg:items-center">
-          <div className="max-w-xl text-white">
-            <p className="text-sm font-medium uppercase tracking-wider text-teal">Chittaranjan Park, South Delhi</p>
-            <h1 className="font-heading mt-3 text-4xl font-bold leading-tight md:text-5xl">
-              Trusted cosmetic surgery & vitiligo care in Delhi NCR
-            </h1>
-            <p className="mt-4 text-lg text-white/90">
-              Led by Dr. Sandeep Bhasin — natural results, transparent guidance, and a team focused on your safety.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/book-consultation" variant="secondary">
-                Book Free Consultation
-              </Button>
-              <Button href="/contact" variant="outline" className="!border-white !text-white hover:!bg-white hover:!text-navy">
-                Call the clinic
-              </Button>
-            </div>
-          </div>
-          <div className="w-full max-w-sm rounded-2xl bg-white/10 p-6 backdrop-blur-md lg:ml-auto">
-            <p className="text-sm text-white/80">{counterLabel}</p>
-            <p className="font-heading mt-2 text-4xl font-bold text-white">{counterValue}+</p>
-            <p className="mt-4 text-sm text-white/85">
-              Update this figure monthly in the CMS — no developer required.
-            </p>
-          </div>
+      <Suspense fallback={null}>
+        <ExitIntentLead />
+      </Suspense>
+      <Hero />
+      <TrustMarquee />
+
+      <section className="section-pad container mt-10 lg:mt-12">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-display-sm text-navy">What does carewell offer?</h2>
+          <Link href="/services" className="text-sm font-medium text-text-secondary hover:text-primary">
+            View All →
+          </Link>
         </div>
+        <TreatmentsScroller services={homepageServices} />
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-24">
-        <FadeIn>
-          <h2 className="font-heading text-center text-3xl font-bold text-navy">Why patients choose Care Well</h2>
-        </FadeIn>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {[
-            {
-              title: "Delhi NCR expertise",
-              body: "Focused protocols for hair restoration, facial surgery, body contouring, and vitiligo — under one roof.",
-            },
-            {
-              title: "Clear, ethical pricing",
-              body: "Ranges and personalized quotes — no surprise billing. EMI options discussed upfront.",
-            },
-            {
-              title: "Privacy first",
-              body: "Discreet consultations and a calm, professional environment from first visit to recovery.",
-            },
-          ].map((c) => (
-            <FadeIn key={c.title} className="rounded-2xl border border-surface bg-white p-6 shadow-sm">
-              <h3 className="font-heading text-lg font-bold text-navy">{c.title}</h3>
-              <p className="mt-3 text-navy/80">{c.body}</p>
-            </FadeIn>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-surface py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+      <section className="container section-pad">
+        <div className="mx-auto w-4/5">
+          <div className="analyze-skin-ai-frame rounded-2xl p-[2px] shadow-[0_12px_48px_-12px_rgba(139,92,246,0.45)] motion-reduce:p-px motion-reduce:shadow-md">
+            <div className="overflow-hidden rounded-[14px] bg-[#f2f4f8]">
+              <div className="grid items-center gap-8 px-8 py-10 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-12">
             <div>
-              <h2 className="font-heading text-2xl font-bold text-navy">Find the right treatment</h2>
-              <p className="mt-3 text-navy/80">
-                Answer five quick questions — we&apos;ll suggest the most relevant service and you can book a free slot.
+              <h2 className="text-[36px] font-semibold leading-tight text-[#111827]">Analyze My Skin</h2>
+              <p className="mt-4 max-w-[440px] text-lg leading-relaxed text-[#6B7280]">
+                AI-powered analysis to identify your skin concerns and recommend the right treatment
               </p>
-              <TreatmentFinderQuiz className="mt-8" />
+              <Link
+                href="/skin-scan"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-black/90"
+              >
+                Scan My Skin
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
-            <div>
-              <h2 className="font-heading text-2xl font-bold text-navy">Patient stories</h2>
-              <ul className="mt-6 space-y-6">
-                {(testimonials.length ? testimonials : [{ quote: "Professional team and honest advice throughout.", attribution: "A.K.", rating: 5 }]).map(
-                  (t, i) => (
-                    <li key={i} className="rounded-xl bg-white p-5 shadow-sm">
-                      <p className="text-navy/90">&ldquo;{t.quote}&rdquo;</p>
-                      {t.attribution && <p className="mt-2 text-sm font-medium text-primary">— {t.attribution}</p>}
-                    </li>
-                  ),
-                )}
-              </ul>
-              <div className="mt-10">
-                <Suspense fallback={<div className="h-40 animate-pulse rounded-xl bg-surface" />}>
-                  <GoogleReviewsStatic />
-                </Suspense>
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative h-[220px] w-[220px] overflow-hidden rounded-full border-[8px] border-white bg-white shadow-[0_10px_40px_rgba(15,23,42,0.12)] lg:h-[330px] lg:w-[330px]">
+                <Image
+                  src="/demo/ai-skin-scan-v3.jpg"
+                  alt="AI skin scan preview"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: "center", transform: "scale(1.08)" }}
+                />
+                {/* Face-scan overlay: animated beam + grid + sheen (hidden when reduced motion) */}
+                <div
+                  className="pointer-events-none absolute inset-0 overflow-hidden rounded-full motion-reduce:hidden"
+                  aria-hidden
+                >
+                  <div
+                    className="absolute inset-0 rounded-full opacity-[0.2]"
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(180deg, transparent 0px, transparent 10px, rgba(11,123,107,0.14) 10px, rgba(11,123,107,0.14) 11px)",
+                    }}
+                  />
+                  <div className="absolute inset-0 animate-skin-scan-sheen rounded-full bg-[radial-gradient(ellipse_70%_55%_at_50%_45%,rgba(20,184,166,0.18),transparent_72%)]" />
+                  <SkinScanBeam />
+                </div>
+              </div>
+            </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-24">
-        <div className="mx-auto max-w-xl">
-          <Suspense fallback={<div className="h-32 animate-pulse rounded-xl bg-surface" />}>
-            <LatestVideos />
-          </Suspense>
+      <section className="section-pad bg-surface [zoom:0.93] motion-reduce:[zoom:1]">
+        <div className="container grid items-stretch gap-10 lg:grid-cols-[1fr_1.1fr]">
+          <div className="relative h-full">
+            <div className="h-full overflow-hidden rounded-[22px] border border-[#E6EAEE] bg-white p-2 shadow-[0_10px_28px_rgba(2,14,32,0.08)]">
+              <div className="relative h-[420px] w-full overflow-hidden rounded-[18px] lg:h-full">
+                <Image
+                  src="/demo/doctor-profile-feature-vertical.png"
+                  alt="Dr. Sandeep Bhasin profile"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-top"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#177E75]">Chief Surgeon & Founder</p>
+            <h2 className="mt-3 text-[44px] font-bold leading-[1.08] text-[#0A2E52] md:text-[56px]">Dr. Sandeep Bhasin</h2>
+            <p className="mt-5 max-w-[680px] text-lg leading-relaxed text-[#4B5563]">
+              A highly acclaimed Senior Cosmetic Surgeon dedicated to delivering natural, harmonious results. With a meticulous eye
+              for detail, Dr. Bhasin combines advanced medical science with an artistic touch to restore your confidence.
+            </p>
+
+            <div className="mt-7 grid gap-4 sm:grid-cols-3">
+              <div
+                className="group relative overflow-hidden rounded-2xl border border-[#DCE5E8] bg-white p-5 shadow-[0_4px_14px_rgba(2,14,32,0.06)] ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#177E75]/40 hover:shadow-[0_14px_36px_rgba(23,126,117,0.14)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                role="group"
+                aria-label="20 plus years clinical experience"
+              >
+                <div
+                  className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#0F766E] via-[#14B8A6] to-[#0D9488]"
+                  aria-hidden
+                />
+                <p className="font-heading text-xl font-bold tracking-tight text-[#0A2E52] md:text-2xl">20+ Years</p>
+                <p className="mt-2 text-sm font-medium leading-snug text-[#177E75]">Clinical Experience</p>
+              </div>
+              <div
+                className="group relative overflow-hidden rounded-2xl border border-[#DCE5E8] bg-white p-5 shadow-[0_4px_14px_rgba(2,14,32,0.06)] ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#177E75]/40 hover:shadow-[0_14px_36px_rgba(23,126,117,0.14)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                role="group"
+                aria-label="Cosmetic specialist skin and hair expert"
+              >
+                <div
+                  className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#0F766E] via-[#14B8A6] to-[#0D9488]"
+                  aria-hidden
+                />
+                <p className="font-heading text-xl font-bold tracking-tight text-[#0A2E52] md:text-2xl">Cosmetic Specialist</p>
+                <p className="mt-2 text-sm font-medium leading-snug text-[#177E75]">Skin & Hair Expert</p>
+              </div>
+              <div
+                className="group relative overflow-hidden rounded-2xl border border-[#DCE5E8] bg-white p-5 shadow-[0_4px_14px_rgba(2,14,32,0.06)] ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#177E75]/40 hover:shadow-[0_14px_36px_rgba(23,126,117,0.14)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                role="group"
+                aria-label="Over ten thousand successful procedures"
+              >
+                <div
+                  className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#0F766E] via-[#14B8A6] to-[#0D9488]"
+                  aria-hidden
+                />
+                <p className="font-heading text-xl font-bold tracking-tight text-[#0A2E52] md:text-2xl">10,000+</p>
+                <p className="mt-2 text-sm font-medium leading-snug text-[#177E75]">Successful Procedures</p>
+              </div>
+            </div>
+
+            <div className="mt-7">
+              <p className="text-xl font-semibold text-[#0A2E52]">Qualifications & Memberships</p>
+              <ul className="mt-4 space-y-2 text-[17px] text-[#4B5563]">
+                <li>MBBS, MS (General Surgery)</li>
+                <li>MCh (Plastic Surgery)</li>
+                <li>Board Certified Cosmetic Surgeon</li>
+                <li>Member of ISAPS, ISHRS, APSI</li>
+              </ul>
+            </div>
+
+            <div className="mt-8">
+              <Button href="/book-consultation" size="lg" className="rounded-xl bg-[#0A2E52] px-8 !text-white hover:!bg-[#134373]">
+                Book Consultation with Doctor
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <HowItWorks />
+
+      <section className="container pb-8 pt-4 lg:pt-6">
+        <div className="rounded-3xl border border-[var(--color-border-light)] bg-white p-5 shadow-sm lg:p-6">
+          <p className="text-overline text-center uppercase text-teal">Video Testimonials</p>
+          <h2 className="mt-2 text-center text-display-sm">Real Patient Stories on YouTube</h2>
+          <p className="mt-3 text-center text-body-md text-text-secondary">
+            ⭐ {reviewsSnap.rating} out of 5 - Based on {reviewsSnap.reviewCount}+ Google Reviews
+          </p>
+
+          <div className="testimonial-marquee mt-5 pb-2">
+            <div className="testimonial-marquee-track">
+              {[...videoTestimonials, ...videoTestimonials].map((video, index) => (
+                <article
+                  key={`${video.title}-${index}`}
+                  className="min-w-[260px] overflow-hidden rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-surface)] sm:min-w-[300px] lg:min-w-[320px]"
+                >
+                  <div className="aspect-[16/9] w-full">
+                    <iframe
+                      src={video.embedUrl}
+                      title={video.title}
+                      className="h-full w-full"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="p-2.5">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-teal">{video.subtitle}</p>
+                    <h3 className="mt-1 text-sm font-semibold leading-snug text-navy">{video.title}</h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <Button href="/gallery" size="lg">
+              Watch More Patient Stories
+            </Button>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-24">
-        <h2 className="font-heading text-center text-2xl font-bold text-navy">Explore services</h2>
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Button href="/treatments/hair" variant="outline">
-            Hair
-          </Button>
-          <Button href="/treatments/skin-vitiligo" variant="outline">
-            Skin & Vitiligo
-          </Button>
-          <Button href="/treatments/face" variant="outline">
-            Face
-          </Button>
-          <Button href="/treatments/body" variant="outline">
-            Body
-          </Button>
-          <Button href="/treatments/therapies" variant="outline">
-            Therapies
-          </Button>
+      <section className="section-pad container">
+        <p className="text-overline text-center uppercase text-teal">From The Blog</p>
+        <h2 className="mt-2 text-center text-display-sm">Expert Insights by Dr. Bhasin</h2>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {homepageBlogs.slice(0, 3).map((post, index) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="overflow-hidden rounded-card border-2 border-solid border-[#0A2E52] bg-white shadow-card transition hover:-translate-y-1 hover:shadow-card-hover"
+            >
+              <div className="relative aspect-[16/9] bg-surface">
+                <Image
+                  src={post.coverUrl || blogCardFallbackImages[index % blogCardFallbackImages.length]}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <p className="text-overline uppercase text-teal">{post.category || "Article"}</p>
+                <h3 className="mt-2 text-heading-md">{post.title}</h3>
+                <p className="mt-2 line-clamp-2 text-body-sm text-text-secondary">{post.excerpt}</p>
+              </div>
+            </Link>
+          ))}
         </div>
-        <p className="mt-8 text-center text-sm text-navy/70">
-          Connect a clinic-owned hero photo from Sanity for production — use <code className="rounded bg-surface px-1">next/image</code> with WebP under 150KB.
-        </p>
       </section>
 
-      <section className="bg-navy py-16 text-center text-white md:py-24">
-        <h2 className="font-heading text-2xl font-bold md:text-3xl">Ready for your free consultation?</h2>
-        <p className="mx-auto mt-4 max-w-xl text-white/85">
-          Same-day callbacks during working hours. No spam — your details stay private.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="/book-consultation" variant="secondary">
-            Claim My Free Slot
-          </Button>
-          <Link href="/contact" className="text-sm font-semibold text-white underline underline-offset-4">
-            Or contact us first
+      <section className="section-pad relative overflow-hidden bg-navy text-white">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          <iframe
+            className="absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 scale-[1.08] opacity-60"
+            src="https://www.youtube.com/embed/Bv-J4XSRLx4?autoplay=1&mute=1&controls=0&loop=1&playlist=Bv-J4XSRLx4&modestbranding=1&playsinline=1&rel=0"
+            title="Treatment finder background video"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        <div className="container relative z-10 mx-auto max-w-content text-center">
+          <p className="text-overline uppercase text-white/70">Not Sure Which Treatment?</p>
+          <h2 className="mt-2 text-display-sm text-white">Take Our 60-Second Treatment Finder Quiz</h2>
+          <p className="mt-4 text-white/80">Answer 5 quick questions and get a personalized recommendation.</p>
+          <div className="mt-8">
+            <Button href="/cost-estimator" size="lg" className="bg-white !text-navy hover:!bg-primary-light">
+              Start Quiz →
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad container">
+        <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+          <div className="rounded-xl bg-surface p-6">
+            <h2 className="text-heading-lg">Conveniently Located in South Delhi</h2>
+            <p className="mt-3 text-body-md text-text-secondary">
+              Chittaranjan Park, near market area. Mon-Sat 10:00 AM to 7:00 PM.
+            </p>
+            <div className="mt-4">
+              <MapEmbed
+                embedSrc={settings.mapEmbedUrl}
+                title="Clinic location in Chittaranjan Park, New Delhi"
+                frameClassName="h-60 w-full sm:h-72"
+              />
+            </div>
+          </div>
+          <LeadForm defaultTreatment="General consultation" source="homepage-location-card" />
+        </div>
+      </section>
+
+      <section className="section-pad bg-navy text-center text-white">
+        <div className="container mx-auto max-w-content">
+          <h2 className="text-display-sm text-white">Ready to Begin Your Transformation?</h2>
+          <p className="mt-4 text-body-lg text-white/75">Book a free consultation with Dr. Bhasin. No obligations.</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button href="/book-consultation" size="lg" className="bg-white !text-navy hover:!bg-primary-light">
+              Book Free Consultation
+            </Button>
+            <Button href="/contact" size="lg" variant="outline" className="!border-white/40 !text-white">
+              Call Now
+            </Button>
+          </div>
+          <Link href="/contact" className="mt-5 inline-block text-sm text-white/70 underline">
+            Or WhatsApp us for priority callback
           </Link>
         </div>
       </section>
@@ -187,8 +417,8 @@ export default async function HomePage() {
             },
             aggregateRating: {
               "@type": "AggregateRating",
-              ratingValue: "4.9",
-              reviewCount: "120",
+              ratingValue: reviewsSnap.rating,
+              reviewCount: reviewsSnap.reviewCount,
             },
           }),
         }}

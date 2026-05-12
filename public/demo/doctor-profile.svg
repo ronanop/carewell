@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Demo doctor profile</title>
+  <desc id="desc">Placeholder portrait style graphic for surgeon profile section.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f1fa" />
+      <stop offset="100%" stop-color="#d7ecf0" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1000" fill="url(#bg)" />
+  <circle cx="450" cy="320" r="140" fill="#ffd6b3" />
+  <rect x="305" y="470" width="290" height="330" rx="140" fill="#ffffff" />
+  <rect x="220" y="640" width="460" height="260" rx="36" fill="#0a2e52" opacity="0.9" />
+  <rect x="390" y="480" width="120" height="160" rx="58" fill="#f7caa3" />
+  <path d="M315 300c12-95 245-110 275 0-6 20-31 42-57 51H373c-29-8-49-24-58-51z" fill="#2d2d37" />
+  <text x="450" y="936" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">
+    Surgeon-led Care
+  </text>
+</svg>

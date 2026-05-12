@@ -21,3 +21,12 @@ Post-launch
 
 Environment
 - Copy .env.example to .env.local; set NEXT_PUBLIC_SANITY_*; deploy Vercel region ap-south-1 (Mumbai); optional Cloudflare in front.
+
+Operational docs added
+- docs/sanity-seed-and-content.md
+- docs/lead-pipeline-validation.md
+- docs/seo-validation.md
+- docs/redirect-migration.md
+- docs/cwv-evidence-pack.md
+- docs/analytics-qa.md
+- docs/uat-and-training.md

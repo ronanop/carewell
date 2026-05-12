@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { MapEmbed } from "@/components/layout/MapEmbed";
 import { LeadForm } from "@/components/leads/LeadForm";
 import { sanityFetch } from "@/sanity/client";
 import { siteSettingsQuery } from "@/sanity/queries";
@@ -11,7 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const s = (await sanityFetch<{ phone?: string; address?: string; hours?: string[] }>(siteSettingsQuery)) ?? {};
+  const s =
+    (await sanityFetch<{ phone?: string; address?: string; hours?: string[]; mapEmbedUrl?: string }>(siteSettingsQuery)) ??
+    {};
 
   return (
     <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6 md:py-24">
@@ -33,11 +36,13 @@ export default async function ContactPage() {
             ))}
           </ul>
         )}
-        <div className="mt-10 aspect-video w-full rounded-xl bg-surface" aria-label="Map placeholder" />
+        <div className="mt-10">
+          <MapEmbed embedSrc={s.mapEmbedUrl} title="Care Well Medical Centre location map" />
+        </div>
       </div>
       <div>
         <Suspense fallback={<div className="h-56 animate-pulse rounded-xl bg-surface" />}>
-          <LeadForm defaultTreatment="General consultation" />
+          <LeadForm defaultTreatment="General consultation" source="contact-page" />
         </Suspense>
       </div>
     </div>

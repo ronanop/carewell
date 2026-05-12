@@ -2,21 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { BlogArticleToc, BlogArticleTocMobile } from "@/components/blog/BlogArticleToc";
+import { BlogScrollAsideTitle } from "@/components/blog/BlogScrollAsideTitle";
+import { BlogShareRow } from "@/components/blog/BlogShareRow";
 import { PortableBody } from "@/components/content/PortableBody";
 import { LeadForm } from "@/components/leads/LeadForm";
 import { sanityFetch } from "@/sanity/client";
 import { blogPostBySlugQuery } from "@/sanity/queries";
+import { extractH2Sections } from "@/lib/portable-h2";
 import { getSiteUrl } from "@/lib/site";
 import Image from "next/image";
 
 export const revalidate = 60;
 
-const demoSlug = "hair-transplant-delhi-guide";
-
 export async function generateStaticParams() {
   const rows = (await sanityFetch<{ slug: string }[]>(`*[_type=="blogPost" && defined(slug.current)]{"slug":slug.current}`)) ?? [];
-  if (rows.length) return rows.map((r) => ({ slug: r.slug }));
-  return [{ slug: demoSlug }];
+  return rows.map((r) => ({ slug: r.slug }));
 }
 
 export async function generateMetadata({
@@ -39,44 +40,7 @@ export async function generateMetadata({
 
 export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  let post = await sanityFetch<Record<string, unknown>>(blogPostBySlugQuery, { slug });
-
-  if (!post && slug === demoSlug) {
-    post = {
-      title: "Hair transplant in Delhi: what to expect",
-      slug: { current: demoSlug },
-      publishedAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      readTimeMinutes: 8,
-      author: { name: "Dr. Sandeep Bhasin", credentials: "MBBS, MS", imageUrl: null },
-      body: [
-        {
-          _type: "block",
-          _key: "h2a",
-          style: "h2",
-          markDefs: [],
-          children: [{ _type: "span", _key: "s1", text: "Planning your procedure", marks: [] }],
-        },
-        {
-          _type: "block",
-          _key: "p1",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "s2",
-              text: "A successful hair transplant starts with candidacy, donor assessment, and a hairline plan that ages well. This article walks through the essentials before you book.",
-              marks: [],
-            },
-          ],
-        },
-      ],
-      relatedPosts: [],
-      midArticleCtaTitle: "Have questions?",
-      midArticleCtaHref: "/book-consultation",
-    };
-  }
+  const post = await sanityFetch<Record<string, unknown>>(blogPostBySlugQuery, { slug });
 
   if (!post) notFound();
 
@@ -87,14 +51,38 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
   const publishedAt = typeof post.publishedAt === "string" ? post.publishedAt : "";
   const updatedAt = typeof post.updatedAt === "string" ? post.updatedAt : undefined;
   const readTimeMinutes = typeof post.readTimeMinutes === "number" ? post.readTimeMinutes : 5;
+  const coverUrl = typeof post.coverUrl === "string" ? post.coverUrl : undefined;
+  const headings = extractH2Sections(post.body);
+  const site = getSiteUrl();
+  const pageUrl = `${site}/blog/${slug}`;
 
   const ld = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: title,
-    author: { "@type": "Person", name: author?.name },
-    datePublished: publishedAt,
-    dateModified: updatedAt ?? publishedAt,
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${pageUrl}#blogposting`,
+        headline: title,
+        ...(coverUrl ? { image: [coverUrl] } : {}),
+        author: { "@type": "Person", name: author?.name ?? "Dr. Sandeep Bhasin" },
+        publisher: {
+          "@type": "Organization",
+          name: "Care Well Medical Centre",
+          url: site,
+        },
+        datePublished: publishedAt,
+        dateModified: updatedAt ?? publishedAt,
+        mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${site}/blog` },
+          { "@type": "ListItem", position: 3, name: title, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (
@@ -127,14 +115,15 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
             <span>·</span>
             <span>{readTimeMinutes} min read</span>
           </div>
+          <BlogShareRow title={title} url={pageUrl} />
         </header>
 
         <div className="mt-12 lg:grid lg:grid-cols-[200px_1fr_280px] lg:gap-10">
-          <aside className="mb-10 hidden text-sm text-navy/70 lg:block">
-            <p className="font-heading font-bold text-navy">On this page</p>
-            <p className="mt-2 text-xs">H2 sections — wire to scroll-spy in a follow-up pass.</p>
+          <aside className="mb-10 hidden lg:block">
+            <BlogArticleToc headings={headings} />
           </aside>
           <div className="mx-auto max-w-article text-[17px] leading-relaxed text-navy/90">
+            <BlogArticleTocMobile headings={headings} />
             <PortableBody value={body} />
             <div className="mt-12 rounded-xl border border-teal/30 bg-teal/5 p-5 text-center">
               <p className="font-heading font-semibold text-navy">{String(post.midArticleCtaTitle ?? "Have questions?")}</p>
@@ -146,12 +135,9 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           <aside className="mt-10 lg:mt-0">
             <div className="sticky top-28 space-y-6">
               <Suspense fallback={<div className="h-40 animate-pulse rounded-xl bg-surface" />}>
-                <LeadForm defaultTreatment="General consultation" submitLabel="Get Free Consultation" />
+                <LeadForm defaultTreatment="General consultation" submitLabel="Get Free Consultation" source="blog-sidebar" />
               </Suspense>
-              <div className="rounded-xl border border-surface p-4 text-sm text-navy/75">
-                <p className="font-heading font-bold text-navy">Still have questions?</p>
-                <p className="mt-2">Ask Dr. Bhasin during your visit or consultation.</p>
-              </div>
+              <BlogScrollAsideTitle />
             </div>
           </aside>
         </div>
@@ -166,7 +152,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           </div>
           <h2 className="font-heading mt-12 text-xl font-bold text-navy">You might also read</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {(related.length ? related : [{ title: "Vitiligo overview", slug: { current: "vitiligo-overview" } }]).map((r) => (
+            {(related.length ? related : []).map((r) => (
               <Link key={r.slug?.current} href={`/blog/${r.slug?.current}`} className="rounded-lg border border-surface p-4 hover:border-primary">
                 {r.title}
               </Link>

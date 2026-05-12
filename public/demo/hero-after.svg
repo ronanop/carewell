@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">After treatment placeholder</title>
+  <desc id="desc">Soft luxury portrait placeholder representing after treatment stage.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f9f4ec" />
+      <stop offset="100%" stop-color="#efe4d4" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)" />
+  <circle cx="600" cy="500" r="205" fill="#e3c1a1" />
+  <rect x="340" y="740" width="520" height="580" rx="230" fill="#f3e3d5" />
+  <path d="M380 500c6-118 420-150 440 0-12 32-58 58-100 66H485c-49-10-88-31-105-66z" fill="#665446" />
+  <circle cx="510" cy="502" r="16" fill="#3d342d" />
+  <circle cx="690" cy="502" r="16" fill="#3d342d" />
+  <path d="M505 598c64 50 126 50 190 0" fill="none" stroke="#866348" stroke-width="16" stroke-linecap="round" />
+  <rect x="170" y="1120" width="860" height="250" rx="36" fill="#ffffff" opacity="0.8" />
+  <text x="600" y="1232" text-anchor="middle" fill="#4d3b2c" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">
+    AFTER
+  </text>
+  <text x="600" y="1298" text-anchor="middle" fill="#675646" font-family="Arial, Helvetica, sans-serif" font-size="32">
+    Visible Improvement Phase
+  </text>
+</svg>

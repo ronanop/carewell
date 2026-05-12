@@ -1,7 +1,8 @@
 import { ClarityScript } from "@/components/analytics/ClarityScript";
 import { GtmScript } from "@/components/analytics/GtmScript";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 import { Footer } from "@/components/layout/Footer";
-import { HeaderClient } from "@/components/layout/HeaderClient";
+import { Navbar } from "@/components/layout/Navbar";
 import { HelloBar } from "@/components/layout/HelloBar";
 import { MobileCallButton } from "@/components/layout/MobileCallButton";
 import { WhatsAppBubble } from "@/components/layout/WhatsAppBubble";
@@ -13,6 +14,7 @@ type SiteSettings = {
   phone?: string;
   whatsappNumber?: string;
   address?: string;
+  mapEmbedUrl?: string;
   medicalDisclaimer?: string;
   mbbsRegNo?: string;
   hours?: string[];
@@ -28,29 +30,28 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
       (settings.helloBarMessages as string[])
     : ["Free consultation — Limited slots."];
 
-  const helloHeight = messages.length ? "2.25rem" : "0px";
-
   const gtmId = settings.gtmId || process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
     <>
       <GtmScript gtmId={gtmId} />
       <ClarityScript projectId={settings.clarityProjectId} />
-      <style>{`:root { --hello-bar-height: ${helloHeight}; }`}</style>
       <HelloBar messages={messages} />
-      <HeaderClient phone={settings.phone} whatsapp={settings.whatsappNumber} />
-      <div className="min-h-screen pt-[calc(70px+var(--hello-bar-height))] md:pt-[calc(70px+var(--hello-bar-height))]">
+      <Navbar phone={settings.phone} />
+      <div className="min-h-screen pt-[calc(var(--announcement-offset,0px)+3.75rem)] lg:pt-[calc(var(--announcement-offset,0px)+4.5rem)]">
         {children}
       </div>
       <Footer
         phone={settings.phone}
         address={settings.address}
+        mapEmbedUrl={settings.mapEmbedUrl}
         disclaimer={settings.medicalDisclaimer}
         mbbs={settings.mbbsRegNo}
         hours={settings.hours}
       />
       <WhatsAppBubble number={settings.whatsappNumber} />
       <MobileCallButton phone={settings.phone} />
+      <CookieBanner />
     </>
   );
 }

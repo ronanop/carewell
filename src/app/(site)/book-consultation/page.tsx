@@ -15,7 +15,7 @@ export default function BookConsultationPage() {
       <p className="mt-4 text-sm text-navy/75">Three fields only — we respond within two hours during clinic hours.</p>
       <div className="mt-8">
         <Suspense fallback={<div className="h-48 animate-pulse rounded-xl bg-surface" />}>
-          <LeadForm defaultTreatment="General consultation" submitLabel="Claim My Free Slot" />
+          <LeadForm defaultTreatment="General consultation" submitLabel="Claim My Free Slot" source="book-consultation" />
         </Suspense>
       </div>
     </div>

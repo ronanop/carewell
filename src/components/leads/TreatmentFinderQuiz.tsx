@@ -2,9 +2,32 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { trackEvent } from "@/lib/analytics";
 
-const QUESTIONS = [
-  { id: 1, text: "What is your main goal?", options: ["Hair restoration", "Skin / vitiligo", "Face", "Body", "Wellness / IV"] },
+type QuizQuestion = {
+  id: number;
+  text: string;
+  /** Single list of choices */
+  options?: readonly string[];
+  /** Grouped sections (e.g. hair loss vs transplant) */
+  groups?: readonly { heading: string; options: readonly string[] }[];
+};
+
+const QUESTIONS: readonly QuizQuestion[] = [
+  {
+    id: 1,
+    text: "What are you interested in?",
+    groups: [
+      {
+        heading: "Hair Loss Treatment",
+        options: ["PRP Hair Treatment", "Growth Factor Concentrate"],
+      },
+      {
+        heading: "Hair Transplant",
+        options: ["Beard Transplant", "Eyebrow Transplant", "Female Hair Transplant"],
+      },
+    ],
+  },
   { id: 2, text: "How soon are you planning treatment?", options: ["This month", "1–3 months", "Exploring only"] },
   { id: 3, text: "Have you consulted a surgeon before?", options: ["Yes", "No"] },
   { id: 4, text: "Preferred contact?", options: ["WhatsApp", "Phone call"] },
@@ -25,11 +48,20 @@ export function TreatmentFinderQuiz({ className }: { className?: string }) {
 
   const recommendation = () => {
     const a = answers[0] || "";
-    if (a.includes("Hair")) return "Hair transplant consultation";
-    if (a.includes("vitiligo") || a.includes("Skin")) return "Dermatology / vitiligo assessment";
-    if (a.includes("Face")) return "Facial surgery consultation";
-    if (a.includes("Body")) return "Body contouring consultation";
-    return "General surgical consultation";
+    switch (a) {
+      case "PRP Hair Treatment":
+        return "PRP hair treatment consultation";
+      case "Growth Factor Concentrate":
+        return "GFC hair treatment consultation";
+      case "Beard Transplant":
+        return "Beard transplant consultation";
+      case "Eyebrow Transplant":
+        return "Eyebrow transplant consultation";
+      case "Female Hair Transplant":
+        return "Female hair transplant consultation";
+      default:
+        return "Hair & transplant consultation";
+    }
   };
 
   const pick = (opt: string) => {
@@ -43,6 +75,10 @@ export function TreatmentFinderQuiz({ className }: { className?: string }) {
   const gateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (phone.replace(/\D/g, "").length < 10) return;
+    trackEvent("quiz_gate_submit", {
+      source: showPopup ? "quiz-popup" : "quiz-inline",
+      recommendation: recommendation(),
+    });
     setSubmitted(true);
   };
 
@@ -143,16 +179,34 @@ function MiniQuiz({
       <p className="text-sm font-medium text-primary">Question {step + 1} of {QUESTIONS.length}</p>
       <p className="mt-2 font-heading text-lg font-bold text-navy">{q.text}</p>
       <div className="mt-4 flex flex-col gap-2">
-        {q.options.map((opt) => (
-          <button
-            key={opt}
-            type="button"
-            className="rounded-lg border border-surface bg-white px-4 py-3 text-left text-sm font-medium text-navy hover:border-primary"
-            onClick={() => onPick(opt)}
-          >
-            {opt}
-          </button>
-        ))}
+        {q.groups
+          ? q.groups.map((g, gi) => (
+              <div key={g.heading} className={gi > 0 ? "mt-6 border-t border-surface pt-6" : ""}>
+                <p className="mb-2 text-sm font-bold text-navy">{g.heading}</p>
+                <div className="flex flex-col gap-2">
+                  {g.options.map((opt) => (
+                    <button
+                      key={opt}
+                      type="button"
+                      className="rounded-lg border border-surface bg-white px-4 py-3 text-left text-sm font-medium text-navy hover:border-primary"
+                      onClick={() => onPick(opt)}
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))
+          : (q.options ?? []).map((opt) => (
+              <button
+                key={opt}
+                type="button"
+                className="rounded-lg border border-surface bg-white px-4 py-3 text-left text-sm font-medium text-navy hover:border-primary"
+                onClick={() => onPick(opt)}
+              >
+                {opt}
+              </button>
+            ))}
       </div>
     </div>
   );

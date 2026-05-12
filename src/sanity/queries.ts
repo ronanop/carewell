@@ -1,4 +1,8 @@
-export const siteSettingsQuery = `*[_type == "siteSettings"][0]`;
+export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
+  ...,
+  "heroImageUrl": heroImage.asset->url,
+  "heroImageAlt": heroImage.alt
+}`;
 
 export const navigationQuery = `*[_type == "navigation"][0]`;
 
@@ -9,6 +13,7 @@ export const servicesSlugsQuery = `*[_type == "service" && defined(slug.current)
 export const serviceBySlugQuery = `*[_type == "service" && slug.current == $slug][0]{
   ...,
   "slug": slug,
+  alternateLocaleService->{ "slug": slug.current, "locale": locale },
   category->{title, slug, megaMenuKey},
   relatedServices[]->{title, slug, treatmentDropdownLabel},
   "heroImageUrl": heroImage.asset->url,
@@ -26,7 +31,13 @@ export const serviceBySlugQuery = `*[_type == "service" && slug.current == $slug
 export const categoriesWithServicesQuery = `*[_type == "serviceCategory"]|order(title asc){
   ...,
   "slug": slug.current,
-  "services": *[_type == "service" && references(^._id)]|order(title asc){title, "slug": slug.current, treatmentDropdownLabel}
+  "services": *[_type == "service" && references(^._id)]|order(title asc){
+    title,
+    "slug": slug.current,
+    treatmentDropdownLabel,
+    "heroImageUrl": heroImage.asset->url,
+    tagline
+  }
 }`;
 
 export const categoryBySlugQuery = `*[_type == "serviceCategory" && slug.current == $slug][0]{

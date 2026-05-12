@@ -23,6 +23,14 @@ export const service = defineType({
       initialValue: "en",
     }),
     defineField({
+      name: "alternateLocaleService",
+      title: "Alternate language page",
+      type: "reference",
+      to: [{ type: "service" }],
+      description:
+        "Link to the same service in the other language (EN ↔ HI). Used for correct hreflang alternates. If empty, English pages fall back to /hi/services/{slug}-hi when that route exists.",
+    }),
+    defineField({
       name: "category",
       type: "reference",
       to: [{ type: "serviceCategory" }],
@@ -54,9 +62,15 @@ export const service = defineType({
       name: "howItWorksSteps",
       type: "array",
       of: [{ type: "howItWorksStep" }],
-      validation: (Rule) => Rule.length(5),
+      validation: (Rule) => Rule.length(4),
     }),
-    defineField({ name: "youtubeVideoId", type: "string", title: "YouTube video ID" }),
+    defineField({
+      name: "youtubeVideoId",
+      type: "string",
+      title: "YouTube video ID",
+      description:
+        "Featured clip shown below the hero on the service page (use the ID only, e.g. dQw4w9WgXcQ).",
+    }),
     defineField({ name: "beforeAfterCases", type: "array", of: [{ type: "beforeAfterCase" }] }),
     defineField({
       name: "candidateGood",

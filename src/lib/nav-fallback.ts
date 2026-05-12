@@ -3,7 +3,7 @@ export const MEGA_COLUMNS = [
     key: "hair",
     title: "Hair",
     links: [
-      { label: "Hair transplant", href: "/services/sample-hair-transplant" },
+      { label: "Hair transplant", href: "/services/hair-transplant" },
       { label: "PRP therapy", href: "/services/prp-hair" },
       { label: "View all", href: "/treatments/hair" },
     ],
@@ -13,7 +13,7 @@ export const MEGA_COLUMNS = [
     title: "Skin & Vitiligo",
     links: [
       { label: "Vitiligo treatment", href: "/services/vitiligo-treatment" },
-      { label: "Pigmentation", href: "/services/pigmentation" },
+      { label: "Pigmentation", href: "/services/pigmentation-treatment" },
       { label: "View all", href: "/treatments/skin-vitiligo" },
     ],
   },

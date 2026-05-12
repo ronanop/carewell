@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
-import type { ServiceDoc } from "@/lib/demo-service";
+import type { ServiceDoc } from "@/types/service";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mapSanityService(raw: any): ServiceDoc {

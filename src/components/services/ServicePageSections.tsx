@@ -1,14 +1,19 @@
+import clsx from "clsx";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { PortableBody } from "@/components/content/PortableBody";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/leads/LeadForm";
+import { ServiceHeroBookingForm } from "@/components/leads/ServiceHeroBookingForm";
+import { HowItWorksStepsAnimated } from "@/components/services/HowItWorksStepsAnimated";
+import { ServiceSidebarReveal } from "@/components/services/ServiceSidebarReveal";
 import { ServiceFaq } from "@/components/services/ServiceFaq";
 import { TreatmentFinderQuiz } from "@/components/leads/TreatmentFinderQuiz";
 import { BreadcrumbJsonLd } from "@/components/jsonld/BreadcrumbJsonLd";
-import type { ServiceDoc } from "@/lib/demo-service";
+import type { ServiceDoc } from "@/types/service";
 import { whatsappHref } from "@/lib/whatsapp";
 import { getSiteUrl } from "@/lib/site";
 
@@ -27,6 +32,34 @@ const EMICalculator = dynamic(
   { ssr: false, loading: () => <div className="h-32 animate-pulse rounded-xl bg-surface" /> },
 );
 
+const HAIR_TRANSPLANT_CANDIDACY = {
+  title: "Is Hair Transplant Right for You?",
+  intro:
+    "We recommend a hair transplant when medicines and non-surgical treatments no longer improve visible hair loss and bald areas continue to progress.",
+  bullets: [
+    "Suitable for Grade 2–6 baldness",
+    "Permanent hair restoration",
+    "Customised natural hairline design",
+    "Surgery performed personally by the doctor, not technicians",
+  ],
+};
+
+/** Overview embed under the hero for English + Hindi hair transplant service pages. */
+const HAIR_TRANSPLANT_OVERVIEW_YOUTUBE_ID = "J2tW5o82WK0";
+
+/** Static before/after composite when no individual Sanity cases yet (consent on file for this asset). */
+const HAIR_TRANSPLANT_BEFORE_AFTER_FALLBACK = {
+  src: "/images/hair-transplant-before-after-promo.jpg",
+  alt: "Hair transplant before and after — side profile and front view, Care Well Medical Centre",
+  width: 1024,
+  height: 537,
+  belowCaptionParagraphs: [
+    "Struggling with hair baldness due to heredity, illness, or any other reasons? Seeking the best-in-class hair transplant experience to overcome this issue? Welcome to Care Well Medical Centre, where treatment meets precision. Under the supervision of Dr. Sandeep Bhasin, a surgeon with around two decades of excellent healthcare track record, the clinic has become the go-to option for hair transplant in Delhi.",
+    "You find a well-rounded medical team that is professional yet empathetic. Finding the root cause and implementing the custom and cost-effective solution with a 99% success rate make patients trust Care Well Medical Centre for this treatment.",
+    "Dr. Sandeep Bhasin personally plans and supervises every procedure to ensure safe, natural outcomes.",
+  ],
+} as const;
+
 export function ServicePageSections({
   doc,
   whatsapp,
@@ -37,6 +70,12 @@ export function ServicePageSections({
   phone?: string;
 }) {
   const slug = doc.slug?.current ?? "service";
+  const overviewYoutubeId =
+    slug === "hair-transplant" || slug === "hair-transplant-hi"
+      ? HAIR_TRANSPLANT_OVERVIEW_YOUTUBE_ID
+      : doc.youtubeVideoId;
+  const whatIsIllustrationSrc = doc.whatIsIllustrationUrl ?? null;
+  const whatIsIllustrationAlt = whatIsIllustrationSrc ? `Illustration supporting ${doc.title}` : "";
   const treatment = doc.treatmentDropdownLabel ?? doc.title;
   const wa = whatsapp
     ? whatsappHref(whatsapp, `Hi, I'm interested in ${doc.title} (${slug}).`)
@@ -69,18 +108,23 @@ export function ServicePageSections({
           { name: doc.title, path: `/services/${slug}` },
         ]}
       />
-      <section className="relative min-h-[65vh] bg-navy">
+      <section className="relative min-h-[65vh] overflow-hidden bg-navy">
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 bg-cover bg-[center_35%] bg-no-repeat"
+          style={{ backgroundImage: "url(/images/service-hero-theatre-bg.png)" }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 opacity-[0.32]"
           style={{
             backgroundImage:
               "radial-gradient(circle at 30% 20%, #1557A0 0%, transparent 40%), radial-gradient(circle at 70% 60%, #0B7B6B 0%, transparent 35%)",
           }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/70" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:grid-cols-[1fr_280px] md:px-6 lg:py-28">
-          <div>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/76 to-navy/56" />
+        <div className="relative mx-auto grid max-w-7xl items-start gap-8 px-4 py-16 md:grid-cols-[1fr_312px] md:gap-10 md:px-6 lg:py-24">
+          <div className="min-w-0">
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
@@ -103,74 +147,106 @@ export function ServicePageSections({
               )}
             </div>
           </div>
-          <aside className="hidden md:block">
-            <div className="sticky top-28 rounded-2xl border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md">
-              <p className="font-heading text-sm font-bold">Quick facts</p>
-              <ul className="mt-4 space-y-3 text-sm text-white/90">
-                {(doc.quickFacts ?? []).map((q, i) => (
-                  <li key={i}>
-                    <span className="text-white/70">{q.label}:</span> {q.value}
-                  </li>
-                ))}
-              </ul>
+          <aside className="hidden w-full min-w-0 shrink-0 md:block md:w-[312px]">
+            <div className="sticky top-28">
+              <Suspense fallback={<div className="h-64 animate-pulse rounded-2xl bg-white/10" aria-hidden />}>
+                <ServiceHeroBookingForm defaultTreatment={treatment} />
+              </Suspense>
             </div>
           </aside>
         </div>
       </section>
 
+      {overviewYoutubeId && (
+        <section className="border-b border-surface bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-14">
+            <p className="font-heading text-center text-lg font-semibold text-navy md:text-xl">
+              Watch: {doc.title}
+            </p>
+            <div className="mx-auto mt-6 max-w-4xl">
+              <LiteVideo id={overviewYoutubeId} title={`${doc.title} — overview video`} />
+            </div>
+          </div>
+        </section>
+      )}
+
       <div className="mx-auto max-w-7xl px-4 pb-32 md:px-6 lg:grid lg:grid-cols-[1fr_280px] lg:gap-12 lg:pb-24">
         <article className="max-w-3xl lg:max-w-none">
           <section className="py-16 md:py-24">
-            <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div
+              className={clsx(
+                "grid gap-10",
+                whatIsIllustrationSrc ? "lg:grid-cols-2 lg:items-start" : "lg:grid-cols-1",
+              )}
+            >
               <div>
                 <h2 className="font-heading text-2xl font-bold text-navy">What is {doc.title.toLowerCase()}?</h2>
                 <div className="mt-6">
                   <PortableBody value={doc.whatIsBody} />
                 </div>
-                {doc.insightPoints && doc.insightPoints.length > 0 && (
-                  <div className="mt-8 rounded-xl border border-teal/30 bg-surface p-5">
-                    <p className="text-sm font-semibold text-teal">Key insights</p>
-                    <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-navy/85">
-                      {doc.insightPoints.map((p) => (
-                        <li key={p}>{p}</li>
+                {slug === "hair-transplant" || slug === "hair-transplant-hi" ? (
+                  <div className="mt-8 rounded-xl border border-teal/30 bg-surface p-5 md:p-6">
+                    <p className="font-heading text-lg font-bold text-navy md:text-xl">{HAIR_TRANSPLANT_CANDIDACY.title}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-navy/85 md:text-[15px]">{HAIR_TRANSPLANT_CANDIDACY.intro}</p>
+                    <ul className="mt-4 list-disc space-y-2.5 pl-5 text-sm text-navy/85 md:text-[15px]">
+                      {HAIR_TRANSPLANT_CANDIDACY.bullets.map((item) => (
+                        <li key={item}>{item}</li>
                       ))}
                     </ul>
                   </div>
-                )}
-              </div>
-              <div className="relative aspect-square max-h-80 w-full overflow-hidden rounded-2xl bg-surface lg:justify-self-end">
-                {doc.whatIsIllustrationUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={doc.whatIsIllustrationUrl} alt="" className="h-full w-full object-cover" />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-sm text-navy/50">Illustration from CMS</div>
+                  doc.insightPoints &&
+                  doc.insightPoints.length > 0 && (
+                    <div className="mt-8 rounded-xl border border-teal/30 bg-surface p-5">
+                      <p className="text-sm font-semibold text-teal">Key insights</p>
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-navy/85">
+                        {doc.insightPoints.map((p) => (
+                          <li key={p}>{p}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
                 )}
               </div>
+              {whatIsIllustrationSrc ? (
+                <div className="relative aspect-square max-h-80 w-full overflow-hidden rounded-2xl bg-surface lg:justify-self-end">
+                  <Image
+                    src={whatIsIllustrationSrc}
+                    alt={whatIsIllustrationAlt}
+                    fill
+                    className="object-contain object-center p-1"
+                    sizes="(min-width: 1024px) 400px, 90vw"
+                  />
+                </div>
+              ) : null}
             </div>
           </section>
 
           <section className="border-t border-surface py-16 md:py-24">
             <h2 className="font-heading text-2xl font-bold text-navy">How it works</h2>
-            <ol className="mt-10 grid gap-6 md:grid-cols-5">
-              {(doc.howItWorksSteps ?? []).map((s, i) => (
-                <li key={i} className="rounded-xl border border-surface bg-white p-4 text-center shadow-sm">
-                  <p className="text-xs font-bold text-primary">Step {i + 1}</p>
-                  <p className="mt-2 font-heading font-semibold text-navy">{s.title}</p>
-                  <p className="mt-2 text-xs text-navy/75">{s.description}</p>
-                </li>
-              ))}
-            </ol>
-            {doc.youtubeVideoId && (
-              <div className="mt-10 max-w-3xl">
-                <LiteVideo id={doc.youtubeVideoId} title={`${doc.title} explained`} />
-              </div>
-            )}
+            <HowItWorksStepsAnimated
+              steps={doc.howItWorksSteps ?? []}
+              belowStepsImageSrc={
+                slug === "hair-transplant" || slug === "hair-transplant-hi"
+                  ? "/images/hair-transplant-process-infographic.png"
+                  : undefined
+              }
+              belowStepsImageAlt="Infographic: The 4-step hair transplant process — graft extraction, hairline design, graft implantation, and healing timeline"
+              showStepsDetailAside={slug === "hair-transplant" || slug === "hair-transplant-hi"}
+            />
           </section>
 
           <section className="border-t border-surface py-16 md:py-24">
             <h2 className="font-heading text-2xl font-bold text-navy">Before &amp; after</h2>
             <div className="mt-8">
-              <BeforeAfterSliders cases={doc.beforeAfterCases ?? []} />
+              <BeforeAfterSliders
+                cases={doc.beforeAfterCases ?? []}
+                emptyFallback={
+                  slug === "hair-transplant" || slug === "hair-transplant-hi"
+                    ? HAIR_TRANSPLANT_BEFORE_AFTER_FALLBACK
+                    : undefined
+                }
+              />
             </div>
             <div className="mt-8">
               <Button href="/gallery" variant="outline">
@@ -262,31 +338,33 @@ export function ServicePageSections({
           </section>
         </article>
 
-        <aside className="hidden lg:block">
-          <div className="sticky top-28 space-y-6">
-            <Suspense fallback={<div className="h-48 animate-pulse rounded-xl bg-surface" />}>
-              <LeadForm defaultTreatment={treatment} />
-            </Suspense>
-            {phone && (
-              <a
-                href={`tel:${phone.replace(/\s/g, "")}`}
-                className="block w-full rounded-xl bg-navy py-3 text-center text-sm font-semibold text-white"
-              >
-                Call clinic
-              </a>
-            )}
-            {wa && (
-              <a
-                href={wa}
-                className="block w-full rounded-xl border-2 border-teal py-3 text-center text-sm font-semibold text-teal"
-              >
-                WhatsApp
-              </a>
-            )}
-            <div className="rounded-xl border border-surface bg-white p-4 text-sm text-navy/80">
-              <p className="font-semibold text-navy">Clinic hours</p>
-              <p className="mt-2">Mon–Sat · 10:00 – 19:00</p>
-            </div>
+        <aside className="hidden overflow-x-clip lg:block">
+          <div className="sticky top-28">
+            <ServiceSidebarReveal>
+              <Suspense fallback={<div className="h-48 animate-pulse rounded-xl bg-surface" />}>
+                <LeadForm defaultTreatment={treatment} source="service-sidebar" />
+              </Suspense>
+              {phone && (
+                <a
+                  href={`tel:${phone.replace(/\s/g, "")}`}
+                  className="block w-full rounded-xl bg-navy py-3 text-center text-sm font-semibold text-white"
+                >
+                  Call clinic
+                </a>
+              )}
+              {wa && (
+                <a
+                  href={wa}
+                  className="block w-full rounded-xl border-2 border-teal py-3 text-center text-sm font-semibold text-teal"
+                >
+                  WhatsApp
+                </a>
+              )}
+              <div className="rounded-xl border border-surface bg-white p-4 text-sm text-navy/80">
+                <p className="font-semibold text-navy">Clinic hours</p>
+                <p className="mt-2">Mon–Sat · 10:00 – 19:00</p>
+              </div>
+            </ServiceSidebarReveal>
           </div>
         </aside>
       </div>

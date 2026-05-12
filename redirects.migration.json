@@ -1,1 +1,542 @@
-[]
+[
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/forehead-lines",
+    "to": "/services/botox-forehead-lines",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/forehead-lines/",
+    "to": "/services/botox-forehead-lines",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/microneedling",
+    "to": "/services/microneedling",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/microneedling/",
+    "to": "/services/microneedling",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/birthmark-removal-treatment",
+    "to": "/services/birthmark-removal-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/birthmark-removal-treatment/",
+    "to": "/services/birthmark-removal-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/permanent-makeup",
+    "to": "/services/permanent-makeup",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/permanent-makeup/",
+    "to": "/services/permanent-makeup",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/brow-lift",
+    "to": "/services/brow-lift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/brow-lift/",
+    "to": "/services/brow-lift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/thread-lift",
+    "to": "/services/thread-lift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/thread-lift/",
+    "to": "/services/thread-lift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/hifu",
+    "to": "/services/hifu",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/hifu/",
+    "to": "/services/hifu",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/double-chin-removal",
+    "to": "/services/double-chin-removal",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/double-chin-removal/",
+    "to": "/services/double-chin-removal",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/mommy-makeover",
+    "to": "/services/mommy-makeover",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/mommy-makeover/",
+    "to": "/services/mommy-makeover",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/fat-grafting",
+    "to": "/services/fat-grafting",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/fat-grafting/",
+    "to": "/services/fat-grafting",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/bbl",
+    "to": "/services/bbl",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/bbl/",
+    "to": "/services/bbl",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/eyelid",
+    "to": "/services/eyelid-surgery",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/eyelid/",
+    "to": "/services/eyelid-surgery",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/lipoma",
+    "to": "/services/lipoma-removal",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/lipoma/",
+    "to": "/services/lipoma-removal",
+    "permanent": true
+  },
+  {
+    "from": "/iv-therapy-in-delhi/vitamin-c-infusion",
+    "to": "/services/vitamin-c-infusion",
+    "permanent": true
+  },
+  {
+    "from": "/iv-therapy-in-delhi/vitamin-c-infusion/",
+    "to": "/services/vitamin-c-infusion",
+    "permanent": true
+  },
+  {
+    "from": "/holistic-wellness-treatments-in-delhi/ozone-therapy",
+    "to": "/services/ozone-therapy",
+    "permanent": true
+  },
+  {
+    "from": "/holistic-wellness-treatments-in-delhi/ozone-therapy/",
+    "to": "/services/ozone-therapy",
+    "permanent": true
+  },
+  {
+    "from": "/iv-therapy-in-delhi/glutathione",
+    "to": "/services/glutathione-infusion",
+    "permanent": true
+  },
+  {
+    "from": "/iv-therapy-in-delhi/glutathione/",
+    "to": "/services/glutathione-infusion",
+    "permanent": true
+  },
+  {
+    "from": "/proctology-treatments-in-delhi/piles-treatment",
+    "to": "/services/piles-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/proctology-treatments-in-delhi/piles-treatment/",
+    "to": "/services/piles-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/urology-in-delhi/kidney-stones-treatment",
+    "to": "/services/kidney-stones-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/urology-in-delhi/kidney-stones-treatment/",
+    "to": "/services/kidney-stones-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/face-slimming",
+    "to": "/services/face-slimming",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/face-slimming/",
+    "to": "/services/face-slimming",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/skin-grafting",
+    "to": "/services/skin-grafting",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/skin-grafting/",
+    "to": "/services/skin-grafting",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/vitiligo/melanocytes-transplant",
+    "to": "/services/melanocytes-transplant",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/vitiligo/melanocytes-transplant/",
+    "to": "/services/melanocytes-transplant",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/punch-grafting",
+    "to": "/services/punch-grafting",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/punch-grafting/",
+    "to": "/services/punch-grafting",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/fractional-co2-laser-treatment",
+    "to": "/services/fractional-co2-laser",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/fractional-co2-laser-treatment/",
+    "to": "/services/fractional-co2-laser",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/breast-reduction",
+    "to": "/services/breast-reduction",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/breast-reduction/",
+    "to": "/services/breast-reduction",
+    "permanent": true
+  },
+  {
+    "from": "/iv-therapy-in-delhi/myers-cocktail",
+    "to": "/services/myers-cocktail",
+    "permanent": true
+  },
+  {
+    "from": "/iv-therapy-in-delhi/myers-cocktail/",
+    "to": "/services/myers-cocktail",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/septoplasty",
+    "to": "/services/septoplasty",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/septoplasty/",
+    "to": "/services/septoplasty",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/breast-lift",
+    "to": "/services/breast-lift",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/breast-lift/",
+    "to": "/services/breast-lift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/mesobotox",
+    "to": "/services/mesobotox",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/mesobotox/",
+    "to": "/services/mesobotox",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/cheek-and-jawline-slimming",
+    "to": "/services/cheek-jawline-slimming-botox",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/cheek-and-jawline-slimming/",
+    "to": "/services/cheek-jawline-slimming-botox",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/neck-lift",
+    "to": "/services/neck-lift",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/neck-lift/",
+    "to": "/services/neck-lift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/nefertiti-lift",
+    "to": "/services/nefertiti-lift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/nefertiti-lift/",
+    "to": "/services/nefertiti-lift",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/buccal-fat-removal",
+    "to": "/services/buccal-fat-removal",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/buccal-fat-removal/",
+    "to": "/services/buccal-fat-removal",
+    "permanent": true
+  },
+  {
+    "from": "/fatty-liver-treatment-in-delhi",
+    "to": "/services/fatty-liver-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/fatty-liver-treatment-in-delhi/",
+    "to": "/services/fatty-liver-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/dimple-creation-surgery",
+    "to": "/services/dimple-creation-surgery",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/dimple-creation-surgery/",
+    "to": "/services/dimple-creation-surgery",
+    "permanent": true
+  },
+  {
+    "from": "/urology-in-delhi/circumcision",
+    "to": "/services/circumcision",
+    "permanent": true
+  },
+  {
+    "from": "/urology-in-delhi/circumcision/",
+    "to": "/services/circumcision",
+    "permanent": true
+  },
+  {
+    "from": "/urology-in-delhi/circumcision/zsr",
+    "to": "/services/zsr-circumcision",
+    "permanent": true
+  },
+  {
+    "from": "/urology-in-delhi/circumcision/zsr/",
+    "to": "/services/zsr-circumcision",
+    "permanent": true
+  },
+  {
+    "from": "/intimate-surgery-in-delhi/vaginoplasty/videos",
+    "to": "/services/vaginoplasty",
+    "permanent": true
+  },
+  {
+    "from": "/intimate-surgery-in-delhi/vaginoplasty/videos/",
+    "to": "/services/vaginoplasty",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/rhinoplasty/closed",
+    "to": "/services/rhinoplasty-closed",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/rhinoplasty/closed/",
+    "to": "/services/rhinoplasty-closed",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/rhinoplasty/open",
+    "to": "/services/rhinoplasty-open",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/rhinoplasty/open/",
+    "to": "/services/rhinoplasty-open",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/gynecomastia/grades",
+    "to": "/services/gynecomastia",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/gynecomastia/grades/",
+    "to": "/services/gynecomastia",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/arms",
+    "to": "/services/liposuction-arms",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/arms/",
+    "to": "/services/liposuction-arms",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/facial",
+    "to": "/services/liposuction-facial",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/facial/",
+    "to": "/services/liposuction-facial",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/abdominal",
+    "to": "/services/liposuction-abdominal",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/abdominal/",
+    "to": "/services/liposuction-abdominal",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/buttocks",
+    "to": "/services/liposuction-buttocks",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/buttocks/",
+    "to": "/services/liposuction-buttocks",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/outer-thigh",
+    "to": "/services/liposuction-outer-thigh",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/outer-thigh/",
+    "to": "/services/liposuction-outer-thigh",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/back",
+    "to": "/services/liposuction-back",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/back/",
+    "to": "/services/liposuction-back",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/calves-thighs",
+    "to": "/services/liposuction-calves-thighs",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/calves-thighs/",
+    "to": "/services/liposuction-calves-thighs",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/anterior-thigh",
+    "to": "/services/liposuction-anterior-thigh",
+    "permanent": true
+  },
+  {
+    "from": "/plastic-surgery-in-delhi/liposuction/anterior-thigh/",
+    "to": "/services/liposuction-anterior-thigh",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/lip-augmentation",
+    "to": "/services/lip-augmentation",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/lip-augmentation/",
+    "to": "/services/lip-augmentation",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/vampire-facelift",
+    "to": "/services/vampire-facelift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/vampire-facelift/",
+    "to": "/services/vampire-facelift",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox",
+    "to": "/services/botox",
+    "permanent": true
+  },
+  {
+    "from": "/cosmetic-treatments-in-delhi/botox/",
+    "to": "/services/botox",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/acne-scar",
+    "to": "/services/acne-scar-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/acne-scar/",
+    "to": "/services/acne-scar-treatment",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/laser-moles-and-warts-treatment",
+    "to": "/services/laser-moles-warts-removal",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/laser-moles-and-warts-treatment/",
+    "to": "/services/laser-moles-warts-removal",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/carbon-laser-facial",
+    "to": "/services/carbon-laser-facial",
+    "permanent": true
+  },
+  {
+    "from": "/skin-treatments-in-delhi/carbon-laser-facial/",
+    "to": "/services/carbon-laser-facial",
+    "permanent": true
+  }
+]

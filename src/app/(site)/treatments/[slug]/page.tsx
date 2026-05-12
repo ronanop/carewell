@@ -10,12 +10,9 @@ import { getSiteUrl } from "@/lib/site";
 
 export const revalidate = 60;
 
-const FALLBACK_SLUGS = ["hair", "skin-vitiligo", "face", "body", "therapies"];
-
 export async function generateStaticParams() {
   const rows = (await sanityFetch<{ slug: string }[]>(`*[_type == "serviceCategory" && defined(slug.current)]{"slug":slug.current}`)) ?? [];
-  if (rows.length) return rows.map((r) => ({ slug: r.slug }));
-  return FALLBACK_SLUGS.map((slug) => ({ slug }));
+  return rows.map((r) => ({ slug: r.slug }));
 }
 
 export async function generateMetadata({
@@ -41,7 +38,7 @@ export default async function CategoryHubPage({ params }: { params: Promise<{ sl
   const cat = await sanityFetch<Record<string, unknown>>(categoryBySlugQuery, { slug });
   const allCats = (await sanityFetch<Record<string, unknown>[]>(categoriesWithServicesQuery)) ?? [];
 
-  if (!cat && !FALLBACK_SLUGS.includes(slug)) notFound();
+  if (!cat) notFound();
 
   const title =
     (cat?.title as string) ??
@@ -77,7 +74,7 @@ export default async function CategoryHubPage({ params }: { params: Promise<{ sl
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-24">
         <h2 className="font-heading text-2xl font-bold text-navy">Services in this category</h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {(services.length ? services : [{ title: "Sample service", slug: { current: "sample-hair-transplant" } }]).map(
+          {services.map(
             (s) => (
               <Link
                 key={s.slug?.current}
@@ -109,10 +106,7 @@ export default async function CategoryHubPage({ params }: { params: Promise<{ sl
               </thead>
               <tbody>
                 {(
-                  (cat?.comparisonRows as { treatment?: string; bestFor?: string; downtime?: string }[]) ?? [
-                    { treatment: "Option A", bestFor: "Early hair loss", downtime: "Few days" },
-                    { treatment: "Option B", bestFor: "Advanced loss", downtime: "1–2 weeks" },
-                  ]
+                  (cat?.comparisonRows as { treatment?: string; bestFor?: string; downtime?: string }[]) ?? []
                 ).map((row, i) => (
                   <tr key={i} className="border-b border-navy/5">
                     <td className="py-3 pr-4 font-medium text-navy">{row.treatment}</td>
@@ -143,7 +137,7 @@ export default async function CategoryHubPage({ params }: { params: Promise<{ sl
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <h2 className="font-heading text-2xl font-bold text-navy">Related articles</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {(blogs.length ? blogs : [{ title: "Expert insights", slug: { current: "sample-post" }, excerpt: "Read more on our blog." }]).map(
+            {blogs.map(
               (b) => (
                 <Link
                   key={b.slug?.current}

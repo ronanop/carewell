@@ -5,8 +5,13 @@ import { urlForImage } from "@/lib/sanity-image";
 
 const components: PortableTextComponents = {
   block: {
-    h2: ({ children }) => (
-      <h2 className="font-heading mt-10 scroll-mt-28 text-2xl font-bold text-navy">{children}</h2>
+    h2: ({ children, value }) => (
+      <h2
+        id={value?._key ? `section-${value._key}` : undefined}
+        className="font-heading mt-10 scroll-mt-28 text-2xl font-bold text-navy"
+      >
+        {children}
+      </h2>
     ),
     h3: ({ children }) => (
       <h3 className="font-heading mt-8 text-xl font-bold text-navy">{children}</h3>
@@ -49,7 +54,7 @@ const components: PortableTextComponents = {
 export function PortableBody({ value }: { value: PortableTextBlock[] | null | undefined }) {
   if (!value?.length) return null;
   return (
-    <div className="prose prose-lg max-w-none text-navy/90">
+    <div className="prose prose-lg max-w-none font-sans text-navy/90">
       <PortableText value={value} components={components} />
     </div>
   );

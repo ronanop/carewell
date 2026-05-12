@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { trackEvent } from "@/lib/analytics";
 
 const PROCEDURES = [
   { id: "ht", name: "Hair transplant", base: 45000 },
@@ -25,6 +26,20 @@ export default function CostEstimatorPage() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (phone.replace(/\D/g, "").length < 10) return;
+    trackEvent("cost_estimator_submit", {
+      procedure: proc,
+      grade,
+    });
+    fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "Cost Estimator User",
+        mobile: phone.replace(/\D/g, "").slice(-10),
+        treatment: PROCEDURES.find((p) => p.id === proc)?.name ?? "Cost estimator",
+        source: "cost-estimator",
+      }),
+    }).catch(() => undefined);
     setRevealed(true);
   };
 

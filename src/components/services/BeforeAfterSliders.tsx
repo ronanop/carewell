@@ -13,7 +13,23 @@ type CaseItem = {
   subtype?: string;
 };
 
-export function BeforeAfterSliders({ cases }: { cases: CaseItem[] }) {
+/** Shown when `cases` is empty instead of the default “coming soon” copy (e.g. approved static promo). */
+export type BeforeAfterEmptyFallback = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** Prose blocks rendered below the consent figcaption. */
+  belowCaptionParagraphs?: readonly string[];
+};
+
+export function BeforeAfterSliders({
+  cases,
+  emptyFallback,
+}: {
+  cases: CaseItem[];
+  emptyFallback?: BeforeAfterEmptyFallback | null;
+}) {
   const tabs = useMemo(() => {
     const t = new Set<string>();
     cases.forEach((c) => {
@@ -26,6 +42,34 @@ export function BeforeAfterSliders({ cases }: { cases: CaseItem[] }) {
   const filtered = cases.filter((c) => tab === "All" || c.subtype === tab);
 
   if (!cases.length) {
+    if (emptyFallback) {
+      const { src, alt, width, height, belowCaptionParagraphs } = emptyFallback;
+      return (
+        <div>
+          <figure className="overflow-hidden rounded-xl border border-surface bg-surface">
+            <Image
+              src={src}
+              alt={alt}
+              width={width}
+              height={height}
+              className="h-auto w-full object-contain"
+              sizes="(max-width: 768px) 100vw, min(1200px, 100vw)"
+              priority={false}
+            />
+            <figcaption className="border-t border-surface px-4 py-3 text-xs text-navy/60">
+              Patient photos shown with consent. Results vary; individual assessment required.
+            </figcaption>
+          </figure>
+          {belowCaptionParagraphs && belowCaptionParagraphs.length > 0 ? (
+            <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-navy/85 md:text-[15px]">
+              {belowCaptionParagraphs.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      );
+    }
     return (
       <p className="text-sm text-navy/65">
         Before &amp; after gallery coming soon — add cases in Sanity with consent on file.

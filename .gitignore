@@ -16,16 +16,22 @@
 
 # misc
 .DS_Store
+Thumbs.db
+ehthumbs.db
 *.pem
+*.log
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# env files
-.env*.local
+# env files — never commit real secrets
 .env
+.env.*
+!.env.example
 
 # vercel
 .vercel
@@ -36,3 +42,19 @@ next-env.d.ts
 
 # sanity
 .sanity
+
+# optional local Google reviews snapshot (see scripts/fetch-google-reviews.mjs)
+/data/reviews-snapshot.json
+
+# editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# bundle analyzer output
+/analyze
+/.next/analyze
+
+# local Cursor session knowledge file (keep project.md / project knowledge for collaborators)
+.cursor/project-knowledge-and-status.md
