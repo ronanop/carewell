@@ -225,8 +225,9 @@ async function main() {
     _id: "site-settings",
     _type: "siteSettings",
     siteName: "Care Well Medical Centre",
-    phone: "+91 99999 99999",
-    whatsappNumber: "919999999999",
+    phone: "+91 96679 77499",
+    whatsappNumber: "919667977499",
+    email: "queries@carewellmedicalcentre.in",
     address: "Chittaranjan Park, South Delhi",
     mbbsRegNo: "MBBS-REG-NO",
     medicalDisclaimer:

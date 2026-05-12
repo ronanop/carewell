@@ -20,6 +20,9 @@ type Settings = {
   patientCounterLabel?: string;
   patientCounterValue?: number;
   mapEmbedUrl?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
 };
 
 const demoServices = [
@@ -409,8 +412,11 @@ export default async function HomePage() {
             "@context": "https://schema.org",
             "@type": ["MedicalClinic", "LocalBusiness"],
             name: "Care Well Medical Centre",
+            ...(settings.phone ? { telephone: settings.phone } : {}),
+            ...(settings.email ? { email: settings.email } : {}),
             address: {
               "@type": "PostalAddress",
+              streetAddress: settings.address ?? "Chittaranjan Park, South Delhi",
               addressLocality: "New Delhi",
               addressRegion: "Delhi",
               addressCountry: "IN",

@@ -13,6 +13,7 @@ type SiteSettings = {
   helloBarMessages?: string[];
   phone?: string;
   whatsappNumber?: string;
+  email?: string;
   address?: string;
   mapEmbedUrl?: string;
   medicalDisclaimer?: string;
@@ -43,6 +44,7 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
       </div>
       <Footer
         phone={settings.phone}
+        email={settings.email}
         address={settings.address}
         mapEmbedUrl={settings.mapEmbedUrl}
         disclaimer={settings.medicalDisclaimer}

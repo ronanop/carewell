@@ -3,6 +3,7 @@ import { MapEmbed } from "@/components/layout/MapEmbed";
 
 export function Footer({
   phone,
+  email,
   address,
   mapEmbedUrl,
   disclaimer,
@@ -10,6 +11,7 @@ export function Footer({
   hours,
 }: {
   phone?: string;
+  email?: string;
   address?: string;
   mapEmbedUrl?: string;
   disclaimer?: string;
@@ -65,8 +67,15 @@ export function Footer({
           )}
           {phone && (
             <p className="mt-4 text-sm">
-              <a href={`tel:${phone.replace(/\s/g, "")}`} className="font-semibold hover:underline">
+              <a href={`tel:${phone.replace(/[\s-]/g, "")}`} className="font-semibold hover:underline">
                 {phone}
+              </a>
+            </p>
+          )}
+          {email && (
+            <p className="mt-2 text-sm">
+              <a href={`mailto:${email}`} className="hover:underline">
+                {email}
               </a>
             </p>
           )}

@@ -13,8 +13,13 @@ export const metadata: Metadata = {
 
 export default async function ContactPage() {
   const s =
-    (await sanityFetch<{ phone?: string; address?: string; hours?: string[]; mapEmbedUrl?: string }>(siteSettingsQuery)) ??
-    {};
+    (await sanityFetch<{
+      phone?: string;
+      email?: string;
+      address?: string;
+      hours?: string[];
+      mapEmbedUrl?: string;
+    }>(siteSettingsQuery)) ?? {};
 
   return (
     <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6 md:py-24">
@@ -24,8 +29,21 @@ export default async function ContactPage() {
         {s.address && <p className="mt-4 whitespace-pre-line text-navy/80">{s.address}</p>}
         {s.phone && (
           <p className="mt-6">
-            <a href={`tel:${s.phone.replace(/\s/g, "")}`} className="text-xl font-semibold text-primary">
+            <a
+              href={`tel:${s.phone.replace(/[\s-]/g, "")}`}
+              className="text-xl font-semibold text-primary hover:underline"
+            >
               {s.phone}
+            </a>
+          </p>
+        )}
+        {s.email && (
+          <p className="mt-3">
+            <a
+              href={`mailto:${s.email}`}
+              className="text-base font-medium text-navy/85 underline-offset-4 hover:text-primary hover:underline"
+            >
+              {s.email}
             </a>
           </p>
         )}

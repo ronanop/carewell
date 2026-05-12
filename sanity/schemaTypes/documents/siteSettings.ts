@@ -16,6 +16,12 @@ export const siteSettings = defineType({
     }),
     defineField({ name: "phone", type: "string", title: "Clinic phone" }),
     defineField({ name: "whatsappNumber", type: "string", description: "E.164 without +" }),
+    defineField({
+      name: "email",
+      type: "string",
+      title: "Clinic email",
+      description: "Public contact email shown across the site (e.g. queries@carewellmedicalcentre.in)",
+    }),
     defineField({ name: "address", type: "text", rows: 3 }),
     defineField({
       name: "mapEmbedUrl",
