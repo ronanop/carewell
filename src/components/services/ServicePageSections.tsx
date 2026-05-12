@@ -100,7 +100,7 @@ export function ServicePageSections({
   };
 
   return (
-    <>
+    <div className="pb-[72px] lg:pb-0">
       <BreadcrumbJsonLd
         items={[
           { name: "Home", path: "/" },
@@ -108,7 +108,7 @@ export function ServicePageSections({
           { name: doc.title, path: `/services/${slug}` },
         ]}
       />
-      <section className="relative min-h-[65vh] overflow-hidden bg-navy">
+      <section className="relative min-h-[58svh] overflow-hidden bg-navy md:min-h-[65vh]">
         <div
           className="absolute inset-0 bg-cover bg-[center_35%] bg-no-repeat"
           style={{ backgroundImage: "url(/images/service-hero-theatre-bg.png)" }}
@@ -122,8 +122,9 @@ export function ServicePageSections({
           }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/76 to-navy/56" />
-        <div className="relative mx-auto grid max-w-7xl items-start gap-8 px-4 py-16 md:grid-cols-[1fr_312px] md:gap-10 md:px-6 lg:py-24">
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/82 to-navy/62" />
+        <div className="absolute inset-0 bg-black/5" aria-hidden />
+        <div className="relative mx-auto grid min-h-[58svh] max-w-7xl items-center gap-8 px-4 py-12 sm:py-14 md:min-h-[65vh] md:grid-cols-[1fr_312px] md:items-start md:gap-10 md:px-6 md:py-20 lg:py-24">
           <div className="min-w-0">
             <Breadcrumbs
               items={[
@@ -132,18 +133,30 @@ export function ServicePageSections({
                 { label: doc.title },
               ]}
             />
-            <h1 className="font-heading mt-6 text-4xl font-bold text-white md:text-5xl">
+            <h1 className="font-heading mt-5 text-[34px] font-bold leading-[1.1] text-white sm:text-[42px] md:mt-6 md:text-5xl">
               {doc.title} in Delhi
             </h1>
-            {doc.tagline && <p className="mt-4 max-w-xl text-lg text-white/90">{doc.tagline}</p>}
-            <div className="mt-8 flex flex-wrap gap-4">
+            {doc.tagline && (
+              <p className="mt-4 max-w-xl text-base text-white/90 sm:text-lg">
+                {doc.tagline}
+              </p>
+            )}
+            <div className="mt-7 flex flex-wrap gap-3 sm:gap-4 md:mt-8">
               <Button href="/book-consultation" variant="secondary">
                 Book Free Consultation
               </Button>
               {wa && (
-                <Button href={wa} variant="outline" className="!border-white !text-white hover:!bg-white hover:!text-navy">
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-button bg-[#25D366] px-6 py-3 text-base font-semibold text-white shadow-[0_8px_24px_-8px_rgba(37,211,102,0.55)] transition-transform duration-150 ease-out hover:scale-[1.01] hover:bg-[#1FB959] active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] motion-reduce:transform-none"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" />
+                  </svg>
                   WhatsApp
-                </Button>
+                </a>
               )}
             </div>
           </div>
@@ -369,25 +382,43 @@ export function ServicePageSections({
         </aside>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-30 flex border-t border-surface bg-white p-2 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] lg:hidden">
+      {/* Mobile sticky CTA bar — sits above every other fixed element */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50 flex gap-2 border-t border-surface bg-white px-3 pb-[max(0.625rem,env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-4px_24px_rgba(0,0,0,0.10)] lg:hidden"
+      >
         {phone && (
           <a
             href={`tel:${phone.replace(/\s/g, "")}`}
-            className="flex flex-1 items-center justify-center rounded-lg bg-primary py-3 text-sm font-semibold text-white"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-navy py-3 text-[13px] font-semibold text-white"
           >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.05z" />
+            </svg>
             Call
           </a>
         )}
         {wa && (
-          <a href={wa} className="flex flex-1 items-center justify-center rounded-lg bg-teal py-3 text-sm font-semibold text-white">
+          <a
+            href={wa}
+            target="_blank"
+            rel="noreferrer"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[#25D366] py-3 text-[13px] font-semibold text-white"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" />
+            </svg>
             WhatsApp
           </a>
         )}
         <Link
           href="/book-consultation"
-          className="flex flex-1 items-center justify-center rounded-lg border border-primary py-3 text-sm font-semibold text-primary"
+          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-primary py-3 text-[13px] font-semibold text-white"
         >
-          Book Now
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <path d="M16 2v4M8 2v4M3 10h18" />
+          </svg>
+          Book Free
         </Link>
       </div>
 
@@ -413,6 +444,6 @@ export function ServicePageSections({
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(procLd) }} />
-    </>
+    </div>
   );
 }

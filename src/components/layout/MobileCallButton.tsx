@@ -1,10 +1,19 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
 
+const SERVICE_PATTERNS = [/^\/services\//, /^\/treatments\//, /^\/hi\/services\//];
+
 export function MobileCallButton({ phone }: { phone?: string | null }) {
+  const pathname = usePathname() || "/";
   if (!phone) return null;
   const tel = phone.replace(/\s/g, "");
+
+  // Service pages have their own bottom bar — don't show the floating call button there
+  const hasOwnBar = SERVICE_PATTERNS.some((p) => p.test(pathname));
+  if (hasOwnBar) return null;
+
   return (
     <a
       href={`tel:${tel}`}
