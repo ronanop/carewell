@@ -10,6 +10,7 @@ type ServiceItem = {
   heroImageUrl?: string | null;
   description?: string | null;
   tagline?: string | null;
+  href?: string;
 };
 
 const treatmentFallbackPalettes = [
@@ -65,8 +66,8 @@ export function TreatmentsScroller({ services }: { services: ServiceItem[] }) {
           return (
             <Link
               key={service.slug}
-              href={`/services/${service.slug}`}
-              className="group flex min-h-full min-w-[250px] snap-start flex-col rounded-2xl border border-[var(--color-border-light)] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-lg lg:min-w-[calc((100%-3rem)/4)] lg:max-w-[calc((100%-3rem)/4)]"
+              href={service.href ?? `/services/${service.slug}`}
+              className="group flex min-h-full min-w-[260px] snap-start flex-col rounded-2xl border border-[var(--color-border-light)] bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-card-hover sm:min-w-[280px] lg:min-w-[calc((100%-4.5rem)/3)] lg:max-w-[calc((100%-4.5rem)/3)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-t-2xl bg-surface">
                 <Image
@@ -78,12 +79,17 @@ export function TreatmentsScroller({ services }: { services: ServiceItem[] }) {
                 />
               </div>
               <div className="flex flex-1 flex-col px-4 pb-5 pt-4">
-                <p className="text-center text-heading-sm font-semibold leading-snug text-navy">{service.title}</p>
+                <p className="text-center font-heading text-heading-md font-bold leading-snug text-navy">
+                  {service.title}
+                </p>
                 {blurb ? (
-                  <p className="mt-2 line-clamp-3 text-center text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:text-navy/80">
+                  <p className="mt-2 line-clamp-3 text-center text-body-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:text-navy/80">
                     {blurb}
                   </p>
                 ) : null}
+                <p className="mt-3 text-center text-xs font-semibold text-primary group-hover:underline">
+                  Learn more →
+                </p>
               </div>
             </Link>
           );

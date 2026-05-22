@@ -66,7 +66,7 @@ function AnimatedMetricValue({
 
 export function TrustMarquee() {
   return (
-    <section className="border-y border-[var(--color-border-light)] bg-surface py-10 lg:py-14">
+    <section className="border-y border-[var(--color-border-light)] bg-surface py-section-mobile lg:py-section-desktop">
       <div className="container">
         <div className="grid grid-cols-2 gap-7 divide-y divide-[var(--color-border)] md:grid-cols-3 lg:grid-cols-6 lg:gap-4 lg:divide-x lg:divide-y-0">
           {trustMetrics.map((item, index) => {

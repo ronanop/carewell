@@ -1,0 +1,14 @@
+export { AboutUsSection } from "./AboutUsSection";
+export { BlogPreviewSection } from "./BlogPreviewSection";
+export { BookConsultationBand } from "./BookConsultationBand";
+export { ConsultationSpecialtiesSection } from "./ConsultationSpecialtiesSection";
+export { FinalCtaSection } from "./FinalCtaSection";
+export { GoogleReviewsSection } from "./GoogleReviewsSection";
+export { LocationLeadSection } from "./LocationLeadSection";
+export { ServicesSection } from "./ServicesSection";
+export { SkinScanSection } from "./SkinScanSection";
+export { SurgeonSpotlightSection } from "./SurgeonSpotlightSection";
+export { TreatmentFinderBand } from "./TreatmentFinderBand";
+export { TreatmentJourneySection } from "./TreatmentJourneySection";
+export { VideoTestimonialsSection } from "./VideoTestimonialsSection";
+export { WhyChooseSection } from "./WhyChooseSection";
