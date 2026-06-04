@@ -13,7 +13,7 @@ function loadManifestPaths(): string[] {
   try {
     const file = join(getRepoRoot(), "db", "seed", "legacy-sitemap-pages.json");
     const json = JSON.parse(readFileSync(file, "utf8")) as Manifest;
-    return [...new Set((json.paths ?? []).map(normalizeLegacyPath))].filter((p) => p !== "/");
+    return Array.from(new Set((json.paths ?? []).map(normalizeLegacyPath))).filter((p) => p !== "/");
   } catch {
     return [];
   }

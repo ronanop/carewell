@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from "@portabletext/types";
 import Link from "next/link";
 import { Suspense } from "react";
 import Image from "next/image";
@@ -29,7 +30,7 @@ export async function LegacyBlogPage({ legacyPath }: { legacyPath: string }) {
 
   const title = post.title;
   const author = post.author;
-  const body = post.body;
+  const body = post.body as unknown as PortableTextBlock[] | null | undefined;
   const related = post.relatedPosts ?? [];
   const publishedAt = post.publishedAt ?? "";
   const updatedAt = post.updatedAt;

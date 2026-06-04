@@ -29,6 +29,6 @@ export type ServiceDoc = {
   faq?: { question?: string; answer?: string }[];
   relatedServices?: { title?: string; slug?: { current?: string } }[];
   treatmentDropdownLabel?: string;
-  seo?: { title?: string; description?: string };
+  seo?: { title?: string; description?: string; canonicalUrl?: string };
 };
 
