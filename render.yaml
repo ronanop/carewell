@@ -1,0 +1,60 @@
+# Render Blueprint — optional; or copy these commands into each service manually.
+# Docs: https://render.com/docs/infrastructure-as-code
+
+services:
+  - type: web
+    name: carewell-frontend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run db:generate -w @carewell/backend && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: API_URL
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: carewell-db
+          property: connectionString
+      - key: ADMIN_SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CMS_PROVIDER
+        value: prisma
+
+  - type: web
+    name: carewell-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build:api
+    startCommand: npm run start:api
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_PORT
+        fromService:
+          type: web
+          name: carewell-backend
+          property: port
+      - key: FRONTEND_URL
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: carewell-db
+          property: connectionString
+      - key: ADMIN_SESSION_SECRET
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CMS_PROVIDER
+        value: prisma
+
+databases:
+  - name: carewell-db
+    plan: free

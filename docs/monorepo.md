@@ -62,9 +62,12 @@ Environment files (`.env.local`) live at the **repo root**. The API loads them f
 
 ## Deploy (split API + frontend)
 
-1. **API** — `npm run start -w @carewell/backend` with `API_PORT=$PORT`, `DATABASE_URL`, secrets.
-2. **Frontend** — set `API_URL` to the API’s public HTTPS origin so Next proxies `/api/*` and `/uploads/*`.
-3. Set `FRONTEND_URL` on the API to the public Next URL for cache revalidation.
+1. **Backend** (`carewell-backend-*.onrender.com`)
+   - Build: `npm install && npm run build:api`
+   - Start: `npm run start:api`
+   - Env: `API_PORT=$PORT`, `FRONTEND_URL=https://carewell-rk0j.onrender.com`, `DATABASE_URL`, `ADMIN_SESSION_SECRET`, `ADMIN_PASSWORD`
+2. **Frontend** — set `API_URL=https://carewell-backend-*.onrender.com`, `NEXT_PUBLIC_SITE_URL`, `FRONTEND_URL`, `DATABASE_URL`, matching `ADMIN_*`.
+3. **Important:** Render start command must be exactly `npm run start:api` — extra text (e.g. `→ tsx src/server.ts`) breaks npm and causes `tsx: not found`.
 
 `netlify.toml` today publishes only the Next app; point `API_URL` at your hosted API when you split deploys.
 
