@@ -37,7 +37,7 @@ import {
 import { getSiteUrl } from "@carewell/backend/lib/site";
 import { whatsappHref } from "@carewell/backend/lib/whatsapp";
 
-import { CheckList, DataTable, SectionTitle } from "@/components/services/hub-page-table";
+import { DataTable, SectionTitle } from "@/components/services/hub-page-table";
 
 const CLINIC_PHONE_DISPLAY = "+91-9667-977-499";
 

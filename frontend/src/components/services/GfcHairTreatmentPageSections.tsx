@@ -255,7 +255,7 @@ export function GfcHairTreatmentPageSections({
           <section className="section-y border-t border-surface">
             <SectionTitle>{page.whyChooseHeading}</SectionTitle>
             <p className="mt-4 text-base text-navy/85">{page.whyChooseIntro}</p>
-            <h3 className="mt-6 font-heading text-lg font-bold text-navy">Here's Why Patients Trust Us</h3>
+            <h3 className="mt-6 font-heading text-lg font-bold text-navy">Here&apos;s Why Patients Trust Us</h3>
             <DataTable headers={["Feature", "Advantage"]} keys={["feature", "advantage"]} rows={GFC_WHY_CHOOSE_ROWS} />
           </section>
 

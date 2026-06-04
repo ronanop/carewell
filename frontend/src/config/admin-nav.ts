@@ -4,7 +4,7 @@ import {
   ADMIN_SERVICE_PAGES,
   ADMIN_SITE_PAGES,
 } from "@/config/admin-content-routes";
-import type { AdminNavItem, AdminNavSection } from "@/config/admin-nav-types";
+import type { AdminNavSection } from "@/config/admin-nav-types";
 
 export type { AdminNavItem, AdminNavSection } from "@/config/admin-nav-types";
 
