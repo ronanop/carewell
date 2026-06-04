@@ -7,10 +7,13 @@ import { hasTeamUsers, isAdminLoginAvailable } from "@carewell/backend/lib/admin
 
 
 export default async function AdminLoginPage() {
-
   const configured = await isAdminLoginAvailable();
-
-  const teamUsers = await hasTeamUsers();
+  let teamUsers = false;
+  try {
+    teamUsers = await hasTeamUsers();
+  } catch {
+    teamUsers = false;
+  }
 
   const showEmailField = Boolean(process.env.ADMIN_EMAIL) || teamUsers;
 

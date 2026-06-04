@@ -213,24 +213,28 @@ const nextConfig = {
   },
 
   async rewrites() {
-    const apiBase = (process.env.API_URL || process.env.BACKEND_URL || "http://localhost:4000").replace(
-      /\/$/,
-      "",
-    );
-    return {
-      beforeFiles: [
-        {
-          source: "/uploads/:path*",
-          destination: `${apiBase}/api/serve-upload/:path*`,
-        },
-      ],
-      afterFiles: [
-        {
-          source: "/api/:path*",
-          destination: `${apiBase}/api/:path*`,
-        },
-      ],
-    };
+    const apiBase = (process.env.API_URL || process.env.BACKEND_URL || "").replace(/\/$/, "");
+    const useExternalApi =
+      Boolean(apiBase) &&
+      !/^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/i.test(apiBase);
+
+    const beforeFiles = [
+      {
+        source: "/uploads/:path*",
+        destination: useExternalApi
+          ? `${apiBase}/api/serve-upload/:path*`
+          : "/api/serve-upload/:path*",
+      },
+    ];
+
+    if (useExternalApi) {
+      return {
+        beforeFiles,
+        afterFiles: [{ source: "/api/:path*", destination: `${apiBase}/api/:path*` }],
+      };
+    }
+
+    return { beforeFiles };
   },
 
 };

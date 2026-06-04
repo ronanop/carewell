@@ -74,8 +74,8 @@ Maintenance CLIs live under `backend/scripts/`.
 
 ## Deploy
 
-- **Frontend**: Netlify / Vercel / Render — set `API_URL` to your hosted API so `/api/*` rewrites work.
-- **API**: any Node host — `npm run start -w @carewell/backend` with `DATABASE_URL` and secrets.
+- **Frontend (Render / Vercel / Netlify)**: `npm run build` then `npm run start`. `/api/*` runs inside Next (no separate API required). Set `DATABASE_URL`, `ADMIN_SESSION_SECRET`, `ADMIN_PASSWORD`, and `NEXT_PUBLIC_SITE_URL`. Do **not** set `API_URL` unless you split the API to another host.
+- **Optional split API**: run `npm run start -w @carewell/backend` with `API_PORT=$PORT`, set frontend `API_URL` to that service’s public URL.
 - **Database**: managed Postgres; run `npm run db:migrate` in CI or release step.
 - **Render Postgres**: use the **Internal** `DATABASE_URL` on the web service at runtime. The production build skips DB-backed static generation when it detects an internal `dpg-*-a` host (build runs outside the private network). CMS/blog/legacy URLs are generated on first request (`revalidate: 60`).
 

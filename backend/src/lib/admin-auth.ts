@@ -73,7 +73,11 @@ export async function isAdminLoginAvailable(): Promise<boolean> {
   if (!secret || secret.length < 16) return false;
   const hasEnvPassword = Boolean(process.env.ADMIN_PASSWORD?.length || process.env.ADMIN_PASSWORD_HASH?.length);
   if (hasEnvPassword) return true;
-  return hasTeamUsers();
+  try {
+    return await hasTeamUsers();
+  } catch {
+    return false;
+  }
 }
 
 export function getLeadPipelineStatus(): Record<string, "configured" | "not_configured"> {

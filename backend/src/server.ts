@@ -5,8 +5,8 @@ import { config as loadEnv } from "dotenv";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serve } from "@hono/node-server";
-import { discoverApiRoutes, type RouteModule } from "@/lib/route-registry";
-import { runWithRequest } from "@/lib/request-context";
+import { discoverApiRoutes } from "@/lib/route-registry";
+import { dispatchApiRequest } from "@/lib/api-dispatch";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 for (const envFile of [join(repoRoot, ".env.local"), join(repoRoot, ".env")]) {
@@ -33,22 +33,14 @@ app.get("/health", (c) => c.json({ ok: true, service: "@carewell/backend" }));
 
 const routes = await discoverApiRoutes();
 
-for (const route of routes) {
-  const mod = await route.load();
-  for (const method of route.methods) {
-    const handler = mod[method];
-    if (!handler) continue;
-
-    app.on(method, route.pattern, async (c) => {
-      const req = c.req.raw;
-      const params = c.req.param() as Record<string, string>;
-      return runWithRequest(req, async () => {
-        const result = await handler(req, { params });
-        return result;
-      });
-    });
+app.all("/api/*", async (c) => {
+  try {
+    return await dispatchApiRequest(c.req.raw);
+  } catch (err) {
+    console.error("[api]", c.req.method, c.req.path, err);
+    return Response.json({ ok: false, error: "Internal server error" }, { status: 500 });
   }
-}
+});
 
 console.info(`[api] ${routes.length} route modules on :${port}`);
 console.info(`[api] CORS origin: ${frontendOrigin}`);
