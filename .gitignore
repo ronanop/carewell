@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/frontend/node_modules/
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -9,6 +10,7 @@
 
 # next.js
 /.next/
+/frontend/.next/
 /out/
 
 # production
@@ -40,11 +42,16 @@ lerna-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# sanity
+# sanity (legacy)
 .sanity
 
-# optional local Google reviews snapshot (see scripts/fetch-google-reviews.mjs)
-/data/reviews-snapshot.json
+# CMS uploads (repo root uploads/)
+/uploads/*
+!/uploads/.gitkeep
+
+# large optional seed artifacts
+/db/seed/scrape-parsed-pages.json
+/db/seed/reviews-snapshot.json
 
 # editor / IDE
 .vscode/
@@ -56,5 +63,5 @@ next-env.d.ts
 /analyze
 /.next/analyze
 
-# local Cursor session knowledge file (keep project.md / project knowledge for collaborators)
+# local Cursor session knowledge file
 .cursor/project-knowledge-and-status.md

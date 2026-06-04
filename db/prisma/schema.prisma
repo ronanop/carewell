@@ -1,0 +1,422 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  filename  String
+  path      String
+  url       String
+  alt       String?
+  mimeType  String?
+  size      Int?
+  width     Int?
+  height    Int?
+  createdAt DateTime @default(now())
+
+  heroServices            Service[]         @relation("ServiceHeroImage")
+  illustrationServices    Service[]         @relation("ServiceIllustration")
+  categoryHeroes          ServiceCategory[] @relation("CategoryHero")
+  blogCovers              BlogPost[]        @relation("BlogCover")
+  authors                 Author[]          @relation("AuthorImage")
+  galleryBefore           GalleryItem[]     @relation("GalleryBefore")
+  galleryAfter            GalleryItem[]     @relation("GalleryAfter")
+  siteSettingsHero        SiteSettings[]    @relation("SiteSettingsHero")
+  seoOgServices           Service[]         @relation("ServiceSeoOg")
+  seoOgBlogs              BlogPost[]        @relation("BlogSeoOg")
+  seoOgCategories         ServiceCategory[] @relation("CategorySeoOg")
+  seoOgGallery            GalleryItem[]     @relation("GallerySeoOg")
+  seoOgHyperlocal              HyperlocalPage[]            @relation("HyperlocalSeoOg")
+  categoryBeforeAfterBefore  CategoryBeforeAfterCase[]   @relation("CategoryBaBefore")
+  categoryBeforeAfterAfter   CategoryBeforeAfterCase[]   @relation("CategoryBaAfter")
+  serviceBeforeAfterBefore   ServiceBeforeAfterCase[]    @relation("ServiceBaBefore")
+  serviceBeforeAfterAfter    ServiceBeforeAfterCase[]    @relation("ServiceBaAfter")
+}
+
+model ServiceCategory {
+  id              String   @id
+  slug            String   @unique
+  title           String
+  megaMenuKey     String?
+  heroSubtitle    String?  @db.Text
+  intro           Json?
+  comparisonRows  Json?
+  heroImageId     String?
+  seoTitle        String?
+  seoDescription  String?  @db.Text
+  seoCanonicalUrl String?
+  seoOgTitle      String?
+  seoOgDescription String? @db.Text
+  seoOgImageId    String?
+  seoNoindex      Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  heroImage  Media?    @relation("CategoryHero", fields: [heroImageId], references: [id], onDelete: SetNull)
+  seoOgImage Media?    @relation("CategorySeoOg", fields: [seoOgImageId], references: [id])
+  services   Service[]
+  faqs       CategoryFaq[]
+  beforeAfter CategoryBeforeAfterCase[]
+  relatedBlogs CategoryBlogPost[]
+}
+
+model CategoryFaq {
+  id         String @id @default(cuid())
+  categoryId String
+  sortOrder  Int    @default(0)
+  question   String
+  answer     String @db.Text
+
+  category ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model CategoryBeforeAfterCase {
+  id                String  @id @default(cuid())
+  categoryId        String
+  sortOrder         Int     @default(0)
+  beforeImageId     String?
+  afterImageId      String?
+  patientInitials   String?
+  age               Int?
+  gender            String?
+  monthsPostProcedure Int?
+  subtype           String?
+
+  category    ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  beforeImage Media?          @relation("CategoryBaBefore", fields: [beforeImageId], references: [id])
+  afterImage  Media?          @relation("CategoryBaAfter", fields: [afterImageId], references: [id])
+}
+
+model CategoryBlogPost {
+  categoryId String
+  blogPostId String
+  sortOrder  Int    @default(0)
+
+  category ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  blogPost BlogPost        @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+
+  @@id([categoryId, blogPostId])
+}
+
+model Service {
+  id                    String   @id
+  slug                  String
+  legacyPath            String?  @unique
+  locale                String   @default("en")
+  title                 String
+  tagline               String?
+  whatIsBody            Json?
+  insightPoints         String[] @default([])
+  candidateGood         String[] @default([])
+  candidatePoor         String[] @default([])
+  pricingFromInr        Int?
+  pricingFactors        String[] @default([])
+  pricingEmiNote        String?  @db.Text
+  valueStack            String[] @default([])
+  youtubeVideoId        String?
+  treatmentDropdownLabel String?
+  categoryId            String?
+  heroImageId           String?
+  whatIsIllustrationId  String?
+  alternateLocaleServiceId String?
+  seoTitle              String?
+  seoDescription        String?  @db.Text
+  seoCanonicalUrl       String?
+  seoOgTitle            String?
+  seoOgDescription      String?  @db.Text
+  seoOgImageId          String?
+  seoNoindex            Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  category              ServiceCategory? @relation(fields: [categoryId], references: [id])
+  heroImage             Media?           @relation("ServiceHeroImage", fields: [heroImageId], references: [id])
+  whatIsIllustration    Media?           @relation("ServiceIllustration", fields: [whatIsIllustrationId], references: [id])
+  seoOgImage            Media?           @relation("ServiceSeoOg", fields: [seoOgImageId], references: [id])
+  alternateLocaleService Service?        @relation("ServiceLocalePair", fields: [alternateLocaleServiceId], references: [id])
+  alternateFor          Service[]        @relation("ServiceLocalePair")
+  quickFacts            ServiceQuickFact[]
+  howItWorksSteps       ServiceHowItWorksStep[]
+  beforeAfterCases      ServiceBeforeAfterCase[]
+  faqs                  ServiceFaq[]
+  relatedFrom           ServiceRelated[] @relation("ServiceRelatedFrom")
+  relatedTo             ServiceRelated[] @relation("ServiceRelatedTo")
+  linkedBlogPosts       BlogPost[]
+  linkedHyperlocal      HyperlocalPage[]
+
+  @@unique([slug, locale])
+}
+
+model ServiceQuickFact {
+  id        String @id @default(cuid())
+  serviceId String
+  sortOrder Int    @default(0)
+  label     String
+  value     String
+
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+model ServiceHowItWorksStep {
+  id          String @id @default(cuid())
+  serviceId   String
+  sortOrder   Int    @default(0)
+  title       String
+  description String @db.Text
+
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+model ServiceBeforeAfterCase {
+  id                  String  @id @default(cuid())
+  serviceId           String
+  sortOrder           Int     @default(0)
+  beforeImageId       String?
+  afterImageId        String?
+  patientInitials     String?
+  age                 Int?
+  gender              String?
+  monthsPostProcedure Int?
+  subtype             String?
+
+  service     Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  beforeImage Media?  @relation("ServiceBaBefore", fields: [beforeImageId], references: [id])
+  afterImage  Media?  @relation("ServiceBaAfter", fields: [afterImageId], references: [id])
+}
+
+model ServiceFaq {
+  id        String @id @default(cuid())
+  serviceId String
+  sortOrder Int    @default(0)
+  question  String
+  answer    String @db.Text
+
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+model ServiceRelated {
+  fromServiceId String
+  toServiceId   String
+  sortOrder     Int    @default(0)
+
+  fromService Service @relation("ServiceRelatedFrom", fields: [fromServiceId], references: [id], onDelete: Cascade)
+  toService   Service @relation("ServiceRelatedTo", fields: [toServiceId], references: [id], onDelete: Cascade)
+
+  @@id([fromServiceId, toServiceId])
+}
+
+model Author {
+  id           String   @id
+  slug         String   @unique
+  name         String
+  credentials  String?  @db.Text
+  bio          Json?
+  imageId      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  image     Media?     @relation("AuthorImage", fields: [imageId], references: [id])
+  blogPosts BlogPost[]
+}
+
+model BlogPost {
+  id                String    @id
+  slug              String    @unique
+  legacyPath        String?   @unique
+  title             String
+  category          String?
+  featured          Boolean   @default(false)
+  excerpt           String?   @db.Text
+  body              Json?
+  publishedAt       DateTime?
+  updatedAt         DateTime?
+  readTimeMinutes   Int?
+  midArticleCtaTitle String?
+  midArticleCtaHref  String?
+  clusterRole       String?
+  authorId          String?
+  pillarPostId      String?
+  linkedServiceId   String?
+  coverImageId      String?
+  seoTitle          String?
+  seoDescription    String?   @db.Text
+  seoCanonicalUrl   String?
+  seoOgTitle        String?
+  seoOgDescription  String?   @db.Text
+  seoOgImageId      String?
+  seoNoindex        Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+  cmsUpdatedAt      DateTime  @updatedAt
+
+  author        Author?           @relation(fields: [authorId], references: [id])
+  pillarPost    BlogPost?         @relation("BlogPillar", fields: [pillarPostId], references: [id])
+  clusterPosts  BlogPost[]        @relation("BlogPillar")
+  linkedService Service?          @relation(fields: [linkedServiceId], references: [id])
+  coverImage    Media?            @relation("BlogCover", fields: [coverImageId], references: [id])
+  seoOgImage    Media?            @relation("BlogSeoOg", fields: [seoOgImageId], references: [id])
+  relatedFrom   BlogPostRelated[] @relation("BlogRelatedFrom")
+  relatedTo     BlogPostRelated[] @relation("BlogRelatedTo")
+  categories    CategoryBlogPost[]
+}
+
+model BlogPostRelated {
+  fromPostId String
+  toPostId   String
+  sortOrder  Int    @default(0)
+
+  fromPost BlogPost @relation("BlogRelatedFrom", fields: [fromPostId], references: [id], onDelete: Cascade)
+  toPost   BlogPost @relation("BlogRelatedTo", fields: [toPostId], references: [id], onDelete: Cascade)
+
+  @@id([fromPostId, toPostId])
+}
+
+model SiteSettings {
+  id                  String   @id @default("default")
+  siteName            String?
+  phone               String?
+  whatsappNumber      String?
+  email               String?
+  address             String?  @db.Text
+  mapEmbedUrl         String?
+  mbbsRegNo           String?
+  medicalDisclaimer   String?  @db.Text
+  helloBarMessages    String[] @default([])
+  trustBadges         String[] @default([])
+  seoFooterCities     Json?
+  patientCounterLabel String?
+  patientCounterValue Int?
+  gtmId               String?
+  ga4MeasurementId    String?
+  clarityProjectId    String?
+  hours               String[] @default([])
+  socialLinks         Json?
+  heroImageId         String?
+  globalSeoTitle      String?
+  globalSeoDescription String? @db.Text
+  notificationEmail   String?
+  autoReplySubject    String?
+  autoReplyBody       String?  @db.Text
+  integrations        Json?
+  updatedAt           DateTime @updatedAt
+
+  heroImage Media? @relation("SiteSettingsHero", fields: [heroImageId], references: [id])
+}
+
+model Page {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  excerpt         String?  @db.Text
+  body            Json?
+  published       Boolean  @default(false)
+  seoTitle        String?
+  seoDescription  String?  @db.Text
+  seoNoindex      Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model FormSubmission {
+  id          String   @id @default(cuid())
+  formType    String   @default("lead")
+  name        String
+  phone       String
+  email       String?
+  treatment   String?
+  message     String?  @db.Text
+  pageUrl     String?
+  source      String?
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  status      String   @default("new")
+  ip          String?
+  payload     Json?
+  createdAt   DateTime @default(now())
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         String    @default("editor")
+  active       Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Navigation {
+  id            String   @id @default("default")
+  title         String   @default("Main navigation")
+  items         Json?
+  footerColumns Json?
+  updatedAt     DateTime @updatedAt
+}
+
+model Redirect {
+  id         String   @id @default(cuid())
+  fromPath   String   @unique
+  toPath     String
+  statusCode Int      @default(301)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model GalleryItem {
+  id              String   @id
+  title           String
+  category        String?
+  treatmentDetail String?
+  consentOnFile   Boolean  @default(false)
+  beforeImageId   String?
+  afterImageId    String?
+  seoTitle        String?
+  seoDescription  String?  @db.Text
+  seoNoindex      Boolean  @default(false)
+  seoOgImageId    String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  beforeImage Media? @relation("GalleryBefore", fields: [beforeImageId], references: [id])
+  afterImage  Media? @relation("GalleryAfter", fields: [afterImageId], references: [id])
+  seoOgImage  Media? @relation("GallerySeoOg", fields: [seoOgImageId], references: [id])
+}
+
+model Testimonial {
+  id          String @id @default(cuid())
+  quote       String @db.Text
+  attribution String?
+  rating      Int?
+  sortOrder   Int    @default(0)
+}
+
+model HyperlocalPage {
+  id                  String   @id
+  slug                String   @unique
+  title               String
+  areaName            String?
+  serviceFocus        String?
+  distanceFromClinic  String?
+  directions          Json?
+  body                Json?
+  linkedServiceId     String?
+  seoTitle            String?
+  seoDescription      String?  @db.Text
+  seoCanonicalUrl     String?
+  seoOgTitle          String?
+  seoOgDescription    String?  @db.Text
+  seoOgImageId        String?
+  seoNoindex          Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  linkedService Service? @relation(fields: [linkedServiceId], references: [id])
+  seoOgImage    Media?   @relation("HyperlocalSeoOg", fields: [seoOgImageId], references: [id])
+}
