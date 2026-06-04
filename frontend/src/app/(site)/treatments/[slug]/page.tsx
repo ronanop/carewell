@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/Button";
 import { sanityFetch } from "@carewell/backend/sanity/client";
 import { categoriesWithServicesQuery, categoryBySlugQuery } from "@carewell/backend/sanity/queries";
 import { getSiteUrl } from "@carewell/backend/lib/site";
+import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
+  if (skipDatabaseAtBuildTime()) return [];
   const rows = (await sanityFetch<{ slug: string }[]>(`*[_type == "serviceCategory" && defined(slug.current)]{"slug":slug.current}`)) ?? [];
   return rows.map((r) => ({ slug: r.slug }));
 }

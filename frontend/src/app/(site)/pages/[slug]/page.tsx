@@ -4,11 +4,12 @@ import { RichContentBody } from "@/components/content/RichContentBody";
 import { getPageBySlug, getPageSlugs } from "@carewell/backend/lib/cms/queries";
 import { getSiteSettings } from "@carewell/backend/lib/cms/queries";
 import { getSiteUrl } from "@carewell/backend/lib/site";
+import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  if (!process.env.DATABASE_URL) return [];
+  if (!process.env.DATABASE_URL || skipDatabaseAtBuildTime()) return [];
   try {
     const rows = await getPageSlugs();
     return rows.map((r) => ({ slug: r.slug }));

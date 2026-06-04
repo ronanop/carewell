@@ -74,9 +74,10 @@ Maintenance CLIs live under `backend/scripts/`.
 
 ## Deploy
 
-- **Frontend**: Netlify / Vercel — set `API_URL` to your hosted API so `/api/*` rewrites work.
+- **Frontend**: Netlify / Vercel / Render — set `API_URL` to your hosted API so `/api/*` rewrites work.
 - **API**: any Node host — `npm run start -w @carewell/backend` with `DATABASE_URL` and secrets.
 - **Database**: managed Postgres; run `npm run db:migrate` in CI or release step.
+- **Render Postgres**: use the **Internal** `DATABASE_URL` on the web service at runtime. The production build skips DB-backed static generation when it detects an internal `dpg-*-a` host (build runs outside the private network). CMS/blog/legacy URLs are generated on first request (`revalidate: 60`).
 
 Uploads persist on disk at `uploads/` (mount a volume in production).
 

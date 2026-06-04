@@ -27,6 +27,7 @@ import {
 } from "@carewell/backend/lib/legacy-path";
 
 import { getSiteUrl } from "@carewell/backend/lib/site";
+import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
 
 
 
@@ -69,16 +70,20 @@ const RESERVED_PREFIXES = new Set([
 
 
 export async function generateStaticParams() {
-  if (process.env.NODE_ENV === "development") return [];
+  if (process.env.NODE_ENV === "development" || skipDatabaseAtBuildTime()) return [];
 
-  const [services, blogs] = await Promise.all([
-    listLegacySitemapPaths(),
-    listLegacyBlogSitemapPaths(),
-  ]);
-  const paths = Array.from(new Set([...services, ...blogs])).filter((p) => p !== "/");
-  return paths.map((legacyPath) => ({
-    path: legacyPath.split("/").filter(Boolean),
-  }));
+  try {
+    const [services, blogs] = await Promise.all([
+      listLegacySitemapPaths(),
+      listLegacyBlogSitemapPaths(),
+    ]);
+    const paths = Array.from(new Set([...services, ...blogs])).filter((p) => p !== "/");
+    return paths.map((legacyPath) => ({
+      path: legacyPath.split("/").filter(Boolean),
+    }));
+  } catch {
+    return [];
+  }
 }
 
 

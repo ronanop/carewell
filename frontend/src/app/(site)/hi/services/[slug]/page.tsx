@@ -4,6 +4,7 @@ import { ServicePageSections } from "@/components/services/ServicePageSections";
 import { mapSanityService } from "@carewell/backend/lib/map-service";
 import { serviceLanguageAlternates } from "@carewell/backend/lib/service-hreflang";
 import { getSiteUrl } from "@carewell/backend/lib/site";
+import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
 import { sanityFetch } from "@carewell/backend/sanity/client";
 import { serviceBySlugQuery, servicesSlugsQuery, siteSettingsQuery } from "@carewell/backend/sanity/queries";
 
@@ -12,6 +13,7 @@ export const revalidate = 60;
 type Settings = { phone?: string; whatsappNumber?: string; mapEmbedUrl?: string };
 
 export async function generateStaticParams() {
+  if (skipDatabaseAtBuildTime()) return [];
   const rows = (await sanityFetch<{ slug: string; locale?: string }[]>(servicesSlugsQuery)) ?? [];
   const hi = rows.filter((r) => r.slug && r.locale === "hi");
   return hi.map((r) => ({ slug: r.slug }));

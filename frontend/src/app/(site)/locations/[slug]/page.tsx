@@ -5,10 +5,12 @@ import Link from "next/link";
 import { sanityFetch } from "@carewell/backend/sanity/client";
 import { hyperlocalBySlugQuery, hyperlocalSlugsQuery } from "@carewell/backend/sanity/queries";
 import { getSiteUrl } from "@carewell/backend/lib/site";
+import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
+  if (skipDatabaseAtBuildTime()) return [];
   const rows = (await sanityFetch<{ slug: string }[]>(hyperlocalSlugsQuery)) ?? [];
   if (rows.length) return rows.map((r) => ({ slug: r.slug }));
   return [{ slug: "hair-transplant-faridabad" }];

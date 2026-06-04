@@ -13,11 +13,13 @@ import { sanityFetch } from "@carewell/backend/sanity/client";
 import { blogPostBySlugQuery } from "@carewell/backend/sanity/queries";
 import { extractH2Sections } from "@carewell/backend/lib/portable-h2";
 import { getSiteUrl } from "@carewell/backend/lib/site";
+import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
 import Image from "next/image";
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
+  if (skipDatabaseAtBuildTime()) return [];
   const rows = (await sanityFetch<{ slug: string }[]>(`*[_type=="blogPost" && defined(slug.current)]{"slug":slug.current}`)) ?? [];
   return rows.map((r) => ({ slug: r.slug }));
 }
@@ -42,7 +44,7 @@ export async function generateMetadata({
 
 export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const legacyPath = await findLegacyPathByBlogSlug(slug);
+  const legacyPath = skipDatabaseAtBuildTime() ? null : await findLegacyPathByBlogSlug(slug);
   if (legacyPath) redirect(legacyPathWithTrailingSlash(legacyPath));
 
   const post = await sanityFetch<Record<string, unknown>>(blogPostBySlugQuery, { slug });
