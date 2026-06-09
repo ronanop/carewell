@@ -1,263 +1,295 @@
+import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
+
 export const COSMETIC_TREATMENTS_PATH = "/cosmetic-treatments-in-delhi" as const;
+
+const BASE = COSMETIC_TREATMENTS_PATH;
+
+export const COSMETIC_IMAGES = {
+  heroBanner: {
+    src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/anti-aging-treatments-carewell.webp",
+    alt: "Cosmetic treatments and facial rejuvenation banner — Care Well Medical Centre Delhi",
+  },
+  portfolioOverview: {
+    src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/dermal-fillers-carewell.webp",
+    alt: "Cosmetic treatment services overview at Care Well Medical Centre",
+  },
+  whyTrust: {
+    src: "/demo/about-us-consultation.png",
+    alt: "Doctor consultation and modern cosmetic clinic at Care Well Medical Centre",
+  },
+  ctaBanner: {
+    src: "/demo/skin-aesthetic-card.png",
+    alt: "Book cosmetic treatment consultation in Delhi",
+  },
+  videoPoster: {
+    src: "/demo/doctor-profile-feature.png",
+    alt: "Cosmetic treatment patient testimonial video",
+  },
+  gallery: [
+    {
+      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/lip-augmentation.webp",
+      alt: "Lip augmentation result",
+      caption: "Lip augmentation",
+    },
+    {
+      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/botox-treatment-carewell.webp",
+      alt: "Botox transformation",
+      caption: "Botox treatment",
+    },
+    {
+      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/thread-lift-carewell.webp",
+      alt: "Thread lift result",
+      caption: "Thread lift",
+    },
+    {
+      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/double-chin-removal-carewell.webp",
+      alt: "Double chin removal result",
+      caption: "Double chin removal",
+    },
+    {
+      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/dermal-fillers-carewell.webp",
+      alt: "Dermal filler enhancement",
+      caption: "Dermal fillers",
+    },
+    {
+      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/hifu-Treatment-carewell.webp",
+      alt: "HIFU skin tightening result",
+      caption: "HIFU skin tightening",
+    },
+  ],
+} as const;
 
 export const COSMETIC_TREATMENTS_SEO = {
   title:
     "Best Cosmetic Treatments in Delhi | Skin, Face & Body Solutions | Care Well Medical Centre",
   description:
-    "Best cosmetic treatments in Delhi for skin, face, and body at Care Well Medical Centre. Expert care with natural, lasting results. Book now.",
+    "Best cosmetic treatments in Delhi for skin, face, and body at Care Well Medical Centre. Botox, fillers, HIFU, thread lift & more — natural results. Book now.",
 } as const;
 
-export const COSMETIC_TREATMENTS_PAGE = {
+export const COSMETIC_PAGE = {
   h1: "Cosmetic Treatments in Delhi",
+  introHeading: "Glow with Care Well Medical Centre's Innovative Cosmetic Treatments in Delhi",
   tagline:
-    "Glow with Care Well Medical Centre’s innovative cosmetic treatments — safe, effective, and tailored to your goals.",
-  introHeading:
-    "Glow with Care Well Medical Centre’s Innovative Cosmetic Treatments in Delhi",
+    "Advanced cosmetic treatments in Delhi — safe, effective, and tailored for natural-looking results.",
   introParagraphs: [
-    "Want to enhance your beauty and confidence, and achieve a natural look? Visit Care Well Medical Centre for various cosmetic treatments in Delhi. The state-of-the-art technology, coupled with advanced techniques, offers you a safe, effective, and aesthetic experience.",
-    "Care Well Medical Centre in Delhi offers cosmetic treatments designed just for you. Whether you want to refresh your look, regain confidence, or highlight your natural beauty, our expert team uses advanced technology to deliver safe and lasting results. Schedule your consultation today and take the first step toward glowing skin and a youthful appearance.",
+    "Want to enhance your beauty, boost your confidence, and achieve a natural look?",
+    "Visit Care Well Medical Centre for advanced cosmetic treatments in Delhi. Our state-of-the-art technology and modern aesthetic procedures offer safe, effective, and natural-looking results.",
+    "Whether you want to refresh your appearance, regain confidence, or enhance your natural beauty, our experienced specialists create personalized treatment plans tailored specifically for you.",
+  ],
+  whyChooseHeading: "Why Choose Our Cosmetic Treatments?",
+  whyChoose: [
+    "Advanced Technology",
+    "Personalized Treatment Plans",
+    "Safe & Minimally Invasive Procedures",
+    "Natural-Looking Results",
+    "Experienced Cosmetic Specialists",
+    "Modern Treatment Facilities",
   ],
   portfolioHeading: "Exploring Our Cosmetic Treatment Portfolio in Delhi",
   whyTrustHeading: "Why Trust Care Well Medical Centre for Cosmetic Treatments in Delhi?",
-  whyTrustParagraphs: [
-    "At Care Well Medical Centre, you are in safe hands. Our experienced specialists bring deep expertise and use advanced technology to deliver cosmetic treatments that are both effective and minimally invasive. We understand that every patient is unique, so we tailor each procedure to your individual needs. From your first visit through recovery, we prioritize your comfort and safety. Our goal is to help you achieve natural-looking, long-lasting results that boost your confidence. Many patients trust us for our genuine care and proven outcomes.",
+  whyTrustIntro:
+    "At Care Well Medical Centre, you are in safe hands. Our experienced specialists combine expertise with advanced technology to deliver cosmetic treatments that are effective, safe, and minimally invasive.",
+  whyTrustSubheading: "What Makes Us Different?",
+  whyTrustItems: [
+    "Experienced Cosmetic Experts",
+    "Personalized Care",
+    "Advanced Technologies",
+    "Patient Safety First",
+    "Natural Results",
+    "Proven Outcomes",
   ],
+  whyTrustClosing:
+    "From consultation to recovery, we focus on delivering exceptional patient experiences and long-lasting results.",
+  galleryHeading: "Before & After Results",
+  testimonialsHeading: "Patient Testimonials",
   appointmentHeading: "Fix Your Appointment Today for a Glowy Tomorrow!",
   appointmentBody:
-    "Enhance your natural beauty with professional cosmetic treatments in Delhi. Schedule a consultation at Care Well Medical Centre and take the first step toward flawless skin and a youthful appearance.",
-  faqHeading: "Check Out Frequently Asked Questions (FAQs) on Cosmetic Treatments",
+    "Enhance your natural beauty with professional cosmetic treatments in Delhi. Take the first step toward flawless skin, a youthful appearance, and enhanced confidence.",
+  appointmentGoals: ["Flawless Skin", "Youthful Appearance", "Enhanced Confidence"],
+  faqHeading: "Frequently Asked Questions (FAQs)",
+  clinicHeading: "Clinic Information",
+  disclaimer:
+    "Treatment suitability and results vary between individuals. A consultation is recommended to determine the most appropriate cosmetic treatment for your goals.",
   treatmentDropdownLabel: "Cosmetic Treatments",
 } as const;
 
-export type CosmeticTreatmentCard = {
+export { HAIR_LOSS_CLINIC as COSMETIC_CLINIC };
+
+export const COSMETIC_OPENING_HOURS = [
+  { day: "Sunday", timing: "10:00 AM – 8:00 PM" },
+  { day: "Monday", timing: "10:00 AM – 8:00 PM" },
+  { day: "Tuesday", timing: "10:00 AM – 8:00 PM" },
+  { day: "Wednesday", timing: "10:00 AM – 8:00 PM" },
+  { day: "Thursday", timing: "10:00 AM – 8:00 PM" },
+  { day: "Friday", timing: "10:00 AM – 8:00 PM" },
+  { day: "Saturday", timing: "10:00 AM – 8:00 PM" },
+] as const;
+
+export const COSMETIC_VIDEO_TOPICS = [
+  "Lip Augmentation Experience",
+  "Botox Treatment Journey",
+  "HIFU Success Story",
+  "Facial Rejuvenation Results",
+] as const;
+
+export type CosmeticTreatmentItem = {
   title: string;
-  excerpt: string;
-  href: string;
+  description: string;
   image: string;
+  imageAlt: string;
+  benefits?: readonly string[];
+  treatmentOptions?: readonly string[];
+  commonAreas?: readonly string[];
+  href?: string;
+  comingSoon?: boolean;
 };
 
-/** Normalize legacy absolute URLs to on-site paths (redirects handle child treatments). */
-function toLocalPath(href: string): string {
-  try {
-    const pathname = new URL(href).pathname;
-    return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
-  } catch {
-    return href;
-  }
-}
-
-export const COSMETIC_TREATMENT_CARDS: CosmeticTreatmentCard[] = [
+export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Lip Augmentation",
-    excerpt:
-      "Plump, define, and balance your lips with safe and tailored lip augmentation options. Restore youthful volume using advanced dermal fillers or fat grafting.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/lip-augmentation/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/lip-augmentation.webp",
+    description:
+      "Plump, define, and balance your lips with safe and customized lip augmentation treatments.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/lip-augmentation.webp",
+    imageAlt: "Lip augmentation before and after results",
+    benefits: ["Enhanced lip volume", "Better lip definition", "Improved symmetry", "Natural-looking enhancement"],
+    treatmentOptions: ["Dermal Fillers", "Fat Grafting"],
+    href: `${BASE}/lip-augmentation`,
   },
   {
     title: "Brow Lift",
-    excerpt:
-      "You would not stop appreciating a refreshed, lifted look. What’s more, this can help fix your droopy eyelids or tired brows. You get rejuvenated safely and quickly.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/brow-lift/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/eyebrow-lift-carewell.webp",
+    description:
+      "Achieve a refreshed and youthful appearance by correcting drooping brows and tired-looking eyes.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/eyebrow-lift-carewell.webp",
+    imageAlt: "Brow lift before and after results",
+    benefits: ["Lifted eyebrows", "Refreshed appearance", "Open eye area", "Youthful facial expression"],
+    href: `${BASE}/brow-lift`,
   },
   {
     title: "Thread Lift",
-    excerpt:
-      "Achieve a subtle lift and firmer skin with our non-surgical thread lift. Best for early sagging and contouring your facial profile without downtime.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/thread-lift/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/thread-lift-carewell.webp",
+    description: "Achieve firmer, lifted skin without surgery.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/thread-lift-carewell.webp",
+    imageAlt: "Thread lift procedure",
+    benefits: ["Non-surgical facelift", "Improved skin tightness", "Better facial contours", "Minimal downtime"],
+    href: `${BASE}/thread-lift`,
   },
   {
     title: "HIFU Treatment",
-    excerpt:
-      "Welcome HIFU – a safe and no-downtime facelift alternative. With this, collagen production rises, helping tighten your loose skin and reverse early aging signs.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/hifu/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/hifu-Treatment-carewell.webp",
+    description:
+      "A safe, non-surgical facelift alternative that stimulates collagen production and tightens loose skin.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/hifu-Treatment-carewell.webp",
+    imageAlt: "HIFU skin tightening treatment",
+    benefits: ["Skin tightening", "Collagen stimulation", "Reduced signs of aging", "Improved facial contours"],
+    href: `${BASE}/hifu`,
   },
   {
     title: "Double Chin Removal",
-    excerpt:
-      "Say goodbye to stubborn chin fat. Our non-surgical double chin removal treatments help sculpt your jawline and improve profile definition in just a few sessions.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/double-chin-removal/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/double-chin-removal-carewell.webp",
+    description:
+      "Reduce stubborn chin fat and improve jawline definition with advanced non-surgical treatments.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/double-chin-removal-carewell.webp",
+    imageAlt: "Double chin before and after results",
+    benefits: ["Defined jawline", "Better facial profile", "Reduced chin fat", "Improved facial contours"],
+    href: `${BASE}/double-chin-removal`,
   },
   {
     title: "Face Slimming",
-    excerpt:
-      "Reshape and contour your face naturally. Because our face-slimming treatments target fat, minimize puffiness, and redefine your jawline without surgery.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/face-slimming/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/face-slimming-carewell.webp",
+    description: "Reshape and contour your face naturally without surgery.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/face-slimming-carewell.webp",
+    imageAlt: "Face slimming transformation",
+    benefits: ["Reduced facial puffiness", "Better jawline definition", "Slimmer appearance", "Improved facial balance"],
+    href: `${BASE}/face-slimming`,
   },
   {
     title: "Vampire Facelift",
-    excerpt:
-      "Time to use Vampire Facelift to rejuvenate dull, aging skin using your body’s natural healing potential. It improves your texture and glow by increasing collagen production.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/vampire-facelift/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/vampire-facelift-carewell.webp",
+    description: "Rejuvenate aging skin using your body's natural healing capabilities.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/vampire-facelift-carewell.webp",
+    imageAlt: "Vampire facelift procedure",
+    benefits: ["Improved skin texture", "Increased collagen production", "Better skin tone", "Natural rejuvenation"],
+    href: `${BASE}/vampire-facelift`,
   },
   {
     title: "Dermal Fillers",
-    excerpt:
-      "Our high-quality dermal fillers smooth wrinkles, restore lost volume or enhance lips. Get instant results with the least downtime.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/dermal-fillers/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/dermal-fillers-carewell.webp",
+    description: "Restore volume, smooth wrinkles, and enhance facial features with premium dermal fillers.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/dermal-fillers-carewell.webp",
+    imageAlt: "Dermal fillers before and after results",
+    commonAreas: ["Lips", "Cheeks", "Jawline", "Nasolabial folds", "Under-eye hollows"],
+    benefits: ["Immediate results", "Minimal downtime", "Natural enhancement", "Facial rejuvenation"],
+    href: `${BASE}/dermal-fillers`,
   },
   {
     title: "Laser Hair Removal",
-    excerpt:
-      "This method ensures safe and permanent hair removal from the entire body and areas such as the face, arms, and legs.",
-    href: toLocalPath(
-      "https://carewellmedicalcentre.com/cosmetic-treatments-in-delhi/laser-hair-removal/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/laser-hair-removal.jpg",
+    description: "Achieve smooth skin with safe and long-lasting hair reduction treatments.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/laser-hair-removal.jpg",
+    imageAlt: "Laser hair removal treatment",
+    commonAreas: ["Face", "Arms", "Legs", "Underarms", "Bikini Area", "Full Body"],
+    benefits: ["Long-term hair reduction", "Smooth skin", "Safe treatment", "Precision targeting"],
+    href: `${BASE}/laser-hair-removal`,
   },
   {
     title: "Botox",
-    excerpt:
-      "Say NO to wrinkles. Redefine your features. Rejuvenate your skin. All through our expert Botox treatments designed for jawline, neck, forehead, and more.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/botox/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/botox-treatment-carewell.webp",
+    description: "Reduce wrinkles and redefine facial features with expertly administered Botox treatments.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/botox-treatment-carewell.webp",
+    imageAlt: "Botox before and after results",
+    commonAreas: ["Forehead", "Frown lines", "Crow's feet", "Jawline", "Neck"],
+    benefits: ["Smoother skin", "Younger appearance", "Quick procedure", "Minimal recovery time"],
+    href: `${BASE}/botox`,
   },
   {
     title: "Anti-Aging Treatments",
-    excerpt:
-      "Recover your old glow using our customized anti-aging treatment solutions and caring approach.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/cosmetic-treatments-in-delhi/anti-aging/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/anti-aging-treatments-carewell.webp",
+    description: "Restore youthful skin through customized anti-aging treatment solutions.",
+    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/anti-aging-treatments-carewell.webp",
+    imageAlt: "Anti-aging treatment results",
+    treatmentOptions: ["Botox", "Dermal Fillers", "HIFU", "PRP Therapy", "Skin Rejuvenation"],
+    benefits: ["Reduced wrinkles", "Improved elasticity", "Better hydration", "Youthful appearance"],
+    href: `${BASE}/anti-aging`,
   },
   {
-    title: "Carbon Laser Facial",
-    excerpt:
-      "Advanced laser facial for clearer, brighter skin — available soon at Care Well Medical Centre.",
-    href: toLocalPath(
-      "https://www.carewellmedicalcentre.com/skin-treatments-in-delhi/carbon-laser-facial/",
-    ),
-    image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/carbon-laser-facial.webp",
+    title: "Coming Soon",
+    description: "Exciting new cosmetic treatments and technologies will be available soon at Care Well Medical Centre.",
+    image: "/demo/skin-aesthetic-card.png",
+    imageAlt: "Upcoming cosmetic treatments",
+    comingSoon: true,
   },
 ];
 
 export const COSMETIC_TREATMENTS_FAQS: { question: string; answer: string }[] = [
   {
-    question: "What are cosmetic treatments?",
+    question: "Which cosmetic treatment is best for facial rejuvenation?",
     answer:
-      "Cosmetic treatments are procedures designed to refresh your skin, face, and body. They help enhance your natural beauty safely and effectively.",
+      "The best option depends on your skin type, age, and goals. Botox, dermal fillers, HIFU, thread lifts, and PRP-based treatments are popular for facial rejuvenation. Our specialists recommend a personalized plan after consultation.",
   },
   {
-    question: "What types of cosmetic treatments do you offer?",
+    question: "Is Botox safe?",
     answer:
-      "We offer a wide range of cosmetic treatments including skin rejuvenation, lip augmentation, thread lifts, Botox, laser hair removal, and anti-aging therapies. Each treatment is personalized to meet your unique goals.",
+      "Yes. When administered by trained medical professionals using approved products, Botox is considered safe. We follow strict protocols and tailor dosage to your anatomy for natural results.",
   },
   {
-    question: "Are cosmetic treatments safe?",
+    question: "How long do dermal fillers last?",
     answer:
-      "Yes, when performed by certified experts, cosmetic treatments are safe. Our team follows advanced technology and strict safety protocols.",
+      "Results typically last 6 to 18 months depending on the filler type, treatment area, and your metabolism. Maintenance sessions can extend results.",
   },
   {
-    question: "How do I know which treatment is right for me?",
+    question: "Is HIFU better than a facelift?",
     answer:
-      "Our expert team will assess your skin and concerns during a consultation. We’ll recommend treatments based on your needs, lifestyle, and desired results to ensure the best outcome.",
+      "HIFU is a non-surgical alternative for mild to moderate skin laxity with minimal downtime. Surgical facelifts may be better for advanced sagging. We help you choose the right approach during consultation.",
   },
   {
-    question: "How do cosmetic treatments enhance your glow?",
+    question: "What is the recovery time after a thread lift?",
     answer:
-      "With cosmetic treatments, your skin, hair, and body aesthetics transform greatly. Hence, they help you look younger and brighter. You can choose from these useful cosmetic treatments – Botox, fillers, laser treatments, skin rejuvenation, etc.",
+      "Most patients resume normal activities within a few days. Mild swelling or bruising may occur and usually subsides quickly. Full results develop over several weeks as collagen remodels.",
   },
   {
-    question: "Are cosmetic treatments good to go with?",
+    question: "Can double chin fat be removed without surgery?",
     answer:
-      "When carried out by skilled and experienced professionals, they always deliver good results. However, choose the cosmetic treatment type after consulting the doctor.",
+      "Yes. Non-surgical options such as injectable fat-dissolving treatments and contouring procedures can reduce submental fat and improve jawline definition without surgery.",
   },
   {
-    question: "How long can cosmetic treatment results last?",
+    question: "How many laser hair removal sessions are required?",
     answer:
-      "The type of treatment delivered greatly determines how long the results will last. Results from treatments like Botox will last 3-6 months. Whereas laser procedures and others can have long-lasting outcomes.",
+      "Most patients need 6 to 8 sessions spaced several weeks apart for optimal long-term hair reduction. The exact number depends on hair type, skin tone, and treatment area.",
   },
   {
-    question: "What cosmetic treatment facilities can I receive at Care Well Medical Centre?",
+    question: "Which cosmetic treatment is suitable for me?",
     answer:
-      "Botox, dermal fillers, laser skin treatments, anti-aging solutions, and hair restoration are some popular treatments available here.",
-  },
-  {
-    question: "Who is apt for cosmetic treatments?",
-    answer:
-      "Seeking a better appearance, reduced aging signs, and improved skin texture? Try cosmetic treatments. For the right treatment, consult an expert.",
-  },
-  {
-    question: "Can cosmetic treatments lead to side effects?",
-    answer:
-      "You may have to deal with mild swelling or redness. However, they will subside within a few days.",
-  },
-  {
-    question: "How do you figure out the right cosmetic treatment?",
-    answer:
-      "Your skin type, medical history, and goals help the expert find the right treatment.",
-  },
-  {
-    question: "How long is the recovery time?",
-    answer:
-      "Recovery time depends on the treatment type. Non-surgical treatments allow you to resume your routine immediately, while surgical ones may require a few days of rest.",
-  },
-  {
-    question: "Are the results permanent?",
-    answer:
-      "Some treatments offer permanent results, while others may need maintenance. We discuss the best options for your needs during your consultation.",
-  },
-  {
-    question: "Are cosmetic treatments painful?",
-    answer:
-      "Most treatments are minimally invasive with little to no pain. We use local anesthesia and modern techniques to keep you comfortable throughout the procedure.",
-  },
-  {
-    question: "How long does it take to see results?",
-    answer:
-      "Results vary depending on the treatment. Some procedures like Botox and fillers show immediate effects, while others like thread lifts and laser treatments improve gradually over weeks.",
-  },
-  {
-    question: "What is the recovery time for cosmetic treatments?",
-    answer:
-      "Recovery time depends on the procedure. Many non-surgical treatments allow you to return to daily activities immediately. Surgical options might require a few days of rest and care.",
-  },
-  {
-    question: "Are the results natural-looking?",
-    answer:
-      "Yes. Our goal is to enhance your natural beauty with subtle, natural-looking results that last long. We avoid overdone looks and tailor every treatment to you.",
-  },
-  {
-    question: "Is it safe to get cosmetic treatments during the pandemic?",
-    answer:
-      "Absolutely. We follow strict hygiene and safety protocols to protect our patients and staff. Your health and safety are our top priorities.",
+      "Your skin condition, medical history, and aesthetic goals determine the best treatment. Book a consultation at Care Well Medical Centre for an expert assessment and tailored recommendation.",
   },
 ];

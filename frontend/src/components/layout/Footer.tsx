@@ -54,8 +54,8 @@ const SERVICE_LINKS = [
   { label: "Plastic Surgery", href: "/plastic-surgery-in-delhi" },
   { label: "Hair Transplant", href: "/hair-transplant-in-delhi" },
   { label: "Skin Treatments", href: "/skin-treatments-in-delhi" },
-  { label: "Intimate Surgery", href: "/services/intimate-surgery-in-delhi" },
-  { label: "Body Contouring", href: "/services/liposuction" },
+  { label: "Intimate Surgery", href: "/intimate-surgery-in-delhi" },
+  { label: "Body Contouring", href: "/body-contouring-in-delhi" },
   { label: "Urology", href: "/services/urology-in-delhi" },
 ] as const;
 

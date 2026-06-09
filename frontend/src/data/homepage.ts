@@ -76,7 +76,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
   {
     title: "Plastic Surgery",
     slug: "rhinoplasty",
-    href: "/services/rhinoplasty",
+    href: "/plastic-surgery-in-delhi/rhinoplasty",
     heroImageUrl: "/demo/surgical-procedures-card.png",
     description:
       "Advanced cosmetic surgical procedures including rhinoplasty and body contouring performed safely at our South Delhi clinic.",
@@ -103,7 +103,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
   {
     title: "Body Contouring",
     slug: "cryolipolysis",
-    href: "/services/cryolipolysis",
+    href: "/body-contouring-in-delhi/cryolipolysis",
     heroImageUrl: "/demo/wellness-card.png",
     description:
       "Non-surgical and surgical body shaping treatments for fat reduction offered at our CR Park clinic.",
@@ -112,7 +112,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
   {
     title: "Intimate Surgery",
     slug: "hymenoplasty",
-    href: "/services/hymenoplasty",
+    href: "/intimate-surgery-in-delhi/hymenoplasty",
     heroImageUrl: "/demo/surgical-procedures-card.png",
     description:
       "Confidential intimate procedures performed in a safe and private environment in South Delhi.",
@@ -183,17 +183,17 @@ export const CONSULTATION_SPECIALTIES = {
   ],
   items: [
     { title: "Hair Transplant", href: "/hair-transplant-in-delhi" },
-    { title: "Laser Hair Removal", href: "/services/laser-hair-removal" },
+    { title: "Laser Hair Removal", href: "/cosmetic-treatments-in-delhi/laser-hair-removal" },
     { title: "Acne & Scar Treatment", href: "/services/acne-scar-treatment" },
-    { title: "Cryolipolysis (Fat Freezing)", href: "/services/cryolipolysis" },
+    { title: "Cryolipolysis (Fat Freezing)", href: "/body-contouring-in-delhi/cryolipolysis" },
     { title: "Anti-Aging Treatments", href: "/services/anti-aging" },
     { title: "Botox", href: "/services/botox" },
-    { title: "Rhinoplasty", href: "/services/rhinoplasty" },
+    { title: "Rhinoplasty", href: "/plastic-surgery-in-delhi/rhinoplasty" },
     { title: "Beard Transplant", href: "/hair-transplant-in-delhi/beard" },
     { title: "Hydrafacial", href: "/services/hydrafacial" },
-    { title: "Liposuction", href: "/services/liposuction" },
-    { title: "Breast Augmentation", href: "/services/breast-augmentation" },
-    { title: "Hymenoplasty", href: "/services/hymenoplasty" },
+    { title: "Liposuction", href: "/plastic-surgery-in-delhi/liposuction" },
+    { title: "Breast Augmentation", href: "/plastic-surgery-in-delhi/breast-augmentation" },
+    { title: "Hymenoplasty", href: "/intimate-surgery-in-delhi/hymenoplasty" },
   ] satisfies SpecialtyItem[],
 } as const;
 

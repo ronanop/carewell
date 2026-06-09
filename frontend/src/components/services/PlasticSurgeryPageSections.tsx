@@ -8,8 +8,10 @@ import { ServiceHeroBookingForm } from "@/components/leads/ServiceHeroBookingFor
 import { ServiceFaq } from "@/components/services/ServiceFaq";
 import { ServiceSidebarReveal } from "@/components/services/ServiceSidebarReveal";
 import { Button } from "@/components/ui/Button";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { CheckList, DataTable, SectionTitle } from "@/components/services/hub-page-table";
 import {
+  PLASTIC_SURGERY_CLINIC,
+  PLASTIC_SURGERY_COST_ROWS,
   PLASTIC_SURGERY_FAQS,
   PLASTIC_SURGERY_PAGE,
   PLASTIC_SURGERY_PATH,
@@ -18,7 +20,17 @@ import {
 import { getSiteUrl } from "@carewell/backend/lib/site";
 import { whatsappHref } from "@carewell/backend/lib/whatsapp";
 
-const CLINIC_PHONE_DISPLAY = "+91-9667-977-499";
+function CtaRow({ phone, label }: { phone: string; label?: string }) {
+  const tel = phone.replace(/\s/g, "");
+  return (
+    <div className="mt-6 flex flex-wrap gap-3">
+      <Button href="/book-consultation" variant="primary">{label ?? "Book a Consultation"}</Button>
+      <a href={`tel:${tel}`} className="inline-flex min-h-11 items-center rounded-button border border-navy/20 px-6 py-3 text-sm font-semibold text-navy">
+        Call {phone}
+      </a>
+    </div>
+  );
+}
 
 export function PlasticSurgeryPageSections({
   phone,
@@ -27,8 +39,9 @@ export function PlasticSurgeryPageSections({
   phone?: string;
   whatsapp?: string;
 }) {
-  const treatment = PLASTIC_SURGERY_PAGE.treatmentDropdownLabel;
-  const displayPhone = phone ?? CLINIC_PHONE_DISPLAY;
+  const page = PLASTIC_SURGERY_PAGE;
+  const treatment = page.treatmentDropdownLabel;
+  const displayPhone = phone ?? PLASTIC_SURGERY_CLINIC.phone;
   const wa = whatsapp
     ? whatsappHref(whatsapp, "Hi, I'm interested in plastic surgery in Delhi.")
     : undefined;
@@ -46,8 +59,8 @@ export function PlasticSurgeryPageSections({
   const procLd = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
-    name: PLASTIC_SURGERY_PAGE.h1,
-    description: PLASTIC_SURGERY_PAGE.tagline,
+    name: page.h1,
+    description: page.tagline,
     url: `${getSiteUrl()}${PLASTIC_SURGERY_PATH}`,
   };
 
@@ -56,7 +69,7 @@ export function PlasticSurgeryPageSections({
       <BreadcrumbJsonLd
         items={[
           { name: "Home", path: "/" },
-          { name: PLASTIC_SURGERY_PAGE.h1, path: PLASTIC_SURGERY_PATH },
+          { name: "Plastic Surgery in Delhi", path: PLASTIC_SURGERY_PATH },
         ]}
       />
 
@@ -81,18 +94,18 @@ export function PlasticSurgeryPageSections({
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
-                { label: PLASTIC_SURGERY_PAGE.h1 },
+                { label: "Plastic Surgery in Delhi" },
               ]}
             />
-            <h1 className="font-heading mt-5 text-[34px] font-bold leading-[1.1] text-white sm:text-[42px] md:mt-6 md:text-5xl">
-              {PLASTIC_SURGERY_PAGE.h1}
+            <h1 className="font-heading mt-5 text-[28px] font-bold leading-[1.12] text-white sm:text-[34px] md:mt-6 md:text-[40px] lg:text-[42px]">
+              {page.h1}
             </h1>
             <p className="mt-4 max-w-xl text-base text-white/90 sm:text-lg">
-              {PLASTIC_SURGERY_PAGE.tagline}
+              {page.tagline}
             </p>
             <div className="mt-7 flex flex-wrap gap-3 sm:gap-4 md:mt-8">
               <Button href="/book-consultation" variant="secondary">
-                Book Free Consultation
+                Book a Consultation
               </Button>
               {wa && (
                 <a
@@ -122,23 +135,33 @@ export function PlasticSurgeryPageSections({
       <div className="mx-auto max-w-7xl px-4 pb-32 md:px-6 lg:grid lg:grid-cols-[1fr_280px] lg:gap-12 lg:pb-24">
         <article className="max-w-3xl lg:max-w-none">
           <section className="pb-12 pt-10 md:pb-16 md:pt-12">
-            <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
-              {PLASTIC_SURGERY_PAGE.introHeading}
-            </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-navy/85">
-              {PLASTIC_SURGERY_PAGE.introParagraphs.map((paragraph) => (
+              {page.introParagraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 48)}>{paragraph}</p>
               ))}
             </div>
+            <CtaRow phone={displayPhone} />
           </section>
 
           <section className="section-y border-t border-surface">
-            <SectionHeader
-              align="left"
-              title={PLASTIC_SURGERY_PAGE.portfolioHeading}
-              className="max-w-none text-left"
-              titleClassName="text-2xl md:text-3xl"
-            />
+            <SectionTitle>{page.transformationHeading}</SectionTitle>
+            <p className="mt-4 text-base leading-relaxed text-navy/85">{page.transformationBody}</p>
+          </section>
+
+          <section className="section-y border-t border-surface">
+            <SectionTitle>{page.whyChooseHeading}</SectionTitle>
+            <p className="mt-4 text-base text-navy/85">{page.whyChooseIntro}</p>
+            <h3 className="mt-6 font-heading text-base font-bold text-navy">Explaining Key Plastic Surgery Benefits:</h3>
+            <CheckList items={page.whyChooseBenefits} variant="do" />
+          </section>
+
+          <section className="section-y border-t border-surface">
+            <SectionTitle>{page.portfolioHeading}</SectionTitle>
+            <div className="mt-4 space-y-4 text-base leading-relaxed text-navy/85">
+              {page.portfolioIntro.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+              ))}
+            </div>
             <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {PLASTIC_SURGERY_TREATMENT_CARDS.map((card) => (
                 <li key={card.title}>
@@ -172,60 +195,64 @@ export function PlasticSurgeryPageSections({
           </section>
 
           <section className="section-y border-t border-surface">
-            <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
-              {PLASTIC_SURGERY_PAGE.whyTrustHeading}
-            </h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-navy/85">
-              {PLASTIC_SURGERY_PAGE.whyTrustParagraphs.map((paragraph) => (
+            <SectionTitle>{page.processHeading}</SectionTitle>
+            <div className="mt-6 space-y-8">
+              {page.processSteps.map((step) => (
+                <div key={step.title}>
+                  <h3 className="font-heading text-lg font-bold text-navy">{step.title}</h3>
+                  <p className="mt-2 text-base text-navy/85">{step.body}</p>
+                  {"bullets" in step && step.bullets && (
+                    <CheckList items={step.bullets} variant="do" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="section-y border-t border-surface">
+            <SectionTitle>{page.safetyHeading}</SectionTitle>
+            <p className="mt-4 text-base text-navy/85">{page.safetyIntro}</p>
+            <CheckList items={page.safetyPoints} variant="do" />
+          </section>
+
+          <section className="section-y border-t border-surface">
+            <SectionTitle>{page.costHeading}</SectionTitle>
+            <div className="mt-4 space-y-4 text-base text-navy/85">
+              {page.costIntro.map((paragraph) => (
                 <p key={paragraph.slice(0, 48)}>{paragraph}</p>
               ))}
             </div>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {[
-                {
-                  title: "Expert surgeons",
-                  body: "Board-certified plastic surgeons with extensive experience in face, body, and reconstructive care.",
-                  accent: "primary" as const,
-                },
-                {
-                  title: "Advanced technology",
-                  body: "FDA-approved methods and state-of-the-art facilities for safe procedures and smoother recovery.",
-                  accent: "teal" as const,
-                },
-                {
-                  title: "Natural results",
-                  body: "Personalized treatment plans focused on subtle enhancements and lasting confidence.",
-                  accent: "alert" as const,
-                },
-              ].map((card) => {
-                const styles =
-                  card.accent === "alert"
-                    ? { ring: "border-alert/25", iconWrap: "bg-alert/15 text-alert", label: "text-alert" }
-                    : card.accent === "primary"
-                      ? { ring: "border-primary/25", iconWrap: "bg-primary/15 text-primary", label: "text-primary" }
-                      : { ring: "border-teal/25", iconWrap: "bg-teal/15 text-teal", label: "text-teal" };
-                return (
-                  <div
-                    key={card.title}
-                    className={`rounded-2xl border ${styles.ring} bg-white p-4 shadow-sm sm:p-5`}
-                  >
-                    <p className={`font-heading text-sm font-bold uppercase tracking-wide ${styles.label}`}>
-                      {card.title}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-navy/80">{card.body}</p>
-                  </div>
-                );
-              })}
+            <h3 className="mt-6 font-heading text-base font-bold text-navy">Estimated Plastic & Cosmetic Surgery Cost in Delhi</h3>
+            <DataTable
+              headers={["Procedure", "Starting Cost (INR)"]}
+              keys={["procedure", "cost"]}
+              rows={PLASTIC_SURGERY_COST_ROWS}
+            />
+            <p className="mt-4 text-sm italic text-navy/70">
+              <strong className="not-italic text-navy/85">Disclaimer:</strong> {page.costDisclaimer}
+            </p>
+            <CheckList items={page.costFeatures} variant="do" />
+            <CtaRow phone={displayPhone} label="Call for a customized quote" />
+          </section>
+
+          <section className="section-y border-t border-surface">
+            <SectionTitle>{page.whyTrustHeading}</SectionTitle>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-navy/85">
+              {page.whyTrustParagraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+              ))}
             </div>
+            <h3 className="mt-6 font-heading text-base font-bold text-navy">Why Patients Trust Us:</h3>
+            <CheckList items={page.whyTrustItems} variant="do" />
           </section>
 
           <section className="section-y border-t border-surface">
             <div className="rounded-2xl border border-teal/25 bg-gradient-to-br from-teal/5 via-white to-primary/5 p-6 md:p-8">
               <h2 className="font-heading text-2xl font-bold text-navy md:text-3xl">
-                {PLASTIC_SURGERY_PAGE.appointmentHeading}
+                {page.appointmentHeading}
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-navy/85">
-                {PLASTIC_SURGERY_PAGE.appointmentBody}
+                {page.appointmentBody}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button href="/book-consultation" variant="primary">
@@ -239,15 +266,16 @@ export function PlasticSurgeryPageSections({
                 </Button>
               </div>
               <p className="mt-5 text-sm text-navy/70">
-                Visit us at Care Well Medical Centre, Chittaranjan Park (CR Park), South Delhi.
+                Location: {page.appointmentLocation}
+                <br />
+                Call/WhatsApp: {displayPhone}
               </p>
             </div>
           </section>
 
           <section className="section-y border-t border-surface">
-            <h2 className="font-heading text-2xl font-bold leading-tight text-navy md:text-3xl">
-              {PLASTIC_SURGERY_PAGE.faqHeading}
-            </h2>
+            <SectionTitle>{page.faqHeading}</SectionTitle>
+            <p className="mt-4 text-base text-navy/85">{page.faqIntro}</p>
             <div className="mt-8">
               <ServiceFaq items={PLASTIC_SURGERY_FAQS} />
             </div>

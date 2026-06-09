@@ -1,34 +1,129 @@
+import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
+
 export const PLASTIC_SURGERY_PATH = "/plastic-surgery-in-delhi" as const;
 
 export const PLASTIC_SURGERY_SEO = {
-  title: "Plastic Surgery in Delhi | Safe & Natural Cosmetic Enhancements",
+  title:
+    "Plastic Surgery in Delhi | Trusted Cosmetic & Reconstructive Clinic | Care Well Medical Centre",
   description:
-    "Get advanced plastic surgery in Delhi for face, body & reconstruction. Safe procedures by expert surgeons with great results.",
+    "Plastic surgery in Delhi at Care Well Medical Centre — face, body & reconstructive procedures by board-certified surgeons. Liposuction, rhinoplasty, facelift & more. Book a consultation.",
 } as const;
 
 export const PLASTIC_SURGERY_PAGE = {
-  h1: "Plastic Surgery in Delhi",
+  h1: "Plastic Surgery in Delhi – Face, Body & Reconstructive Treatments by Experts",
   tagline:
-    "Advanced surgical procedures for face, body and skin — expert plastic surgeons, personalized care, and trusted results in Delhi.",
-  introHeading:
-    "Plastic Surgery in Delhi – Face, Body & Reconstructive Treatments by Experts",
+    "Advanced surgical procedures for face, body and skin — expert plastic surgeons, personalized care, trusted results and more in Delhi.",
+  introHeading: "Plastic Surgery in Delhi",
   introParagraphs: [
     "Looking at the mirror, you would always think of enhancing or refining certain features. You would want to reshape a part of your body, restore youthful contours, or enhance features. Care Well Medical Centre factors in all of these needs by providing custom plastic surgery in Delhi. You get a desired natural look in the safest manner.",
     "You can always rely on our highly-experienced, board-certified plastic surgeons, state-of-the-art technology, and FDA-approved procedures for a seamless transformation.",
+  ],
+  transformationHeading: "Transformation with Expert Plastic & Cosmetic Surgery in Delhi",
+  transformationBody:
     "Plastic and cosmetic surgery works beyond enhancing your appearance. They restore your belief, rectify imperfections, and enhance your natural glow. Care Well Medical Centre offers an extensive array of advanced surgical solutions for the skin, face, and body. Safe, personalized, and result-driven aesthetic and reconstructive care is provided by our surgeons.",
+  whyChooseHeading: "Why Choose Plastic Surgery?",
+  whyChooseIntro:
+    "We do know the importance of plastic surgery to remove facial flaws. Yet, choosing the specific kind of treatment is very important for getting perfect aesthetic or reconstructive results.",
+  whyChooseBenefits: [
+    "Enhance Your Natural Glow – Trust our procedures to maintain facial or body harmony.",
+    "Boost Your Self-Esteem – Makes you feel comfortable and confident.",
+    "Long-lasting or Permanent Results – Embrace long-lasting transformations, thanks to plastic surgery.",
+    "Restore Function & Appearance – Suitable for corrective procedures, aging concerns, or post-weight loss.",
+    "Customized Treatment Solutions for Every Need – We ensure subtle refinements, complete makeovers, and more using our tailored procedures.",
   ],
   portfolioHeading: "Our Comprehensive Plastic & Cosmetic Surgery Service Suite",
+  portfolioIntro: [
+    "Care Well Medical Centre's comprehensive range of plastic and cosmetic surgery procedures fulfills your unique reconstructive and aesthetic needs. We perform each treatment carefully, safely, and accurately. This helps us ensure successful subtle enhancements and full-body transformations.",
+    "The primary goal is to understand your special aesthetic needs. After which, we go to enhance facial features, shape body contours, and perform custom treatments. Advanced techniques with high safety standards are employed by our astute surgeons to achieve natural results. Check out our services to choose the best beauty enhancement solution.",
+  ],
+  processHeading: "What to Expect – The Process",
+  processSteps: [
+    {
+      title: "Step 1: Personalized Consultation",
+      body: "To help figure out the right treatment plan, our expert surgeons evaluate your present issues, medical history, and goals while consulting. Our surgeons share with you all our treatment options and recommend the best treatment type.",
+    },
+    {
+      title: "Step 2: Pre-Surgery Planning",
+      body: "Once your procedure is selected, we provide:",
+      bullets: [
+        "Medical evaluations & safety checks.",
+        "Pre-surgery instructions for preparation.",
+        "Custom treatment plans tailored to your body type.",
+      ],
+    },
+    {
+      title: "Step 3: The Procedure",
+      body: "Our skilled surgeons use the FDA-approved methods to perform precise plastic surgeries. So that your discomfort lessens and gives you a pleasant experience.",
+    },
+    {
+      title: "Step 4: Recovery & Follow-Ups",
+      body: "Post-surgery, we ensure:",
+      bullets: [
+        "Personalized aftercare support.",
+        "Regular follow-up appointments to track progress.",
+        "Release of instructions on scars, healing, and long-lasting outcomes.",
+      ],
+    },
+  ],
+  safetyHeading: "Is Plastic Surgery Safe?",
+  safetyIntro:
+    "Absolutely! Our accredited medical facilities incorporate advanced technology to reduce risks and enhance recovery. Every procedure is:",
+  safetyPoints: [
+    "Performed in a fully equipped medical facility.",
+    "Customized to fit individual needs.",
+    "Carried out using the latest technology for minimal scarring & downtime.",
+  ],
+  costHeading: "How Much Does Plastic Surgery Cost in Delhi?",
+  costIntro: [
+    "Plastic and cosmetic surgery prices remain transparent and competitive at Care Well Medical Centre. However, the actual cost depends on the procedure rendered, the complexity it comes with, and the materials used. We will hand you a customized treatment plan featuring a detailed cost estimate during the consultation. With that, you are assured of the cost structure.",
+    "Plastic surgery costs in Delhi depend on the procedure type, complexity, and additional factors. At Care Well Medical Centre, we provide:",
+  ],
+  costFeatures: [
+    "Transparent pricing.",
+    "Flexible payment plans & EMI options.",
+    "Exclusive discounts on combined procedures.",
+  ],
+  costDisclaimer:
+    "The actual treatment cost may differ due to the procedural complexity, patients' needs, and post-surgery care. We will give you the final cost estimate during the consultation.",
   whyTrustHeading: "Why Choose Care Well Medical Centre for Plastic Surgery?",
   whyTrustParagraphs: [
     "Many become conscious whether they should undergo plastic surgery on their skin, body, or face. However, feel assured with Care Well Medical Centre. We ensure you get the best experience through cutting-edge procedures.",
-    "Immense surgical expertise, exceptional track record, and compassionate approach make us the preferred caring partner. Dr. Sandeep Bhasin leads our team. By using cutting-edge methods and creating individualized treatment plans, he inspires the group to put patient safety first.",
+    "Immense surgical expertise, exceptional track record, and compassionate approach make us the preferred caring partner. Dr. Sandeep Bhasin is our proud leader. By using cutting-edge methods and creating individualized treatment plans, he inspires the group to put patient safety first.",
+  ],
+  whyTrustItems: [
+    "Board-certified Plastic Surgeons with 15+ Years of Service.",
+    "Advanced Surgical Technology.",
+    "Natural-Looking, Long-Lasting Results.",
+    "Competitive Pricing & Custom Financing Options.",
+    "Comprehensive care before and after surgery.",
+    "A Growing List of Satisfied Patients from India and Abroad.",
   ],
   appointmentHeading: "Book Your Consultation Today!",
   appointmentBody:
     "Make an appointment for your free consultation right now to enhance your confidence and inherent beauty. You are given individualized treatment options by our skilled plastic surgeons.",
+  appointmentLocation: "Care Well Medical Centre, CR Park, Delhi",
   faqHeading: "FAQs – Plastic & Cosmetic Surgery in Delhi",
+  faqIntro:
+    "We understand that you would want to know everything about plastic and cosmetic surgery. It may be related to the mode of operation, the recovery period, outcomes, and more. That's why many want answers to their questions they usually ask online.",
   treatmentDropdownLabel: "Plastic Surgery",
 } as const;
+
+export { HAIR_LOSS_CLINIC as PLASTIC_SURGERY_CLINIC };
+
+export const PLASTIC_SURGERY_COST_ROWS = [
+  { procedure: "Breast Augmentation", cost: "₹1,20,000 – ₹2,00,000" },
+  { procedure: "Breast Lift", cost: "₹1,00,000 – ₹1,80,000" },
+  { procedure: "Breast Reduction", cost: "₹1,20,000 – ₹2,00,000" },
+  { procedure: "Gynecomastia Surgery", cost: "₹60,000 – ₹1,20,000" },
+  { procedure: "Liposuction", cost: "₹70,000 – ₹1,50,000" },
+  { procedure: "Tummy Tuck (Abdominoplasty)", cost: "₹1,50,000 – ₹2,50,000" },
+  { procedure: "Mommy Makeover", cost: "₹2,50,000 – ₹4,00,000" },
+  { procedure: "Facelift", cost: "₹1,20,000 – ₹2,50,000" },
+  { procedure: "Eyelid Surgery", cost: "₹50,000 – ₹1,00,000" },
+  { procedure: "Chin Augmentation", cost: "₹70,000 – ₹1,30,000" },
+  { procedure: "Fat Grafting", cost: "₹60,000 – ₹1,00,000" },
+  { procedure: "Brazilian Butt Lift", cost: "₹1,80,000 – ₹3,00,000" },
+] as const;
 
 export type PlasticSurgeryTreatmentCard = {
   title: string;
