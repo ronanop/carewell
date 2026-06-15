@@ -3,8 +3,6 @@ import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
 
 export const MTF_SURGERY_PATH = "/plastic-surgery-in-delhi/male-to-female-surgery" as const;
 
-const WP = "https://www.carewellmedicalcentre.com/wp-content/uploads";
-
 export const MTF_SURGERY_IMAGES = {
   hero: {
     src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",

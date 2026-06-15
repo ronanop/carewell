@@ -3,8 +3,6 @@ import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
 
 export const CRYOLIPOLYSIS_PATH = "/body-contouring-in-delhi/cryolipolysis" as const;
 
-const WP = "https://www.carewellmedicalcentre.com/wp-content/uploads";
-
 export const CRYOLIPOLYSIS_IMAGES = {
   hero: {
     src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
