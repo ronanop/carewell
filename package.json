@@ -60,6 +60,10 @@
     "cms:import-redirects": "node ./backend/scripts/import-redirects-to-db.mjs",
     "cms:export-blog-seed": "node ./backend/scripts/export-blog-seed.mjs",
     "cms:import-blog-seed": "node ./backend/scripts/import-blog-seed.mjs",
+    "cms:export-service-seed": "node ./backend/scripts/export-service-seed.mjs",
+    "cms:import-service-seed": "node ./backend/scripts/import-service-seed.mjs",
+    "cms:import-content-seed": "node ./backend/scripts/import-content-seed.mjs",
+    "cms:export-content-seed": "npm run cms:export-blog-seed && npm run cms:export-service-seed",
     "cms:sync-legacy-sitemap": "dotenv -e .env.local -- node ./backend/scripts/sync-legacy-sitemap-pages.mjs",
     "cms:sync-legacy-sitemap-posts": "dotenv -e .env.local -- node ./backend/scripts/sync-legacy-sitemap-posts.mjs"
   },
