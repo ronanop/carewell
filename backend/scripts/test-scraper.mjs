@@ -78,12 +78,15 @@ if (existsSync(SAMPLE_HTML)) {
   assert(preview.sections.some((s) => s.paragraphs.length > 0), "expected section paragraphs");
   assert(preview.faqs.length >= 1, "expected faqs");
   assert(preview.bodyText.length > 500, "expected body text");
+  assert(preview.bodyHtml && preview.bodyHtml.length > 100, "expected body HTML");
   console.log("✓ HTML fixture:", {
     intro: preview.introParagraphs.length,
     sections: preview.sections.length,
     sectionParas: preview.sections.reduce((n, s) => n + s.paragraphs.length, 0),
     faqs: preview.faqs.length,
     bodyLen: preview.bodyText.length,
+    htmlLen: preview.bodyHtml?.length ?? 0,
+    images: preview.contentImageUrls.length,
   });
 } else {
   console.log("⊘ no HTML fixture — run: npm run test:scraper:fixture");

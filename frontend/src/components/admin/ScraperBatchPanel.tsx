@@ -162,9 +162,9 @@ export function ScraperBatchPanel() {
 
     try {
       const { downloadBatchPdfs } = await import("@carewell/backend/lib/scraper-preview-pdf");
-      const { zipFilename, pdfFilenames } = await downloadBatchPdfs(items);
+      const { zipFilename, pdfFilenames, jsonFilenames } = await downloadBatchPdfs(items);
       setMessage(
-        `Downloaded ${zipFilename} with ${pdfFilenames.length} PDF file(s) — one full page export per URL.`,
+        `Downloaded ${zipFilename} with ${pdfFilenames.length} PDF(s) and ${jsonFilenames.length} JSON file(s) — use JSON for import (npm run scrape:import).`,
       );
     } catch {
       setError("Batch PDF generation failed.");
@@ -194,7 +194,8 @@ export function ScraperBatchPanel() {
         <h2 className="font-heading text-heading-sm text-navy">Batch from sitemap</h2>
         <p className="mt-1 text-sm text-text-secondary">
           Upload your old site <code className="rounded bg-surface px-1">sitemap.xml</code>. We extract
-          URLs with legacy path and old slug, scrape in batches, then download one full PDF per URL in a ZIP.
+          URLs with legacy path and old slug, scrape in batches, then download a ZIP with one JSON + PDF per URL.
+          Import with <code className="rounded bg-surface px-1">npm run scrape:import</code> (JSON preserves HTML and images).
         </p>
 
         <div className="mt-5 grid gap-4 md:grid-cols-2">

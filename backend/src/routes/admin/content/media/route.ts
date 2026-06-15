@@ -1,5 +1,6 @@
 import { isErrorResponse } from "@/lib/http";
 import { requireAdminApi } from "@/lib/require-admin-api";
+import { isCloudinaryEnabled } from "@/lib/cloudinary";
 import { prisma } from "@/lib/db";
 
 export async function GET() {
@@ -19,6 +20,7 @@ export async function GET() {
   });
   return Response.json({
     ok: true,
+    storage: isCloudinaryEnabled() ? "cloudinary" : "local",
     media: media.map((m) => ({ ...m, createdAt: m.createdAt.toISOString() })),
   });
 }

@@ -27,6 +27,7 @@ function buildComponents(embedContext?: Record<string, ResolvedEmbedSection>): P
     },
     list: {
       bullet: ({ children }) => <ul className="mt-4 list-disc space-y-2 pl-6">{children}</ul>,
+      number: ({ children }) => <ol className="mt-4 list-decimal space-y-2 pl-6">{children}</ol>,
     },
     marks: {
       strong: ({ children }) => <strong className="font-semibold text-navy">{children}</strong>,

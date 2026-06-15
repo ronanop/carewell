@@ -3,742 +3,742 @@
   "services": [
     {
       "from": "/cosmetic-treatments-in-delhi/botox/forehead-lines",
-      "slug": "botox-forehead-lines",
-      "title": "Botox for Forehead Lines",
+      "slug": "cosmetic-treatments-in-delhi-botox-forehead-lines",
+      "title": "Forehead Lines Botox Treatment in Delhi – Smooth Wrinkles & Restore Youthful Skin",
       "category": "cat-face",
       "price": 12000
     },
     {
       "from": "/skin-treatments-in-delhi/microneedling",
-      "slug": "microneedling",
-      "title": "Microneedling",
+      "slug": "skin-treatments-in-delhi-microneedling",
+      "title": "Microneedling treatment in Delhi for Skin Rejuvenation & Scar Reduction",
       "category": "cat-skin-vitiligo",
       "price": 8000
     },
     {
       "from": "/skin-treatments-in-delhi/birthmark-removal-treatment",
-      "slug": "birthmark-removal-treatment",
-      "title": "Birthmark Removal",
+      "slug": "skin-treatments-in-delhi-birthmark-removal-treatment",
+      "title": "Birthmark Removal Treatment in Delhi",
       "category": "cat-skin-vitiligo",
       "price": 15000
     },
     {
       "from": "/skin-treatments-in-delhi/permanent-makeup",
-      "slug": "permanent-makeup",
-      "title": "Permanent Makeup",
+      "slug": "skin-treatments-in-delhi-permanent-makeup",
+      "title": "Permanent Makeup in Delhi",
       "category": "cat-skin-vitiligo",
       "price": 18000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/brow-lift",
-      "slug": "brow-lift",
-      "title": "Brow Lift",
+      "slug": "cosmetic-treatments-in-delhi-brow-lift",
+      "title": "Eyebrow Lift Surgery In Delhi",
       "category": "cat-face",
       "price": 85000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/thread-lift",
-      "slug": "thread-lift",
-      "title": "Thread Lift",
+      "slug": "cosmetic-treatments-in-delhi-thread-lift",
+      "title": "Thread Lift in Delhi",
       "category": "cat-face",
       "price": 45000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/hifu",
-      "slug": "hifu",
-      "title": "HIFU Treatment",
+      "slug": "cosmetic-treatments-in-delhi-hifu",
+      "title": "HIFU Treatment in Delhi – Non-Surgical Skin Tightening & Lifting",
       "category": "cat-face",
       "price": 12000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/double-chin-removal",
-      "slug": "double-chin-removal",
-      "title": "Double Chin Reduction",
+      "slug": "cosmetic-treatments-in-delhi-double-chin-removal",
+      "title": "Double Chin Removal In Delhi at Care Well Medical Centre",
       "category": "cat-face",
       "price": 35000
     },
     {
       "from": "/plastic-surgery-in-delhi/mommy-makeover",
-      "slug": "mommy-makeover",
-      "title": "Mommy Makeover",
+      "slug": "plastic-surgery-in-delhi-mommy-makeover",
+      "title": "Mommy Makeover in Delhi – Restore Your Pre-Pregnancy Body with Confidence",
       "category": "cat-body",
       "price": 250000
     },
     {
       "from": "/plastic-surgery-in-delhi/fat-grafting",
-      "slug": "fat-grafting",
-      "title": "Fat Grafting",
+      "slug": "plastic-surgery-in-delhi-fat-grafting",
+      "title": "Fat Grafting in Delhi – Achieve Natural Volume Restoration",
       "category": "cat-body",
       "price": 95000
     },
     {
       "from": "/plastic-surgery-in-delhi/bbl",
-      "slug": "bbl",
-      "title": "Brazilian Butt Lift (BBL)",
+      "slug": "plastic-surgery-in-delhi-bbl",
+      "title": "Brazilian Butt Lift (BBL) Surgery in Delhi – Redefine Your Curves",
       "category": "cat-body",
       "price": 200000
     },
     {
       "from": "/plastic-surgery-in-delhi/eyelid",
-      "slug": "eyelid-surgery",
-      "title": "Eyelid Surgery (Blepharoplasty)",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-eyelid",
+      "title": "Eyelid Surgery (Blepharoplasty) in Delhi – Enhance Your Eye Aesthetics",
+      "category": "cat-body",
       "price": 75000
     },
     {
       "from": "/plastic-surgery-in-delhi/lipoma",
-      "slug": "lipoma-removal",
-      "title": "Lipoma Removal",
+      "slug": "plastic-surgery-in-delhi-lipoma",
+      "title": "Best Lipoma Removal Surgery in Delhi",
       "category": "cat-body",
       "price": 35000
     },
     {
       "from": "/iv-therapy-in-delhi/vitamin-c-infusion",
-      "slug": "vitamin-c-infusion",
-      "title": "Vitamin C IV Infusion",
+      "slug": "iv-therapy-in-delhi-vitamin-c-infusion",
+      "title": "Intravenous Vitamin C Therapy in Delhi",
       "category": "cat-therapies",
       "price": 4500
     },
     {
       "from": "/holistic-wellness-treatments-in-delhi/ozone-therapy",
-      "slug": "ozone-therapy",
-      "title": "Ozone Therapy",
+      "slug": "holistic-wellness-treatments-in-delhi-ozone-therapy",
+      "title": "Ozone Therapy in Delhi – Holistic Healing at Care Well Medical Centre",
       "category": "cat-therapies",
       "price": 5000
     },
     {
       "from": "/iv-therapy-in-delhi/glutathione",
-      "slug": "glutathione-infusion",
-      "title": "Glutathione IV Therapy",
+      "slug": "iv-therapy-in-delhi-glutathione",
+      "title": "Glutathione IV Therapy in Delhi",
       "category": "cat-therapies",
       "price": 5500
     },
     {
       "from": "/proctology-treatments-in-delhi/piles-treatment",
-      "slug": "piles-treatment",
-      "title": "Piles (Haemorrhoids) Treatment",
-      "category": "cat-therapies",
+      "slug": "proctology-treatments-in-delhi-piles-treatment",
+      "title": "Piles Treatment in Delhi – Advanced & Effective Solutions",
+      "category": "cat-body",
       "price": 45000
     },
     {
       "from": "/urology-in-delhi/kidney-stones-treatment",
-      "slug": "kidney-stones-treatment",
-      "title": "Kidney Stones Treatment",
-      "category": "cat-therapies",
+      "slug": "urology-in-delhi-kidney-stones-treatment",
+      "title": "Kidney Stones Treatment in Delhi – Advanced & Effective Solutions at Care Well Medical Centre",
+      "category": "cat-body",
       "price": 85000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/face-slimming",
-      "slug": "face-slimming",
-      "title": "Face Slimming",
+      "slug": "cosmetic-treatments-in-delhi-face-slimming",
+      "title": "Face Slimming Treatment in Delhi – Achieve a Sculpted & Defined Look",
       "category": "cat-face",
       "price": 25000
     },
     {
       "from": "/skin-treatments-in-delhi/skin-grafting",
-      "slug": "skin-grafting",
-      "title": "Skin Grafting",
+      "slug": "skin-treatments-in-delhi-skin-grafting",
+      "title": "Skin Grafting in Delhi – Advanced Treatment for Skin Restoration",
       "category": "cat-skin-vitiligo",
       "price": 65000
     },
     {
       "from": "/skin-treatments-in-delhi/vitiligo/melanocytes-transplant",
-      "slug": "melanocytes-transplant",
-      "title": "Melanocyte Transplant for Vitiligo",
+      "slug": "skin-treatments-in-delhi-vitiligo-melanocytes-transplant",
+      "title": "Melanocytes Transplant in Delhi",
       "category": "cat-skin-vitiligo",
       "price": 120000
     },
     {
       "from": "/skin-treatments-in-delhi/punch-grafting",
-      "slug": "punch-grafting",
-      "title": "Punch Grafting for Vitiligo",
+      "slug": "skin-treatments-in-delhi-punch-grafting",
+      "title": "Punch Grafting for Vitiligo Treatment in Delhi – Restore Skin Pigment",
       "category": "cat-skin-vitiligo",
       "price": 45000
     },
     {
       "from": "/skin-treatments-in-delhi/fractional-co2-laser-treatment",
-      "slug": "fractional-co2-laser",
-      "title": "Fractional CO2 Laser",
+      "slug": "skin-treatments-in-delhi-fractional-co2-laser-treatment",
+      "title": "Fractional CO2 Laser Treatment in Delhi for Skin Rejuvenation & Scar Removal",
       "category": "cat-skin-vitiligo",
       "price": 8000
     },
     {
       "from": "/plastic-surgery-in-delhi/breast-reduction",
-      "slug": "breast-reduction",
-      "title": "Breast Reduction",
+      "slug": "plastic-surgery-in-delhi-breast-reduction",
+      "title": "Breast Reduction Surgery in Delhi – Achieve a Proportionate & Comfortable Look",
       "category": "cat-body",
       "price": 180000
     },
     {
       "from": "/iv-therapy-in-delhi/myers-cocktail",
-      "slug": "myers-cocktail",
-      "title": "Myers Cocktail IV",
+      "slug": "iv-therapy-in-delhi-myers-cocktail",
+      "title": "Myers’ Cocktail IV Drip Therapy in Delhi, India",
       "category": "cat-therapies",
       "price": 4500
     },
     {
       "from": "/plastic-surgery-in-delhi/septoplasty",
-      "slug": "septoplasty",
-      "title": "Septoplasty",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-septoplasty",
+      "title": "Septoplasty in Delhi – Correct Deviated Nasal Septum for Better Breathing",
+      "category": "cat-body",
       "price": 95000
     },
     {
       "from": "/plastic-surgery-in-delhi/breast-lift",
-      "slug": "breast-lift",
-      "title": "Breast Lift",
+      "slug": "plastic-surgery-in-delhi-breast-lift",
+      "title": "Breast Lift Surgery (Mastopexy) in Delhi: Restore Youthful, Firm Breasts",
       "category": "cat-body",
       "price": 160000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/botox/mesobotox",
-      "slug": "mesobotox",
-      "title": "Mesobotox",
+      "slug": "cosmetic-treatments-in-delhi-botox-mesobotox",
+      "title": "Mesobotox Treatment in Delhi – Rejuvenate Your Skin with Micro Botox",
       "category": "cat-face",
       "price": 14000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/botox/cheek-and-jawline-slimming",
-      "slug": "cheek-jawline-slimming-botox",
-      "title": "Cheek & Jawline Slimming (Botox)",
+      "slug": "cosmetic-treatments-in-delhi-botox-cheek-and-jawline-slimming",
+      "title": "Cheek & Jawline Slimming Treatment in Delhi",
       "category": "cat-face",
       "price": 16000
     },
     {
       "from": "/plastic-surgery-in-delhi/neck-lift",
-      "slug": "neck-lift",
-      "title": "Neck Lift",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-neck-lift",
+      "title": "Neck Lift Surgery in Delhi",
+      "category": "cat-body",
       "price": 140000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/botox/nefertiti-lift",
-      "slug": "nefertiti-lift",
-      "title": "Nefertiti Lift",
+      "slug": "cosmetic-treatments-in-delhi-botox-nefertiti-lift",
+      "title": "Nefertiti Lift in Delhi – Lift & Tighten Your Neck",
       "category": "cat-face",
       "price": 15000
     },
     {
       "from": "/plastic-surgery-in-delhi/buccal-fat-removal",
-      "slug": "buccal-fat-removal",
-      "title": "Buccal Fat Removal",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-buccal-fat-removal",
+      "title": "Buccal Fat Removal in Delhi – Achieve a Sculpted Facial Contour",
+      "category": "cat-body",
       "price": 65000
     },
     {
       "from": "/fatty-liver-treatment-in-delhi",
-      "slug": "fatty-liver-treatment",
-      "title": "Fatty Liver Treatment",
+      "slug": "fatty-liver-treatment-in-delhi",
+      "title": "Fatty Liver Treatment in Delhi",
       "category": "cat-therapies",
       "price": 15000
     },
     {
       "from": "/plastic-surgery-in-delhi/dimple-creation-surgery",
-      "slug": "dimple-creation-surgery",
-      "title": "Dimple Creation Surgery",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-dimple-creation-surgery",
+      "title": "Dimple Creation Surgery in Delhi",
+      "category": "cat-body",
       "price": 45000
     },
     {
       "from": "/urology-in-delhi/circumcision",
-      "slug": "circumcision",
-      "title": "Circumcision",
-      "category": "cat-therapies",
+      "slug": "urology-in-delhi-circumcision",
+      "title": "Circumcision in Delhi – Safe, Quick & Expert Care",
+      "category": "cat-body",
       "price": 35000
     },
     {
       "from": "/urology-in-delhi/circumcision/zsr",
-      "slug": "zsr-circumcision",
-      "title": "ZSR Circumcision",
-      "category": "cat-therapies",
+      "slug": "urology-in-delhi-circumcision-zsr",
+      "title": "ZSR Circumcision in Delhi – Stitch-Free, Painless & Safe Procedure at Care Well Medical Centre",
+      "category": "cat-body",
       "price": 45000
     },
     {
       "from": "/intimate-surgery-in-delhi/vaginoplasty/videos",
-      "slug": "vaginoplasty",
-      "title": "Vaginoplasty",
+      "slug": "intimate-surgery-in-delhi-vaginoplasty-videos",
+      "title": "Vaginoplasty Surgery Videos",
       "category": "cat-body",
       "price": 120000
     },
     {
       "from": "/plastic-surgery-in-delhi/rhinoplasty/closed",
-      "slug": "rhinoplasty-closed",
-      "title": "Closed Rhinoplasty",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-rhinoplasty-closed",
+      "title": "Closed Rhinoplasty in Delhi – Natural Results with No External Scars",
+      "category": "cat-body",
       "price": 125000
     },
     {
       "from": "/plastic-surgery-in-delhi/rhinoplasty/open",
-      "slug": "rhinoplasty-open",
-      "title": "Open Rhinoplasty",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-rhinoplasty-open",
+      "title": "Open Rhinoplasty Surgery In Delhi",
+      "category": "cat-body",
       "price": 125000
     },
     {
       "from": "/plastic-surgery-in-delhi/gynecomastia/grades",
-      "slug": "gynecomastia",
-      "title": "Gynecomastia Surgery",
+      "slug": "plastic-surgery-in-delhi-gynecomastia-grades",
+      "title": "Grade-Wise Gynecomastia Surgery in Delhi",
       "category": "cat-body",
       "price": 85000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/arms",
-      "slug": "liposuction-arms",
-      "title": "Arm Liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction-arms",
+      "title": "Arm Liposuction in Delhi – Get Toned & Slim Arms",
       "category": "cat-body",
       "price": 90000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/facial",
-      "slug": "liposuction-facial",
-      "title": "Facial Liposuction",
-      "category": "cat-face",
+      "slug": "plastic-surgery-in-delhi-liposuction-facial",
+      "title": "Facial Liposuction in Delhi – Get a Contoured & Defined Face",
+      "category": "cat-body",
       "price": 55000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/abdominal",
-      "slug": "liposuction-abdominal",
-      "title": "Abdominal Liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction-abdominal",
+      "title": "Abdominal Liposuction in Delhi – Get a Toned and Sculpted Stomach",
       "category": "cat-body",
       "price": 100000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/buttocks",
-      "slug": "liposuction-buttocks",
-      "title": "Buttocks Liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction-buttocks",
+      "title": "Buttocks Liposuction in Delhi – Get a Well-Defined & Contoured Look",
       "category": "cat-body",
       "price": 95000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/outer-thigh",
-      "slug": "liposuction-outer-thigh",
-      "title": "Outer Thigh Liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction-outer-thigh",
+      "title": "Outer Thigh Liposuction in Delhi – Reshape & Contour Your Legs",
       "category": "cat-body",
       "price": 90000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/back",
-      "slug": "liposuction-back",
-      "title": "Back Liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction-back",
+      "title": "Back Liposuction in Delhi – Get a Toned & Sculpted Back",
       "category": "cat-body",
       "price": 95000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/calves-thighs",
-      "slug": "liposuction-calves-thighs",
-      "title": "Calves & Thighs Liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction-calves-thighs",
+      "title": "Calves and Thighs Liposuction in Delhi – Achieve Slimmer, Toned Legs",
       "category": "cat-body",
       "price": 95000
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction/anterior-thigh",
-      "slug": "liposuction-anterior-thigh",
-      "title": "Anterior Thigh Liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction-anterior-thigh",
+      "title": "Anterior Thigh Liposuction in Delhi – Naturally Sculpt & Transform Your Thighs",
       "category": "cat-body",
       "price": 90000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/lip-augmentation",
-      "slug": "lip-augmentation",
-      "title": "Lip Augmentation",
+      "slug": "cosmetic-treatments-in-delhi-lip-augmentation",
+      "title": "Lip Augmentation in Delhi – Safe Fillers, Cost & Results",
       "category": "cat-face",
       "price": 35000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/vampire-facelift",
-      "slug": "vampire-facelift",
-      "title": "Vampire Facelift (PRP)",
+      "slug": "cosmetic-treatments-in-delhi-vampire-facelift",
+      "title": "Vampire Facelift Treatment in Delhi – PRP-Based Non-Surgical Facial Rejuvenation",
       "category": "cat-face",
       "price": 18000
     },
     {
       "from": "/cosmetic-treatments-in-delhi/botox",
-      "slug": "botox",
-      "title": "Botox Injections",
+      "slug": "cosmetic-treatments-in-delhi-botox",
+      "title": "Botox Treatment in Delhi for Wrinkle Reduction",
       "category": "cat-face",
       "price": 12000
     },
     {
       "from": "/skin-treatments-in-delhi/acne-scar",
-      "slug": "acne-scar-treatment",
-      "title": "Acne Scar Treatment",
+      "slug": "skin-treatments-in-delhi-acne-scar",
+      "title": "Acne Scar Solutions in Delhi – Safe, Proven Treatments by Dr. Sandeep Bhasin",
       "category": "cat-skin-vitiligo",
       "price": 8000
     },
     {
       "from": "/skin-treatments-in-delhi/laser-moles-and-warts-treatment",
-      "slug": "laser-moles-warts-removal",
-      "title": "Laser Mole & Wart Removal",
+      "slug": "skin-treatments-in-delhi-laser-moles-and-warts-treatment",
+      "title": "Laser Mole and Wart Removal Treatment in Delhi – Safe, Effective, Painless Procedure",
       "category": "cat-skin-vitiligo",
       "price": 5000
     },
     {
       "from": "/skin-treatments-in-delhi/carbon-laser-facial",
-      "slug": "carbon-laser-facial",
-      "title": "Carbon Laser Facial",
+      "slug": "skin-treatments-in-delhi-carbon-laser-facial",
+      "title": "Carbon Laser Facial in Delhi – Cost, Benefits, Procedure & Safe Results by Dr. Sandeep Bhasin",
       "category": "cat-skin-vitiligo",
       "price": 6000
     },
     {
       "from": "/hair-loss-treatment-in-delhi/female-pattern-baldness",
-      "slug": "female-pattern-baldness",
+      "slug": "hair-loss-treatment-in-delhi-female-pattern-baldness",
       "title": "Female Pattern Baldness Treatment in Delhi",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/growth-factor-concentrate",
-      "slug": "growth-factor-concentrate",
+      "slug": "hair-loss-treatment-in-delhi-growth-factor-concentrate",
       "title": "Growth Factor Concentrate (GFC) Therapy in Delhi – Advanced Hair Regrowth Treatment",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/hair-follicles",
-      "slug": "hair-follicles",
+      "slug": "hair-loss-treatment-in-delhi-hair-follicles",
       "title": "Hair Follicles Treatment for Hair Loss & Thinning Hair",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/hair-miniaturization",
-      "slug": "hair-miniaturization",
+      "slug": "hair-loss-treatment-in-delhi-hair-miniaturization",
       "title": "Hair Miniaturization Treatment in Delhi: Causes, Symptoms, and Treatment Options",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/hair-weaving",
-      "slug": "hair-weaving",
+      "slug": "hair-loss-treatment-in-delhi-hair-weaving",
       "title": "Hair Weaving In Delhi",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/norwood-baldness-scale",
-      "slug": "norwood-baldness-scale",
+      "slug": "hair-loss-treatment-in-delhi-norwood-baldness-scale",
       "title": "Norwood Scale: Stages of Male Pattern Baldness & Treatment Options",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/scalp-micropigmentation",
-      "slug": "scalp-micropigmentation",
+      "slug": "hair-loss-treatment-in-delhi-scalp-micropigmentation",
       "title": "Scalp Micropigmentation in Delhi",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/diffuse-patterned-alopecia",
-      "slug": "diffuse-patterned-alopecia",
+      "slug": "hair-loss-treatment-in-delhi-diffuse-patterned-alopecia",
       "title": "Diffuse Patterned Alopecia (DPA)",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/skin-treatments-in-delhi/microdermabrasion",
-      "slug": "microdermabrasion",
+      "slug": "skin-treatments-in-delhi-microdermabrasion",
       "title": "Microdermabrasion Treatment in Delhi – Revitalize Your Skin",
       "category": "cat-skin-vitiligo",
       "price": 0
     },
     {
       "from": "/skin-treatments-in-delhi/chemical-peel",
-      "slug": "chemical-peel",
+      "slug": "skin-treatments-in-delhi-chemical-peel",
       "title": "Chemical Peel Treatment in Delhi for Smooth, Radiant Skin",
       "category": "cat-skin-vitiligo",
       "price": 0
     },
     {
       "from": "/skin-treatments-in-delhi/laser-tattoo-removal",
-      "slug": "laser-tattoo-removal",
+      "slug": "skin-treatments-in-delhi-laser-tattoo-removal",
       "title": "Laser Tattoo Removal in Delhi by Dr. Sandeep Bhasin – Scar-Free, Safe & Effectiv",
       "category": "cat-skin-vitiligo",
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/chin-augmentation",
-      "slug": "chin-augmentation",
+      "slug": "plastic-surgery-in-delhi-chin-augmentation",
       "title": "Chin Augmentation in Delhi – Surgical & Non-Surgical Options for a Defined Jawline",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/male",
-      "slug": "laser-hair-removal-male",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-male",
       "title": "Best Male Laser Hair Removal in Delhi – Painless & Permanent Solution",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/bikini-brazilian",
-      "slug": "laser-hair-removal-bikini-brazilian",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-bikini-brazilian",
       "title": "Bikini Line & Brazilian Laser Hair Removal in Delhi – Smooth, Hair-Free Confidence",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/underarm",
-      "slug": "laser-hair-removal-underarm",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-underarm",
       "title": "Best Underarm Laser Hair Removal in Delhi",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/chest-back",
-      "slug": "laser-hair-removal-chest-back",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-chest-back",
       "title": "Chest & Back Laser Hair Removal For Men in Delhi",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/legs",
-      "slug": "laser-hair-removal-legs",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-legs",
       "title": "Best Leg Laser Hair Removal in Delhi – Smooth & Hair-Free Legs",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/facial",
-      "slug": "laser-hair-removal-facial",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-facial",
       "title": "Best Facial Laser Hair Removal in Delhi",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/neck-beard",
-      "slug": "laser-hair-removal-neck-beard",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-neck-beard",
       "title": "Neck & Beard Line Laser Hair Removal for Men in Delhi – Achieve a Sharp, Well-Groomed Look",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/eyebrow-unibrow",
-      "slug": "laser-hair-removal-eyebrow-unibrow",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-eyebrow-unibrow",
       "title": "Best Eyebrow & Unibrow Laser Hair Removal in Delhi",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal/female",
-      "slug": "laser-hair-removal-female",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal-female",
       "title": "Female Laser Hair Removal in Delhi – Get Silky, Hair-Free Skin",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/body-contouring-in-delhi/cryolipolysis",
-      "slug": "cryolipolysis",
+      "slug": "body-contouring-in-delhi-cryolipolysis",
       "title": "Cryolipolysis in Delhi – Safe and Effective Fat Freezing Treatment",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/breast-augmentation",
-      "slug": "breast-augmentation",
+      "slug": "plastic-surgery-in-delhi-breast-augmentation",
       "title": "Breast Augmentation in Delhi – Cost, Implants & Natural Results",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/body-contouring-in-delhi/weight-loss-treatment",
-      "slug": "weight-loss-treatment",
+      "slug": "body-contouring-in-delhi-weight-loss-treatment",
       "title": "Weight Loss Treatment in Delhi – Surgical and Non-Surgical Options",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/laser-hair-removal",
-      "slug": "laser-hair-removal",
+      "slug": "cosmetic-treatments-in-delhi-laser-hair-removal",
       "title": "Laser Hair Removal in Delhi – Cost, Packages and Long Lasting Results",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/gynecomastia",
-      "slug": "gynecomastia",
+      "slug": "plastic-surgery-in-delhi-gynecomastia",
       "title": "Best Gynecomastia Surgery in Delhi – Regain a Confident, Masculine Chest",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/body-hair",
-      "slug": "hair-transplant-body-hair",
+      "slug": "hair-transplant-in-delhi-body-hair",
       "title": "Body Hair Transplant in Delhi – Use Beard or Chest Hair for Density",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/fue",
-      "slug": "hair-transplant-fue",
+      "slug": "hair-transplant-in-delhi-fue",
       "title": "FUE Hair Transplant in Delhi – Cost, Benefits & Natural Results",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/fut",
-      "slug": "hair-transplant-fut",
+      "slug": "hair-transplant-in-delhi-fut",
       "title": "FUT Hair Transplant in Delhi – High Graft Yield, Long-Term Results",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/repair",
-      "slug": "hair-transplant-repair",
+      "slug": "hair-transplant-in-delhi-repair",
       "title": "Hair Transplant Repair in Delhi – Fix Failed or Patchy Results",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/side-effects",
-      "slug": "hair-transplant-side-effects",
+      "slug": "hair-transplant-in-delhi-side-effects",
       "title": "Hair Transplant Side Effects – Common Risks and How to Manage Them",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/before-and-after",
-      "slug": "hair-transplant-before-after",
+      "slug": "hair-transplant-in-delhi-before-and-after",
       "title": "Hair Transplant Before & After Results – Real Patient Transformations",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/graft-calculator",
-      "slug": "hair-transplant-graft-calculator",
+      "slug": "hair-transplant-in-delhi-graft-calculator",
       "title": "Hair Graft Calculator",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/faridabad",
-      "slug": "hair-transplant-faridabad",
+      "slug": "hair-transplant-in-delhi-faridabad",
       "title": "Hair Transplant for Faridabad Patients at Our Delhi Clinic",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/gurgaon",
-      "slug": "hair-transplant-gurgaon",
+      "slug": "hair-transplant-in-delhi-gurgaon",
       "title": "Hair Transplant for Gurgaon Patients at Our Delhi Clinic",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/eyebrow",
-      "slug": "hair-transplant-eyebrow",
+      "slug": "hair-transplant-in-delhi-eyebrow",
       "title": "Eyebrow Transplant in Delhi for Fuller, Natural-Looking Brows",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/holistic-wellness-treatments-in-delhi/peptide-therapy",
-      "slug": "peptide-therapy",
+      "slug": "holistic-wellness-treatments-in-delhi-peptide-therapy",
       "title": "Peptide Therapy for Fat Loss, Anti-Aging, and Total Wellness in Delhi",
       "category": "cat-therapies",
       "price": 0
     },
     {
       "from": "/intimate-surgery-in-delhi/hymenoplasty",
-      "slug": "hymenoplasty",
+      "slug": "intimate-surgery-in-delhi-hymenoplasty",
       "title": "Hymenoplasty in Delhi – Surgery, Cost & Recovery",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/skin-treatments-in-delhi/skin-whitening",
-      "slug": "skin-whitening",
+      "slug": "skin-treatments-in-delhi-skin-whitening",
       "title": "Skin Whitening Treatment in Delhi",
       "category": "cat-skin-vitiligo",
       "price": 0
     },
     {
       "from": "/skin-treatments-in-delhi/hydrafacial",
-      "slug": "hydrafacial",
+      "slug": "skin-treatments-in-delhi-hydrafacial",
       "title": "HydraFacial Treatment in Delhi – Reveal Glowing, Hydrated Skin",
       "category": "cat-skin-vitiligo",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/anti-aging",
-      "slug": "anti-aging",
+      "slug": "cosmetic-treatments-in-delhi-anti-aging",
       "title": "Anti-Aging Treatment in Delhi – Look Younger, Feel Better",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/skin-treatments-in-delhi/dark-circles",
-      "slug": "dark-circles",
+      "slug": "skin-treatments-in-delhi-dark-circles",
       "title": "Dark Circles Removal Treatment in Delhi – Laser, Fillers & Advanced Solutions",
       "category": "cat-skin-vitiligo",
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/tummy-tuck",
-      "slug": "tummy-tuck",
+      "slug": "plastic-surgery-in-delhi-tummy-tuck",
       "title": "Tummy Tuck Surgery in Delhi – Achieve a Toned & Sculpted Abdomen",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/female",
-      "slug": "hair-transplant-female",
+      "slug": "hair-transplant-in-delhi-female",
       "title": "Female Hair Transplant in Delhi – Restore Hair and Confidence",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/hair-loss-treatment-in-delhi/prp",
-      "slug": "prp",
+      "slug": "hair-loss-treatment-in-delhi-prp",
       "title": "PRP Hair Treatment in Delhi for Hair Loss and Regrowth",
       "category": "cat-hair",
       "price": 0
     },
     {
       "from": "/skin-treatments-in-delhi/vitiligo",
-      "slug": "vitiligo",
+      "slug": "skin-treatments-in-delhi-vitiligo",
       "title": "Vitiligo Treatment in Delhi",
       "category": "cat-skin-vitiligo",
       "price": 0
     },
     {
       "from": "/about/dr-sandeep-bhasin",
-      "slug": "dr-sandeep-bhasin",
+      "slug": "about-dr-sandeep-bhasin",
       "title": "Dr. Sandeep Bhasin – Senior Cosmetic & Hair Transplant Surgeon in South Delhi",
-      "category": "cat-therapies",
+      "category": null,
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/male-to-female-surgery",
-      "slug": "male-to-female-surgery",
+      "slug": "plastic-surgery-in-delhi-male-to-female-surgery",
       "title": "Male to Female Surgery in Delhi",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/cosmetic-treatments-in-delhi/dermal-fillers",
-      "slug": "dermal-fillers",
+      "slug": "cosmetic-treatments-in-delhi-dermal-fillers",
       "title": "Dermal Fillers Treatment in Delhi – Restore Volume & Enhance Your Beauty",
       "category": "cat-face",
       "price": 0
     },
     {
       "from": "/intimate-surgery-in-delhi/labiaplasty",
-      "slug": "labiaplasty",
+      "slug": "intimate-surgery-in-delhi-labiaplasty",
       "title": "Labiaplasty in Delhi – Safe, Private, and Expert Feminine Care",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/facelift",
-      "slug": "facelift",
+      "slug": "plastic-surgery-in-delhi-facelift",
       "title": "Facelift in Delhi – Restore Youthful Skin & Define Your Facial Contours",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/cost",
-      "slug": "hair-transplant-cost",
+      "slug": "hair-transplant-in-delhi-cost",
       "title": "Hair Transplant Cost in Delhi – Full Breakdown by Grafts & Technique",
       "category": "cat-hair",
       "price": 0
@@ -747,12 +747,12 @@
       "from": "/non-surgical-weight-loss-treatment-in-delhi",
       "slug": "non-surgical-weight-loss-treatment-in-delhi",
       "title": "Non-Surgical Weight Loss Treatment in Delhi",
-      "category": "cat-therapies",
+      "category": "cat-body",
       "price": 0
     },
     {
       "from": "/hair-transplant-in-delhi/beard",
-      "slug": "hair-transplant-beard",
+      "slug": "hair-transplant-in-delhi-beard",
       "title": "Best Beard Transplant in Delhi – Cost, Before & After & Expert Clinic",
       "category": "cat-hair",
       "price": 0
@@ -766,21 +766,21 @@
     },
     {
       "from": "/intimate-surgery-in-delhi/vaginoplasty",
-      "slug": "vaginoplasty",
+      "slug": "intimate-surgery-in-delhi-vaginoplasty",
       "title": "Best Vaginoplasty Surgery in Delhi – Cost, Results & Expert Care",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/rhinoplasty",
-      "slug": "rhinoplasty",
+      "slug": "plastic-surgery-in-delhi-rhinoplasty",
       "title": "Best Rhinoplasty Surgery in Delhi – Cost, Results & Expert Surgeon",
       "category": "cat-body",
       "price": 0
     },
     {
       "from": "/plastic-surgery-in-delhi/liposuction",
-      "slug": "liposuction",
+      "slug": "plastic-surgery-in-delhi-liposuction",
       "title": "Best Liposuction in Delhi – Cost, Before & After Results & Expert Surgeon",
       "category": "cat-body",
       "price": 0
@@ -789,7 +789,7 @@
       "from": "/faq",
       "slug": "faq",
       "title": "Frequently Asked Questions (FAQ) – Care Well Medical Centre",
-      "category": "cat-therapies",
+      "category": null,
       "price": 0
     },
     {
@@ -824,14 +824,14 @@
       "from": "/proctology-treatments-in-delhi",
       "slug": "proctology-treatments-in-delhi",
       "title": "Proctology Treatment in Delhi – Advanced Anorectal Care",
-      "category": "cat-therapies",
+      "category": "cat-body",
       "price": 0
     },
     {
       "from": "/about",
       "slug": "about",
       "title": "About Care Well Medical Centre – Our Vision, Team & Commitment",
-      "category": "cat-therapies",
+      "category": null,
       "price": 0
     },
     {
@@ -845,7 +845,7 @@
       "from": "/urology-in-delhi",
       "slug": "urology-in-delhi",
       "title": "Urology Treatments in Delhi at Care Well Medical Centre",
-      "category": "cat-therapies",
+      "category": "cat-body",
       "price": 0
     },
     {
@@ -859,7 +859,7 @@
       "from": "/contact",
       "slug": "contact",
       "title": "Contact Us",
-      "category": "cat-therapies",
+      "category": null,
       "price": 0
     },
     {
@@ -1876,6 +1876,24 @@
       "title": "Why Women Choose Hymenoplasty: Myths, Emotions & Social Pressures",
       "category": "cat-body",
       "price": 90000
+    },
+    {
+      "from": "/cosmetic-treatments-in-delhi",
+      "slug": "cosmetic-treatments-in-delhi",
+      "title": "Cosmetic Treatments in Delhi",
+      "category": "cat-face"
+    },
+    {
+      "from": "/hair-transplant-in-delhi",
+      "slug": "hair-transplant-in-delhi",
+      "title": "Best Hair Transplant in Delhi – Cost, Before & After Results by Expert Surgeons & Clinic",
+      "category": "cat-hair"
+    },
+    {
+      "from": "/plastic-surgery-in-delhi",
+      "slug": "plastic-surgery-in-delhi",
+      "title": "Plastic Surgery in Delhi – Face, Body & Reconstructive Treatments by Experts",
+      "category": "cat-body"
     }
   ],
   "staticRedirects": [

@@ -1,5 +1,6 @@
 import type { jsPDF } from "jspdf";
 import { oldSlugFromUrl } from "@/lib/scraper-slug";
+import { slugFromLegacyPath, normalizeLegacyPath } from "@/lib/legacy-path";
 
 export type ScrapePreviewPdfInput = {
   url: string;
@@ -15,6 +16,9 @@ export type ScrapePreviewPdfInput = {
   treatmentCards: { title: string; excerpt?: string; href?: string }[];
   faqs: { question: string; answer?: string }[];
   bodyText: string;
+  bodyHtml?: string | null;
+  heroImageUrl?: string | null;
+  contentImageUrls?: string[];
   breadcrumbs?: string[];
 };
 
@@ -107,31 +111,39 @@ export function scrapePreviewPdfFilename(
   url: string,
   scrapedAt = new Date(),
   oldSlug?: string,
+  legacyPath?: string,
 ): string {
-  const slug = oldSlug ?? slugFromPreviewUrl(url);
+  const slug =
+    legacyPath && legacyPath !== "/"
+      ? slugFromLegacyPath(normalizeLegacyPath(legacyPath))
+      : (oldSlug ?? slugFromPreviewUrl(url));
   const date = scrapedAt.toISOString().slice(0, 10);
   return `scrape-${slug}-${date}.pdf`;
 }
 
-function uniquePdfFilename(
+function uniqueExportBasename(
   item: ScrapePreviewPdfInput,
   index: number,
   scrapedAt: Date,
   used: Set<string>,
 ): string {
-  let name = scrapePreviewPdfFilename(item.url, scrapedAt, item.oldSlug);
-  if (!used.has(name)) {
-    used.add(name);
-    return name;
-  }
-  const slug = item.oldSlug ?? slugFromPreviewUrl(item.url);
+  const legacyPath = item.legacyPath ?? new URL(item.url).pathname;
+  const slug =
+    legacyPath && legacyPath !== "/"
+      ? slugFromLegacyPath(normalizeLegacyPath(legacyPath))
+      : (item.oldSlug ?? slugFromPreviewUrl(item.url));
   const date = scrapedAt.toISOString().slice(0, 10);
-  name = `scrape-${slug}-${String(index + 1).padStart(3, "0")}-${date}.pdf`;
-  while (used.has(name)) {
-    name = `scrape-${slug}-${String(index + 1).padStart(3, "0")}-${Date.now()}-${date}.pdf`;
+  let base = `scrape-${slug}-${date}`;
+  if (!used.has(base)) {
+    used.add(base);
+    return base;
   }
-  used.add(name);
-  return name;
+  base = `scrape-${slug}-${String(index + 1).padStart(3, "0")}-${date}`;
+  while (used.has(base)) {
+    base = `scrape-${slug}-${String(index + 1).padStart(3, "0")}-${Date.now()}-${date}`;
+  }
+  used.add(base);
+  return base;
 }
 
 /** Renders full scraped content for one URL (no summarization). */
@@ -281,12 +293,12 @@ export async function downloadPreviewPdf(preview: ScrapePreviewPdfInput): Promis
 }
 
 /**
- * One PDF per scraped URL (full content), delivered as a single ZIP download.
+ * One PDF + matching JSON per scraped URL (full content), delivered as a single ZIP download.
  */
 export async function downloadBatchPdfs(
   items: ScrapePreviewPdfInput[],
-): Promise<{ zipFilename: string; pdfFilenames: string[] }> {
-  if (items.length === 0) return { zipFilename: "", pdfFilenames: [] };
+): Promise<{ zipFilename: string; pdfFilenames: string[]; jsonFilenames: string[] }> {
+  if (items.length === 0) return { zipFilename: "", pdfFilenames: [], jsonFilenames: [] };
 
   const [{ jsPDF, autoTable }, { default: JSZip }] = await Promise.all([
     loadPdfLibs(),
@@ -295,20 +307,25 @@ export async function downloadBatchPdfs(
 
   const scrapedAt = new Date();
   const pdfFilenames: string[] = [];
+  const jsonFilenames: string[] = [];
   const usedNames = new Set<string>();
   const zip = new JSZip();
 
   for (let i = 0; i < items.length; i += 1) {
     const item = items[i]!;
-    const filename = uniquePdfFilename(item, i, scrapedAt, usedNames);
+    const base = uniqueExportBasename(item, i, scrapedAt, usedNames);
+    const pdfName = `${base}.pdf`;
+    const jsonName = `${base}.json`;
     const doc = buildSinglePagePdf(jsPDF, autoTable, item);
-    pdfFilenames.push(filename);
-    zip.file(filename, doc.output("arraybuffer"));
+    pdfFilenames.push(pdfName);
+    jsonFilenames.push(jsonName);
+    zip.file(pdfName, doc.output("arraybuffer"));
+    zip.file(jsonName, JSON.stringify(item, null, 2));
   }
 
   const zipBlob = await zip.generateAsync({ type: "blob" });
   const zipFilename = scrapeBatchZipFilename(scrapedAt);
   triggerBlobDownload(zipBlob, zipFilename);
 
-  return { zipFilename, pdfFilenames };
+  return { zipFilename, pdfFilenames, jsonFilenames };
 }

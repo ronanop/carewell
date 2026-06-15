@@ -16,11 +16,17 @@ export function MediaLibrary({ initial }: { initial: MediaItem[] }) {
   const [editAlt, setEditAlt] = useState("");
   const [editFilename, setEditFilename] = useState("");
   const [copied, setCopied] = useState<string | null>(null);
+  const [storage, setStorage] = useState<"cloudinary" | "local" | null>(null);
 
   const refresh = useCallback(async () => {
     const res = await fetch("/api/admin/content/media");
-    const json = (await res.json()) as { ok?: boolean; media?: MediaItem[] };
+    const json = (await res.json()) as {
+      ok?: boolean;
+      media?: MediaItem[];
+      storage?: "cloudinary" | "local";
+    };
     if (json.ok && json.media) setItems(json.media);
+    if (json.storage) setStorage(json.storage);
   }, []);
 
   useEffect(() => {
@@ -90,6 +96,11 @@ export function MediaLibrary({ initial }: { initial: MediaItem[] }) {
       <p className="text-sm text-navy/70">
         Upload images, GIFs, and short videos once — then reuse them on services, blog posts, gallery cases, and page
         content via <strong>Choose from library</strong> in any editor.
+        {storage === "cloudinary" ? (
+          <span className="mt-1 block text-xs text-teal">Storage: Cloudinary CDN</span>
+        ) : storage === "local" ? (
+          <span className="mt-1 block text-xs text-navy/50">Storage: local disk (dev only — set Cloudinary env on Render)</span>
+        ) : null}
       </p>
 
       <div className="flex flex-wrap items-center gap-3">

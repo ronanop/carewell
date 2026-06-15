@@ -32,6 +32,12 @@ export type ScrapePreview = {
   treatmentCards: TreatmentCard[];
   faqs: FaqItem[];
   bodyText: string;
+  /** Cleaned entry-content HTML (images, lists, tables preserved) for CMS import. */
+  bodyHtml: string | null;
+  /** og:image or first in-content image — used as hero during import. */
+  heroImageUrl: string | null;
+  /** All image URLs found in body (for Cloudinary migration). */
+  contentImageUrls: string[];
   breadcrumbs?: string[];
 };
 
@@ -64,6 +70,75 @@ function resolveImgSrc($: CheerioAPI, img: Cheerio<AnyNode>): string | undefined
     return raw;
   }
   return undefined;
+}
+
+function absoluteUrl(raw: string | undefined, pageUrl: string): string | null {
+  if (!raw || raw.startsWith("data:")) return null;
+  try {
+    return new URL(raw, pageUrl).href;
+  } catch {
+    return null;
+  }
+}
+
+const BODY_HTML_STRIP_SELECTORS = [
+  ...EXCLUDED_CONTENT_SELECTORS.split(", "),
+  ".schema-faq",
+  ".wp-block-yoast-faq-block",
+  ".schema-faq-section",
+  "script",
+  "style",
+  "noscript",
+  ".yt-lite-wrap",
+  "#cookie-banner",
+].join(", ");
+
+function extractBodyHtml($: CheerioAPI, root: Cheerio<AnyNode>): string | null {
+  const clone = root.clone();
+  clone.find(BODY_HTML_STRIP_SELECTORS).remove();
+  clone.find("h1.entry-title, h1").first().remove();
+
+  const html = clone.html()?.trim() ?? "";
+  if (html.length < 40) return null;
+  return html;
+}
+
+function collectContentImageUrls(
+  $: CheerioAPI,
+  root: Cheerio<AnyNode>,
+  pageUrl: string,
+): string[] {
+  const seen = new Set<string>();
+  const urls: string[] = [];
+
+  root.find("img").each((_, el) => {
+    const src = resolveImgSrc($, $(el));
+    const abs = absoluteUrl(src, pageUrl);
+    if (!abs || seen.has(abs)) return;
+    seen.add(abs);
+    urls.push(abs);
+  });
+
+  return urls;
+}
+
+function extractHeroImageUrl(
+  $: CheerioAPI,
+  root: Cheerio<AnyNode>,
+  pageUrl: string,
+  contentImageUrls: string[],
+): string | null {
+  const og =
+    $('meta[property="og:image"]').attr("content") ??
+    $('meta[name="twitter:image"]').attr("content");
+  const fromOg = absoluteUrl(og, pageUrl);
+  if (fromOg) return fromOg;
+
+  const featured = root.find("img.wp-post-image, .post-thumbnail img").first();
+  const fromFeatured = absoluteUrl(resolveImgSrc($, featured), pageUrl);
+  if (fromFeatured) return fromFeatured;
+
+  return contentImageUrls[0] ?? null;
 }
 
 function collectJsonLdNodes(data: unknown): Record<string, unknown>[] {
@@ -501,6 +576,9 @@ export function parseHtmlPreview(html: string, url: string): ScrapePreview {
   const headings = extractHeadings($, root, h1);
   const bodyText = extractBodyText($, root, breadcrumbs);
   const bodySnippet = buildBodySnippet(introParagraphs, bodyText);
+  const bodyHtml = extractBodyHtml($, root);
+  const contentImageUrls = collectContentImageUrls($, root, url);
+  const heroImageUrl = extractHeroImageUrl($, root, url, contentImageUrls);
 
   return {
     url,
@@ -514,6 +592,9 @@ export function parseHtmlPreview(html: string, url: string): ScrapePreview {
     treatmentCards,
     faqs,
     bodyText,
+    bodyHtml,
+    heroImageUrl,
+    contentImageUrls,
     breadcrumbs: breadcrumbs.length > 0 ? breadcrumbs : undefined,
   };
 }

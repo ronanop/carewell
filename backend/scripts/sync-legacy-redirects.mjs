@@ -41,8 +41,10 @@ async function main() {
     addRule(`${from}/`, to);
   }
 
+  /** SEO URLs live at legacy paths; /services/{slug} redirects to legacy. */
   for (const s of services) {
-    addLegacyPath(s.from, `/services/${s.slug}`);
+    if (!s.from || !s.slug) continue;
+    addLegacyPath(`/services/${s.slug}`, s.from);
   }
 
   for (const r of staticRedirects) {
