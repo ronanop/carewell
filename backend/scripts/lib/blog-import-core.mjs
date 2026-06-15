@@ -95,21 +95,24 @@ export async function buildBlogPayload(preview, deps) {
 export async function upsertImportedBlog(prisma, payload) {
   const { id, ...data } = payload;
 
-  await prisma.$transaction(async (tx) => {
-    await tx.blogPost.upsert({
-      where: { id },
-      create: { id, ...data },
-      update: data,
-    });
+  await prisma.$transaction(
+    async (tx) => {
+      await tx.blogPost.upsert({
+        where: { id },
+        create: { id, ...data },
+        update: data,
+      });
 
-    const from = `/blog/${payload.slug}`;
-    const to = `${payload.legacyPath}/`;
-    await tx.redirect.upsert({
-      where: { fromPath: from },
-      create: { fromPath: from, toPath: to, statusCode: 301 },
-      update: { toPath: to, statusCode: 301 },
-    });
-  });
+      const from = `/blog/${payload.slug}`;
+      const to = `${payload.legacyPath}/`;
+      await tx.redirect.upsert({
+        where: { fromPath: from },
+        create: { fromPath: from, toPath: to, statusCode: 301 },
+        update: { toPath: to, statusCode: 301 },
+      });
+    },
+    { timeout: 120_000, maxWait: 120_000 },
+  );
 }
 
 /**

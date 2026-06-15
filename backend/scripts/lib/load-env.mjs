@@ -30,7 +30,9 @@ export function loadEnvFiles(root = repoRoot(import.meta.url)) {
       ) {
         val = val.slice(1, -1);
       }
-      process.env[key] = val;
+      if (process.env[key] === undefined) {
+        process.env[key] = val;
+      }
     }
   }
 }

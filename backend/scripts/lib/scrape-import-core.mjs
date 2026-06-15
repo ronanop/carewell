@@ -139,7 +139,8 @@ export async function buildServicePayload(preview, deps) {
 export async function upsertImportedService(prisma, payload) {
   const { id, relatedServiceId, quickFacts, howItWorksSteps, faqs, ...data } = payload;
 
-  await prisma.$transaction(async (tx) => {
+  await prisma.$transaction(
+    async (tx) => {
     await tx.service.upsert({
       where: { id },
       create: { id, ...data },
@@ -194,7 +195,9 @@ export async function upsertImportedService(prisma, payload) {
       create: { fromPath: from, toPath: to, statusCode: 301 },
       update: { toPath: to, statusCode: 301 },
     });
-  });
+    },
+    { timeout: 120_000, maxWait: 120_000 },
+  );
 }
 
 /**
