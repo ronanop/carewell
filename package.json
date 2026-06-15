@@ -36,6 +36,8 @@
     "seo:audit": "node ./backend/scripts/seo-audit.mjs",
     "redirects:verify": "node ./backend/scripts/verify-redirects.mjs",
     "redirects:legacy": "node ./backend/scripts/sync-legacy-redirects.mjs",
+    "redirects:prune-blog-map": "node ./backend/scripts/prune-blog-from-url-map.mjs",
+    "redirects:fix-blogs": "node ./backend/scripts/fix-inverted-blog-redirects.mjs",
     "bundle:report": "node ./backend/scripts/bundle-report.mjs",
     "reviews:fetch": "node ./backend/scripts/fetch-google-reviews.mjs",
     "sanity:list-services": "node ./backend/scripts/list-services-for-import.mjs",

@@ -105,55 +105,30 @@ export async function generateMetadata({
 
 
   const legacyPath = normalizeLegacyPath(`/${segments.join("/")}`);
-
   const base = getSiteUrl();
-
   const canonical = `${base}${legacyPathWithTrailingSlash(legacyPath)}`;
 
-
+  const post = await getBlogPostByLegacyPath(legacyPath);
+  if (post) {
+    const title = post.seo?.title ?? post.title ?? "Blog";
+    return {
+      title,
+      description: post.seo?.description ?? post.excerpt ?? undefined,
+      alternates: { canonical },
+    };
+  }
 
   const service = await getServiceByLegacyPath(legacyPath);
-
   if (service) {
-
     const title = service.seo?.title ?? `${service.title} in Delhi | Care Well`;
-
     return {
-
       title,
-
       description: service.seo?.description ?? undefined,
-
       alternates: { canonical },
-
     };
-
   }
-
-
-
-  const post = await getBlogPostByLegacyPath(legacyPath);
-
-  if (post) {
-
-    const title = post.seo?.title ?? post.title ?? "Blog";
-
-    return {
-
-      title,
-
-      description: post.seo?.description ?? post.excerpt ?? undefined,
-
-      alternates: { canonical },
-
-    };
-
-  }
-
-
 
   return { title: "Care Well Medical Centre" };
-
 }
 
 
@@ -178,13 +153,11 @@ export default async function CatchAllLegacyPage({
 
   const legacyPath = normalizeLegacyPath(`/${segments.join("/")}`);
 
-
+  const post = await getBlogPostByLegacyPath(legacyPath);
+  if (post) return <LegacyBlogPage legacyPath={legacyPath} />;
 
   const service = await getServiceByLegacyPath(legacyPath);
-
   if (service) return <LegacyServicePage legacyPath={legacyPath} />;
-
-
 
   return <LegacyBlogPage legacyPath={legacyPath} />;
 

@@ -11,6 +11,10 @@ import { htmlToPortableText, resetPortableKeys } from "./html-to-portable.mjs";
 import { portableTextFromBody, ensureFaqs } from "./sanity-portable.mjs";
 import { inferCategory, defaultPriceForCategory } from "./scrape-pdf-parse.mjs";
 import { createImageResolver } from "./wp-image-import.mjs";
+import { loadLegacyBlogPaths } from "./legacy-blog-paths.mjs";
+import { repoRoot } from "./repo-root.mjs";
+
+const blogLegacyPaths = loadLegacyBlogPaths(repoRoot(import.meta.url));
 
 const relatedByCategory = {
   "cat-hair": "svc-hair-transplant",
@@ -201,6 +205,9 @@ export async function importScrapePreview(prisma, preview) {
   const { legacyPath } = resolveImportMeta(preview);
   if (SKIP_LEGACY_PATHS.has(legacyPath)) {
     return { skipped: true, reason: "hub path", legacyPath };
+  }
+  if (blogLegacyPaths.has(legacyPath)) {
+    return { skipped: true, reason: "blog path", legacyPath };
   }
 
   const resolveImage = createImageResolver(prisma);

@@ -19,6 +19,7 @@ import {
 } from "./lib/scrape-import-core.mjs";
 import { isCloudinaryEnabled } from "./lib/wp-image-import.mjs";
 import { loadEnvFiles } from "./lib/load-env.mjs";
+import { loadLegacyBlogPaths } from "./lib/legacy-blog-paths.mjs";
 import { repoRoot } from "./lib/repo-root.mjs";
 
 const root = repoRoot(import.meta.url);
@@ -166,6 +167,7 @@ async function main() {
   let imported = 0;
   let skipped = 0;
   const legacyMap = loadLegacyMap();
+  const blogPaths = loadLegacyBlogPaths(root);
   let mapAdded = 0;
 
   for (const { file, preview, slug } of byLegacyPath.values()) {
@@ -186,18 +188,20 @@ async function main() {
       imported++;
 
       const from = result.legacyPath;
-      const idx = legacyMap.services.findIndex((s) => s.from === from);
-      const entry = {
-        from,
-        slug: result.slug,
-        title: String(preview.h1 ?? preview.title ?? result.slug),
-        category: categoryIdFromLegacyPath(from),
-      };
-      if (idx === -1) {
-        legacyMap.services.push(entry);
-        mapAdded++;
-      } else {
-        legacyMap.services[idx] = { ...legacyMap.services[idx], ...entry };
+      if (!blogPaths.has(from)) {
+        const idx = legacyMap.services.findIndex((s) => s.from === from);
+        const entry = {
+          from,
+          slug: result.slug,
+          title: String(preview.h1 ?? preview.title ?? result.slug),
+          category: categoryIdFromLegacyPath(from),
+        };
+        if (idx === -1) {
+          legacyMap.services.push(entry);
+          mapAdded++;
+        } else {
+          legacyMap.services[idx] = { ...legacyMap.services[idx], ...entry };
+        }
       }
     }
   }
