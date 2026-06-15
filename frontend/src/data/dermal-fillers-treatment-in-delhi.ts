@@ -11,32 +11,32 @@ export const DERMAL_FILLERS_IMAGES = {
     alt: "Dermal fillers before and after — restored facial volume at Care Well Medical Centre Delhi",
   },
   whatIs: {
-    src: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
     alt: "Dermal fillers treatment in Delhi for volume restoration",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
       alt: "Dermal fillers before and after showing results in Delhi",
       caption: "Volume restoration results",
     },
     {
-      src: `${WP}/2025/05/lip-augmentation.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp`,
       alt: "Dermal fillers lip enhancement before and after",
       caption: "Lip enhancement",
     },
     {
-      src: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
       alt: "Cheek and lip enhancement with dermal fillers",
       caption: "Cheek and lip contouring",
     },
   ],
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — dermal fillers expert in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Dermal fillers treatment video — Care Well Medical Centre",
   },
 } as const;

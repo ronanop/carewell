@@ -1,10 +1,9 @@
-import { readFileSync, existsSync } from "fs";
-import { join } from "path";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { getRepoRoot } from "@/lib/repo-root";
 
-import { repoRoot } from "./repo-root.mjs";
-
-/** @param {string} [root] */
-export function envFilePaths(root) {
+/** Env files in load order — later entries override earlier ones. */
+export function repoEnvFilePaths(root = getRepoRoot()): string[] {
   return [
     join(root, ".env"),
     join(root, "frontend", ".env"),
@@ -13,11 +12,11 @@ export function envFilePaths(root) {
   ];
 }
 
-/** Load monorepo env (later files override). */
-export function loadEnvFiles(root = repoRoot(import.meta.url)) {
-  for (const p of envFilePaths(root)) {
-    if (!existsSync(p)) continue;
-    for (const line of readFileSync(p, "utf8").split(/\r?\n/)) {
+/** Load monorepo env files into `process.env` (for API server and scripts). */
+export function loadRepoEnv(root = getRepoRoot()): void {
+  for (const filePath of repoEnvFilePaths(root)) {
+    if (!existsSync(filePath)) continue;
+    for (const line of readFileSync(filePath, "utf8").split(/\r?\n/)) {
       const t = line.trim();
       if (!t || t.startsWith("#")) continue;
       const eq = t.indexOf("=");

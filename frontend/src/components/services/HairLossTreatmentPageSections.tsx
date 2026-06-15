@@ -216,7 +216,7 @@ export function HairLossTreatmentPageSections({
             <p className="mt-4 text-sm leading-relaxed text-navy/80">{page.norwoodVariantNote}</p>
             <div className="mt-6 overflow-hidden rounded-2xl border border-surface">
               <Image
-                src="/images/hair-transplant-baldness-grades.png"
+                src="https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517837/carewell-media/site/images/hair-transplant-baldness-grades.jpg"
                 alt="Norwood scale stages of male pattern baldness"
                 width={900}
                 height={500}

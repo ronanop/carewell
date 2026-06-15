@@ -7,23 +7,23 @@ const WP = "https://www.carewellmedicalcentre.com/wp-content/uploads";
 
 export const MTF_SURGERY_IMAGES = {
   hero: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Confidential male to female surgery consultation at Care Well Medical Centre, Delhi",
   },
   understanding: {
-    src: "/demo/surgical-procedures-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/surgical-procedures-card.jpg",
     alt: "Male to female gender reassignment surgery process explained at Care Well Medical Centre",
   },
   whyChoose: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Why choose Care Well Medical Centre for gender affirmation care in Delhi",
   },
   types: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Types of male to female surgery offered at Care Well Medical Centre",
   },
   journey: {
-    src: "/demo/wellness-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
     alt: "Patient journey for male to female surgery in Delhi",
   },
   safety: {
@@ -31,35 +31,35 @@ export const MTF_SURGERY_IMAGES = {
     alt: "How gender reassignment surgery is performed safely at Care Well Medical Centre",
   },
   eligibility: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Eligibility and minimum age for gender reassignment surgery",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — gender reassignment surgeon in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "What to expect before and after male to female surgery",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/breast-augmentation-surgery-carewell.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517895/carewell-media/wp/breast-augmentation-surgery-carewell.jpg`,
       alt: "Male to female gender reassignment surgery before and after results under medical supervision in Delhi",
       caption: "Gender affirmation results",
     },
     {
-      src: `${WP}/2025/04/breast-lift-surgery-carewell-1.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517896/carewell-media/wp/breast-lift-surgery-carewell-1.jpg`,
       alt: "Sex reassignment surgery before and after comparison for male to female transition",
       caption: "Transition comparison",
     },
     {
-      src: `${WP}/2025/04/breast-augmentation-surgery-carewell.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517895/carewell-media/wp/breast-augmentation-surgery-carewell.jpg`,
       alt: "Before and after results of breast implant surgery as part of male to female transition",
       caption: "Breast feminisation",
     },
     {
-      src: `${WP}/2025/04/breast-lift-surgery-carewell-1.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517896/carewell-media/wp/breast-lift-surgery-carewell-1.jpg`,
       alt: "Male to female breast augmentation before and after results using silicone implants",
       caption: "Breast augmentation results",
     },

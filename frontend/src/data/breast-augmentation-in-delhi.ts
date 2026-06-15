@@ -11,34 +11,34 @@ export const BREAST_AUGMENTATION_IMAGES = {
     alt: "Breast implant before and after result photo in Delhi showing natural enhancement",
   },
   heroSecondary: {
-    src: `${WP}/2025/04/breast-lift-surgery-carewell-1.jpg`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517896/carewell-media/wp/breast-lift-surgery-carewell-1.jpg`,
     alt: "Real breast implant before and after result photo in Delhi with surgery outcome",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — breast augmentation surgeon in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Breast implant video at Care Well Medical Centre Delhi",
   },
   recovery: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Breast augmentation recovery timeline at Care Well Medical Centre",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/breast-augmentation-surgery-carewell.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517895/carewell-media/wp/breast-augmentation-surgery-carewell.jpg`,
       alt: "Breast augmentation before and after results in Delhi",
       caption: "Natural enhancement",
     },
     {
-      src: `${WP}/2025/04/breast-lift-surgery-carewell-1.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517896/carewell-media/wp/breast-lift-surgery-carewell-1.jpg`,
       alt: "Breast implant results Delhi",
       caption: "Balanced contour",
     },
     {
-      src: `${WP}/2025/04/breast-reduction-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517891/carewell-media/wp/breast-reduction-surgery-carewell-min.jpg`,
       alt: "Breast surgery results at Care Well Medical Centre",
       caption: "Proportionate shape",
     },

@@ -28,7 +28,7 @@ export function SkinScanSection() {
             <div className="flex justify-center lg:justify-end">
               <div className="relative h-[200px] w-[200px] overflow-hidden rounded-full border-[6px] border-white bg-white shadow-lg sm:h-[240px] sm:w-[240px] lg:h-[280px] lg:w-[280px]">
                 <Image
-                  src="/demo/ai-skin-scan-v3.jpg"
+                  src="https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517801/carewell-media/site/demo/ai-skin-scan-v3.jpg"
                   alt="AI skin scan preview"
                   fill
                   className="object-cover"

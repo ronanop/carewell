@@ -663,12 +663,12 @@ export async function ServicePageSections({
 
               <ul className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
                 {[
-                  { src: "/images/hair-transplant-results/result-3500-grafts-1.png", grafts: "3500 grafts", view: "Side view" },
-                  { src: "/images/hair-transplant-results/result-3500-grafts-2.png", grafts: "3500 grafts", view: "Side view" },
-                  { src: "/images/hair-transplant-results/result-3500-grafts-3.png", grafts: "3500 grafts", view: "Front view" },
-                  { src: "/images/hair-transplant-results/result-8000-grafts-1.png", grafts: "8000 grafts", view: "Crown view" },
-                  { src: "/images/hair-transplant-results/result-8000-grafts-2.png", grafts: "8000 grafts", view: "Side view" },
-                  { src: "/images/hair-transplant-results/result-8000-grafts-3.png", grafts: "8000 grafts", view: "Top view" },
+                  { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517840/carewell-media/site/images/hair-transplant-results/result-3500-grafts-1.jpg", grafts: "3500 grafts", view: "Side view" },
+                  { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517841/carewell-media/site/images/hair-transplant-results/result-3500-grafts-2.jpg", grafts: "3500 grafts", view: "Side view" },
+                  { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517842/carewell-media/site/images/hair-transplant-results/result-3500-grafts-3.jpg", grafts: "3500 grafts", view: "Front view" },
+                  { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517843/carewell-media/site/images/hair-transplant-results/result-8000-grafts-1.jpg", grafts: "8000 grafts", view: "Crown view" },
+                  { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517844/carewell-media/site/images/hair-transplant-results/result-8000-grafts-2.jpg", grafts: "8000 grafts", view: "Side view" },
+                  { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517845/carewell-media/site/images/hair-transplant-results/result-8000-grafts-3.jpg", grafts: "8000 grafts", view: "Top view" },
                 ].map((r) => (
                   <li
                     key={r.src}
@@ -918,7 +918,7 @@ export async function ServicePageSections({
                 <div className="mt-8 overflow-hidden rounded-2xl border border-surface bg-white shadow-sm">
                   <div className="relative aspect-square w-full bg-white sm:aspect-[5/4] md:aspect-[4/3] lg:aspect-[4/3]">
                     <Image
-                      src="/images/hair-transplant-baldness-grades.png"
+                      src="https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517837/carewell-media/site/images/hair-transplant-baldness-grades.jpg"
                       alt="Baldness grade progression chart — hair transplant is usually considered from Grade 2 onwards, with donor hair availability shown for suitable and not suitable candidates"
                       fill
                       sizes="(min-width: 1024px) 720px, (min-width: 640px) 90vw, 100vw"
@@ -988,7 +988,7 @@ export async function ServicePageSections({
                   <div className="mt-6">
                     <HowItWorksStepsAnimated
                       steps={doc.howItWorksSteps ?? []}
-                      belowStepsImageSrc="/images/hair-transplant-process-infographic.png"
+                      belowStepsImageSrc="https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517839/carewell-media/site/images/hair-transplant-process-infographic.jpg"
                       belowStepsImageAlt="Infographic: The 4-step hair transplant process — graft extraction, hairline design, graft implantation, and healing timeline"
                       showStepsDetailAside
                     />
@@ -1071,7 +1071,7 @@ export async function ServicePageSections({
                 <div className="grid gap-0 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)]">
                   <div className="relative aspect-[4/5] w-full bg-gradient-to-br from-primary/10 via-white to-teal/10 md:aspect-auto md:min-h-[360px]">
                     <Image
-                      src="/demo/doctor-profile-feature-vertical.png"
+                      src="https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png"
                       alt="Dr Sandeep Bhasin, senior cosmetic and aesthetic surgeon at Care Well Medical Centre in Delhi"
                       fill
                       sizes="(min-width: 768px) 260px, 100vw"

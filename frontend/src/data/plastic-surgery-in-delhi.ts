@@ -151,7 +151,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/mommy-makeover/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/mommy-makeover-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517883/carewell-media/wp/mommy-makeover-min.jpg",
   },
   {
     title: "Fat Grafting",
@@ -161,7 +161,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/fat-grafting/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/fat-grafting-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517884/carewell-media/wp/fat-grafting-min.jpg",
   },
   {
     title: "Brazilian Butt Lift",
@@ -171,7 +171,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/bbl/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/brazilian-butt-lift-bbl-illustration-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517885/carewell-media/wp/brazilian-butt-lift-bbl-illustration-carewell-min.jpg",
   },
   {
     title: "Facelift",
@@ -181,7 +181,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/facelift/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/facelift-surgery-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517886/carewell-media/wp/facelift-surgery-carewell-min.jpg",
   },
   {
     title: "Chin Augmentation",
@@ -191,7 +191,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/chin-augmentation/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/chin-augmentation-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517887/carewell-media/wp/chin-augmentation-carewell-min.jpg",
   },
   {
     title: "Eyelid Surgery",
@@ -201,7 +201,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/eyelid/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/eyelid-surgery-blepharoplasty-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517888/carewell-media/wp/eyelid-surgery-blepharoplasty-carewell-min.jpg",
   },
   {
     title: "Lipoma Removal",
@@ -211,7 +211,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/lipoma/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/lipoma-removal-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517889/carewell-media/wp/lipoma-removal-carewell-min.jpg",
   },
   {
     title: "Rhinoplasty",
@@ -221,7 +221,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/rhinoplasty/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/rhinoplasty-nose-surgery-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517890/carewell-media/wp/rhinoplasty-nose-surgery-carewell-min.jpg",
   },
   {
     title: "Breast Reduction",
@@ -231,7 +231,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/breast-reduction/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/breast-reduction-surgery-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517891/carewell-media/wp/breast-reduction-surgery-carewell-min.jpg",
   },
   {
     title: "Tummy Tuck",
@@ -241,7 +241,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/tummy-tuck/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/tummy-tuck-surgery-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517893/carewell-media/wp/tummy-tuck-surgery-carewell-min.jpg",
   },
   {
     title: "Liposuction",
@@ -251,7 +251,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/liposuction/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/liposuction-surgery-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg",
   },
   {
     title: "Septoplasty",
@@ -261,7 +261,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/septoplasty/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/septoplasty-nose-surgery-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/septoplasty-nose-surgery-carewell-min.jpg",
   },
   {
     title: "Breast Augmentation",
@@ -271,7 +271,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/breast-augmentation/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/breast-augmentation-surgery-carewell.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517895/carewell-media/wp/breast-augmentation-surgery-carewell.jpg",
   },
   {
     title: "Breast Lift",
@@ -281,7 +281,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/breast-lift/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/breast-lift-surgery-carewell-1.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517896/carewell-media/wp/breast-lift-surgery-carewell-1.jpg",
   },
   {
     title: "Neck Lift",
@@ -291,7 +291,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/neck-lift/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/neck-lift-procedure-carewell.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517898/carewell-media/wp/neck-lift-procedure-carewell.jpg",
   },
   {
     title: "Buccal Fat Removal",
@@ -301,7 +301,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/buccal-fat-removal/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/buccal-fat-removal-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517899/carewell-media/wp/buccal-fat-removal-carewell-min.jpg",
   },
   {
     title: "Gynecomastia",
@@ -311,7 +311,7 @@ export const PLASTIC_SURGERY_TREATMENT_CARDS: PlasticSurgeryTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/gynecomastia/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/gynecomastia-surgery-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517900/carewell-media/wp/gynecomastia-surgery-carewell-min.jpg",
   },
 ];
 

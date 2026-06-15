@@ -2,34 +2,34 @@ import { HAIR_LOSS_CLINIC, HAIR_LOSS_TREATMENTS_PATH } from "@/data/hair-loss-tr
 
 export const PRP_TREATMENT_PATH = "/hair-loss-treatment-in-delhi/prp" as const;
 
-/** Local assets in frontend/public/prp/ */
+/** PRP treatment page images (Cloudinary). */
 export const PRP_IMAGES = {
   hero: {
-    src: "/prp/prp-treatment-in-delhi-170x170.jpg.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517866/carewell-media/site/prp/prp-treatment-in-delhi-170x170.webp",
     alt: "PRP hair treatment in Delhi at Care Well Medical Centre",
   },
   procedure: {
-    src: "/prp/Procedure-for-PRP-Treatment-For-Hair-loss-300x300.jpg.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517860/carewell-media/site/prp/Procedure-for-PRP-Treatment-For-Hair-loss-300x300.webp",
     alt: "Step-by-step procedure for PRP treatment for hair loss",
   },
   beforeAfter: [
     {
-      src: "/prp/prp-hair-treatment-before-after-results-delhi-care-well-768x403.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517865/carewell-media/site/prp/prp-hair-treatment-before-after-results-delhi-care-well-768x403.webp",
       alt: "PRP hair treatment before and after results — Care Well Medical Centre, Delhi",
       caption: "PRP results at Care Well Medical Centre",
     },
     {
-      src: "/prp/prp-hair-loss-treatment-before-and-after-photo-1-min-768x418.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517862/carewell-media/site/prp/prp-hair-loss-treatment-before-and-after-photo-1-min-768x418.webp",
       alt: "PRP hair loss treatment before and after photo",
       caption: "Before and after PRP therapy",
     },
     {
-      src: "/prp/prp-hair-loss-treatment-before-and-after-results-carewellmedicalcentre-300x158.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517863/carewell-media/site/prp/prp-hair-loss-treatment-before-and-after-results-carewellmedicalcentre-300x158.webp",
       alt: "PRP hair loss treatment before and after results",
       caption: "Hair density improvement after PRP",
     },
     {
-      src: "/prp/prp-hair-treatment-before-after-results-delhi-care-well-300x158.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517864/carewell-media/site/prp/prp-hair-treatment-before-after-results-delhi-care-well-300x158.webp",
       alt: "PRP hair treatment before and after — Delhi",
       caption: "Patient outcome after PRP sessions",
     },

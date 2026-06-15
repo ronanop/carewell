@@ -11,26 +11,26 @@ export const TUMMY_TUCK_IMAGES = {
     alt: "Tummy tuck surgery before and after showing a flatter abdomen at Care Well Medical Centre Delhi",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — tummy tuck surgeon in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Tummy tuck procedure at Care Well Medical Centre",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/tummy-tuck-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517893/carewell-media/wp/tummy-tuck-surgery-carewell-min.jpg`,
       alt: "Tummy tuck before and after results in Delhi",
       caption: "Flatter abdomen",
     },
     {
-      src: `${WP}/2025/04/liposuction-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg`,
       alt: "Abdominoplasty body contouring Delhi",
       caption: "Sculpted midsection",
     },
     {
-      src: `${WP}/2025/04/mommy-makeover-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517883/carewell-media/wp/mommy-makeover-min.jpg`,
       alt: "Post-pregnancy tummy tuck results Delhi",
       caption: "Post-pregnancy contour",
     },

@@ -10,49 +10,49 @@ export const COSMETIC_IMAGES = {
     alt: "Cosmetic treatments and facial rejuvenation banner — Care Well Medical Centre Delhi",
   },
   portfolioOverview: {
-    src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/dermal-fillers-carewell.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp",
     alt: "Cosmetic treatment services overview at Care Well Medical Centre",
   },
   whyTrust: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Doctor consultation and modern cosmetic clinic at Care Well Medical Centre",
   },
   ctaBanner: {
-    src: "/demo/skin-aesthetic-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     alt: "Book cosmetic treatment consultation in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Cosmetic treatment patient testimonial video",
   },
   gallery: [
     {
-      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/lip-augmentation.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp",
       alt: "Lip augmentation result",
       caption: "Lip augmentation",
     },
     {
-      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/botox-treatment-carewell.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp",
       alt: "Botox transformation",
       caption: "Botox treatment",
     },
     {
-      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/thread-lift-carewell.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517873/carewell-media/wp/thread-lift-carewell.webp",
       alt: "Thread lift result",
       caption: "Thread lift",
     },
     {
-      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/double-chin-removal-carewell.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517874/carewell-media/wp/double-chin-removal-carewell.webp",
       alt: "Double chin removal result",
       caption: "Double chin removal",
     },
     {
-      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/dermal-fillers-carewell.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp",
       alt: "Dermal filler enhancement",
       caption: "Dermal fillers",
     },
     {
-      src: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/hifu-Treatment-carewell.webp",
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517875/carewell-media/wp/hifu-Treatment-carewell.webp",
       alt: "HIFU skin tightening result",
       caption: "HIFU skin tightening",
     },
@@ -149,7 +149,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
     title: "Lip Augmentation",
     description:
       "Plump, define, and balance your lips with safe and customized lip augmentation treatments.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/lip-augmentation.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp",
     imageAlt: "Lip augmentation before and after results",
     benefits: ["Enhanced lip volume", "Better lip definition", "Improved symmetry", "Natural-looking enhancement"],
     treatmentOptions: ["Dermal Fillers", "Fat Grafting"],
@@ -159,7 +159,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
     title: "Brow Lift",
     description:
       "Achieve a refreshed and youthful appearance by correcting drooping brows and tired-looking eyes.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/eyebrow-lift-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517876/carewell-media/wp/eyebrow-lift-carewell.webp",
     imageAlt: "Brow lift before and after results",
     benefits: ["Lifted eyebrows", "Refreshed appearance", "Open eye area", "Youthful facial expression"],
     href: `${BASE}/brow-lift`,
@@ -167,7 +167,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Thread Lift",
     description: "Achieve firmer, lifted skin without surgery.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/thread-lift-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517873/carewell-media/wp/thread-lift-carewell.webp",
     imageAlt: "Thread lift procedure",
     benefits: ["Non-surgical facelift", "Improved skin tightness", "Better facial contours", "Minimal downtime"],
     href: `${BASE}/thread-lift`,
@@ -176,7 +176,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
     title: "HIFU Treatment",
     description:
       "A safe, non-surgical facelift alternative that stimulates collagen production and tightens loose skin.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/hifu-Treatment-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517875/carewell-media/wp/hifu-Treatment-carewell.webp",
     imageAlt: "HIFU skin tightening treatment",
     benefits: ["Skin tightening", "Collagen stimulation", "Reduced signs of aging", "Improved facial contours"],
     href: `${BASE}/hifu`,
@@ -185,7 +185,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
     title: "Double Chin Removal",
     description:
       "Reduce stubborn chin fat and improve jawline definition with advanced non-surgical treatments.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/double-chin-removal-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517874/carewell-media/wp/double-chin-removal-carewell.webp",
     imageAlt: "Double chin before and after results",
     benefits: ["Defined jawline", "Better facial profile", "Reduced chin fat", "Improved facial contours"],
     href: `${BASE}/double-chin-removal`,
@@ -193,7 +193,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Face Slimming",
     description: "Reshape and contour your face naturally without surgery.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/face-slimming-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517877/carewell-media/wp/face-slimming-carewell.webp",
     imageAlt: "Face slimming transformation",
     benefits: ["Reduced facial puffiness", "Better jawline definition", "Slimmer appearance", "Improved facial balance"],
     href: `${BASE}/face-slimming`,
@@ -201,7 +201,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Vampire Facelift",
     description: "Rejuvenate aging skin using your body's natural healing capabilities.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/vampire-facelift-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517878/carewell-media/wp/vampire-facelift-carewell.webp",
     imageAlt: "Vampire facelift procedure",
     benefits: ["Improved skin texture", "Increased collagen production", "Better skin tone", "Natural rejuvenation"],
     href: `${BASE}/vampire-facelift`,
@@ -209,7 +209,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Dermal Fillers",
     description: "Restore volume, smooth wrinkles, and enhance facial features with premium dermal fillers.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/dermal-fillers-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp",
     imageAlt: "Dermal fillers before and after results",
     commonAreas: ["Lips", "Cheeks", "Jawline", "Nasolabial folds", "Under-eye hollows"],
     benefits: ["Immediate results", "Minimal downtime", "Natural enhancement", "Facial rejuvenation"],
@@ -218,7 +218,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Laser Hair Removal",
     description: "Achieve smooth skin with safe and long-lasting hair reduction treatments.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/laser-hair-removal.jpg",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517879/carewell-media/wp/laser-hair-removal.jpg",
     imageAlt: "Laser hair removal treatment",
     commonAreas: ["Face", "Arms", "Legs", "Underarms", "Bikini Area", "Full Body"],
     benefits: ["Long-term hair reduction", "Smooth skin", "Safe treatment", "Precision targeting"],
@@ -227,7 +227,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Botox",
     description: "Reduce wrinkles and redefine facial features with expertly administered Botox treatments.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/botox-treatment-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp",
     imageAlt: "Botox before and after results",
     commonAreas: ["Forehead", "Frown lines", "Crow's feet", "Jawline", "Neck"],
     benefits: ["Smoother skin", "Younger appearance", "Quick procedure", "Minimal recovery time"],
@@ -236,7 +236,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Anti-Aging Treatments",
     description: "Restore youthful skin through customized anti-aging treatment solutions.",
-    image: "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/05/anti-aging-treatments-carewell.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517867/carewell-media/wp/anti-aging-treatments-carewell.webp",
     imageAlt: "Anti-aging treatment results",
     treatmentOptions: ["Botox", "Dermal Fillers", "HIFU", "PRP Therapy", "Skin Rejuvenation"],
     benefits: ["Reduced wrinkles", "Improved elasticity", "Better hydration", "Youthful appearance"],
@@ -245,7 +245,7 @@ export const COSMETIC_TREATMENTS: readonly CosmeticTreatmentItem[] = [
   {
     title: "Coming Soon",
     description: "Exciting new cosmetic treatments and technologies will be available soon at Care Well Medical Centre.",
-    image: "/demo/skin-aesthetic-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     imageAlt: "Upcoming cosmetic treatments",
     comingSoon: true,
   },

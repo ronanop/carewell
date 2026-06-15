@@ -12,34 +12,34 @@ export const LASER_HAIR_REMOVAL_IMAGES = {
     alt: "Laser hair removal treatment for women in Delhi",
   },
   areas: {
-    src: `${WP}/2025/05/laser-hair-removal.jpg`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517879/carewell-media/wp/laser-hair-removal.jpg`,
     alt: "Full body laser hair removal treatment areas infographic at Care Well Medical Centre Delhi",
   },
   safety: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Doctor-supervised laser hair removal safety protocol with patch test at Care Well Medical Centre Delhi",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — laser hair removal expert in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Full body laser hair removal explained by Dr. Sandeep Bhasin",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/05/laser-hair-removal.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517879/carewell-media/wp/laser-hair-removal.jpg`,
       alt: "Laser hair removal before and after results in Delhi",
       caption: "Smooth, hair-free skin",
     },
     {
-      src: `${WP}/2025/05/laser-hair-removal.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517879/carewell-media/wp/laser-hair-removal.jpg`,
       alt: "Underarm laser hair removal results Delhi",
       caption: "Underarm treatment",
     },
     {
-      src: `${WP}/2025/05/laser-hair-removal.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517879/carewell-media/wp/laser-hair-removal.jpg`,
       alt: "Full body laser hair removal before and after Delhi",
       caption: "Full body package",
     },

@@ -12,26 +12,26 @@ export const FACELIFT_IMAGES = {
     alt: "Facelift surgery in Delhi at Care Well Medical Centre",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — facelift surgeon in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Facelift treatment video at Care Well Medical Centre Delhi",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/facelift-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517886/carewell-media/wp/facelift-surgery-carewell-min.jpg`,
       alt: "Facelift before and after results in Delhi",
       caption: "Youthful facial contours",
     },
     {
-      src: `${WP}/2025/04/neck-lift-procedure-carewell.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517898/carewell-media/wp/neck-lift-procedure-carewell.jpg`,
       alt: "Neck lift and facelift results Delhi",
       caption: "Jawline definition",
     },
     {
-      src: `${WP}/2025/05/hifu-Treatment-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517875/carewell-media/wp/hifu-Treatment-carewell.webp`,
       alt: "Non-surgical facelift results Delhi",
       caption: "Skin tightening",
     },

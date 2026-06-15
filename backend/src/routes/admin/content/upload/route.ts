@@ -1,6 +1,7 @@
 import { isErrorResponse } from "@/lib/http";
 import { requireAdminApi } from "@/lib/require-admin-api";
 import { saveUploadedFile } from "@/lib/cms/upload";
+import { isCloudinaryEnabled } from "@/lib/cloudinary";
 
 export async function POST(req: Request) {
   const auth = await requireAdminApi();
@@ -14,7 +15,11 @@ export async function POST(req: Request) {
 
   try {
     const media = await saveUploadedFile(file);
-    return Response.json({ ok: true, media });
+    return Response.json({
+      ok: true,
+      storage: isCloudinaryEnabled() ? "cloudinary" : "local",
+      media,
+    });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Upload failed";
     return Response.json({ ok: false, error: message }, { status: 500 });

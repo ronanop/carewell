@@ -12,30 +12,30 @@ export const LIPOSUCTION_IMAGES = {
     alt: "Before and after results showing fat reduction with the best liposuction in Delhi at Care Well Medical Centre",
   },
   areas: {
-    src: `${WP}/2025/04/liposuction-surgery-carewell-min.jpg`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg`,
     alt: "Liposuction treatment areas showing targeted fat removal zones on the body including abdomen, thighs, arms, and flanks",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — best liposuction surgeon in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Liposuction procedure explained at Care Well Medical Centre Delhi",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/liposuction-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg`,
       alt: "Liposuction before and after results in Delhi",
       caption: "Body contouring results",
     },
     {
-      src: `${WP}/2025/04/tummy-tuck-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517893/carewell-media/wp/tummy-tuck-surgery-carewell-min.jpg`,
       alt: "Abdominal liposuction before and after Delhi",
       caption: "Abdomen contouring",
     },
     {
-      src: `${WP}/2025/04/gynecomastia-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517900/carewell-media/wp/gynecomastia-surgery-carewell-min.jpg`,
       alt: "Male chest liposuction results Delhi",
       caption: "Male chest contouring",
     },

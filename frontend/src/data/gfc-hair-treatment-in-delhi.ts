@@ -2,18 +2,18 @@ import { HAIR_LOSS_CLINIC, HAIR_LOSS_TREATMENTS_PATH } from "@/data/hair-loss-tr
 
 export const GFC_TREATMENT_PATH = "/hair-loss-treatment-in-delhi/growth-factor-concentrate" as const;
 
-/** Local assets in frontend/public/gfc/ */
+/** GFC treatment page images (Cloudinary). */
 export const GFC_IMAGES = {
   hero: {
-    src: "/gfc/GFC-Hair-Treatment-2.jpg.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517833/carewell-media/site/gfc/GFC-Hair-Treatment-2.webp",
     alt: "GFC hair treatment in Delhi at Care Well Medical Centre",
   },
   benefits: {
-    src: "/gfc/GFC-Hair-Treatment-benefits-for-hair.jpg.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517834/carewell-media/site/gfc/GFC-Hair-Treatment-benefits-for-hair.webp",
     alt: "Benefits of GFC hair treatment for hair loss and regrowth",
   },
   procedure: {
-    src: "/gfc/GFC-Treatment-procedure-for-hair-loss.jpg.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517835/carewell-media/site/gfc/GFC-Treatment-procedure-for-hair-loss.webp",
     alt: "GFC treatment procedure for hair loss — step-by-step",
   },
 } as const;

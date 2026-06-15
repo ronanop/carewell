@@ -12,34 +12,34 @@ export const LIP_AUGMENTATION_IMAGES = {
     alt: "Lip Augmentation in Delhi – Natural Before and After Results by Care Well Medical Centre",
   },
   whatIs: {
-    src: `${WP}/2025/05/lip-augmentation.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp`,
     alt: "What is Lip Augmentation in Delhi",
   },
   benefits: {
-    src: `${WP}/2025/05/lip-augmentation.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp`,
     alt: "Facial Balance After Lip Augmentation in Delhi – Natural Before and After Result",
   },
   fillerTypes: {
-    src: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
     alt: "Types of lip fillers including hyaluronic acid, collagen, fat grafting, and semi-permanent options",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — lip augmentation expert in Delhi",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/05/lip-augmentation.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp`,
       alt: "Lip augmentation before and after results photo",
       caption: "Natural lip enhancement",
     },
     {
-      src: `${WP}/2025/05/lip-augmentation.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp`,
       alt: "Lip augmentation before and after result in Delhi",
       caption: "Improved lip balance",
     },
     {
-      src: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
       alt: "Lip filler before and after in Delhi",
       caption: "Defined lip contours",
     },
@@ -66,7 +66,7 @@ export type LipEnhancementOption = {
 export const LIP_ENHANCEMENT_OPTIONS: LipEnhancementOption[] = [
   {
     title: "Dermal Fillers (Juvederm, Restylane)",
-    image: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
     imageAlt: "Dermal filler injection in lips using Juvederm or Restylane for natural lip enhancement in Delhi",
     bullets: [
       "Fast, non-surgical process completed in under 30 minutes",
@@ -80,7 +80,7 @@ export const LIP_ENHANCEMENT_OPTIONS: LipEnhancementOption[] = [
   },
   {
     title: "Fat Grafting (Natural Lip Volume)",
-    image: `${WP}/2025/04/fat-grafting-min.jpg`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517884/carewell-media/wp/fat-grafting-min.jpg`,
     imageAlt: "Fat grafting for natural lip volume lip augmentation in Delhi",
     bullets: [
       "Long-term volume enhancement using your own body fat",
@@ -91,7 +91,7 @@ export const LIP_ENHANCEMENT_OPTIONS: LipEnhancementOption[] = [
   },
   {
     title: "Botox Lip Flip (Subtle Lift Without Fillers)",
-    image: `${WP}/2025/05/botox-treatment-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp`,
     imageAlt: "Botox lip flip for subtle upper lip lift in Delhi",
     idealFor: [
       "Need a slightly more noticeable upper lip",
@@ -108,7 +108,7 @@ export const LIP_ENHANCEMENT_OPTIONS: LipEnhancementOption[] = [
   },
   {
     title: "Lip Implants and Lip Lift Surgery",
-    image: `${WP}/2025/05/lip-augmentation.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp`,
     imageAlt: "Lip implants and lip lift surgery for permanent lip enhancement in Delhi",
     bullets: [
       "Lip implants: Soft silicone implants placed inside the lips for permanent volume and structure",
@@ -118,7 +118,7 @@ export const LIP_ENHANCEMENT_OPTIONS: LipEnhancementOption[] = [
   },
   {
     title: "Lip Reduction Surgery (For Proportion and Refinement)",
-    image: `${WP}/2025/05/lip-augmentation.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517871/carewell-media/wp/lip-augmentation.webp`,
     imageAlt: "Lip reduction surgery before and after results for balanced lips",
     bullets: [
       "Trims excessive lip tissue for lips that are too large or disproportionate",

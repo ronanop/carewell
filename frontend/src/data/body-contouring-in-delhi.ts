@@ -20,38 +20,38 @@ export const BODY_CONTOURING_IMAGES = {
     alt: "Before and after body contouring results – abdomen and waist reshaping at Care Well Medical Centre, Delhi",
   },
   whyChoose: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Advanced body sculpting technologies and patient care at Care Well Medical Centre",
   },
   journey: {
-    src: "/demo/wellness-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
     alt: "Patient journey to body contouring at Care Well Medical Centre",
   },
   coolshape: {
-    src: "/demo/skin-aesthetic-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     alt: "CoolShape Cryolipolysis fat freezing technology at Care Well Medical Centre",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — body contouring surgeon in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "How body contouring works at Care Well Medical Centre",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/liposuction-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg`,
       alt: "Body Contouring in Delhi – Before and After Results Comparison",
       caption: "Abdomen contouring",
     },
     {
-      src: `${WP}/2025/04/tummy-tuck-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517893/carewell-media/wp/tummy-tuck-surgery-carewell-min.jpg`,
       alt: "Before and After Results of Body Contouring in Delhi",
       caption: "Tummy tuck results",
     },
     {
-      src: `${WP}/2025/04/mommy-makeover-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517883/carewell-media/wp/mommy-makeover-min.jpg`,
       alt: "Body Contouring in Delhi – See the Before & After Results",
       caption: "Post-pregnancy reshaping",
     },
@@ -80,7 +80,7 @@ export const BODY_CONTOURING_NON_SURGICAL: BodyContouringTreatment[] = [
     description:
       "CoolSculpting in Delhi freezes fat cells in the abdomen, arms, back, and thighs — no surgery required.",
     bestFor: "Destroying stubborn fat that doesn't vanish with diet or exercise",
-    image: "/demo/skin-aesthetic-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     imageAlt: "CoolSculpting fat freezing treatment in Delhi",
     href: `${BODY_CONTOURING_PATH}/cryolipolysis`,
     linkLabel: "Cryolipolysis in Delhi",
@@ -90,7 +90,7 @@ export const BODY_CONTOURING_NON_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Sound waves destroy fat cells that your body then flushes out naturally — a painless approach to reshaping.",
     bestFor: "Individuals seeking no pain while losing fat and reshaping their body",
-    image: "/demo/wellness-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
     imageAlt: "Ultrasound cavitation body contouring in Delhi",
   },
   {
@@ -98,7 +98,7 @@ export const BODY_CONTOURING_NON_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Boosts collagen so skin becomes firmer with reduced sagging and cellulite.",
     bestFor: "Loose skin on the face, abdomen, or arms",
-    image: "/demo/ai-skin-scan-v3.jpg",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517801/carewell-media/site/demo/ai-skin-scan-v3.jpg",
     imageAlt: "RF skin tightening for body contouring in Delhi",
   },
   {
@@ -106,7 +106,7 @@ export const BODY_CONTOURING_NON_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Focused ultrasound penetrates deep fat layers to tighten skin and improve contour — ideal for abdominal toning and jawline definition.",
     bestFor: "Abdominal toning, jawline definition, and non-surgical facelifts",
-    image: `${WP}/2025/05/hifu-Treatment-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517875/carewell-media/wp/hifu-Treatment-carewell.webp`,
     imageAlt: "HIFU body contouring treatment in Delhi",
     href: "/cosmetic-treatments-in-delhi/hifu",
     linkLabel: "HIFU Treatment in Delhi",
@@ -116,7 +116,7 @@ export const BODY_CONTOURING_NON_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Amino acids and vitamins support metabolism and complement disciplined diet and exercise for fat loss management.",
     bestFor: "People adopting a disciplined diet and exercise regime for fat loss",
-    image: "/demo/wellness-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
     imageAlt: "Lipotropic injections for weight management in Delhi",
   },
 ];
@@ -127,7 +127,7 @@ export const BODY_CONTOURING_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Liposuction in Delhi uses suction to remove stubborn fat from the abdomen, thighs, arms, and flanks.",
     bestFor: "People near ideal body weight with stubborn fat bulges",
-    image: `${WP}/2025/04/liposuction-surgery-carewell-min.jpg`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg`,
     imageAlt: "Liposuction surgery for body contouring in Delhi",
     href: toLocalPath("https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/liposuction/"),
     linkLabel: "Liposuction in Delhi",
@@ -137,7 +137,7 @@ export const BODY_CONTOURING_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Tightens abdominal muscles so your stomach becomes firmer and flatter.",
     bestFor: "Women recovering pre-pregnancy shape or individuals with sagging skin after weight loss",
-    image: `${WP}/2025/04/tummy-tuck-surgery-carewell-min.jpg`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517893/carewell-media/wp/tummy-tuck-surgery-carewell-min.jpg`,
     imageAlt: "Tummy tuck surgery in Delhi",
     href: toLocalPath("https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/tummy-tuck/"),
     linkLabel: "Tummy Tuck Surgery in Delhi",
@@ -147,7 +147,7 @@ export const BODY_CONTOURING_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Enhances buttocks using your body's own fat for a fuller, natural-looking shape — without implants.",
     bestFor: "Those who want a shaped and lifted butt without implants",
-    image: `${WP}/2025/04/brazilian-butt-lift-bbl-illustration-carewell-min.jpg`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517885/carewell-media/wp/brazilian-butt-lift-bbl-illustration-carewell-min.jpg`,
     imageAlt: "Brazilian butt lift in Delhi",
     href: toLocalPath("https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/bbl/"),
     linkLabel: "Brazilian Butt Lift in Delhi",
@@ -156,7 +156,7 @@ export const BODY_CONTOURING_SURGICAL: BodyContouringTreatment[] = [
     title: "Arm Lift & Thigh Lift",
     description: "Surgical tightening and reshaping of arm and thigh skin.",
     bestFor: "Sagging skin from massive weight reduction or aging",
-    image: `${WP}/2025/04/liposuction-surgery-carewell-min.jpg`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg`,
     imageAlt: "Arm and thigh lift body contouring in Delhi",
     href: PLASTIC,
     linkLabel: "Plastic surgery options",
@@ -166,7 +166,7 @@ export const BODY_CONTOURING_SURGICAL: BodyContouringTreatment[] = [
     description:
       "Combines tummy tuck, breast lift, and liposuction to restore post-pregnancy body shape.",
     bestFor: "Mothers seeking to recover body shape and confidence",
-    image: `${WP}/2025/04/mommy-makeover-min.jpg`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517883/carewell-media/wp/mommy-makeover-min.jpg`,
     imageAlt: "Mommy makeover in Delhi",
     href: toLocalPath("https://www.carewellmedicalcentre.com/plastic-surgery-in-delhi/mommy-makeover/"),
     linkLabel: "Mommy Makeover in Delhi",

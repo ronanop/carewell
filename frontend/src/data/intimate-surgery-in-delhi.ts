@@ -6,15 +6,15 @@ const BASE = INTIMATE_SURGERY_PATH;
 
 export const INTIMATE_SURGERY_IMAGES = {
   hero: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Private intimate surgery consultation at Care Well Medical Centre, Delhi",
   },
   whatIs: {
-    src: "/demo/wellness-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
     alt: "Confidential intimate wellness care at Care Well Medical Centre",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — intimate surgery specialist in Delhi",
   },
 } as const;

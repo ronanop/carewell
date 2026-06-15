@@ -7,39 +7,39 @@ const WP = "https://www.carewellmedicalcentre.com/wp-content/uploads";
 
 export const CRYOLIPOLYSIS_IMAGES = {
   hero: {
-    src: "/demo/wellness-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
     alt: "Cryolipolysis fat freezing treatment in Delhi at Care Well Medical Centre",
   },
   whatIs: {
-    src: "/demo/skin-aesthetic-card.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     alt: "CoolShape cryolipolysis fat freezing technology",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — cryolipolysis expert in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Cryolipolysis treatment video — Care Well Medical Centre",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/liposuction-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/liposuction-surgery-carewell-min.jpg`,
       alt: "Cryolipolysis in Delhi – Before and After Results",
       caption: "Abdomen fat reduction",
     },
     {
-      src: `${WP}/2025/05/double-chin-removal-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517874/carewell-media/wp/double-chin-removal-carewell.webp`,
       alt: "Before and After Fat Freezing Treatment in Delhi",
       caption: "Double chin contouring",
     },
     {
-      src: `${WP}/2025/04/tummy-tuck-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517893/carewell-media/wp/tummy-tuck-surgery-carewell-min.jpg`,
       alt: "Cryolipolysis male abdomen before and after in Delhi",
       caption: "Waist reshaping",
     },
     {
-      src: `${WP}/2025/05/double-chin-removal-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517874/carewell-media/wp/double-chin-removal-carewell.webp`,
       alt: "Cryolipolysis side belly fat reduction before and after Delhi",
       caption: "Love handles treatment",
     },

@@ -75,12 +75,8 @@ export async function buildServicePayload(preview, deps) {
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "").replace(/\/$/, "");
   const canonical = siteUrl ? `${siteUrl}${legacyPath}/` : null;
 
-  let heroImageId = null;
-  const heroUrl = preview.heroImageUrl ? String(preview.heroImageUrl) : null;
-  if (heroUrl) {
-    const hero = await deps.resolveImage(heroUrl, title);
-    heroImageId = hero?.mediaId ?? null;
-  }
+  // Hero images stay on legacy URLs / local assets — not uploaded to Cloudinary.
+  const heroImageId = null;
 
   return {
     id,

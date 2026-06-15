@@ -3,93 +3,91 @@ import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
 export const HAIR_TRANSPLANT_COST_PATH = "/hair-transplant-in-delhi/cost" as const;
 export const HAIR_TRANSPLANT_HUB_PATH = "/hair-transplant-in-delhi" as const;
 
-const IMG = "/images";
-
 export const HT_COST_IMAGES = {
   hero: {
-    src: `${IMG}/hair-transplant-before-after-promo.jpg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
     alt: "Hair transplant before and after transformation at Care Well Medical Centre, Delhi",
   },
   costFactors: {
-    src: `${IMG}/hair-transplant-process-infographic.png`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517839/carewell-media/site/images/hair-transplant-process-infographic.jpg",
     alt: "Hair transplant cost factors infographic",
   },
   techniqueComparison: {
-    src: `${IMG}/hair-transplant-4-step-process.png`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517836/carewell-media/site/images/hair-transplant-4-step-process.jpg",
     alt: "FUE vs FUT vs DHI vs Robotic hair transplant comparison",
   },
   graftDiagram: {
-    src: `${IMG}/hair-transplant-4-step-process.png`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517836/carewell-media/site/images/hair-transplant-4-step-process.jpg",
     alt: "Hair graft requirement diagram",
   },
   norwoodChart: {
-    src: `${IMG}/hair-transplant-baldness-grades.png`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517837/carewell-media/site/images/hair-transplant-baldness-grades.jpg",
     alt: "Norwood scale baldness chart for graft and cost planning",
   },
   hiddenCharges: {
-    src: `${IMG}/hair-transplant-process-infographic.png`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517839/carewell-media/site/images/hair-transplant-process-infographic.jpg",
     alt: "Hidden hair transplant charges warning graphic",
   },
   emi: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Hair transplant EMI and financing options",
   },
   cityComparison: {
-    src: `${IMG}/hair-transplant-process-infographic.png`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517839/carewell-media/site/images/hair-transplant-process-infographic.jpg",
     alt: "India hair transplant cost comparison by city",
   },
   clinic: {
-    src: "/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517796/carewell-media/site/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
     alt: "Care Well Medical Centre clinic interior and surgical team",
   },
   costComparison: {
-    src: "/eyebrotranplantindelhi/eyebrow-transplant-delhi-comparison-care-well-vs-other-clinics.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517820/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-delhi-comparison-care-well-vs-other-clinics.webp",
     alt: "Hair transplant cost comparison — Care Well vs other Delhi clinics",
   },
   trustBanner: {
-    src: `${IMG}/hair-transplant-before-after-promo.jpg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
     alt: "Trust and credentials at Care Well Medical Centre",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Dr. Sandeep Bhasin — hair transplant surgeon",
   },
   ctaBanner: {
-    src: `${IMG}/hair-transplant-before-after-promo.jpg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
     alt: "Successful hair transplant transformation — book consultation",
   },
   videoPoster: {
-    src: `${IMG}/hair-transplant-before-after-promo.jpg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
     alt: "Hair transplant cost in Delhi explained — video",
   },
   gallery: [
     {
-      src: `${IMG}/hair-transplant-results/result-3500-grafts-1.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517840/carewell-media/site/images/hair-transplant-results/result-3500-grafts-1.jpg",
       alt: "Hairline restoration before and after",
       caption: "Hairline restoration",
     },
     {
-      src: `${IMG}/hair-transplant-results/result-3500-grafts-2.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517841/carewell-media/site/images/hair-transplant-results/result-3500-grafts-2.jpg",
       alt: "Crown area restoration result",
       caption: "Crown area restoration",
     },
     {
-      src: `${IMG}/hair-transplant-results/result-8000-grafts-1.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517843/carewell-media/site/images/hair-transplant-results/result-8000-grafts-1.jpg",
       alt: "Full coverage hair transplant result",
       caption: "Full coverage result",
     },
     {
-      src: `${IMG}/hair-transplant-results/result-3500-grafts-3.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517842/carewell-media/site/images/hair-transplant-results/result-3500-grafts-3.jpg",
       alt: "3000 grafts transformation",
       caption: "3000 grafts transformation",
     },
     {
-      src: `${IMG}/hair-transplant-results/result-8000-grafts-2.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517844/carewell-media/site/images/hair-transplant-results/result-8000-grafts-2.jpg",
       alt: "FUE hair transplant outcome",
       caption: "FUE hair transplant outcome",
     },
     {
-      src: `${IMG}/hair-transplant-results/result-8000-grafts-3.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517845/carewell-media/site/images/hair-transplant-results/result-8000-grafts-3.jpg",
       alt: "Natural hairline result",
       caption: "Natural hairline result",
     },

@@ -245,7 +245,7 @@ export const HAIR_LOSS_TREATMENT_CARDS: HairLossTreatmentCard[] = [
       "Platelet-rich plasma therapy stimulates dormant follicles. 4–6 monthly sessions; visible results in 3–6 months.",
     href: toLocalPath("https://www.carewellmedicalcentre.com/hair-loss-treatment-in-delhi/prp/"),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/prp-hair-treatment-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517864/carewell-media/site/prp/prp-hair-treatment-before-after-results-delhi-care-well-300x158.webp",
   },
   {
     title: "GFC Therapy",
@@ -254,7 +254,7 @@ export const HAIR_LOSS_TREATMENT_CARDS: HairLossTreatmentCard[] = [
     href: toLocalPath(
       "https://www.carewellmedicalcentre.com/hair-loss-treatment-in-delhi/growth-factor-concentrate/",
     ),
-    image: "/gfc/GFC-Hair-Treatment-2.jpg.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517833/carewell-media/site/gfc/GFC-Hair-Treatment-2.webp",
   },
   {
     title: "Scalp Micropigmentation",
@@ -263,7 +263,7 @@ export const HAIR_LOSS_TREATMENT_CARDS: HairLossTreatmentCard[] = [
       "https://www.carewellmedicalcentre.com/hair-loss-treatment-in-delhi/scalp-micropigmentation/",
     ),
     image:
-      "https://www.carewellmedicalcentre.com/wp-content/uploads/2025/04/scalp-micropigmentation-carewell-min.jpg",
+      "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517862/carewell-media/site/prp/prp-hair-loss-treatment-before-and-after-photo-1-min-768x418.webp",
   },
   {
     title: "Female Pattern Baldness",
@@ -271,7 +271,7 @@ export const HAIR_LOSS_TREATMENT_CARDS: HairLossTreatmentCard[] = [
     href: toLocalPath(
       "https://www.carewellmedicalcentre.com/hair-loss-treatment-in-delhi/female-pattern-baldness/",
     ),
-    image: "/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
   },
   {
     title: "Norwood Baldness Scale",
@@ -279,13 +279,13 @@ export const HAIR_LOSS_TREATMENT_CARDS: HairLossTreatmentCard[] = [
     href: toLocalPath(
       "https://www.carewellmedicalcentre.com/hair-loss-treatment-in-delhi/norwood-baldness-scale/",
     ),
-    image: "/images/hair-transplant-baldness-grades.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517837/carewell-media/site/images/hair-transplant-baldness-grades.jpg",
   },
   {
     title: "Hair Transplant (FUE & FUT)",
     excerpt: "Permanent restoration for Norwood IV+. FUE or FUT based on your needs.",
     href: "/hair-transplant-in-delhi",
-    image: "/images/hair-transplant-before-after-promo.jpg",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
   },
 ];
 

@@ -26,6 +26,6 @@ export const ABOUT_PAGE = {
   mottoTitle: "Our Best, Every Day",
   motto:
     "We believe in delivering the best results with advanced techniques, expert care, and a patient-first approach.",
-  clinicImageSrc: "/demo/carewell-clinic-exterior.png",
+  clinicImageSrc: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517803/carewell-media/site/demo/carewell-clinic-exterior.jpg",
   clinicImageAlt: "Care Well Medical Centre clinic exterior in Chittaranjan Park, South Delhi",
 } as const;

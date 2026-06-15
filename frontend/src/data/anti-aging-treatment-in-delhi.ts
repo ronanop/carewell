@@ -13,35 +13,35 @@ export const ANTI_AGING_IMAGES = {
     alt: "Anti aging treatment in Delhi before and after result photo showing smoother skin and reduced wrinkles",
   },
   whatIs: {
-    src: `${WP}/2025/05/anti-aging-treatments-carewell.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517867/carewell-media/wp/anti-aging-treatments-carewell.webp`,
     alt: "Anti-aging skin concerns — wrinkles, sagging, dullness",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — anti-aging treatment expert in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Anti-aging treatment video — Care Well Medical Centre",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/05/anti-aging-treatments-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517867/carewell-media/wp/anti-aging-treatments-carewell.webp`,
       alt: "Anti-Aging Before and After Results showing smooth skin in Delhi",
       caption: "Smoother, youthful skin",
     },
     {
-      src: `${WP}/2025/05/botox-treatment-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp`,
       alt: "Visible improvements in anti-aging treatments before and after photos in Delhi",
       caption: "Wrinkle reduction",
     },
     {
-      src: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
       alt: "Before and after result photo of anti aging treatment in Delhi with visible skin improvements",
       caption: "Volume restoration",
     },
     {
-      src: `${WP}/2025/05/thread-lift-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517873/carewell-media/wp/thread-lift-carewell.webp`,
       alt: "Anti aging treatment in Delhi before and after result photo displaying youthful, glowing skin",
       caption: "Skin tightening results",
     },
@@ -69,7 +69,7 @@ export type AntiAgingTreatmentCard = {
 export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
   {
     title: "Botox Injections",
-    image: `${WP}/2025/05/botox-treatment-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp`,
     imageAlt: "Botox treatment for anti-aging in Delhi",
     bullets: [
       "Relaxes facial muscles to soften dynamic wrinkles such as forehead lines and crow's feet",
@@ -82,7 +82,7 @@ export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
   },
   {
     title: "Dermal Fillers",
-    image: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
     imageAlt: "Dermal fillers for facial volume restoration in Delhi",
     bullets: [
       "Collagen-boosting hyaluronic acid fillers for sharper jawlines, improved smile lines, cheek enhancement, and fuller lips",
@@ -95,7 +95,7 @@ export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
   },
   {
     title: "HIFU (High-Intensity Focused Ultrasound)",
-    image: `${WP}/2025/05/hifu-Treatment-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517875/carewell-media/wp/hifu-Treatment-carewell.webp`,
     imageAlt: "HIFU skin tightening treatment in Delhi",
     bullets: [
       "Ultrasound energy deepens collagen production in skin layers",
@@ -108,7 +108,7 @@ export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
   },
   {
     title: "Chemical Peels",
-    image: `${WP}/2025/05/anti-aging-treatments-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517867/carewell-media/wp/anti-aging-treatments-carewell.webp`,
     imageAlt: "Chemical peel skin rejuvenation in Delhi",
     bullets: [
       "Customized acid-based peels exfoliate damaged and dull layers",
@@ -120,7 +120,7 @@ export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
   },
   {
     title: "Cosmelan Peel",
-    image: "/demo/skin-aesthetic-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     imageAlt: "Cosmelan peel treatment for melasma and pigmentation in Delhi",
     bullets: [
       "Specialized peel for melasma, age spots, and stubborn pigmentation",
@@ -132,7 +132,7 @@ export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
   },
   {
     title: "Laser Skin Rejuvenation",
-    image: "/demo/ai-skin-scan-v3.jpg",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517801/carewell-media/site/demo/ai-skin-scan-v3.jpg",
     imageAlt: "Laser skin rejuvenation for anti-aging in Delhi",
     bullets: [
       "IPL or fractional lasers trigger collagen and repair damaged skin",
@@ -143,7 +143,7 @@ export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
   },
   {
     title: "PRP (Vampire Facial)",
-    image: `${WP}/2025/05/vampire-facelift-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517878/carewell-media/wp/vampire-facelift-carewell.webp`,
     imageAlt: "PRP vampire facial for skin rejuvenation in Delhi",
     bullets: [
       "Platelet-rich plasma from your own blood boosts facial glow and elasticity",
@@ -158,7 +158,7 @@ export const ANTI_AGING_NON_SURGICAL: AntiAgingTreatmentCard[] = [
 export const ANTI_AGING_SURGICAL: AntiAgingTreatmentCard[] = [
   {
     title: "Thread Lift (Non-Invasive Surgical Lift)",
-    image: `${WP}/2025/05/thread-lift-carewell.webp`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517873/carewell-media/wp/thread-lift-carewell.webp`,
     imageAlt: "Thread lift procedure for facial lifting in Delhi",
     bullets: [
       "Biocompatible threads (e.g. Promo Italia) lift sagging cheeks, jawline, brows, or neck",
@@ -172,7 +172,7 @@ export const ANTI_AGING_SURGICAL: AntiAgingTreatmentCard[] = [
   },
   {
     title: "Facelift Surgery (Rhytidectomy)",
-    image: `${WP}/2025/04/facelift-surgery-carewell-min.jpg`,
+    image: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517886/carewell-media/wp/facelift-surgery-carewell-min.jpg`,
     imageAlt: "Facelift surgery for long-term facial rejuvenation in Delhi",
     bullets: [
       "Tightens muscles, repositions facial tissues, and removes excess skin",

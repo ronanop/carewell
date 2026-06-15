@@ -3,81 +3,78 @@ import { HAIR_TRANSPLANT_HUB_PATH } from "@/data/hair-transplant-cost-in-delhi";
 
 export const HAIR_TRANSPLANT_BEFORE_AFTER_PATH = "/hair-transplant-in-delhi/before-and-after" as const;
 
-const R = "/images/hair-transplant-results";
-const IMG = "/images";
-
 export const HT_BA_IMAGES = {
   vijayHero: [
     {
-      src: `${R}/result-3500-grafts-1.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517840/carewell-media/site/images/hair-transplant-results/result-3500-grafts-1.jpg",
       alt: "Vijay — top view before and after hair transplant",
       caption: "Top view — hair density restoration",
     },
     {
-      src: `${R}/result-3500-grafts-2.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517841/carewell-media/site/images/hair-transplant-results/result-3500-grafts-2.jpg",
       alt: "Vijay — back view crown restoration",
       caption: "Back view — crown restoration",
     },
     {
-      src: `${R}/result-8000-grafts-1.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517843/carewell-media/site/images/hair-transplant-results/result-8000-grafts-1.jpg",
       alt: "Vijay — front view hairline restoration",
       caption: "Front view — hairline restoration",
     },
     {
-      src: `${R}/result-8000-grafts-2.png`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517844/carewell-media/site/images/hair-transplant-results/result-8000-grafts-2.jpg",
       alt: "Vijay — side view temple restoration",
       caption: "Side view — temple restoration",
     },
   ],
   successCollage: {
-    src: `${IMG}/hair-transplant-before-after-promo.jpg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
     alt: "Hair restoration success collage — Care Well Medical Centre",
   },
   timeline: {
-    src: `${IMG}/hair-transplant-process-infographic.png`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517839/carewell-media/site/images/hair-transplant-process-infographic.jpg",
     alt: "Hair transplant growth timeline infographic",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Dr. Sandeep Bhasin — cosmetic surgeon, Care Well Medical Centre",
   },
   clinic: {
-    src: "/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517796/carewell-media/site/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
     alt: "Care Well Medical Centre clinic interior and surgical team",
   },
   ctaBanner: {
-    src: `${IMG}/hair-transplant-before-after-promo.jpg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
     alt: "Before and after hair transplant — book consultation",
   },
   videoPoster: {
-    src: `${IMG}/hair-transplant-before-after-promo.jpg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517838/carewell-media/site/images/hair-transplant-before-after-promo.jpg",
     alt: "Patient hair transplant transformation video",
   },
   gallerySections: [
     {
       title: "Crown Hair Restoration",
       images: [
-        { src: `${R}/result-3500-grafts-2.png`, alt: "Hair transplant before and after — crown", caption: "Crown density improvement" },
-        { src: `${R}/result-8000-grafts-3.png`, alt: "Hair transplant before and after result photo — crown", caption: "Crown coverage result" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517841/carewell-media/site/images/hair-transplant-results/result-3500-grafts-2.jpg", alt: "Hair transplant before and after — crown", caption: "Crown density improvement" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517845/carewell-media/site/images/hair-transplant-results/result-8000-grafts-3.jpg", alt: "Hair transplant before and after result photo — crown", caption: "Crown coverage result" },
       ],
     },
     {
       title: "Hairline Restoration",
       images: [
-        { src: `${R}/result-3500-grafts-1.png`, alt: "Before and after hair restoration — hairline", caption: "Natural hairline design" },
-        { src: `${R}/result-8000-grafts-1.png`, alt: "Before and after hair restoration photo", caption: "Front hairline transformation" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517840/carewell-media/site/images/hair-transplant-results/result-3500-grafts-1.jpg", alt: "Before and after hair restoration — hairline", caption: "Natural hairline design" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517843/carewell-media/site/images/hair-transplant-results/result-8000-grafts-1.jpg", alt: "Before and after hair restoration photo", caption: "Front hairline transformation" },
       ],
     },
     {
       title: "Female Hair Transplant Results",
       images: [
         {
-          src: "/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
+          src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
           alt: "Female hair transplant results",
           caption: "Female hair density restoration",
         },
         {
-          src: "/femaletansplantindelhi/female-hair-transplant-before-and-after-photo-min-1.jpg.webp",
+          src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517828/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-and-after-photo-min-1.webp",
           alt: "Female hair transplant result photo",
           caption: "Natural female hairline",
         },
@@ -86,24 +83,24 @@ export const HT_BA_IMAGES = {
     {
       title: "FUE Hair Transplant Results",
       images: [
-        { src: `${R}/result-3500-grafts-3.png`, alt: "Natural results after FUE hair transplant", caption: "FUE — natural density" },
-        { src: `${R}/result-8000-grafts-2.png`, alt: "FUE hair transplant before and after", caption: "FUE hairline and temples" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517842/carewell-media/site/images/hair-transplant-results/result-3500-grafts-3.jpg", alt: "Natural results after FUE hair transplant", caption: "FUE — natural density" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517844/carewell-media/site/images/hair-transplant-results/result-8000-grafts-2.jpg", alt: "FUE hair transplant before and after", caption: "FUE hairline and temples" },
       ],
     },
     {
       title: "Senior Patient Results",
       images: [
-        { src: `${R}/result-8000-grafts-1.png`, alt: "Older male patient hair transplant results", caption: "Senior patient — full restoration" },
-        { src: `${R}/result-8000-grafts-3.png`, alt: "Crown restoration in senior patient", caption: "Crown restoration — senior patient" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517843/carewell-media/site/images/hair-transplant-results/result-8000-grafts-1.jpg", alt: "Older male patient hair transplant results", caption: "Senior patient — full restoration" },
+        { src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517845/carewell-media/site/images/hair-transplant-results/result-8000-grafts-3.jpg", alt: "Crown restoration in senior patient", caption: "Crown restoration — senior patient" },
       ],
     },
   ],
   treatmentGrid: [
-    { title: "Hairline Reconstruction", src: `${R}/result-3500-grafts-1.png`, alt: "Hairline reconstruction before and after" },
-    { title: "Crown Restoration", src: `${R}/result-3500-grafts-2.png`, alt: "Crown restoration before and after" },
-    { title: "Female Hair Transplant", src: "/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp", alt: "Female hair transplant before and after" },
-    { title: "FUE Hair Transplant", src: `${R}/result-3500-grafts-3.png`, alt: "FUE hair transplant before and after" },
-    { title: "FUT Hair Transplant", src: `${R}/result-8000-grafts-1.png`, alt: "FUT hair transplant before and after" },
+    { title: "Hairline Reconstruction", src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517840/carewell-media/site/images/hair-transplant-results/result-3500-grafts-1.jpg", alt: "Hairline reconstruction before and after" },
+    { title: "Crown Restoration", src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517841/carewell-media/site/images/hair-transplant-results/result-3500-grafts-2.jpg", alt: "Crown restoration before and after" },
+    { title: "Female Hair Transplant", src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp", alt: "Female hair transplant before and after" },
+    { title: "FUE Hair Transplant", src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517842/carewell-media/site/images/hair-transplant-results/result-3500-grafts-3.jpg", alt: "FUE hair transplant before and after" },
+    { title: "FUT Hair Transplant", src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517843/carewell-media/site/images/hair-transplant-results/result-8000-grafts-1.jpg", alt: "FUT hair transplant before and after" },
   ],
 } as const;
 

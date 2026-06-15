@@ -66,12 +66,8 @@ export async function buildBlogPayload(preview, deps) {
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "").replace(/\/$/, "");
   const canonical = siteUrl ? `${siteUrl}${legacyPath}/` : null;
 
-  let coverImageId = null;
-  const heroUrl = preview.heroImageUrl ? String(preview.heroImageUrl) : null;
-  if (heroUrl) {
-    const hero = await deps.resolveImage(heroUrl, title);
-    coverImageId = hero?.mediaId ?? null;
-  }
+  // Cover/hero images are not stored on Cloudinary.
+  const coverImageId = null;
 
   return {
     id,

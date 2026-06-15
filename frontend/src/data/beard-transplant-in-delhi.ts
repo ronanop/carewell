@@ -3,90 +3,88 @@ import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
 export const BEARD_TRANSPLANT_PATH = "/hair-transplant-in-delhi/beard" as const;
 export const HAIR_TRANSPLANT_HUB_PATH = "/hair-transplant-in-delhi" as const;
 
-const IMG = "/beardtranplantindelhi";
-
-/** Image slots for SEO landing page sections (frontend/public/beardtranplantindelhi/) */
+/** Image slots for SEO landing page sections (Cloudinary). */
 export const BEARD_IMAGES = {
   heroBanner: {
-    src: `${IMG}/Beard-Transplant-Before-and-After-Result.jpg.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517793/carewell-media/site/beardtranplantindelhi/Beard-Transplant-Before-and-After-Result.webp",
     alt: "Before and after beard transplant transformation at Care Well Medical Centre, Delhi",
   },
   procedureIllustration: {
-    src: `${IMG}/natural-beard-design-planning.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517797/carewell-media/site/beardtranplantindelhi/natural-beard-design-planning.webp",
     alt: "Beard transplant procedure and natural beard design planning",
   },
   clinicExterior: {
-    src: `${IMG}/care-well-medical-centre-delhi-clinic-exterior-1.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517796/carewell-media/site/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
     alt: "Care Well Medical Centre clinic exterior in Delhi",
   },
   beardPatterns: {
-    src: `${IMG}/natural-beard-design-planning.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517797/carewell-media/site/beardtranplantindelhi/natural-beard-design-planning.webp",
     alt: "Different beard pattern examples and design mapping",
   },
   costGraphic: {
-    src: `${IMG}/Beard-Transplant-before-and-after-results-1.jpg.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517794/carewell-media/site/beardtranplantindelhi/Beard-Transplant-before-and-after-results-1.webp",
     alt: "Beard transplant cost and results overview",
   },
   beardDesignMapping: {
-    src: `${IMG}/natural-beard-design-planning.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517797/carewell-media/site/beardtranplantindelhi/natural-beard-design-planning.webp",
     alt: "Beard design mapping on patient face for natural results",
   },
   doctorPortrait: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Dr. Sandeep Bhasin — Senior Cosmetic & Aesthetic Surgeon",
   },
   fueFutComparison: {
-    src: "/images/hair-transplant-4-step-process.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517836/carewell-media/site/images/hair-transplant-4-step-process.jpg",
     alt: "FUE vs FUT beard transplant technique comparison",
   },
   procedureFlowchart: {
-    src: `${IMG}/natural-beard-design-planning.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517797/carewell-media/site/beardtranplantindelhi/natural-beard-design-planning.webp",
     alt: "Beard transplant procedure steps flowchart",
   },
   resultsTimeline: {
-    src: "/images/hair-transplant-process-infographic.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517839/carewell-media/site/images/hair-transplant-process-infographic.jpg",
     alt: "Beard transplant results timeline infographic",
   },
   successFactors: {
-    src: `${IMG}/Beard-Transplant-beofe-and-after-result.jpg.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517795/carewell-media/site/beardtranplantindelhi/Beard-Transplant-beofe-and-after-result.webp",
     alt: "Factors influencing beard transplant success",
   },
   clinicLocation: {
-    src: `${IMG}/care-well-medical-centre-delhi-clinic-exterior-1.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517796/carewell-media/site/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
     alt: "Beard transplant clinic location in Delhi NCR",
   },
   consultationBanner: {
-    src: `${IMG}/care-well-medical-centre-delhi-clinic-exterior-1.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517796/carewell-media/site/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
     alt: "Book beard transplant consultation at Care Well Medical Centre",
   },
   gallery: [
     {
-      src: `${IMG}/Beard-Transplant-Before-and-After-Result.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517793/carewell-media/site/beardtranplantindelhi/Beard-Transplant-Before-and-After-Result.webp",
       alt: "Before and after full beard transplant",
       caption: "Beard transplant growth progress at 9 months",
     },
     {
-      src: `${IMG}/Beard-Transplant-before-and-after-results-1.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517794/carewell-media/site/beardtranplantindelhi/Beard-Transplant-before-and-after-results-1.webp",
       alt: "Before and after jawline beard restoration",
       caption: "Natural beard transplant density improvement",
     },
     {
-      src: `${IMG}/Beard-Transplant-beofe-and-after-result.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517795/carewell-media/site/beardtranplantindelhi/Beard-Transplant-beofe-and-after-result.webp",
       alt: "Beard transplant side profile before and after",
       caption: "Jawline beard restoration",
     },
     {
-      src: `${IMG}/Beard-Transplant-Before-and-After-Result.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517793/carewell-media/site/beardtranplantindelhi/Beard-Transplant-Before-and-After-Result.webp",
       alt: "Beard transplant front profile transformation",
       caption: "Front view transformation",
     },
     {
-      src: `${IMG}/Beard-Transplant-before-and-after-results-1.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517794/carewell-media/site/beardtranplantindelhi/Beard-Transplant-before-and-after-results-1.webp",
       alt: "Beard transplant results at 9 months",
       caption: "Side profile improvement",
     },
     {
-      src: `${IMG}/Beard-Transplant-beofe-and-after-result.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517795/carewell-media/site/beardtranplantindelhi/Beard-Transplant-beofe-and-after-result.webp",
       alt: "Beard transplant results at 12 months",
       caption: "Final density and shape at 12 months",
     },

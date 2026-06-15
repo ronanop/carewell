@@ -11,38 +11,38 @@ export const BOTOX_IMAGES = {
     alt: "Botox before and after result in Delhi — Care Well Medical Centre",
   },
   whatIs: {
-    src: `${WP}/2025/05/botox-treatment-carewell.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp`,
     alt: "Botox treatment in Delhi for wrinkle reduction",
   },
   procedure: {
-    src: `${WP}/2025/05/botox-treatment-carewell.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp`,
     alt: "Botox forehead injection in Delhi clinic",
   },
   benefits: {
-    src: `${WP}/2025/05/anti-aging-treatments-carewell.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517867/carewell-media/wp/anti-aging-treatments-carewell.webp`,
     alt: "Botox treatment benefits infographic in Delhi",
   },
   comparison: {
-    src: `${WP}/2025/05/dermal-fillers-carewell.webp`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517868/carewell-media/wp/dermal-fillers-carewell.webp`,
     alt: "Facial aesthetic treatments comparison — Botox, fillers, thread lift",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — Botox expert in Delhi",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/05/botox-treatment-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp`,
       alt: "Botox treatment before and after result in Delhi",
       caption: "Botox wrinkle reduction",
     },
     {
-      src: `${WP}/2025/05/botox-treatment-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517872/carewell-media/wp/botox-treatment-carewell.webp`,
       alt: "Forehead Botox before and after result in Delhi",
       caption: "Forehead lines treatment",
     },
     {
-      src: `${WP}/2025/05/anti-aging-treatments-carewell.webp`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517867/carewell-media/wp/anti-aging-treatments-carewell.webp`,
       alt: "Natural Botox before and after result in Delhi",
       caption: "Natural-looking Botox results",
     },

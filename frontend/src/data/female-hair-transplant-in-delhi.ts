@@ -3,117 +3,115 @@ import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
 export const FEMALE_HAIR_TRANSPLANT_PATH = "/hair-transplant-in-delhi/female" as const;
 export const HAIR_TRANSPLANT_HUB_PATH = "/hair-transplant-in-delhi" as const;
 
-const IMG = "/femaletansplantindelhi";
-
 export const FEMALE_HT_IMAGES = {
   hero: {
-    src: `${IMG}/female-hair-transplant-before-after-indian-woman.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
     alt: "Female hair transplant before and after result in Indian woman at Care Well Medical Centre, Delhi",
   },
   procedureDiagram: {
-    src: `${IMG}/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517829/carewell-media/site/femaletansplantindelhi/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp",
     alt: "Female hair transplant procedure showing donor and recipient areas",
   },
   alopeciaTypes: {
-    src: `${IMG}/types-of-aclopecia-in-females-carewell.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517832/carewell-media/site/femaletansplantindelhi/types-of-aclopecia-in-females-carewell.webp",
     alt: "Types of alopecia in females illustration",
   },
   causesSigns: {
-    src: `${IMG}/causes-and-signs-of-female-baldness.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517825/carewell-media/site/femaletansplantindelhi/causes-and-signs-of-female-baldness.webp",
     alt: "Causes and signs of female baldness infographic",
   },
   fueFut: {
-    src: "/images/hair-transplant-4-step-process.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517836/carewell-media/site/images/hair-transplant-4-step-process.jpg",
     alt: "FUT vs FUE hair transplant comparison for women",
   },
   futProcedure: {
-    src: `${IMG}/female-hair-transplant-in-delhi-procedure-diagram.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517830/carewell-media/site/femaletansplantindelhi/female-hair-transplant-in-delhi-procedure-diagram.webp",
     alt: "FUT procedure illustration for female hair transplant",
   },
   fueProcedure: {
-    src: `${IMG}/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517829/carewell-media/site/femaletansplantindelhi/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp",
     alt: "FUE procedure illustration for female hair transplant",
   },
   idealCandidate: {
-    src: `${IMG}/female-hair-transplant-before-and-after-photo-min-1.jpg.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517828/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-and-after-photo-min-1.webp",
     alt: "Ideal female hair transplant candidate illustration",
   },
   unsuitableCandidate: {
-    src: `${IMG}/causes-and-signs-of-female-baldness.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517825/carewell-media/site/femaletansplantindelhi/causes-and-signs-of-female-baldness.webp",
     alt: "Unsuitable candidate checklist for female hair transplant",
   },
   benefits: {
-    src: `${IMG}/female-hair-transplant-before-after-indian-woman.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
     alt: "Female hair restoration success story at Care Well",
   },
   procedureFlow: {
-    src: `${IMG}/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517829/carewell-media/site/femaletansplantindelhi/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp",
     alt: "Step-by-step female hair transplant flowchart",
   },
   safety: {
-    src: `${IMG}/female-hair-transplant-in-delhi-procedure-diagram.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517830/carewell-media/site/femaletansplantindelhi/female-hair-transplant-in-delhi-procedure-diagram.webp",
     alt: "Safe female hair transplant procedure at Care Well",
   },
   cost: {
-    src: `${IMG}/causes-and-signs-of-female-baldness.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517825/carewell-media/site/femaletansplantindelhi/causes-and-signs-of-female-baldness.webp",
     alt: "Female hair transplant cost breakdown in Delhi",
   },
   costFactors: {
-    src: `${IMG}/types-of-aclopecia-in-females-carewell.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517832/carewell-media/site/femaletansplantindelhi/types-of-aclopecia-in-females-carewell.webp",
     alt: "Factors affecting female hair transplant cost",
   },
   graftCalculator: {
-    src: `${IMG}/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517829/carewell-media/site/femaletansplantindelhi/female-hair-transplant-in-delhi-procedure-diagram-1024x586.webp",
     alt: "Female hair transplant graft calculator planning",
   },
   doctorPatient: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Dr. Sandeep Bhasin with patient at Care Well Medical Centre",
   },
   quickFacts: {
-    src: "/images/hair-transplant-process-infographic.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517839/carewell-media/site/images/hair-transplant-process-infographic.jpg",
     alt: "Quick facts about female hair transplant infographic",
   },
   clinicLocation: {
-    src: "/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517796/carewell-media/site/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
     alt: "Care Well Medical Centre clinic location map",
   },
   ctaBanner: {
-    src: `${IMG}/female-hair-transplant-before-after-indian-woman.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
     alt: "Smiling female patient after hair restoration",
   },
   videoPoster: {
-    src: `${IMG}/maxresdefault (1).jpeg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517831/carewell-media/site/femaletansplantindelhi/maxresdefault_1.jpg",
     alt: "Female hair transplant procedure video thumbnail",
   },
   gallery: [
     {
-      src: `${IMG}/female-hair-transplant-before-after-indian-woman.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
       alt: "Female hair transplant before and after result",
       caption: "Improved density and natural hairline",
     },
     {
-      src: `${IMG}/female-hair-transplant-before-and-after-photo-min-1.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517828/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-and-after-photo-min-1.webp",
       alt: "Crown area restoration result",
       caption: "Crown area restoration",
     },
     {
-      src: `${IMG}/female-hair-transplant-before-after-indian-woman.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
       alt: "Hairline restoration transformation",
       caption: "Hairline restoration transformation",
     },
     {
-      src: `${IMG}/female-hair-transplant-before-and-after-photo-min-1.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517828/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-and-after-photo-min-1.webp",
       alt: "Top view density improvement",
       caption: "Top view density improvement",
     },
     {
-      src: `${IMG}/female-hair-transplant-before-after-indian-woman.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517826/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-after-indian-woman.webp",
       alt: "Side profile hair density result",
       caption: "Side profile hair density",
     },
     {
-      src: `${IMG}/female-hair-transplant-before-and-after-photo-min-1.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517828/carewell-media/site/femaletansplantindelhi/female-hair-transplant-before-and-after-photo-min-1.webp",
       alt: "Full scalp coverage improvement",
       caption: "Full scalp coverage improvement",
     },

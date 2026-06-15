@@ -54,6 +54,7 @@ next-env.d.ts
 /db/seed/reviews-snapshot.json
 /db/scrape-export/
 /db/scrape-export-blog/
+/db/seed/cloudinary-asset-map.json
 
 # editor / IDE
 .vscode/

@@ -101,29 +101,29 @@ const ctaMessages = ["Book Free Consultation", "With 20+ Years of Trust"];
 const defaultServicePreview: ServicePreview = {
   title: "Hair Treatments",
   subtitle: "Personalized plans for healthier hair and confidence.",
-  image: "/demo/hair-treatments-card.png",
+  image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517810/carewell-media/site/demo/hair-treatments-card.jpg",
 };
 
 const servicePreviewByCategory: Record<string, ServicePreview> = {
   "Hair Treatments": {
     title: "Hair Treatments",
     subtitle: "FUE/FUT transplant, PRP and medical regrowth support.",
-    image: "/demo/hair-treatments-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517810/carewell-media/site/demo/hair-treatments-card.jpg",
   },
   "Skin & Aesthetic": {
     title: "Skin & Aesthetic",
     subtitle: "Laser, fillers and advanced skin rejuvenation options.",
-    image: "/demo/skin-aesthetic-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
   },
   "Surgical Procedures": {
     title: "Surgical Procedures",
     subtitle: "Expert cosmetic surgery with planned aftercare.",
-    image: "/demo/surgical-procedures-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/surgical-procedures-card.jpg",
   },
   Wellness: {
     title: "Wellness",
     subtitle: "Recovery and wellness therapies for long-term balance.",
-    image: "/demo/wellness-card.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
   },
 };
 

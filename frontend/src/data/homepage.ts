@@ -68,7 +68,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
     title: "Cosmetic Treatments",
     slug: "botox-treatment",
     href: "/services/botox",
-    heroImageUrl: "/demo/skin-aesthetic-card.png",
+    heroImageUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     description:
       "Non-surgical anti-aging treatments including Botox, fillers, and laser rejuvenation at our South Delhi clinic.",
     ctaLabel: "View Cosmetic Treatments",
@@ -77,7 +77,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
     title: "Plastic Surgery",
     slug: "rhinoplasty",
     href: "/plastic-surgery-in-delhi/rhinoplasty",
-    heroImageUrl: "/demo/surgical-procedures-card.png",
+    heroImageUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/surgical-procedures-card.jpg",
     description:
       "Advanced cosmetic surgical procedures including rhinoplasty and body contouring performed safely at our South Delhi clinic.",
     ctaLabel: "View Plastic Surgery",
@@ -86,7 +86,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
     title: "Hair Transplant",
     slug: "hair-transplant",
     href: "/hair-transplant-in-delhi",
-    heroImageUrl: "/demo/hair-treatments-card.png",
+    heroImageUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517810/carewell-media/site/demo/hair-treatments-card.jpg",
     description:
       "Permanent hair restoration using advanced FUE and FUT techniques, performed by a senior cosmetic surgeon in Delhi.",
     ctaLabel: "View Hair Transplant",
@@ -95,7 +95,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
     title: "Skin Treatments",
     slug: "vitiligo-treatment",
     href: "/services/acne-scar-treatment",
-    heroImageUrl: "/demo/skin-aesthetic-card.png",
+    heroImageUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
     description:
       "Medical-grade solutions for acne scars, pigmentation, and laser skin rejuvenation in Delhi NCR.",
     ctaLabel: "View Skin Treatments",
@@ -104,7 +104,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
     title: "Body Contouring",
     slug: "cryolipolysis",
     href: "/body-contouring-in-delhi/cryolipolysis",
-    heroImageUrl: "/demo/wellness-card.png",
+    heroImageUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517816/carewell-media/site/demo/wellness-card.jpg",
     description:
       "Non-surgical and surgical body shaping treatments for fat reduction offered at our CR Park clinic.",
     ctaLabel: "View Body Contouring",
@@ -113,7 +113,7 @@ export const HOMEPAGE_SERVICES: HomepageService[] = [
     title: "Intimate Surgery",
     slug: "hymenoplasty",
     href: "/intimate-surgery-in-delhi/hymenoplasty",
-    heroImageUrl: "/demo/surgical-procedures-card.png",
+    heroImageUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/surgical-procedures-card.jpg",
     description:
       "Confidential intimate procedures performed in a safe and private environment in South Delhi.",
     ctaLabel: "View Intimate Surgery",
@@ -149,7 +149,7 @@ export const SURGEON_SPOTLIGHT = {
     { value: "10,000+", label: "Procedures Performed" },
     { value: "1", label: "Senior Doctor Supervision" },
   ],
-  imageSrc: "/demo/doctor-profile-feature-vertical.png",
+  imageSrc: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
   profileHref: "/about/dr-bhasin",
 } as const;
 
@@ -170,7 +170,7 @@ export const ABOUT_US = {
     "Laser & Non-Surgical Procedures",
     "Cosmetic Surgeries",
   ],
-  imageSrc: "/demo/about-us-consultation.png",
+  imageSrc: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
   aboutHref: "/about",
 } as const;
 
@@ -222,7 +222,7 @@ export const WHY_CHOOSE_SECTION = {
   servingTitle: "Serving South Delhi & Delhi NCR with Doctor-Led Cosmetic Care",
   servingBody:
     "Care Well Medical Centre is located at House No. 1, NRI Complex, Chittaranjan Park (CR Park), New Delhi 110019, and serves patients from Greater Kailash, Kalkaji, Nehru Place, Alaknanda, Saket, and across Delhi NCR. Under the supervision of Dr. Sandeep Bhasin, senior cosmetic and hair transplant surgeon, we provide advanced cosmetic surgery, hair restoration, and skin treatments in a safe medical setting.",
-  portraitSrc: "/demo/doctor-profile-feature-vertical.png",
+  portraitSrc: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
 } as const;
 
 export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
@@ -231,7 +231,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     title: "1. Book Doctor Consultation",
     description:
       "Speak directly with our clinical team for a personalised evaluation—no sales-only counselling.",
-    image: "/demo/about-us-consultation.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     hasButton: false,
   },
   {
@@ -239,7 +239,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     title: "2. Analyze My Skin",
     description:
       "AI-powered analysis to identify your skin concerns and recommend the right treatment path.",
-    image: "/demo/ai-skin-scan-v3.jpg",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517801/carewell-media/site/demo/ai-skin-scan-v3.jpg",
     hasButton: true,
     buttonHref: "/skin-scan",
   },
@@ -248,7 +248,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     title: "3. Personalised Treatment Plan",
     description:
       "Doctor-designed plan with clear procedure steps, recovery guidance, and transparent cost discussion.",
-    image: "/demo/doctor-profile-feature.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     hasButton: false,
   },
   {
@@ -256,7 +256,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     title: "4. Meet Your Doctor",
     description:
       "Treatments are performed and supervised by qualified doctors for safe, effective, natural results.",
-    image: "/demo/doctor-profile-feature-vertical.png",
+    image: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     hasButton: false,
   },
 ];
@@ -326,7 +326,7 @@ export const demoBlogs = [
     slug: "choose-right-cosmetic-procedure",
     excerpt:
       "A practical checklist to align expectations, recovery time, and outcomes before your consultation.",
-    coverUrl: "/demo/blog-card.svg",
+    coverUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517802/carewell-media/site/demo/blog-card.svg",
     category: "Consultation Guide",
   },
   {
@@ -334,14 +334,14 @@ export const demoBlogs = [
     slug: "recovery-timeline-first-30-days",
     excerpt:
       "Understand healing milestones and the aftercare habits that help patients recover confidently.",
-    coverUrl: "/demo/blog-card.svg",
+    coverUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517802/carewell-media/site/demo/blog-card.svg",
     category: "Post-Care",
   },
   {
     title: "5 Questions to Ask Before Booking Aesthetic Surgery",
     slug: "questions-before-booking-aesthetic-surgery",
     excerpt: "Use these patient-first questions to compare options and make a safe, informed decision.",
-    coverUrl: "/demo/blog-card.svg",
+    coverUrl: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517802/carewell-media/site/demo/blog-card.svg",
     category: "Patient Education",
   },
 ];
@@ -368,7 +368,7 @@ export const FINAL_CTA_SECTION = {
 } as const;
 
 export const blogCardFallbackImages = [
-  "/demo/hair-treatments-card.png",
-  "/demo/skin-aesthetic-card.png",
-  "/demo/surgical-procedures-card.png",
+  "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517810/carewell-media/site/demo/hair-treatments-card.jpg",
+  "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/skin-aesthetic-card.jpg",
+  "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517815/carewell-media/site/demo/surgical-procedures-card.jpg",
 ];

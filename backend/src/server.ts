@@ -1,17 +1,14 @@
-import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { config as loadEnv } from "dotenv";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serve } from "@hono/node-server";
 import { discoverApiRoutes } from "@/lib/route-registry";
 import { dispatchApiRequest } from "@/lib/api-dispatch";
+import { loadRepoEnv } from "@/lib/load-repo-env";
+import { isCloudinaryEnabled } from "@/lib/cloudinary";
 
-const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-for (const envFile of [join(repoRoot, ".env.local"), join(repoRoot, ".env")]) {
-  if (existsSync(envFile)) loadEnv({ path: envFile });
-}
+loadRepoEnv(join(dirname(fileURLToPath(import.meta.url)), "..", ".."));
 
 const port = Number(process.env.API_PORT ?? process.env.BACKEND_PORT ?? 4000);
 const frontendOrigin =
@@ -44,6 +41,7 @@ app.all("/api/*", async (c) => {
 
 console.info(`[api] ${routes.length} route modules on :${port}`);
 console.info(`[api] CORS origin: ${frontendOrigin}`);
+console.info(`[api] Media storage: ${isCloudinaryEnabled() ? "cloudinary" : "local disk"}`);
 
 serve(
   {

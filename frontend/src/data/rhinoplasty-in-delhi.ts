@@ -12,34 +12,34 @@ export const RHINOPLASTY_IMAGES = {
     alt: "Best rhinoplasty surgery in Delhi at Care Well Medical Centre",
   },
   procedure: {
-    src: `${WP}/2025/04/rhinoplasty-nose-surgery-carewell-min.jpg`,
+    src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517890/carewell-media/wp/rhinoplasty-nose-surgery-carewell-min.jpg`,
     alt: "Rhinoplasty procedure step by step from consultation to final result at Care Well Medical Centre Delhi",
   },
   recovery: {
-    src: "/demo/about-us-consultation.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517799/carewell-media/site/demo/about-us-consultation.jpg",
     alt: "Rhinoplasty recovery timeline infographic for patients in Delhi",
   },
   doctor: {
-    src: "/demo/doctor-profile-feature-vertical.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517806/carewell-media/site/demo/doctor-profile-feature-vertical.png",
     alt: "Dr. Sandeep Bhasin — best rhinoplasty surgeon in Delhi",
   },
   videoPoster: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Rhinoplasty patient testimonial video at Care Well Medical Centre",
   },
   beforeAfter: [
     {
-      src: `${WP}/2025/04/rhinoplasty-nose-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517890/carewell-media/wp/rhinoplasty-nose-surgery-carewell-min.jpg`,
       alt: "Rhinoplasty before and after results in Delhi",
       caption: "Profile refinement",
     },
     {
-      src: `${WP}/2025/04/septoplasty-nose-surgery-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517894/carewell-media/wp/septoplasty-nose-surgery-carewell-min.jpg`,
       alt: "Septorhinoplasty before and after Delhi",
       caption: "Functional nose surgery",
     },
     {
-      src: `${WP}/2025/04/chin-augmentation-carewell-min.jpg`,
+      src: `https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517887/carewell-media/wp/chin-augmentation-carewell-min.jpg`,
       alt: "Facial harmony after rhinoplasty Delhi",
       caption: "Facial balance",
     },

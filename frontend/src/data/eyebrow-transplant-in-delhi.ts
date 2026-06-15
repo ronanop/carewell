@@ -3,125 +3,123 @@ import { HAIR_LOSS_CLINIC } from "@/data/hair-loss-treatment-in-delhi";
 export const EYEBROW_TRANSPLANT_PATH = "/hair-transplant-in-delhi/eyebrow" as const;
 export const HAIR_TRANSPLANT_HUB_PATH = "/hair-transplant-in-delhi" as const;
 
-const IMG = "/eyebrotranplantindelhi";
-
 export const EYEBROW_IMAGES = {
   hero: {
-    src: `${IMG}/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517817/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp",
     alt: "Before and after eyebrow transplant result on Indian female patient at Care Well Medical Centre, Delhi",
   },
   resultsGallery: {
-    src: `${IMG}/eyebrow-transplant-before-and-after-image-min.jpg.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517819/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-and-after-image-min.webp",
     alt: "Natural eyebrow restoration results gallery",
   },
   processDiagram: {
-    src: `${IMG}/what-is-eyebrow-transplant-process-diagram-care-well-delhi-768x768.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517823/carewell-media/site/eyebrotranplantindelhi/what-is-eyebrow-transplant-process-diagram-care-well-delhi-768x768.webp",
     alt: "Eyebrow transplant process diagram showing donor hair extraction and implantation",
   },
   fueIllustration: {
-    src: `${IMG}/fue-vs-fut-eyebrow-transplant-technique-delhi-care-well-1024x538.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517821/carewell-media/site/eyebrotranplantindelhi/fue-vs-fut-eyebrow-transplant-technique-delhi-care-well-1024x538.webp",
     alt: "FUE eyebrow transplant illustration",
   },
   futIllustration: {
-    src: `${IMG}/what-is-eyebrow-transplant-process-diagram-care-well-delhi.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517824/carewell-media/site/eyebrotranplantindelhi/what-is-eyebrow-transplant-process-diagram-care-well-delhi.webp",
     alt: "FUT eyebrow transplant illustration",
   },
   densityComparison: {
-    src: `${IMG}/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517818/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp",
     alt: "Before vs after eyebrow density comparison",
   },
   naturalDesign: {
-    src: `${IMG}/eyebrow-transplant-before-and-after-image-min.jpg.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517819/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-and-after-image-min.webp",
     alt: "Natural eyebrow design examples",
   },
   fueFutComparison: {
-    src: `${IMG}/fue-vs-fut-eyebrow-transplant-technique-delhi-care-well-1024x538.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517821/carewell-media/site/eyebrotranplantindelhi/fue-vs-fut-eyebrow-transplant-technique-delhi-care-well-1024x538.webp",
     alt: "FUE vs FUT eyebrow transplant comparison graphic",
   },
   prosCons: {
-    src: `${IMG}/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517818/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp",
     alt: "Pros and cons of eyebrow transplant visual comparison",
   },
   graftDiagram: {
-    src: `${IMG}/what-is-eyebrow-transplant-process-diagram-care-well-delhi-768x768.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517823/carewell-media/site/eyebrotranplantindelhi/what-is-eyebrow-transplant-process-diagram-care-well-delhi-768x768.webp",
     alt: "Eyebrow graft placement diagram",
   },
   facialSymmetry: {
-    src: `${IMG}/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517817/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp",
     alt: "Facial symmetry assessment for eyebrow transplantation",
   },
   donorExtraction: {
-    src: `${IMG}/what-is-eyebrow-transplant-process-diagram-care-well-delhi.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517824/carewell-media/site/eyebrotranplantindelhi/what-is-eyebrow-transplant-process-diagram-care-well-delhi.webp",
     alt: "Donor area extraction illustration for eyebrow transplant",
   },
   procedureFlowchart: {
-    src: `${IMG}/what-is-eyebrow-transplant-process-diagram-care-well-delhi-768x768.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517823/carewell-media/site/eyebrotranplantindelhi/what-is-eyebrow-transplant-process-diagram-care-well-delhi-768x768.webp",
     alt: "Step-by-step eyebrow transplant procedure flowchart",
   },
   clinicComparison: {
-    src: `${IMG}/eyebrow-transplant-delhi-comparison-care-well-vs-other-clinics.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517820/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-delhi-comparison-care-well-vs-other-clinics.webp",
     alt: "Eyebrow transplant in Delhi — Care Well vs other clinics comparison",
   },
   costGraphic: {
-    src: `${IMG}/eyebrow-transplant-delhi-comparison-care-well-vs-other-clinics.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517820/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-delhi-comparison-care-well-vs-other-clinics.webp",
     alt: "Cost breakdown for eyebrow hair transplant in Delhi",
   },
   recoveryTimeline: {
-    src: `${IMG}/eyebrow-transplant-before-and-after-image-min.jpg.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517819/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-and-after-image-min.webp",
     alt: "Eyebrow recovery timeline",
   },
   doctorPatient: {
-    src: "/demo/doctor-profile-feature.png",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517807/carewell-media/site/demo/doctor-profile-feature.jpg",
     alt: "Dr. Sandeep Bhasin with patient at Care Well Medical Centre",
   },
   reviewCollage: {
-    src: `${IMG}/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517818/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp",
     alt: "Patient review collage — eyebrow restoration at Care Well",
   },
   clinicLocation: {
-    src: "/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517796/carewell-media/site/beardtranplantindelhi/care-well-medical-centre-delhi-clinic-exterior-1.webp",
     alt: "Care Well Medical Centre clinic location in South Delhi",
   },
   ctaBanner: {
-    src: `${IMG}/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517817/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp",
     alt: "Book eyebrow transplant consultation in Delhi",
   },
   quickFacts: {
-    src: `${IMG}/fue-vs-fut-eyebrow-transplant-technique-delhi-care-well-1024x538.webp`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517821/carewell-media/site/eyebrotranplantindelhi/fue-vs-fut-eyebrow-transplant-technique-delhi-care-well-1024x538.webp",
     alt: "Quick facts about eyebrow hair transplant infographic",
   },
   videoPoster: {
-    src: `${IMG}/maxresdefault.jpeg`,
+    src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517822/carewell-media/site/eyebrotranplantindelhi/maxresdefault.jpg",
     alt: "Eyebrow transplant procedure video thumbnail",
   },
   gallery: [
     {
-      src: `${IMG}/eyebrow-transplant-before-and-after-image-min.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517819/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-and-after-image-min.webp",
       alt: "Before and after eyebrow transplant result photo",
       caption: "Fuller brows and improved symmetry",
     },
     {
-      src: `${IMG}/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517817/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp",
       alt: "Indian female eyebrow restoration result",
       caption: "Natural brow shape enhancement",
     },
     {
-      src: `${IMG}/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517818/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp",
       alt: "Eyebrow density improvement close-up",
       caption: "Improved density and definition",
     },
     {
-      src: `${IMG}/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517817/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-indian-female-care-well-delhi.webp",
       alt: "Side view eyebrow restoration",
       caption: "Side profile improvement",
     },
     {
-      src: `${IMG}/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517818/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-after-result-indian-female-care-well-1.webp",
       alt: "Natural brow shape enhancement",
       caption: "Customized eyebrow design",
     },
     {
-      src: `${IMG}/eyebrow-transplant-before-and-after-image-min.jpg.webp`,
+      src: "https://res.cloudinary.com/drxbxaqjd/image/upload/v1781517819/carewell-media/site/eyebrotranplantindelhi/eyebrow-transplant-before-and-after-image-min.webp",
       alt: "Full eyebrow reconstruction result",
       caption: "Full eyebrow reconstruction",
     },
