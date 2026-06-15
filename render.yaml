@@ -6,7 +6,7 @@ services:
     name: carewell-frontend
     runtime: node
     plan: free
-    buildCommand: npm install && npm run db:generate -w @carewell/backend && npm run redirects:fix-blogs && npm run redirects:legacy && npm run build
+    buildCommand: npm install && npm run db:generate -w @carewell/backend && npm run redirects:fix-blogs && npm run redirects:legacy && npm run cms:import-blog-seed && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV

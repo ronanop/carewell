@@ -58,6 +58,8 @@
     "analyze": "npm run analyze -w @carewell/frontend",
     "cms:import-sanity": "node ./backend/scripts/migrate-sanity-to-prisma.mjs",
     "cms:import-redirects": "node ./backend/scripts/import-redirects-to-db.mjs",
+    "cms:export-blog-seed": "node ./backend/scripts/export-blog-seed.mjs",
+    "cms:import-blog-seed": "node ./backend/scripts/import-blog-seed.mjs",
     "cms:sync-legacy-sitemap": "dotenv -e .env.local -- node ./backend/scripts/sync-legacy-sitemap-pages.mjs",
     "cms:sync-legacy-sitemap-posts": "dotenv -e .env.local -- node ./backend/scripts/sync-legacy-sitemap-posts.mjs"
   },
