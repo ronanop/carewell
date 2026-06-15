@@ -140,6 +140,16 @@ async function handleSanityRedirects(request: NextRequest) {
   const match = list.find((r) => r.fromPath === path || r.fromPath === path + "/");
   if (!match) return NextResponse.next();
 
+  const toNorm = match.toPath.replace(/\/+$/, "") || match.toPath;
+  // Stale DB rows may point legacy blog URLs at /services/{slug}; SEO URLs live at legacy paths.
+  if (
+    !match.fromPath.startsWith("/services/") &&
+    !match.fromPath.startsWith("/blog/") &&
+    toNorm.startsWith("/services/")
+  ) {
+    return NextResponse.next();
+  }
+
   const target = match.toPath.startsWith("http")
     ? match.toPath
     : new URL(match.toPath, request.url).toString();

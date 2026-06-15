@@ -7,6 +7,7 @@ import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join } from "path";
 import { loadEnvFiles } from "./lib/load-env.mjs";
 import { loadLegacyBlogPaths } from "./lib/legacy-blog-paths.mjs";
+import { slugFromLegacyPath } from "./lib/legacy-path.mjs";
 import { repoRoot } from "./lib/repo-root.mjs";
 
 const root = repoRoot(import.meta.url);
@@ -43,12 +44,19 @@ async function main() {
     addRule(`${from}/`, to);
   }
 
-  /** SEO URLs live at legacy paths; /services/{slug} redirects to legacy (services only, not blogs). */
+  /** SEO URLs live at legacy paths; /services/{slug} redirects to legacy. */
   for (const s of services) {
     if (!s.from || !s.slug) continue;
     const legacyFrom = String(s.from).replace(/\/$/, "");
     if (blogPaths.has(legacyFrom)) continue;
     addLegacyPath(`/services/${s.slug}`, s.from);
+  }
+
+  /** Blog posts also answer at /services/{slug} (old links) → root legacy URL. */
+  for (const legacyPath of blogPaths) {
+    const slug = slugFromLegacyPath(legacyPath);
+    if (!slug) continue;
+    addLegacyPath(`/services/${slug}`, legacyPath);
   }
 
   for (const r of staticRedirects) {
