@@ -5,7 +5,6 @@
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { PrismaClient } from "@prisma/client";
-import { upsertImportedBlog } from "./lib/blog-import-core.mjs";
 import { loadEnvFiles } from "./lib/load-env.mjs";
 import { repoRoot } from "./lib/repo-root.mjs";
 
@@ -27,6 +26,33 @@ if (!existsSync(seedPath)) {
 
 const { posts = [] } = JSON.parse(readFileSync(seedPath, "utf8"));
 const prisma = new PrismaClient();
+
+async function upsertBlogRow(row) {
+  const { id, ...data } = row;
+  await prisma.blogPost.upsert({
+    where: { id },
+    create: { id, ...data },
+    update: data,
+  });
+
+  const from = `/blog/${row.slug}`;
+  const to = `${row.legacyPath}/`;
+  await prisma.redirect.upsert({
+    where: { fromPath: from },
+    create: { fromPath: from, toPath: to, statusCode: 301 },
+    update: { toPath: to, statusCode: 301 },
+  });
+
+  if (row.publishedAt || row.updatedAt) {
+    await prisma.blogPost.update({
+      where: { id },
+      data: {
+        ...(row.publishedAt ? { publishedAt: new Date(row.publishedAt) } : {}),
+        ...(row.updatedAt ? { updatedAt: new Date(row.updatedAt) } : {}),
+      },
+    });
+  }
+}
 
 async function main() {
   console.log(`Importing ${posts.length} blog posts from seed…`);
@@ -54,18 +80,14 @@ async function main() {
       seoTitle: row.seoTitle ?? null,
       seoDescription: row.seoDescription ?? null,
       seoCanonicalUrl: row.seoCanonicalUrl ?? null,
+      publishedAt: row.publishedAt,
+      updatedAt: row.updatedAt,
     };
 
     if (!DRY_RUN) {
-      await upsertImportedBlog(prisma, payload);
-      if (row.publishedAt || row.updatedAt) {
-        await prisma.blogPost.update({
-          where: { id: row.id },
-          data: {
-            ...(row.publishedAt ? { publishedAt: new Date(row.publishedAt) } : {}),
-            ...(row.updatedAt ? { updatedAt: new Date(row.updatedAt) } : {}),
-          },
-        });
+      await upsertBlogRow(payload);
+      if (imported % 25 === 0) {
+        console.log(`  …${imported + 1}/${posts.length}`);
       }
     }
     imported++;

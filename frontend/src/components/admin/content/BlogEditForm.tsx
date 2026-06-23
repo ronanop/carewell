@@ -7,6 +7,7 @@ import { MediaField } from "@/components/admin/content/MediaField";
 import { btnPrimary, inputClass, textareaClass } from "@/components/admin/content/AdminFormFields";
 import { ContentEditLayout, SidebarPanel } from "@/components/admin/editor/ContentEditLayout";
 import { VisualEditorDynamic } from "@/components/admin/editor/VisualEditorDynamic";
+import { BlogSuggestedPostsField } from "@/components/admin/content/BlogSuggestedPostsField";
 import { emptyPortableText } from "@/portable-text/from-html";
 
 export function BlogEditForm({
@@ -27,10 +28,14 @@ export function BlogEditForm({
     coverImageUrl?: string | null;
     seoTitle?: string | null;
     seoDescription?: string | null;
+    suggestedPostSlugs?: string[];
   };
 }) {
   const router = useRouter();
   const [form, setForm] = useState(initial);
+  const [suggestedPostSlugs, setSuggestedPostSlugs] = useState<string[]>(
+    initial.suggestedPostSlugs ?? [],
+  );
   const [body, setBody] = useState<PortableTextBlock[]>(
     (Array.isArray(initial.body) ? initial.body : emptyPortableText()) as PortableTextBlock[],
   );
@@ -48,7 +53,7 @@ export function BlogEditForm({
     const res = await fetch("/api/admin/content/blog", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...form, body }),
+      body: JSON.stringify({ ...form, body, suggestedPostSlugs }),
     });
     const json = (await res.json()) as { ok?: boolean; error?: string };
     setSaving(false);
@@ -172,6 +177,13 @@ export function BlogEditForm({
                 />
                 Featured on homepage
               </label>
+            </SidebarPanel>
+            <SidebarPanel title="Suggested posts">
+              <BlogSuggestedPostsField
+                currentSlug={form.slug}
+                value={suggestedPostSlugs}
+                onChange={setSuggestedPostSlugs}
+              />
             </SidebarPanel>
             <SidebarPanel title="SEO">
               <label className="block text-sm">

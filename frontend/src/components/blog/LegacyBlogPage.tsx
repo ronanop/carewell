@@ -1,13 +1,13 @@
 import type { PortableTextBlock } from "@portabletext/types";
-import Link from "next/link";
 import { Suspense } from "react";
-import Image from "next/image";
+import { BlogArticleHeader } from "@/components/blog/BlogArticleHeader";
 import { BlogArticleToc, BlogArticleTocMobile } from "@/components/blog/BlogArticleToc";
 import { BlogScrollAsideTitle } from "@/components/blog/BlogScrollAsideTitle";
-import { BlogShareRow } from "@/components/blog/BlogShareRow";
+import { BlogSuggestedPosts } from "@/components/blog/BlogSuggestedPosts";
 import { RichContentBody } from "@/components/content/RichContentBody";
 import { LeadForm } from "@/components/leads/LeadForm";
 import { getBlogPostByLegacyPath } from "@carewell/backend/lib/cms/queries";
+import { resolveBlogCoverUrl } from "@carewell/backend/lib/cms/blog-cover";
 import { extractH2Sections } from "@carewell/backend/lib/portable-h2";
 import { legacyPathWithTrailingSlash } from "@carewell/backend/lib/legacy-path";
 import { getSiteUrl } from "@carewell/backend/lib/site";
@@ -35,7 +35,12 @@ export async function LegacyBlogPage({ legacyPath }: { legacyPath: string }) {
   const publishedAt = post.publishedAt ?? "";
   const updatedAt = post.updatedAt;
   const readTimeMinutes = post.readTimeMinutes ?? 5;
-  const coverUrl = post.coverUrl;
+  const coverUrl = resolveBlogCoverUrl({
+    coverUrl: post.coverUrl,
+    ogImageUrl: post.seo?.ogImageUrl,
+    seo: post.seo,
+    body: post.body,
+  });
   const headings = extractH2Sections(post.body);
   const site = getSiteUrl();
   const pageUrl = `${site.replace(/\/$/, "")}${legacyPathWithTrailingSlash(legacyPath)}`;
@@ -72,43 +77,15 @@ export async function LegacyBlogPage({ legacyPath }: { legacyPath: string }) {
   return (
     <>
       <article className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
-        <nav className="text-sm text-navy/60">
-          <Link href="/blog">Blog</Link> / <span className="text-navy">{title}</span>
-        </nav>
-        <header className="mx-auto mt-6 max-w-article">
-          <h1 className="font-heading text-4xl font-bold text-navy md:text-5xl">{title}</h1>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-navy/70">
-            {author?.imageUrl && (
-              <Image
-                src={author.imageUrl}
-                alt={author?.name ? `${author.name} photo` : "Author"}
-                width={48}
-                height={48}
-                className="rounded-full"
-              />
-            )}
-            <span className="font-medium text-navy">{author?.name}</span>
-            {publishedAt ? (
-              <>
-                <span>·</span>
-                <time dateTime={publishedAt}>
-                  Published {new Date(publishedAt).toLocaleDateString("en-IN")}
-                </time>
-              </>
-            ) : null}
-            {updatedAt ? (
-              <>
-                <span>·</span>
-                <time dateTime={updatedAt}>
-                  Updated {new Date(updatedAt).toLocaleDateString("en-IN")}
-                </time>
-              </>
-            ) : null}
-            <span>·</span>
-            <span>{readTimeMinutes} min read</span>
-          </div>
-          <BlogShareRow title={title} url={pageUrl} />
-        </header>
+        <BlogArticleHeader
+          title={title}
+          coverUrl={coverUrl}
+          author={author}
+          publishedAt={publishedAt}
+          updatedAt={updatedAt}
+          readTimeMinutes={readTimeMinutes}
+          pageUrl={pageUrl}
+        />
 
         <div className="mt-12 lg:grid lg:grid-cols-[200px_1fr_280px] lg:gap-10">
           <aside className="mb-10 hidden lg:block">
@@ -132,22 +109,7 @@ export async function LegacyBlogPage({ legacyPath }: { legacyPath: string }) {
           </aside>
         </div>
 
-        {related.length > 0 ? (
-          <footer className="mx-auto mt-16 max-w-article border-t border-surface pt-12">
-            <h2 className="font-heading text-xl font-bold text-navy">You might also read</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/blog/${r.slug}`}
-                  className="rounded-lg border border-surface p-4 hover:border-primary"
-                >
-                  {r.title}
-                </Link>
-              ))}
-            </div>
-          </footer>
-        ) : null}
+        <BlogSuggestedPosts posts={related} />
       </article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
     </>

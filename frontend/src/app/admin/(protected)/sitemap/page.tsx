@@ -169,11 +169,7 @@ export default async function AdminSitemapPage() {
 
       <p className="text-sm text-text-secondary">
         Legacy URLs are also listed in <code className="rounded bg-surface px-1 text-xs">db/redirects.migration.json</code>
-        . Use the{" "}
-        <Link href="/admin/scraper" className="font-semibold text-primary hover:text-primary-hover">
-          scraper
-        </Link>{" "}
-        to import pages into the CMS.
+        . Site content is managed in Sanity Studio and import scripts, not in this admin panel.
       </p>
 
       <Link href="/admin" className="text-sm font-semibold text-primary hover:text-primary-hover">

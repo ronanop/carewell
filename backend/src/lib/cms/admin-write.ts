@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { MAX_SUGGESTED_BLOG_POSTS } from "@/lib/cms/blog-suggested";
 import { legacyPathWithTrailingSlash, normalizeLegacyPath } from "@/lib/legacy-path";
 import { setBlogLegacyPath, setServiceLegacyPath } from "@/lib/legacy-path-db";
 import type { Prisma } from "@prisma/client";
@@ -146,6 +147,7 @@ export async function upsertBlogPost(payload: {
   coverImageId?: string | null;
   seoTitle?: string | null;
   seoDescription?: string | null;
+  suggestedPostSlugs?: string[];
 }) {
   const id = payload.id ?? `blog-${payload.slug}`;
   const legacyPath = payload.legacyPath ? normalizeLegacyPath(payload.legacyPath) : null;
@@ -169,7 +171,36 @@ export async function upsertBlogPost(payload: {
   };
   await prisma.blogPost.upsert({ where: { id }, create: { id, ...data }, update: data });
   await setBlogLegacyPath(id, legacyPath);
+  if (payload.suggestedPostSlugs !== undefined) {
+    await setBlogSuggestedPosts(id, payload.suggestedPostSlugs);
+  }
   return id;
+}
+
+export async function setBlogSuggestedPosts(fromPostId: string, suggestedSlugs: string[]) {
+  const slugs = [...new Set(suggestedSlugs.map((s) => String(s).trim()).filter(Boolean))].slice(
+    0,
+    MAX_SUGGESTED_BLOG_POSTS,
+  );
+
+  await prisma.blogPostRelated.deleteMany({ where: { fromPostId } });
+  if (!slugs.length) return;
+
+  const targets = await prisma.blogPost.findMany({
+    where: { slug: { in: slugs }, id: { not: fromPostId } },
+    select: { id: true, slug: true },
+  });
+  const idBySlug = new Map(targets.map((t) => [t.slug, t.id]));
+
+  let sortOrder = 0;
+  for (const slug of slugs) {
+    const toPostId = idBySlug.get(slug);
+    if (!toPostId) continue;
+    await prisma.blogPostRelated.create({
+      data: { fromPostId, toPostId, sortOrder },
+    });
+    sortOrder += 1;
+  }
 }
 
 export async function upsertCategory(payload: {

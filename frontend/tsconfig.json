@@ -25,6 +25,9 @@
       "@/lib/css-health": [
         "./src/lib/css-health"
       ],
+      "@/lib/blog-href": [
+        "./src/lib/blog-href"
+      ],
       "@/lib/portable-text/*": [
         "./src/lib/portable-text/*"
       ],

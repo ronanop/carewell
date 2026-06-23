@@ -46,7 +46,6 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
         email={settings.email}
         address={settings.address}
         mapEmbedUrl={settings.mapEmbedUrl}
-        mbbs={settings.mbbsRegNo}
         hours={settings.hours}
       />
       <WhatsAppBubble number={settings.whatsappNumber || settings.phone} />

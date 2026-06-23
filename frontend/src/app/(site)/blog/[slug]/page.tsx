@@ -4,17 +4,19 @@ import { notFound, redirect } from "next/navigation";
 import { findLegacyPathByBlogSlug } from "@carewell/backend/lib/legacy-path-db";
 import { legacyPathWithTrailingSlash } from "@carewell/backend/lib/legacy-path";
 import { Suspense } from "react";
+import { BlogArticleHeader } from "@/components/blog/BlogArticleHeader";
 import { BlogArticleToc, BlogArticleTocMobile } from "@/components/blog/BlogArticleToc";
 import { BlogScrollAsideTitle } from "@/components/blog/BlogScrollAsideTitle";
-import { BlogShareRow } from "@/components/blog/BlogShareRow";
+import { BlogSuggestedPosts } from "@/components/blog/BlogSuggestedPosts";
+import type { SuggestedBlogPost } from "@/lib/blog-href";
 import { RichContentBody } from "@/components/content/RichContentBody";
 import { LeadForm } from "@/components/leads/LeadForm";
 import { sanityFetch } from "@carewell/backend/sanity/client";
 import { blogPostBySlugQuery } from "@carewell/backend/sanity/queries";
 import { extractH2Sections } from "@carewell/backend/lib/portable-h2";
+import { resolveBlogCoverUrl } from "@carewell/backend/lib/cms/blog-cover";
 import { getSiteUrl } from "@carewell/backend/lib/site";
 import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
-import Image from "next/image";
 
 export const revalidate = 60;
 
@@ -54,11 +56,24 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
   const title = post.title as string;
   const author = post.author as { name?: string; credentials?: string; imageUrl?: string | null };
   const body = post.body as never;
-  const related = (post.relatedPosts as { title?: string; slug?: { current?: string } }[]) ?? [];
+  const relatedRaw = (post.relatedPosts as { title?: string; slug?: { current?: string }; excerpt?: string; coverUrl?: string }[]) ?? [];
+  const related: SuggestedBlogPost[] = relatedRaw
+    .map((r) => ({
+      title: r.title ?? "",
+      slug: r.slug?.current ?? "",
+      excerpt: r.excerpt ?? null,
+      coverUrl: r.coverUrl,
+    }))
+    .filter((r) => r.slug && r.title);
   const publishedAt = typeof post.publishedAt === "string" ? post.publishedAt : "";
   const updatedAt = typeof post.updatedAt === "string" ? post.updatedAt : undefined;
   const readTimeMinutes = typeof post.readTimeMinutes === "number" ? post.readTimeMinutes : 5;
-  const coverUrl = typeof post.coverUrl === "string" ? post.coverUrl : undefined;
+  const coverUrl = resolveBlogCoverUrl({
+    coverUrl: typeof post.coverUrl === "string" ? post.coverUrl : undefined,
+    ogImageUrl: typeof post.ogImageUrl === "string" ? post.ogImageUrl : undefined,
+    seo: post.seo as { ogImageUrl?: string } | undefined,
+    body: post.body,
+  });
   const headings = extractH2Sections(post.body);
   const site = getSiteUrl();
   const pageUrl = `${site}/blog/${slug}`;
@@ -95,35 +110,15 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
   return (
     <>
       <article className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
-        <nav className="text-sm text-navy/60">
-          <Link href="/blog">Blog</Link> / <span className="text-navy">{title}</span>
-        </nav>
-        <header className="mx-auto mt-6 max-w-article">
-          <h1 className="font-heading text-4xl font-bold text-navy md:text-5xl">{title}</h1>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-navy/70">
-            {author?.imageUrl && (
-              <Image
-                src={author.imageUrl}
-                alt={author?.name ? `${author.name} photo` : "Author"}
-                width={48}
-                height={48}
-                className="rounded-full"
-              />
-            )}
-            <span className="font-medium text-navy">{author?.name}</span>
-            <span>·</span>
-            <time dateTime={publishedAt}>Published {publishedAt ? new Date(publishedAt).toLocaleDateString("en-IN") : ""}</time>
-            {updatedAt && (
-              <>
-                <span>·</span>
-                <time dateTime={updatedAt}>Updated {new Date(updatedAt).toLocaleDateString("en-IN")}</time>
-              </>
-            )}
-            <span>·</span>
-            <span>{readTimeMinutes} min read</span>
-          </div>
-          <BlogShareRow title={title} url={pageUrl} />
-        </header>
+        <BlogArticleHeader
+          title={title}
+          coverUrl={coverUrl}
+          author={author}
+          publishedAt={publishedAt}
+          updatedAt={updatedAt}
+          readTimeMinutes={readTimeMinutes}
+          pageUrl={pageUrl}
+        />
 
         <div className="mt-12 lg:grid lg:grid-cols-[200px_1fr_280px] lg:gap-10">
           <aside className="mb-10 hidden lg:block">
@@ -157,14 +152,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
               Book Consultation →
             </Link>
           </div>
-          <h2 className="font-heading mt-12 text-xl font-bold text-navy">You might also read</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {(related.length ? related : []).map((r) => (
-              <Link key={r.slug?.current} href={`/blog/${r.slug?.current}`} className="rounded-lg border border-surface p-4 hover:border-primary">
-                {r.title}
-              </Link>
-            ))}
-          </div>
+          <BlogSuggestedPosts posts={related} />
         </footer>
       </article>
       <section className="bg-navy py-14 text-center text-white">

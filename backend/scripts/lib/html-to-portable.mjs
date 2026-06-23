@@ -72,7 +72,7 @@ function parseInline($, el, markDefs) {
 function blockFromElement($, el, markDefs) {
   const tag = el.prop("tagName")?.toLowerCase();
   let style = "normal";
-  if (tag === "h2") style = "h2";
+  if (tag === "h1" || tag === "h2") style = "h2";
   else if (tag === "h3" || tag === "h4" || tag === "h5" || tag === "h6") style = "h3";
   else if (tag === "blockquote") style = "blockquote";
   else if (tag !== "p" && tag !== "div") return null;
@@ -90,12 +90,47 @@ function blockFromElement($, el, markDefs) {
 }
 
 function resolveImgSrc($, img) {
-  const candidates = [img.attr("data-src"), img.attr("data-lazy-src"), img.attr("src")];
+  const srcset = img.attr("srcset");
+  if (srcset) {
+    const parts = srcset.split(",").map((p) => p.trim().split(/\s+/)[0]).filter(Boolean);
+    if (parts.length) return normalizeImageUrl(parts[parts.length - 1]);
+  }
+  const candidates = [
+    img.attr("data-src"),
+    img.attr("data-lazy-src"),
+    img.attr("data-original"),
+    img.attr("src"),
+  ];
   for (const raw of candidates) {
     if (!raw || raw.startsWith("data:")) continue;
-    return raw;
+    const normalized = normalizeImageUrl(raw);
+    if (normalized) return normalized;
   }
   return null;
+}
+
+function normalizeImageUrl(url) {
+  if (!url?.trim()) return null;
+  let u = url.trim();
+  if (u.startsWith("//")) u = `https:${u}`;
+  if (u.startsWith("/")) {
+    const base =
+      process.env.WORDPRESS_API_URL?.trim() ||
+      process.env.SCRAPER_BASE_URL?.trim() ||
+      "https://www.carewellmedicalcentre.com";
+    return `${base.replace(/\/$/, "")}${u}`;
+  }
+  try {
+    const parsed = new URL(u);
+    if (parsed.hostname === "test.carewellmedicalcentre.com") {
+      parsed.hostname = "www.carewellmedicalcentre.com";
+      parsed.protocol = "https:";
+      return parsed.toString();
+    }
+  } catch {
+    return null;
+  }
+  return u;
 }
 
 function tableToBlock($, table) {
@@ -133,7 +168,9 @@ export async function htmlToPortableText(html, opts = {}) {
       const alt = el.attr("alt")?.trim() || "Image";
       if (src && resolveImage) {
         const resolved = await resolveImage(src, alt);
-        if (resolved?.url) {
+        if (resolved?.assetRef) {
+          out.push({ _type: "image", _key: ptKey("img"), assetRef: resolved.assetRef, alt });
+        } else if (resolved?.url) {
           out.push({ _type: "image", _key: ptKey("img"), url: resolved.url, alt });
         }
       } else if (src) {
@@ -143,6 +180,16 @@ export async function htmlToPortableText(html, opts = {}) {
     }
 
     if (tag === "figure") {
+      const imgs = el.find("img");
+      if (imgs.length > 0) {
+        for (const img of imgs.toArray()) {
+          await processNode($(img));
+        }
+        return;
+      }
+    }
+
+    if (tag === "picture") {
       const img = el.find("img").first();
       if (img.length) {
         await processNode(img);
@@ -178,13 +225,39 @@ export async function htmlToPortableText(html, opts = {}) {
       return;
     }
 
-    if (tag === "h2" || tag === "h3" || tag === "h4" || tag === "h5" || tag === "h6" || tag === "p" || tag === "blockquote") {
+    if (tag === "h1" || tag === "h2" || tag === "h3" || tag === "h4" || tag === "h5" || tag === "h6" || tag === "blockquote") {
+      const block = blockFromElement($, el, sharedMarkDefs);
+      if (block) {
+        if (tag === "h1") block.style = "h2";
+        out.push(block);
+      }
+      return;
+    }
+
+    if (tag === "p") {
+      if (el.find("img").length > 0) {
+        for (const child of el.children().toArray()) {
+          await processNode($(child));
+        }
+        const text = el
+          .clone()
+          .children("img")
+          .remove()
+          .end()
+          .text()
+          .replace(/\s+/g, " ")
+          .trim();
+        if (text) {
+          out.push(textBlock(text, "normal"));
+        }
+        return;
+      }
       const block = blockFromElement($, el, sharedMarkDefs);
       if (block) out.push(block);
       return;
     }
 
-    if (tag === "div" || tag === "section" || tag === "article") {
+    if (tag === "div" || tag === "section" || tag === "article" || tag === "aside" || tag === "main" || tag === "header" || tag === "footer") {
       const children = el.children().toArray();
       if (children.length === 0) {
         const block = blockFromElement($, el, sharedMarkDefs);
@@ -201,6 +274,12 @@ export async function htmlToPortableText(html, opts = {}) {
       for (const child of el.children().toArray()) {
         await processNode($(child));
       }
+      return;
+    }
+
+    const leafText = el.text().replace(/\s+/g, " ").trim();
+    if (leafText && ["span", "a", "strong", "em", "b", "i", "label", "dt", "dd", "summary", "figcaption"].includes(tag)) {
+      out.push(textBlock(leafText, tag === "dt" ? "h3" : "normal"));
     }
   }
 
@@ -215,7 +294,7 @@ export async function htmlToPortableText(html, opts = {}) {
   }
 
   return out.filter((b) => {
-    if (b._type === "image") return Boolean(b.url);
+    if (b._type === "image") return Boolean(b.url || b.assetRef);
     const children = b.children ?? [];
     return children.some((c) => c.text?.trim().length > 0);
   });

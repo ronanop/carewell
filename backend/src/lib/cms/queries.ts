@@ -2,6 +2,21 @@ import { prisma } from "@/lib/db";
 import { mediaPublicUrl } from "@/lib/media-url";
 import { buildSeoObject } from "@/lib/cms/seo";
 import { mapPrismaService } from "@/lib/cms/map-service";
+import { isWordpressCmsEnabled, isSanityCmsEnabled } from "@/lib/cms/provider";
+import { getSanityClient } from "@/lib/cms/client";
+import { mapSanityBlogPost, mapSanityService } from "@/lib/cms/map-sanity";
+import {
+  blogPostByLegacyPathQuery,
+  legacyBlogPathsQuery,
+  legacyServicePathsQuery,
+  serviceByLegacyPathQuery,
+} from "@/lib/cms/groq-queries";
+import {
+  getCachedWpBlogPostByLegacyPath,
+  getCachedWpPagePaths,
+  getCachedWpPostPaths,
+  getCachedWpServiceByLegacyPath,
+} from "@/lib/cms/wordpress/cached";
 import { normalizeLegacyPath } from "@/lib/legacy-path";
 import {
   findBlogIdByLegacyPath,
@@ -91,6 +106,26 @@ export async function getServiceBySlug(slug: string) {
 }
 
 export async function getServiceByLegacyPath(path: string) {
+  if (isWordpressCmsEnabled()) {
+    try {
+      return await getCachedWpServiceByLegacyPath(path);
+    } catch {
+      return null;
+    }
+  }
+
+  if (isSanityCmsEnabled()) {
+    const client = getSanityClient();
+    if (!client) return null;
+    try {
+      const legacyPath = normalizeLegacyPath(path);
+      const doc = await client.fetch(serviceByLegacyPathQuery, { path: legacyPath });
+      return mapSanityService(doc);
+    } catch {
+      return null;
+    }
+  }
+
   const legacyPath = normalizeLegacyPath(path);
   const id = await findServiceIdByLegacyPath(legacyPath);
   if (!id) return null;
@@ -103,6 +138,25 @@ export async function getServiceByLegacyPath(path: string) {
 }
 
 export async function listLegacySitemapPaths(): Promise<string[]> {
+  if (isWordpressCmsEnabled()) {
+    try {
+      return await getCachedWpPagePaths();
+    } catch {
+      return [];
+    }
+  }
+
+  if (isSanityCmsEnabled()) {
+    const client = getSanityClient();
+    if (!client) return [];
+    try {
+      const paths = await client.fetch<string[]>(legacyServicePathsQuery);
+      return (paths ?? []).map((p) => normalizeLegacyPath(p)).sort();
+    } catch {
+      return [];
+    }
+  }
+
   return listLegacyPathsFromDb();
 }
 
@@ -210,6 +264,7 @@ export async function getBlogPostsList() {
     include: { author: true, coverImage: true },
   });
   return posts.map((p) => ({
+    id: p.id,
     title: p.title,
     slug: p.slug,
     category: p.category,
@@ -228,6 +283,26 @@ export async function getBlogSlugs() {
 }
 
 export async function getBlogPostByLegacyPath(path: string) {
+  if (isWordpressCmsEnabled()) {
+    try {
+      return await getCachedWpBlogPostByLegacyPath(path);
+    } catch {
+      return null;
+    }
+  }
+
+  if (isSanityCmsEnabled()) {
+    const client = getSanityClient();
+    if (!client) return null;
+    try {
+      const legacyPath = normalizeLegacyPath(path);
+      const doc = await client.fetch(blogPostByLegacyPathQuery, { path: legacyPath });
+      return mapSanityBlogPost(doc);
+    } catch {
+      return null;
+    }
+  }
+
   const legacyPath = normalizeLegacyPath(path);
   const id = await findBlogIdByLegacyPath(legacyPath);
   if (!id) return null;
@@ -237,6 +312,25 @@ export async function getBlogPostByLegacyPath(path: string) {
 }
 
 export async function listLegacyBlogSitemapPaths(): Promise<string[]> {
+  if (isWordpressCmsEnabled()) {
+    try {
+      return await getCachedWpPostPaths();
+    } catch {
+      return [];
+    }
+  }
+
+  if (isSanityCmsEnabled()) {
+    const client = getSanityClient();
+    if (!client) return [];
+    try {
+      const paths = await client.fetch<string[]>(legacyBlogPathsQuery);
+      return (paths ?? []).map((p) => normalizeLegacyPath(p)).sort();
+    } catch {
+      return [];
+    }
+  }
+
   return listLegacyBlogPathsFromDb();
 }
 
@@ -258,11 +352,22 @@ export async function listBlogPostsForAdmin(search?: string) {
 export async function getBlogPostForAdmin(slug: string) {
   const row = await prisma.blogPost.findUnique({
     where: { slug },
-    include: { coverImage: true },
+    include: {
+      coverImage: true,
+      relatedFrom: {
+        orderBy: { sortOrder: "asc" },
+        take: 3,
+        include: { toPost: { select: { id: true, slug: true, title: true } } },
+      },
+    },
   });
   if (!row) return null;
   const legacyPath = await getLegacyPathByBlogId(row.id);
-  return { ...row, legacyPath };
+  return {
+    ...row,
+    legacyPath,
+    suggestedPostSlugs: row.relatedFrom.map((r) => r.toPost.slug),
+  };
 }
 
 export async function getBlogPostBySlug(slug: string) {
@@ -276,6 +381,7 @@ export async function getBlogPostBySlug(slug: string) {
       linkedService: { select: { title: true, slug: true } },
       relatedFrom: {
         orderBy: { sortOrder: "asc" },
+        take: 3,
         include: { toPost: { include: { coverImage: true } } },
       },
     },
@@ -298,7 +404,9 @@ export async function getBlogPostBySlug(slug: string) {
     relatedPosts: post.relatedFrom.map((r) => ({
       title: r.toPost.title,
       slug: r.toPost.slug,
+      legacyPath: r.toPost.legacyPath,
       excerpt: r.toPost.excerpt,
+      readTimeMinutes: r.toPost.readTimeMinutes,
       coverUrl: r.toPost.coverImage?.url ? mediaPublicUrl(r.toPost.coverImage.url) : undefined,
     })),
     pillarPost: post.pillarPost

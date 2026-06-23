@@ -98,14 +98,12 @@ export function Footer({
   phone,
   email,
   address,
-  mbbs,
   hours,
 }: {
   phone?: string;
   email?: string;
   address?: string;
   mapEmbedUrl?: string;
-  mbbs?: string;
   hours?: string[];
 }) {
   const openingHours = parseOpeningHours(hours);
@@ -178,37 +176,11 @@ export function Footer({
         </div>
       </div>
 
-      <div className="border-t border-navy/10 py-6">
+      <div className="border-t border-navy/10 py-5">
         <div className="container text-xs text-navy/60">
           <p>© {new Date().getFullYear()} Care Well Medical Centre. All rights reserved.</p>
-          {mbbs ? <p className="mt-2">MBBS Reg. No.: {mbbs}</p> : null}
         </div>
       </div>
-
-      <details className="border-t border-navy/10">
-        <summary className="container cursor-pointer py-4 text-sm font-semibold text-navy/75 hover:text-navy">
-          Find Treatments Near You
-        </summary>
-        <div className="container grid gap-3 pb-6 text-sm text-navy/65 md:grid-cols-3">
-          {["Delhi", "South Delhi", "Gurgaon", "Noida", "Faridabad", "Greater Noida"].map((city) => (
-            <div key={city} className="space-y-1">
-              <p className="font-semibold text-navy/85">{city}</p>
-              <Link
-                href={`/locations/${city.toLowerCase().replace(/\s+/g, "-")}`}
-                className="block hover:text-navy hover:underline"
-              >
-                Hair Transplant in {city}
-              </Link>
-              <Link
-                href={`/locations/${city.toLowerCase().replace(/\s+/g, "-")}`}
-                className="block hover:text-navy hover:underline"
-              >
-                Vitiligo Treatment in {city}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </details>
     </footer>
   );
 }

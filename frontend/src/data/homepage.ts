@@ -15,6 +15,11 @@ export type JourneyStep = {
 export type WhyChooseItem = {
   title: string;
   body: string;
+  accent: string;
+};
+
+export type WhyChooseTrustItem = {
+  label: string;
 };
 
 export type SpecialtyItem = {
@@ -201,24 +206,40 @@ export const WHY_CHOOSE_ITEMS: WhyChooseItem[] = [
   {
     title: "Expert Care",
     body: "All major treatments personally supervised by Dr. Sandeep Bhasin, senior cosmetic surgeon in Delhi.",
+    accent: "#F4C7B5",
   },
   {
     title: "Patient-Focused Approach",
     body: "We ensure a seamless experience with customized treatment plans and dedicated support.",
+    accent: "#A8C8F0",
   },
   {
     title: "Latest Technology",
-    body: "Advanced FUE systems, medical-grade lasers, and modern surgical infrastructure at our South Delhi facility.",
+    body: "Advanced FDA-approved systems, medical-grade lasers, and modern surgical infrastructure.",
+    accent: "#B9D9B5",
   },
   {
     title: "Efficient & Professional",
-    body: "Smooth appointment scheduling, timely follow-ups, and a stress-free experience.",
+    body: "Smooth appointments, minimal wait times, timely follow-ups, and a stress-free experience.",
+    accent: "#D3C0E8",
   },
 ];
 
+export const WHY_CHOOSE_TRUST_ITEMS: WhyChooseTrustItem[] = [
+  { label: "Safe & Hygienic Environment" },
+  { label: "Experienced & Caring Team" },
+  { label: "Timely & Transparent Process" },
+  { label: "Trusted by Thousands of Patients" },
+];
+
 export const WHY_CHOOSE_SECTION = {
-  eyebrow: "We stand out",
+  eyebrow: "WE STAND OUT",
   title: "Why Choose Care Well Medical Centre?",
+  subtitle:
+    "Experience expert care, advanced technology, and a patient-first approach — all under one roof.",
+  doctorName: "Dr. Sandeep Bhasin",
+  doctorRole: "Senior Cosmetic & Aesthetic Surgeon",
+  doctorClinic: "Care Well Medical Centre, Delhi",
   servingTitle: "Serving South Delhi & Delhi NCR with Doctor-Led Cosmetic Care",
   servingBody:
     "Care Well Medical Centre is located at House No. 1, NRI Complex, Chittaranjan Park (CR Park), New Delhi 110019, and serves patients from Greater Kailash, Kalkaji, Nehru Place, Alaknanda, Saket, and across Delhi NCR. Under the supervision of Dr. Sandeep Bhasin, senior cosmetic and hair transplant surgeon, we provide advanced cosmetic surgery, hair restoration, and skin treatments in a safe medical setting.",

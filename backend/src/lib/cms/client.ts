@@ -34,7 +34,7 @@ async function sanityFetchNative<T>(
   }
 }
 
-/** Unified CMS read — Prisma by default, Sanity when CMS_PROVIDER=sanity. */
+/** Unified CMS read — Prisma when CMS_PROVIDER=prisma, else live Sanity API. */
 export async function sanityFetch<T>(
   query: string,
   params?: Record<string, string | number | boolean>,

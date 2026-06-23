@@ -5,14 +5,21 @@ function blockPlainText(block: PortableTextBlock): string {
   return children?.map((c) => c.text ?? "").join("") ?? "";
 }
 
-/** H2 entries for table of contents / anchor links (uses Sanity block `_key` for stable ids). */
-export function extractH2Sections(body: unknown): { id: string; text: string }[] {
+/** H2/H3 entries for blog table of contents (matches WordPress section headings). */
+export function extractH2Sections(body: unknown): { id: string; text: string; level: 2 | 3 }[] {
   if (!Array.isArray(body)) return [];
-  const out: { id: string; text: string }[] = [];
+  const out: { id: string; text: string; level: 2 | 3 }[] = [];
   for (const block of body) {
     const b = block as PortableTextBlock;
-    if (b._type === "block" && b.style === "h2" && b._key) {
-      out.push({ id: `section-${b._key}`, text: blockPlainText(b).trim() || "Section" });
+    if (b._type === "block" && (b.style === "h2" || b.style === "h3") && b._key) {
+      const text = blockPlainText(b).trim();
+      if (text) {
+        out.push({
+          id: `section-${b._key}`,
+          text,
+          level: b.style === "h3" ? 3 : 2,
+        });
+      }
     }
   }
   return out;

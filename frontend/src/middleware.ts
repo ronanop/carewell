@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { ADMIN_SESSION_COOKIE, verifySessionToken } from "@carewell/backend/lib/admin-session";
+import {
+  isBlockedAdminContentEditingApi,
+  isBlockedAdminContentEditingPath,
+} from "./lib/admin-content-editing";
 
 const PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+const CMS_PROVIDER = (process.env.CMS_PROVIDER ?? "prisma").toLowerCase();
 const USE_PRISMA_CMS =
-  (process.env.CMS_PROVIDER ?? "prisma").toLowerCase() !== "sanity" &&
+  CMS_PROVIDER !== "sanity" &&
+  CMS_PROVIDER !== "wordpress" &&
   Boolean(process.env.DATABASE_URL);
 
 type RedirectRow = { fromPath: string; toPath: string; statusCode: number };
@@ -19,36 +25,6 @@ const PROTECTED_SITE_PATHS = new Set([
   "/gallery",
   "/blog",
   "/book-consultation",
-  "/hair-transplant-in-delhi",
-  "/hair-transplant-in-delhi/beard",
-  "/hair-transplant-in-delhi/eyebrow",
-  "/hair-transplant-in-delhi/female",
-  "/hair-transplant-in-delhi/cost",
-  "/hair-transplant-in-delhi/before-and-after",
-  "/hair-loss-treatment-in-delhi",
-  "/hair-loss-treatment-in-delhi/prp",
-  "/hair-loss-treatment-in-delhi/growth-factor-concentrate",
-  "/cosmetic-treatments-in-delhi",
-  "/cosmetic-treatments-in-delhi/botox",
-  "/cosmetic-treatments-in-delhi/dermal-fillers",
-  "/cosmetic-treatments-in-delhi/anti-aging",
-  "/cosmetic-treatments-in-delhi/lip-augmentation",
-  "/cosmetic-treatments-in-delhi/laser-hair-removal",
-  "/skin-treatments-in-delhi",
-  "/skin-treatments-in-delhi/acne-scar",
-  "/skin-treatments-in-delhi/skin-whitening",
-  "/skin-treatments-in-delhi/dark-circles",
-  "/skin-treatments-in-delhi/vitiligo",
-  "/plastic-surgery-in-delhi",
-  "/plastic-surgery-in-delhi/liposuction",
-  "/plastic-surgery-in-delhi/rhinoplasty",
-  "/plastic-surgery-in-delhi/breast-augmentation",
-  "/plastic-surgery-in-delhi/facelift",
-  "/plastic-surgery-in-delhi/tummy-tuck",
-  "/plastic-surgery-in-delhi/male-to-female-surgery",
-  "/intimate-surgery-in-delhi",
-  "/body-contouring-in-delhi",
-  "/body-contouring-in-delhi/cryolipolysis",
   "/cost-estimator",
   "/skin-scan",
   "/thank-you",
@@ -107,12 +83,20 @@ async function getRedirects(request: NextRequest): Promise<RedirectRow[]> {
 async function handleAdminGate(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  if (path === "/admin/login" || path.startsWith("/api/admin/")) {
+  if (path === "/admin/login" || path.startsWith("/api/admin/login") || path.startsWith("/api/admin/logout")) {
     return NextResponse.next();
+  }
+
+  if (path.startsWith("/api/admin/") && isBlockedAdminContentEditingApi(path)) {
+    return NextResponse.json({ ok: false, error: "Content editing is disabled in admin." }, { status: 403 });
   }
 
   if (!path.startsWith("/admin")) {
     return null;
+  }
+
+  if (isBlockedAdminContentEditingPath(path)) {
+    return NextResponse.redirect(new URL("/admin", request.url));
   }
 
   const token = request.cookies.get(ADMIN_SESSION_COOKIE)?.value;

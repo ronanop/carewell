@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-export function BlogArticleToc({ headings }: { headings: { id: string; text: string }[] }) {
+type TocHeading = { id: string; text: string; level?: 2 | 3 };
+
+export function BlogArticleToc({ headings }: { headings: TocHeading[] }) {
   const [active, setActive] = useState<string | null>(headings[0]?.id ?? null);
 
   useEffect(() => {
@@ -29,12 +31,12 @@ export function BlogArticleToc({ headings }: { headings: { id: string; text: str
       <p className="font-heading font-bold text-navy">On this page</p>
       <ul className="mt-3 space-y-2 border-l border-surface pl-3">
         {headings.map((h) => (
-          <li key={h.id}>
+          <li key={h.id} className={h.level === 3 ? "pl-3" : undefined}>
             <a
               href={`#${h.id}`}
               className={`block py-0.5 transition-colors hover:text-primary ${
                 active === h.id ? "font-semibold text-primary" : ""
-              }`}
+              } ${h.level === 3 ? "text-[13px]" : ""}`}
             >
               {h.text}
             </a>
@@ -45,14 +47,14 @@ export function BlogArticleToc({ headings }: { headings: { id: string; text: str
   );
 }
 
-export function BlogArticleTocMobile({ headings }: { headings: { id: string; text: string }[] }) {
+export function BlogArticleTocMobile({ headings }: { headings: TocHeading[] }) {
   if (headings.length === 0) return null;
   return (
     <details className="mb-10 rounded-xl border border-surface bg-white p-4 lg:hidden">
       <summary className="cursor-pointer font-heading font-semibold text-navy">Jump to section</summary>
       <ul className="mt-3 space-y-2 text-sm">
         {headings.map((h) => (
-          <li key={h.id}>
+          <li key={h.id} className={h.level === 3 ? "pl-3" : undefined}>
             <a href={`#${h.id}`} className="text-primary hover:underline">
               {h.text}
             </a>

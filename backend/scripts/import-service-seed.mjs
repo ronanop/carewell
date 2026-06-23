@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
  * Import db/seed/services-content.json into PostgreSQL (production deploy).
+ * Uses direct upserts (no long transactions) for reliable remote DB imports.
  */
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { PrismaClient } from "@prisma/client";
-import { upsertImportedService } from "./lib/scrape-import-core.mjs";
 import { loadEnvFiles } from "./lib/load-env.mjs";
 import { repoRoot } from "./lib/repo-root.mjs";
 
@@ -27,6 +27,80 @@ if (!existsSync(seedPath)) {
 
 const { services = [] } = JSON.parse(readFileSync(seedPath, "utf8"));
 const prisma = new PrismaClient();
+
+async function upsertServiceRow(row) {
+  const {
+    id,
+    relatedServiceId,
+    quickFacts = [],
+    howItWorksSteps = [],
+    faqs = [],
+    ...data
+  } = row;
+
+  await prisma.service.upsert({
+    where: { id },
+    create: { id, ...data },
+    update: data,
+  });
+
+  await prisma.serviceQuickFact.deleteMany({ where: { serviceId: id } });
+  if (quickFacts.length) {
+    await prisma.serviceQuickFact.createMany({
+      data: quickFacts.map((f, i) => ({
+        serviceId: id,
+        sortOrder: i,
+        label: f.label,
+        value: f.value,
+      })),
+    });
+  }
+
+  await prisma.serviceHowItWorksStep.deleteMany({ where: { serviceId: id } });
+  if (howItWorksSteps.length) {
+    await prisma.serviceHowItWorksStep.createMany({
+      data: howItWorksSteps.map((s, i) => ({
+        serviceId: id,
+        sortOrder: i,
+        title: s.title,
+        description: s.description,
+      })),
+    });
+  }
+
+  await prisma.serviceFaq.deleteMany({ where: { serviceId: id } });
+  if (faqs.length) {
+    await prisma.serviceFaq.createMany({
+      data: faqs.map((f, i) => ({
+        serviceId: id,
+        sortOrder: i,
+        question: f.question,
+        answer: f.answer || "Discuss your case with our doctors during consultation.",
+      })),
+    });
+  }
+
+  await prisma.serviceRelated.deleteMany({ where: { fromServiceId: id } });
+  if (relatedServiceId) {
+    const relatedExists = await prisma.service.findUnique({
+      where: { id: relatedServiceId },
+      select: { id: true },
+    });
+    if (relatedExists) {
+      await prisma.serviceRelated.create({
+        data: { fromServiceId: id, toServiceId: relatedServiceId, sortOrder: 0 },
+      });
+    }
+  }
+
+  const from = `/services/${row.slug}`;
+  const to = `${row.legacyPath}/`;
+  await prisma.redirect.upsert({
+    where: { fromPath: from },
+    create: { fromPath: from, toPath: to, statusCode: 301 },
+    update: { toPath: to, statusCode: 301 },
+  });
+}
 
 async function main() {
   console.log(`Importing ${services.length} services from seed…`);
@@ -76,7 +150,12 @@ async function main() {
       relatedServiceId: row.relatedServiceId ?? null,
     };
 
-    if (!DRY_RUN) await upsertImportedService(prisma, payload);
+    if (!DRY_RUN) {
+      await upsertServiceRow(payload);
+      if (imported % 10 === 0) {
+        console.log(`  …${imported + 1}/${services.length}`);
+      }
+    }
     imported++;
   }
 

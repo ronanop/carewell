@@ -28,6 +28,26 @@ export const serviceBySlugQuery = `*[_type == "service" && slug.current == $slug
   "ogImageUrl": seo.ogImage.asset->url
 }`;
 
+export const serviceByLegacyPathQuery = `*[_type == "service" && legacyPath == $path][0]{
+  ...,
+  "slug": slug,
+  alternateLocaleService->{ "slug": slug.current, "locale": locale },
+  category->{title, slug, megaMenuKey},
+  relatedServices[]->{title, slug, treatmentDropdownLabel},
+  "heroImageUrl": heroImage.asset->url,
+  "whatIsIllustrationUrl": whatIsIllustration.asset->url,
+  beforeAfterCases[]{
+    ...,
+    "beforeUrl": beforeImage.asset->url,
+    "afterUrl": afterImage.asset->url
+  },
+  faq[]{question, answer},
+  seo,
+  "ogImageUrl": seo.ogImage.asset->url
+}`;
+
+export const legacyServicePathsQuery = `*[_type == "service" && defined(legacyPath)].legacyPath`;
+
 export const categoriesWithServicesQuery = `*[_type == "serviceCategory"]|order(title asc){
   ...,
   "slug": slug.current,
@@ -61,7 +81,7 @@ export const categoryBySlugQuery = `*[_type == "serviceCategory" && slug.current
 export const blogPostsListQuery = `*[_type == "blogPost" && defined(slug.current)]|order(publishedAt desc){
   title, "slug": slug.current, category, excerpt, featured, publishedAt, readTimeMinutes,
   author->{name},
-  "coverUrl": coverImage.asset->url
+  "coverUrl": coalesce(coverImage.asset->url, seo.ogImage.asset->url)
 }`;
 
 export const blogPostBySlugQuery = `*[_type == "blogPost" && slug.current == $slug][0]{
@@ -72,8 +92,23 @@ export const blogPostBySlugQuery = `*[_type == "blogPost" && slug.current == $sl
   pillarPost->{title, "slug": slug.current},
   linkedService->{title, "slug": slug.current},
   "coverUrl": coverImage.asset->url,
+  "ogImageUrl": seo.ogImage.asset->url,
   seo
 }`;
+
+export const blogPostByLegacyPathQuery = `*[_type == "blogPost" && legacyPath == $path][0]{
+  ...,
+  "slug": slug.current,
+  author->{name, credentials, image, "imageUrl": image.asset->url},
+  relatedPosts[]->{title, "slug": slug.current, legacyPath, excerpt, readTimeMinutes, "coverUrl": coverImage.asset->url},
+  pillarPost->{title, "slug": slug.current},
+  linkedService->{title, "slug": slug.current},
+  "coverUrl": coverImage.asset->url,
+  "ogImageUrl": seo.ogImage.asset->url,
+  seo
+}`;
+
+export const legacyBlogPathsQuery = `*[_type == "blogPost" && defined(legacyPath)].legacyPath`;
 
 export const galleryItemsQuery = `*[_type == "galleryItem"]|order(_createdAt desc){
   ...,

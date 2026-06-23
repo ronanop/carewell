@@ -28,10 +28,11 @@ import {
 
 import { getSiteUrl } from "@carewell/backend/lib/site";
 import { skipDatabaseAtBuildTime } from "@carewell/backend/lib/build-time-db";
+import { isWordpressCmsEnabled } from "@carewell/backend/lib/cms/provider";
 
 
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 
 
@@ -70,7 +71,8 @@ const RESERVED_PREFIXES = new Set([
 
 
 export async function generateStaticParams() {
-  if (process.env.NODE_ENV === "development" || skipDatabaseAtBuildTime()) return [];
+  if (process.env.NODE_ENV === "development") return [];
+  if (skipDatabaseAtBuildTime() && !isWordpressCmsEnabled()) return [];
 
   try {
     const [services, blogs] = await Promise.all([

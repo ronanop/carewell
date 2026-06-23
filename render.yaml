@@ -26,7 +26,11 @@ services:
       - key: ADMIN_PASSWORD
         sync: false
       - key: CMS_PROVIDER
-        value: prisma
+        value: sanity
+      - key: NEXT_PUBLIC_SANITY_PROJECT_ID
+        value: atqh7d73
+      - key: NEXT_PUBLIC_SANITY_DATASET
+        value: production
 
   - type: web
     name: carewell-backend
@@ -53,7 +57,11 @@ services:
       - key: ADMIN_PASSWORD
         sync: false
       - key: CMS_PROVIDER
-        value: prisma
+        value: sanity
+      - key: NEXT_PUBLIC_SANITY_PROJECT_ID
+        value: atqh7d73
+      - key: NEXT_PUBLIC_SANITY_DATASET
+        value: production
 
 databases:
   - name: carewell-db

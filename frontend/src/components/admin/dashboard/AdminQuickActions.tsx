@@ -1,14 +1,5 @@
 import Link from "next/link";
-import {
-  ExternalLink,
-  FileSearch,
-  LayoutGrid,
-  Map,
-  Newspaper,
-  PenLine,
-  Users,
-} from "lucide-react";
-import { ADMIN_PAGES_HUB, ADMIN_POSTS, ADMIN_SERVICE_PAGES } from "@/config/admin-content-routes";
+import { ExternalLink, FileSearch, Users } from "lucide-react";
 
 const actions = [
   {
@@ -19,52 +10,17 @@ const actions = [
     external: false,
   },
   {
-    href: ADMIN_SERVICE_PAGES,
-    label: "Service pages",
-    description: "Treatments at /services/{slug}",
-    icon: PenLine,
-    external: false,
-  },
-  {
-    href: ADMIN_POSTS,
-    label: "Posts",
-    description: "Blog articles at /blog/{slug}",
-    icon: Newspaper,
-    external: false,
-  },
-  {
-    href: ADMIN_PAGES_HUB,
-    label: "All pages",
-    description: "Service pages and site pages",
-    icon: PenLine,
-    external: false,
-  },
-  {
-    href: "/admin/content/media",
-    label: "Media library",
-    description: "Upload and manage images",
-    icon: LayoutGrid,
-    external: false,
-  },
-  {
-    href: "/",
-    label: "Live website",
-    description: "Open homepage",
-    icon: ExternalLink,
-    external: true,
-  },
-  {
-    href: "/admin/seo",
-    label: "SEO health",
-    description: "Meta gaps & deploy checks",
-    icon: FileSearch,
+    href: "/admin/leads",
+    label: "Lead pipeline",
+    description: "Notification channel status",
+    icon: Users,
     external: false,
   },
   {
     href: "/admin/content/integrations",
     label: "Email & WhatsApp",
     description: "Notifications and webhooks",
-    icon: Map,
+    icon: FileSearch,
     external: false,
   },
   {
@@ -73,6 +29,20 @@ const actions = [
     description: "Editor and admin accounts",
     icon: Users,
     external: false,
+  },
+  {
+    href: "/admin/seo",
+    label: "SEO health",
+    description: "Meta gaps and deploy checks",
+    icon: FileSearch,
+    external: false,
+  },
+  {
+    href: "/",
+    label: "Live website",
+    description: "Open homepage",
+    icon: ExternalLink,
+    external: true,
   },
 ] as const;
 

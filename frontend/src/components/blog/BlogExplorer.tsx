@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
@@ -16,6 +17,26 @@ export type BlogCard = {
   author?: { name?: string };
   coverUrl?: string;
 };
+
+function BlogCardImage({ coverUrl, title, href }: { coverUrl?: string; title?: string; href: string }) {
+  return (
+    <Link href={href} className="block shrink-0 overflow-hidden bg-surface">
+      <div className="relative aspect-[16/10] w-full">
+        {coverUrl ? (
+          <Image
+            src={coverUrl}
+            alt={title ? `${title} cover` : ""}
+            fill
+            className="object-cover transition duration-300 group-hover:scale-[1.02]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-surface via-white to-teal/10" aria-hidden />
+        )}
+      </div>
+    </Link>
+  );
+}
 
 export function BlogExplorer({ initialPosts }: { initialPosts: BlogCard[] }) {
   const [q, setQ] = useState("");
@@ -65,33 +86,47 @@ export function BlogExplorer({ initialPosts }: { initialPosts: BlogCard[] }) {
       </div>
 
       {featured && (
-        <article className="mt-10 grid gap-8 rounded-2xl border border-surface bg-white p-6 shadow-sm lg:grid-cols-[1.2fr_1fr]">
-          <div>
+        <article className="group mt-10 grid gap-8 overflow-hidden rounded-2xl border border-surface bg-white shadow-sm lg:grid-cols-[1.2fr_1fr]">
+          <div className="p-6 pb-0 lg:pb-6">
             <p className="text-xs font-semibold uppercase tracking-wide text-teal">Featured</p>
             <h2 className="font-heading mt-2 text-2xl font-bold text-navy">
-              <Link href={`/blog/${featured.slug}`}>{featured.title}</Link>
+              <Link href={`/blog/${featured.slug}`} className="hover:text-primary">
+                {featured.title}
+              </Link>
             </h2>
             <p className="mt-3 text-navy/80">{featured.excerpt}</p>
             <p className="mt-4 text-xs text-navy/55">
               {featured.author?.name} · {featured.readTimeMinutes} min read
             </p>
           </div>
-          <div className="min-h-40 rounded-xl bg-surface" aria-hidden />
+          <BlogCardImage
+            coverUrl={featured.coverUrl}
+            title={featured.title}
+            href={`/blog/${featured.slug}`}
+          />
         </article>
       )}
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_280px]">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {rest.slice(0, visible).map((p) => (
-            <article key={p.slug} className="flex flex-col rounded-xl border border-surface bg-white p-4 shadow-sm">
-              <span className="text-xs font-semibold uppercase text-primary">{p.category}</span>
-              <h3 className="font-heading mt-2 text-lg font-bold text-navy">
-                <Link href={`/blog/${p.slug}`}>{p.title}</Link>
-              </h3>
-              <p className="mt-2 line-clamp-2 flex-1 text-sm text-navy/75">{p.excerpt}</p>
-              <p className="mt-3 text-xs text-navy/50">
-                {p.author?.name} · {p.readTimeMinutes} min
-              </p>
+            <article
+              key={p.slug}
+              className="group flex flex-col overflow-hidden rounded-xl border border-surface bg-white shadow-sm"
+            >
+              <BlogCardImage coverUrl={p.coverUrl} title={p.title} href={`/blog/${p.slug}`} />
+              <div className="flex flex-1 flex-col p-4">
+                <span className="text-xs font-semibold uppercase text-primary">{p.category}</span>
+                <h3 className="font-heading mt-2 text-lg font-bold text-navy">
+                  <Link href={`/blog/${p.slug}`} className="hover:text-primary">
+                    {p.title}
+                  </Link>
+                </h3>
+                <p className="mt-2 line-clamp-2 flex-1 text-sm text-navy/75">{p.excerpt}</p>
+                <p className="mt-3 text-xs text-navy/50">
+                  {p.author?.name} · {p.readTimeMinutes} min
+                </p>
+              </div>
             </article>
           ))}
         </div>

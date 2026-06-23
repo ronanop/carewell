@@ -21,7 +21,7 @@ export default async function AdminDashboardPage() {
     <div className="space-y-8 pb-20 md:pb-8">
       <AdminPageHeader
         title="Dashboard"
-        description="Operations overview for Care Well Medical Centre — content, SEO, leads, and deploy readiness."
+        description="Operations overview — leads, SEO, and deploy readiness. Site content is managed in Sanity."
         actions={
           <a
             href={data.siteUrl}
@@ -113,9 +113,15 @@ export default async function AdminDashboardPage() {
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2">
-        <AdminPanel title="Recently updated pages" description="Latest service page edits">
+        <AdminPanel title="Recently updated pages" description="Latest CMS updates (view on live site)">
           <AdminRecentList items={data.recentServices} hrefPrefix="/services" />
         </AdminPanel>
+        <AdminPanel title="Recent blog posts" description="Latest posts (view on live site)">
+          <AdminRecentList items={data.recentBlog} hrefPrefix="/blog" />
+        </AdminPanel>
+      </section>
+
+      <section>
         <AdminPanel title="SEO snapshot" description="Service pages with meta tags">
           <p className="font-heading text-4xl font-bold text-navy">{seoOk}%</p>
           <p className="mt-2 text-sm text-text-secondary">

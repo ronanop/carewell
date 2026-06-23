@@ -1,4 +1,6 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { clearWordpressCmsCache } from "@/lib/cms/wordpress/client";
+import { WORDPRESS_CMS_TAG, wordpressPathTag } from "@/lib/cms/wordpress/cache-config";
 
 /** Next.js only — ISR hooks; keep this route on the frontend app. */
 export async function POST(req: Request) {
@@ -12,11 +14,17 @@ export async function POST(req: Request) {
     slug?: string;
     type?: string;
     layout?: boolean;
+    wordpress?: boolean;
   };
   const paths = new Set<string>(["/", "/blog", "/gallery"]);
+  const tags = new Set<string>();
 
   if (Array.isArray(body.paths)) {
-    for (const path of body.paths) paths.add(path);
+    for (const path of body.paths) {
+      paths.add(path);
+      const normalized = path.replace(/\/+$/, "") || "/";
+      tags.add(wordpressPathTag(normalized));
+    }
   }
   if (body.type === "service" && body.slug) {
     paths.add(`/services/${body.slug}`);
@@ -41,6 +49,20 @@ export async function POST(req: Request) {
   for (const path of Array.from(paths)) {
     revalidatePath(path, layout ? "layout" : undefined);
   }
+  if (body.wordpress === true) {
+    tags.add(WORDPRESS_CMS_TAG);
+  }
+  for (const tag of Array.from(tags)) {
+    revalidateTag(tag);
+  }
+  if (tags.has(WORDPRESS_CMS_TAG) || Array.from(tags).some((t) => t.startsWith("wp-path:"))) {
+    clearWordpressCmsCache();
+  }
 
-  return Response.json({ ok: true, revalidated: Array.from(paths), layout });
+  return Response.json({
+    ok: true,
+    revalidated: Array.from(paths),
+    tags: Array.from(tags),
+    layout,
+  });
 }
